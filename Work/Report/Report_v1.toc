@@ -1,0 +1,11 @@
+\select@language {english}
+\contentsline {section}{I \hspace {0.35em}Table of Contents}{I}{section*.1}
+\contentsline {section}{\numberline {II}List of Figures}{II}{section.II}
+\contentsline {section}{\numberline {III}List of Tables}{III}{section.III}
+\contentsline {section}{\numberline {IV}List of Listings}{IV}{section.IV}
+\contentsline {section}{\numberline {V}List of mathematical symbols}{V}{section.V}
+\contentsline {section}{\numberline {VI}List of abbreviations}{VI}{section.VI}
+\contentsline {section}{\numberline {1}Introduction and conceptual approach}{1}{section.1}
+\contentsline {section}{\numberline {2}List of Literature}{1}{section.2}
+\contentsline {section}{Appendix}{A}{section*.2}
+\vspace {-0.5em}

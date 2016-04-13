@@ -1,0 +1,302 @@
+% ----------------------------------------------------------------------------------------------------------
+% Packages
+% ----------------------------------------------------------------------------------------------------------
+
+\documentclass[12pt,a4paper,bibliography=totocnumbered,listof=totocnumbered]{scrartcl}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage[right]{eurosym}
+\usepackage[printonlyused]{acronym}
+\usepackage{subfig}
+\usepackage{floatflt}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{colortbl}
+\usepackage{paralist}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage[right]{eurosym}
+%\usepackage{picins}
+\usepackage[subfigure,titles]{tocloft}
+\usepackage[pdfpagelabels=true]{hyperref}
+\usepackage{mathdots}
+\usepackage{listings}
+\usepackage{lipsum}
+\usepackage{booktabs}
+\usepackage{fix-cm}
+\lstset{basicstyle=\footnotesize, captionpos=t, breaklines=true, showstringspaces=false, tabsize=2, frame=lines, numbers=left, numberstyle=\tiny, xleftmargin=2em, framexleftmargin=2em}
+\makeatletter
+\def\l@lstlisting#1#2{\@dottedtocline{1}{0em}{1em}{\hspace{1,5em} Lst. #1}{#2}}
+\makeatother
+
+\usepackage{pdflscape}
+%\usepackage{lscape}
+
+\geometry{a4paper, top=27mm, left=35mm, right=15mm, bottom=35mm, headsep=10mm, footskip=12mm}
+
+\hypersetup{unicode=false, pdftoolbar=true, pdfmenubar=true, pdffitwindow=false, pdfstartview={FitH},
+	pdftitle={Bachelor Thesis},
+	pdfauthor={Felix Gutmann},
+	pdfsubject={Bachelor Thesis},
+	pdfcreator={\LaTeX\ with package \flqq hyperref\frqq},
+	pdfproducer={pdfTeX \the\pdftexversion.\pdftexrevision},
+	pdfkeywords={Bachelor Thesis},
+	pdfnewwindow=true,
+	colorlinks=true,linkcolor=black,citecolor=black,filecolor=magenta,urlcolor=black}
+\pdfinfo{/CreationDate (D:20110620133321)}
+
+\begin{document}
+
+\titlespacing{\section}{0pt}{12pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
+
+% Headers and footers
+
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\renewcommand{\leftmark}{\rightmark}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{\thesection\space\contentsname}
+%\lfoot{Complex Economic Systems - An analytical approach to Input-Output tables\newline}
+\cfoot{}
+\rfoot{\ \linebreak \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% ----------------------------------------------------------------------------------------------------------
+%Prefix
+% ----------------------------------------------------------------------------------------------------------
+
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\theHsection}{\Roman{section}}
+\pagenumbering{Roman}
+
+% ----------------------------------------------------------------------------------------------------------
+% Title
+% ----------------------------------------------------------------------------------------------------------
+
+\thispagestyle{empty}
+\begin{center}
+	\includegraphics[width=\textwidth]{Pictures/logo01.jpg}\\
+	\vspace*{2cm}
+	\vspace*{2cm}
+	\Huge
+	\textbf{Master Thesis}\\
+	\vspace*{0.5cm}
+	\large
+	\textbf{Topic:}\\
+	\vspace*{1cm}
+	\textbf{Unsupervised learning in decision making}\\
+	\vspace*{2cm}
+\end{center}	
+
+$\vspace{6cm}$
+\begin{tabbing}
+\hspace*{1cm}\=\hspace*{3.2cm}\=\hspace*{3cm}\=\hspace*{2.7cm}\= \kill
+\onehalfspacing
+\textbf{Author:} \>\> Domagoj Fizulic\\
+\textbf{} \>\> Felix Gutmann\\
+\textbf{Student number:} 	\>\> 125604\\
+\textbf{Program:} \>\> M.S. Data Science\\
+\textbf{E-Mail:} \>\> domagoj.fizulic@barcelonagse.eu\\
+\textbf{} \>\> felix.gutmann@barcelonagse.eu
+\end{tabbing}
+\vspace{1cm}
+\pagebreak
+
+% ----------------------------------------------------------------------------------------------------------
+% Declaration
+% ----------------------------------------------------------------------------------------------------------
+
+
+
+\pagebreak
+
+% ----------------------------------------------------------------------------------------------------------
+% Abstract
+% ----------------------------------------------------------------------------------------------------------
+
+
+\onehalfspacing
+
+\titlespacing{\section}{0pt}{12pt plus 4pt minus 2pt}{2pt plus 2pt minus 2pt}
+
+
+
+\pagebreak
+
+% ----------------------------------------------------------------------------------------------------------
+% Index
+% ----------------------------------------------------------------------------------------------------------
+
+% TODO Typ vor Nummer
+
+\renewcommand{\cfttabpresnum}{Tab. }
+\renewcommand{\cftfigpresnum}{Fig. }
+\settowidth{\cfttabnumwidth}{Fig. 10\quad}
+\settowidth{\cftfignumwidth}{Fig. 10\quad}
+
+\titlespacing{\section}{0pt}{12pt plus 4pt minus 2pt}{2pt plus 2pt minus 2pt}
+\singlespacing
+\rhead{Table of contents}
+\renewcommand{\contentsname}{I Table of Contents}
+\phantomsection
+\addcontentsline{toc}{section}{\texorpdfstring{I \hspace{0.35em}Table of Contents}{Table of Contents}}
+\addtocounter{section}{1}
+
+
+% ----------------------------------------------------------------------------------------------------------
+% Table of contents
+% ----------------------------------------------------------------------------------------------------------
+\setcounter{page}{1}
+
+\rhead{Table of Contents}
+
+	\tableofcontents
+
+\pagebreak
+
+% ----------------------------------------------------------------------------------------------------------
+% List of figures
+% ----------------------------------------------------------------------------------------------------------
+
+\rhead{List of Figures}
+
+	\listoffigures
+	
+\pagebreak
+
+% ----------------------------------------------------------------------------------------------------------
+% List of tables
+% ----------------------------------------------------------------------------------------------------------
+
+\rhead{List of Tables}
+
+	\listoftables
+	
+\pagebreak
+
+%----------------------------------------------------------------------------------------------------------
+% List of Listings
+% ----------------------------------------------------------------------------------------------------------
+
+\rhead{List of Listings}
+\renewcommand{\lstlistlistingname}{List of Listings}
+{\labelsep2cm\lstlistoflistings}
+\pagebreak
+
+%----------------------------------------------------------------------------------------------------------
+% List of Symbols
+% ---------------------------------------------------------------------------------------------------------
+
+\renewcommand{\arraystretch}{1.5}	
+\section{List of mathematical symbols}
+\rhead{List of mathematical Symbols}
+
+\begin{tabular}{p{6cm}p{9cm}}
+\textbf{Symbol} 		& 		\textbf{Meaning} \\
+\midrule
+\vspace{0.3cm} & \vspace{0.3cm} 									
+\end{tabular}
+
+\pagebreak
+
+%----------------------------------------------------------------------------------------------------------
+% List of abbreviations
+% ---------------------------------------------------------------------------------------------------------
+
+\section{List of abbreviations}
+\rhead{List of Abbreviations}
+
+\begin{tabular}{p{6cm}p{9cm}}
+\textbf{Abbreviations} & \textbf{Description} 										\\
+\midrule
+\vspace{0.3cm} & \vspace{0.3cm} 														\\ 
+\end{tabular}
+
+\newpage
+
+% ----------------------------------------------------------------------------------------------------------
+% Prefix 2
+% ----------------------------------------------------------------------------------------------------------
+
+% Title spacing
+
+\titlespacing{\section}{0pt}{12pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
+\titlespacing{\subsection}{0pt}{12pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
+\titlespacing{\subsubsection}{0pt}{12pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
+
+% Header
+
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\subsubsectionmark}[1]{}
+\lhead{Chapter \thesection}
+\rhead{\rightmark}
+
+\onehalfspacing
+
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\theHsection}{\arabic{section}}
+\setcounter{section}{0}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+%RGB Colour set
+
+\definecolor{persblue}{rgb}{0.0862745,0.211765,0.360784}
+\definecolor{persred}{rgb}{0.388235,0.145098,0.137255}
+\definecolor{persgray}{rgb}{0.501961,0.501961,0.501961}
+\definecolor{persgreen}{rgb}{0.054902,0.411765,0.352941}
+
+%---------------------------------------------------------------------------------------------------------
+% 1. Introduction
+%---------------------------------------------------------------------------------------------------------
+
+\section{Introduction and conceptual approach}
+
+
+% ----------------------------------------------------------------------------------------------------------
+% Literature
+% ----------------------------------------------------------------------------------------------------------
+
+\renewcommand\refname{List of Literature}
+
+\bibliographystyle{apalike}
+
+\bibliography{bib}
+
+
+\pagebreak
+
+%----------------------------------------------------------------------------------------------------------
+% Appendix
+% ---------------------------------------------------------------------------------------------------------
+\lhead{Appendix \thesection}
+\rhead{}
+\pagenumbering{Alph}
+\setcounter{page}{1}
+
+\begin{appendix}
+	
+	\section*{Appendix}
+	\phantomsection
+	\addcontentsline{toc}{section}{Appendix}
+	\addtocontents{toc}{\vspace{-0.5em}}
+
+\end{appendix}
+
+%----------------------------------------------------------------------------------------------------------
+% End Document
+%----------------------------------------------------------------------------------------------------------
+
+
+\end{document}
