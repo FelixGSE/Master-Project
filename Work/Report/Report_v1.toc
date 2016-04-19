@@ -6,6 +6,6 @@
 \contentsline {section}{\numberline {V}List of mathematical symbols}{V}{section.V}
 \contentsline {section}{\numberline {VI}List of abbreviations}{VI}{section.VI}
 \contentsline {section}{\numberline {1}Introduction and conceptual approach}{1}{section.1}
-\contentsline {section}{\numberline {2}List of Literature}{1}{section.2}
+\contentsline {section}{\numberline {2}List of Literature}{2}{section.2}
 \contentsline {section}{Appendix}{A}{section*.2}
 \vspace {-0.5em}
