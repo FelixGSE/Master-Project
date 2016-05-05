@@ -22,8 +22,10 @@ execfile("Class_Agent.py")
 # Create reward data
 means = [0,1,2]
 sigma = [1,1,1]
-class_bandit = bandit(mu = means, sigma = sigma ,N=10)
+seed = 10
+class_bandit = bandit(mu = means, sigma = sigma ,N=10,seed=seed)
 reward_data = class_bandit.bandits
+
 
 # Set parameter set
 alpha = [0.2,0.5,0.8]
@@ -47,5 +49,8 @@ for i in range( len(alpha) ):
 		rewards.append( temp_agent.rewards )
 
 ####################################################################################################
+np.random.seed(10)
+print np.random.normal(3, 1, 1).tolist()
 
+random.seed(100)
 ####################################################################################################

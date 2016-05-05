@@ -12,7 +12,7 @@ class bandit:
         if self.seed == None:
             self.bandits = self.create_bandits(self.mu,self.sigma,self.N)
         else:
-            rd.seed( self.seed )
+            np.random.seed( self.seed )
             self.bandits = self.create_bandits(self.mu,self.sigma,self.N)
     
     """ 
