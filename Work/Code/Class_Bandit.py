@@ -32,7 +32,6 @@ class bandit:
     """
     
     def rnorm(self, mu, sigma, N ):
-        import numpy as np
         number = np.random.normal(mu, sigma, N)
         result = number.tolist()
         return result
