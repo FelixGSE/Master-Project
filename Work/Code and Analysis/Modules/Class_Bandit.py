@@ -35,4 +35,3 @@ class bandit:
         number = np.random.normal(mu, sigma, N)
         result = number.tolist()
         return result
-
