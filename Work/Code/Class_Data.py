@@ -1,13 +1,17 @@
 class data:
     """
-    crap comment
+    SET INITIAL CONDITIONS
     """
     
     def __init__(self):
         self.choices = []
         self.rewards = []
         self.value_functions = []
-  
+
+  	"""
+    Create data set
+    """
+
     def create_data(self, mu = [0,0], sigma = [1,1], N=10, seed=None,cluster=5,decision_function = "softmax", alpha = [0.1,0.9],tau=[0.1,0.9],epsilon = [0.01,0.1] ):
         class_bandit = bandit(mu = mu, sigma = sigma ,N=N,seed=seed)
         reward_data = class_bandit.bandits
