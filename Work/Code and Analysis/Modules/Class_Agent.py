@@ -83,7 +83,7 @@ class agent:
             bandits = self.reward_set
         if  self.reward_set is not None:
             run_time = len( self.reward_set[0] )
-            print "WARNING: Note that run time was fixed to length of bandits"
+            #print "WARNING: Note that run time was fixed to length of bandits"
 
         # Run learning procedure for option softmax
         if self.decision_function == "softmax":

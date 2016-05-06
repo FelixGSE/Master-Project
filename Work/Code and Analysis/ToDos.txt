@@ -6,7 +6,7 @@
 
 \f0\fs24 \cf0 Modules:\
 \
-- Add saving option to module data or module bandit\
+- Add saving option to module data or module bandit (DONE)\
 \
 Plots:\
 \
