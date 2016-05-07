@@ -33,11 +33,11 @@ seed = 123
 cluster = 10
 decision_function = "softmax" 
 alpha = [ 0.5 , 0.5 ]
-	
+tau = [1,2]	
         
 # Create data set
 d01 = data()
-d01.create_data( mu = mu, sigma = sigma, cluster = cluster, seed = seed, \
+d01.create_data( mu = mu, sigma = sigma, cluster_size = cluster, seed = seed, \
 				decision_function = decision_function, alpha = alpha, tau = tau )
 
 # Save data set to HD
