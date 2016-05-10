@@ -66,7 +66,6 @@ def lineplot( x , y, color_set = None, label_set = None, xlim = None , ylim = No
         #print upper_range
         iter_range = np.arange(ylim[0],ylim[1],difference)
         #iter_range = range( int(ylim[0]), int( ylim[1]), int(difference )) 
-        print iter_range
         for y in iter_range:    
             plt.plot(x, [y] * len(x), "--", lw=0.5, color="black", alpha=0.3)    
       
