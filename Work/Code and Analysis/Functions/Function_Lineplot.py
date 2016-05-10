@@ -50,24 +50,26 @@ def lineplot( x , y, color_set = None, label_set = None, xlim = None , ylim = No
         ymin = min(temp_list)
         ymax = max(temp_list)
         ylim = [ymin,ymax]
-        print ylim
     # Set x and ylim  
     adjustment = ( ylim[1] - ylim[0] ) / 10.
     plt.xlim( xlim[0],xlim[1] )
     plt.ylim( ylim[0] - adjustment ,ylim[1] + adjustment)    
     
     # Add grey lines
-    if horizontal_grid == True:
-        difference = ( ylim[1] - ylim[0] ) / 10.
+    #if horizontal_grid == True:
+    plt.grid(axis='y', linestyle='--',color='#808080')
+    plt.axhline(0, color='black')
+
+        #difference = ( ylim[1] - ylim[0] ) / 10.
         #lower_range = int( math.ceil( ylim[0] / 10.) * 10 )
         #print lower_range 
         #upper_range = int( math.floor( ylim[1] / 10.) * 10 )
 
         #print upper_range
-        iter_range = np.arange(ylim[0],ylim[1],difference)
+        #iter_range = np.arange(ylim[0],ylim[1],difference)
         #iter_range = range( int(ylim[0]), int( ylim[1]), int(difference )) 
-        for y in iter_range:    
-            plt.plot(x, [y] * len(x), "--", lw=0.5, color="black", alpha=0.3)    
+        #for y in iter_range:    
+        #    plt.plot(x, [y] * len(x), "--", lw=0.5, color="black", alpha=0.3)    
       
     
     # Add save option
