@@ -32,6 +32,7 @@ class agent:
             self.value_function = self.init_value_container(self.n_bandits,self.init)
         self.choices = []
         self.rewards = []
+        self.entropy = []
         
         # OTHER 
         self.time = time
@@ -64,8 +65,12 @@ class agent:
             return choice
         else:
             optimal = value_array.argmax()
-            return optimal        
-        
+            return optimal
+
+	"""
+	ENTROPY FUNCTION
+	"""
+       
     """ 
     LEARNING FUNCTION
     """
@@ -99,7 +104,11 @@ class agent:
                 self.choices.append( current_decision )
                 self.rewards.append( current_reward )
                 self.update_value_functions( current_decision, current_reward, self.alpha  )
-        
+
+                # Compute and update entropy
+                current_entropy = self.shannons_entropy( self.choices, self.n_bandits )
+                self.entropy.append( current_entropy )
+
         # Run learning procedure for option epsilon greedy 
         if self.decision_function == "epsgreedy":
          
@@ -109,31 +118,37 @@ class agent:
                 states = self.current_values_lookup(self.value_function)
                 decision = self.epsilon_greedy( value_array = states , tau = self.epsilon)
                 current_reward = bandits[current_decision][step]
-                
+     
                 # Update value function and store decision and rewards 
                 self.choices.append( current_decision )
                 self.rewards.append( current_reward )
                 self.update_value_functions( current_decision, current_reward, self.alpha  )
 
-
-	"""
-	ENTROPY FUNCTION
-	"""
-
-	def entropy_function(self):
-    	self.entropy = []
-    	for i in range(len(self.choices)):
-        	subset = self.choices[:i+1]
-        	freq = [subset.count(p) for p in subset]
-        	freqset = dict(zip(l,freq)).values()
-        	probs = [x / float(sum(freqset)) for x in freqset]
-        	self.entropy.append(-sum([x * np.log(x) for x in probs]))
-
-        
+                # Compute and update entropy 
+                current_entropy = self.shannons_entropy( self.choices, self.n_bandits )
+                self.entropy.append( current_entropy )
+ 
     """ 
     AUXILLIARY FUNCTIONS
     """
-    
+
+    # Compute the entropy based on current choice probabilities
+    def shannons_entropy(self,choice_vector,nchoices):
+		unique_values = range(nchoices)
+		frequencies = [choice_vector.count(value) for value in unique_values]
+		total_counts = float(sum(frequencies))
+		probabilities = [x / float(total_counts) for x in frequencies]
+		entropy_vector = []
+		for probability in probabilities:
+			try:
+				temp_value = probability * np.log2(probability)
+				entropy_vector.append(temp_value)
+			except:
+				temp_value = 0
+				entropy_vector.append(temp_value)
+		entropy = -sum( entropy_vector )
+		return entropy
+
     # Wrapper function for sampling randomly TRUE or FALSE with probability p
     def random_bool(self, p = 0.1 ):
         number = np.random.binomial( 1 , p, 1 )
@@ -192,6 +207,7 @@ class agent:
             value_name = "valuefunction_" + sufix
             choice_name = "choices" + sufix
             reward_name = "reward" + sufix
+            entropy_name = "entropy" + sufix
         
         # Define file names for storage objects for epsilon greedy decision function 
         if self.decision_function == "epsgreedy":
@@ -202,20 +218,22 @@ class agent:
             sufix = str_alpha + str_epsilon + file_type
             value_name = "valuefunction_" + sufix
             choice_name = "choices" + sufix
-            reward_name = "reward" + sufix  
-        
+            reward_name = "reward" + sufix
+            entropy_name = "entropy" + sufix
+
         # Combine file names and path
         if path == None:
             path = os.getcwd() + "/"
         value_file = path + value_name
         choice_file = path + choice_name
         reward_file = path + reward_name
-        
+        entropy_file = path + entropy_name
+
         # Save value functions, choice- and reward lists
         json.dump(self.value_function, file(value_file, 'w'))
         json.dump(self.choices, file(choice_file, 'w'))
         json.dump(self.rewards, file(reward_file, 'w'))
-		json.dump(self.entropy, file(reward_file, 'w'))
+        json.dump(self.entropy, file(entropy_file, 'w'))
     
     # Clear value function of the agent      
     def re_init( self, init = None ):
@@ -225,4 +243,3 @@ class agent:
             self.value_function = self.init_value_container(self.n_bandits,self.init)
         self.choices = []
         self.rewards = []
-

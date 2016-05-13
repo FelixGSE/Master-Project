@@ -26,7 +26,7 @@ def lineplot( x , y, color_set = None, label_set = None, xlim = None , ylim = No
         
     # Define Legend position
     if legend == True:
-        plt.legend(bbox_to_anchor=(1, -0.1), ncol=3,loc=0, borderaxespad=0.)
+        plt.legend(bbox_to_anchor=(1, -0.1), ncol=lines,loc=0, borderaxespad=0)
     
     # Remove plot frame lines and axis ticks
     ax = plt.subplot(111)   
@@ -94,7 +94,7 @@ with open('valuefunction_softmax_19_32_31.txt') as data_file:
 sub=data[0]
 x = range(len(sub[0]))
 
-lineplot(x,sub)
+lineplot(x,sub,label_set=["line1","line2"],legend=True)
 
 
 
