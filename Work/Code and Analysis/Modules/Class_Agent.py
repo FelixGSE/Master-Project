@@ -215,6 +215,7 @@ class agent:
         json.dump(self.value_function, file(value_file, 'w'))
         json.dump(self.choices, file(choice_file, 'w'))
         json.dump(self.rewards, file(reward_file, 'w'))
+		json.dump(self.entropy, file(reward_file, 'w'))
     
     # Clear value function of the agent      
     def re_init( self, init = None ):

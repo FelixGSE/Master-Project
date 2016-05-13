@@ -114,6 +114,21 @@ class agent:
                 self.choices.append( current_decision )
                 self.rewards.append( current_reward )
                 self.update_value_functions( current_decision, current_reward, self.alpha  )
+
+
+	"""
+	ENTROPY FUNCTION
+	"""
+
+	def entropy_function(self):
+    	self.entropy = []
+    	for i in range(len(self.choices)):
+        	subset = self.choices[:i+1]
+        	freq = [subset.count(p) for p in subset]
+        	freqset = dict(zip(l,freq)).values()
+        	probs = [x / float(sum(freqset)) for x in freqset]
+        	self.entropy.append(-sum([x * np.log(x) for x in probs]))
+
         
     """ 
     AUXILLIARY FUNCTIONS
