@@ -116,7 +116,7 @@ class agent:
                 
                 # Choose next action and reward
                 states = self.current_values_lookup(self.value_function)
-                decision = self.epsilon_greedy( value_array = states , tau = self.epsilon)
+                decision = self.epsilon_greedy( value_array = states , probability = self.epsilon)
                 current_reward = bandits[current_decision][step]
      
                 # Update value function and store decision and rewards 
