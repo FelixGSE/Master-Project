@@ -141,7 +141,7 @@ class agent:
 		entropy_vector = []
 		for probability in probabilities:
 			try:
-				temp_value = probability * np.log2(probability)
+				temp_value = probability * math.log(probability,2)
 				entropy_vector.append(temp_value)
 			except:
 				temp_value = 0

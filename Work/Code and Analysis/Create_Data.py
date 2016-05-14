@@ -8,6 +8,7 @@ import numpy as np
 import os 
 import json
 import time
+import math 
 
 ### Source own modules
 path_modules = '/Users/felix/Documents/GSE/Term 3/Master_Project/Master-Project/Work/Code and Analysis/Modules/'
