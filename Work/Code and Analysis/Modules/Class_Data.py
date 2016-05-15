@@ -49,7 +49,7 @@ class data:
 					self.value_functions.append( temp_agent.value_function )
 					self.choices.append( temp_agent.choices )
 					self.rewards.append( temp_agent.rewards )
-					self.entropies.append(temp_agen.entropy)
+					self.entropies.append(temp_agent.entropy)
 					self.label.append(temp_label)
 	 # Save current state of the value function, choices and experienced rewards
 	def save_history( self , path = None ):

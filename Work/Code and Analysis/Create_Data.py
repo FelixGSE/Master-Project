@@ -27,20 +27,27 @@ os.chdir(path_data)
 ####################################################################################################
 
 # Specify variables  
-mu = [0,0]
+mu = [0,2]
 sigma = [1,1]
 cluster = 10
 seed = 123
-cluster = 10
-decision_function = "softmax" 
-alpha = [ 0.5 , 0.5 ]
-tau = [1,2]	
-        
-# Create data set
-d01 = data()
-d01.create_data( mu = mu, sigma = sigma, cluster_size = cluster, seed = seed, \
-				decision_function = decision_function, alpha = alpha, tau = tau )
+decision_function = "epsgreedy"
+epsilon = [0,0] 
+alpha = [ 1 , 1 ]
+tau = [0.1,0.1]	
+N = 3000
 
+# Create data set
+
+d01 = data()
+d01.create_data( mu = mu, sigma = sigma, N = N,cluster_size = cluster, seed = seed, \
+				decision_function = decision_function, alpha = alpha,tau = tau,epsilon=epsilon)
+
+
+y =d01.choices
+x = range(N)
+y =d01.entropies
+lineplot(x,y)
 # Save data set to HD
 path_set = "d01"
 os.mkdir( path_set )

@@ -65,3 +65,16 @@ class similarity:
 	def similarity(self, distance_matrix ):
 		similarity_matrix = float(1) / ( 1 + distance_matrix )
 		return similarity_matrix
+
+	# Convertes a similarity matrix to a dissimliarty (proximity) matrix
+	def dissimilarity(self,similarity_matrix):
+		dissimilarity_matrix = float(1) / ( similarity_matrix - 1 )
+		np.fill_diagonal(dissimilarity_matrix, 0)
+		return dissimilarity_matrix
+
+
+
+
+
+
+

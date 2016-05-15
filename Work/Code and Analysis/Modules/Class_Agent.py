@@ -46,11 +46,10 @@ class agent:
     # Softmax-Decision - Returns the next choice based on boltzman distrubution
     def softmax(self, value_array, tau):
         # Check for correct input specification 
-        if tau == 0:
-            print "ERROR: Parameter tau can't be zero!"
-            return None
+        if tau < 0.05:
+            raise ValueError('Value of tau causing numerical domain error of softmax function')
         bandits = range(self.n_bandits)
-        numerator = np.exp( np.array( value_array ) ) / float( tau )
+        numerator = np.exp( np.array( value_array ) / float( tau ) ) 
         denominator = sum( numerator )
         boltzman_distribution = numerator / denominator
         choice = self.weighted_sample(bandits,probability = boltzman_distribution)
@@ -59,12 +58,12 @@ class agent:
     # Epsilon-Greedy-Decision - Returns greedy vs. random choice
     def epsilon_greedy(self, value_array, probability ):
         choice_count = len( value_array )
-        explore = random_bool( p = probability )
+        explore = self.random_bool( p = probability )
         if explore == 1:
             choice = np.random.choice(choice_count)
             return choice
         else:
-            optimal = value_array.argmax()
+            optimal = value_array.index(max(value_array))
             return optimal
 
 	"""
@@ -116,7 +115,7 @@ class agent:
                 
                 # Choose next action and reward
                 states = self.current_values_lookup(self.value_function)
-                decision = self.epsilon_greedy( value_array = states , probability = self.epsilon)
+                current_decision = self.epsilon_greedy( value_array = states , probability = self.epsilon)
                 current_reward = bandits[current_decision][step]
      
                 # Update value function and store decision and rewards 
