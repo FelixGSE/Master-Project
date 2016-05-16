@@ -15,7 +15,7 @@ class data:
 	Create data set
 	"""
 
-	def create_data(self, mu = [0,0], sigma = [1,1], N=10, seed=None,cluster_size=5,decision_function = "softmax", alpha = [0.1,0.9],tau=[0.1,0.9],epsilon = [0.01,0.1] ):
+	def create_data(self, individual = False, mu = [0,0], sigma = [1,1], N=10, seed=None,cluster_size=5,decision_function = "softmax", alpha = [0.1,0.9],tau=[0.1,0.9],epsilon = [0.01,0.1] ):
 
 		# Create data from class bandit
 		class_bandit = bandit(mu = mu, sigma = sigma ,N=N,seed=seed)
@@ -29,6 +29,9 @@ class data:
 				temp_tau = tau[i]
 				temp_label = i
 				for j in range( cluster_size ):
+					if individual == True:
+						class_bandit = bandit(mu = mu, sigma = sigma ,N=N,seed=None)
+						reward_data = class_bandit.bandits
 					temp_agent = agent( alpha = temp_alpha, tau = temp_tau, reward_input = reward_data,decision_function = decision_function )
 					temp_agent.learn()
 					self.value_functions.append( temp_agent.value_function )
@@ -44,6 +47,9 @@ class data:
 				temp_epsilon = epsilon[i]
 				temp_label = i
 				for j in range( cluster_size ):
+					if individual == True:
+						class_bandit = bandit(mu = mu, sigma = sigma ,N=N,seed=None)
+						reward_data = class_bandit.bandits
 					temp_agent = agent( alpha = temp_alpha, epsilon = temp_epsilon, reward_input = reward_data,decision_function = decision_function )
 					temp_agent.learn()
 					self.value_functions.append( temp_agent.value_function )

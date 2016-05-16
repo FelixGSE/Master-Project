@@ -9,6 +9,10 @@ class similarity:
 		# Categorical similarity meassures
 		self.overlap = None
 
+		# Time series
+		self.euclidian = None
+		self.edtw = None
+
 	"""
 	Conpute functions
 	"""
@@ -18,23 +22,57 @@ class similarity:
 
 		self.overlap = self.overlap_similarity( data = data )
 
+	# Computes similarities for time series and real valued data
+	def timeseries(self, data ):
+		self.euclidian = self.euclidian_similiarity( data = data )
+		self.edtw = self.euclidian_time_warp_similarity( data = data )
+
+
 	"""
 	Similarity functions
 	"""
 
+	# Computes overlap similarity between to points
 	def overlap_similarity( self, data ):
 		dist = self.pairwise_distance( list_of_list = data, distance_function = self.overlap_distance )
 		overlap_similarity = self.similarity(dist)
 		return overlap_similarity
 
+	# Computes euclidian similarity
+	def euclidian_similiarity(self, data ):
+		dist = self.euclidian_distance( data, data )
+		euclidian_similiarity = self.similarity(dist)
+		return euclidian_similiarity
+
+	def euclidian_time_warp_similarity(self,data):
+		dist = self.pairwise_distance( list_of_list = data, distance_function = self.time_warp_euclidian_distance )
+		euclidian_time_warp_similarity = self.similarity(dist)
+		return euclidian_time_warp_similarity
+
 	"""
 	Pairwise distance functions
 	"""
+	# 1) Categorical Data
+
 	# Overlap distance computes same items in point X and point Y
 	# Expects two NumPy arrays
 	def overlap_distance( self, X , Y ):
 		overlap_distance = sum( X == Y )
 		return overlap_distance
+
+	# 2) Time series and real-valued data
+
+	# Euclidian Distance
+	def euclidian_distance( self, X, Y):
+		dist = met.pairwise.euclidean_distances(X,Y)
+		return dist
+
+	# Time warp distance for two time series X and Y with metric
+	def time_warp_euclidian_distance(self,X,Y):
+		X = np.array(X).reshape(-1, 1)
+		Y = np.array(Y).reshape(-1, 1)
+		dist = dtw.dtw(X, Y, dist = lambda X, Y: np.linalg.norm(X - Y, ord=2))[0]
+		return dist
 
 	"""
 	Auxilliary functions

@@ -27,27 +27,48 @@ os.chdir(path_data)
 ####################################################################################################
 
 # Specify variables  
-mu = [0,2]
-sigma = [1,1]
-cluster = 10
-seed = 123
-decision_function = "epsgreedy"
+mu = [1,2,3]
+sigma = [1,1,1]
+cluster = 4
+seed = None
+decision_function = "softmax"
 epsilon = [0,0] 
-alpha = [ 1 , 1 ]
-tau = [0.1,0.1]	
-N = 3000
+alpha = [0.5, 1 , 0.5 ]
+tau = [0.1,0.5,10]	
+N = 100
 
 # Create data set
 
 d01 = data()
-d01.create_data( mu = mu, sigma = sigma, N = N,cluster_size = cluster, seed = seed, \
+d01.create_data( individual = True, mu = mu, sigma = sigma, N = N,cluster_size = cluster, seed = seed, \
 				decision_function = decision_function, alpha = alpha,tau = tau,epsilon=epsilon)
+
+sim = similarity()
+y =d01.entropies
+y2 = d01.choices 
+sim.timeseries(y)
+sim.categorical(y2)
+
+aff = sim.edtw
+aff2 = sim.overlap
+print 
+import sklearn.cluster as clu
+spec = clu.SpectralClustering(n_clusters=3,affinity = 'precomputed')
+spec.fit_predict(aff)
+p = spec.labels_
+t = d01.label
+
+
+acc = accuracies(t,p)
+acc.report_accuracies()
+print p
+print t
 
 
 y =d01.choices
 x = range(N)
 y =d01.entropies
-lineplot(x,y)
+lineplot(x,[y[2]])
 # Save data set to HD
 path_set = "d01"
 os.mkdir( path_set )

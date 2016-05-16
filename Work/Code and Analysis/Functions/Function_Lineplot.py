@@ -59,6 +59,7 @@ def lineplot( x , y, color_set = None, label_set = None, xlim = None , ylim = No
     #if horizontal_grid == True:
     plt.grid(axis='y', linestyle='--',color='#808080')
     plt.axhline(0, color='black')
+    plt.axvline(0, color='black')
 
         #difference = ( ylim[1] - ylim[0] ) / 10.
         #lower_range = int( math.ceil( ylim[0] / 10.) * 10 )
@@ -77,26 +78,3 @@ def lineplot( x , y, color_set = None, label_set = None, xlim = None , ylim = No
         plt.savefig(name, bbox_inches = "tight")
 
     return plt.show()
-
-
-# TEST
-import os 
-import json
-
-path_data = "/Users/felix/Documents/GSE/Term 3/Master_Project/Master-Project/Work/Code and Analysis/Artificial Data Sets/d01/"
-os.chdir(path_data)  
-
-# Load Data
-with open('valuefunction_softmax_19_32_31.txt') as data_file:    
-    data = json.load(data_file)
-
-
-sub=data[0]
-x = range(len(sub[0]))
-
-lineplot(x,sub,label_set=["line1","line2"],legend=True)
-
-
-
-
-
