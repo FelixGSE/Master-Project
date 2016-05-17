@@ -9,6 +9,11 @@ import os
 import json
 import time
 import math 
+import sklearn.metrics as met
+import sklearn.metrics.pairwise as pa
+import sklearn.cluster as clu
+import sklearn.metrics.cluster as mclu
+import dtw 
 
 ### Source own modules
 path_modules = '/Users/felix/Documents/GSE/Term 3/Master_Project/Master-Project/Work/Code and Analysis/Modules/'
@@ -16,7 +21,8 @@ os.chdir(path_modules)
 execfile("Class_Bandit.py")
 execfile("Class_Agent.py")
 execfile("Class_Data.py")
-
+execfile("Class_Similarity.py")
+execfile("Class_Accuracies.py")
 
 # Reset Working Directory
 path_data = '/Users/felix/Documents/GSE/Term 3/Master_Project/Master-Project/Work/Code and Analysis/Artificial Data Sets/'
@@ -51,8 +57,7 @@ sim.categorical(y2)
 
 aff = sim.edtw
 aff2 = sim.overlap
-print 
-import sklearn.cluster as clu
+
 spec = clu.SpectralClustering(n_clusters=3,affinity = 'precomputed')
 spec.fit_predict(aff)
 p = spec.labels_
@@ -63,6 +68,7 @@ acc = accuracies(t,p)
 acc.report_accuracies()
 print p
 print t
+
 
 
 y =d01.choices

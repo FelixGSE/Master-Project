@@ -64,7 +64,7 @@ class similarity:
 
 	# Euclidian Distance
 	def euclidian_distance( self, X, Y):
-		dist = met.pairwise.euclidean_distances(X,Y)
+		dist = pa.euclidean_distances(X,Y)
 		return dist
 
 	# Time warp distance for two time series X and Y with metric

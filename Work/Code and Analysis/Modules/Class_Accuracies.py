@@ -3,7 +3,7 @@ class accuracies:
 	"""
 	Set initial conditions
 	Requires:
-	import sklearn.metrics as met
+	import sklearn.metrics.cluster as mclu
 	"""
 
 	def __init__(self, true_label = None, prediction = None):
@@ -19,129 +19,99 @@ class accuracies:
 			raise ValueError("Vectors must have the same length")
 
 		# Compute accuracy meassures 
-		self.confusion_matrix = self.confusion_matrix( self.true, self.prediction )
-		self.accuracy = self.accuracy( self.true, self.prediction  )
-		self.f1score = self.f1( self.true, self.prediction )
-		self.hamming = self.hamming( self.true, self.prediction )
-		self.jaccard = self.jaccard( self.true, self.prediction )
-		self.prfs = self.prfs( self.true, self.prediction )
-		self.ps = self.ps( self.true, self.prediction  )
-		self.recall = self.recall_score( self.true, self.prediction )
-		self.zeroone = self.zero_one_loss( self.true, self.prediction )
+		self.amis = self.amis(self.true,self.prediction)
+		self.ars = self.adjusted_rand_score(self.true,self.prediction)
+		self.completness = self.completeness_score(self.true,self.prediction)
+		self.hcvm = self.homogeneity_completeness_v_measure(self.true,self.prediction)
+		self.homogenity = self.homogeneity_score(self.true,self.prediction)
+		self.mis = self.mutual_info_score(self.true,self.prediction)
+		self.nmis = self.normalized_mutual_info_score(self.true,self.prediction)
+		#self.sscore = self.silhouette_score(self.true,self.prediction)
+		#self.samples = self.silhouette_samples(self.true,self.prediction)
+		self.vmeasure = self.v_measure_score(self.true,self.prediction)
 
 	"""
 	Accuracy meassures
 	"""
 
 	# 1) Confusion matrix 
-	def confusion_matrix(self, true, pred ):
-		confusion_matrix = met.confusion_matrix( true, pred )
-		return confusion_matrix
+	def amis(self, true, pred ):
+		metric = mclu.adjusted_mutual_info_score(true, pred)
+		return metric
 
-	# 2) Accuracy 
-	def accuracy(self, true, pred ):
-		accuracy = met.accuracy_score( true, pred )
-		return accuracy
+	# 2) Adjusted Rand Score 
+	def adjusted_rand_score(self, true, pred  ):
+		metric = mclu.adjusted_rand_score(true, pred)
+		return metric 
 
-	# 3) f1 Score
-	def f1(self,true,pred):
-		f01 = met.f1_score( true, pred, average = 'macro') 
-		f02 = met.f1_score( true, pred, average = 'micro') 
-		f03 = met.f1_score( true, pred, average = 'weighted') 
-		f04 = met.f1_score( true, pred, average = None )
-		f1_list = [f01,f02,f03,f04]
-		return f1_list
+	# 3) Completnes Score 
+	def completeness_score(self, true, pred  ):
+		metric = mclu.completeness_score(true, pred)
+		return metric 
+		
+	# 4) Homogeneity Completeness V Measure
+	def homogeneity_completeness_v_measure( self, true,pred ):
+		metric = mclu.homogeneity_completeness_v_measure( true, pred)
+		return metric
 
-	# 4) Hamming Loss
-	def hamming( self,true,pred ):
-		hamming_loss = met.hamming_loss(true, pred)
-		return hamming_loss
+	# 5) Homogeneity Score
+	def homogeneity_score(self, true,pred ):
+		metric = mclu.homogeneity_score(true, pred)
+		return metric
 
-	# 5) Jaccard Similarity Score	
-	def jaccard( self,true,pred ):
-		jaccard_similarity_score = met.jaccard_similarity_score(true, pred)
-		return jaccard_similarity_score
+	# 6) Mutual info score
+	def mutual_info_score(self, true,pred ):
+		metric = mclu.mutual_info_score(true, pred)
+		return metric
 
-	# 6) Precision Recall Fscore Support
-	def prfs( self,true,pred ):
-		prfs01 = met.precision_recall_fscore_support(true, pred, average = 'macro')
-		prfs02 = met.precision_recall_fscore_support(true, pred, average = 'micro')
-		prfs03 = met.precision_recall_fscore_support(true, pred, average = 'weighted')
-		prfs_list = [prfs01,prfs02,prfs03]
-		return prfs_list
+	# 7) Normalized Mutual info score
+	def normalized_mutual_info_score(self, true,pred ):
+		metric = mclu.normalized_mutual_info_score(true, pred)
+		return metric 
 
-	# 7) Precision Score 
-	def ps( self,true,pred ):
-		ps01 = met.precision_score(true, pred, average = 'macro')
-		ps02 = met.precision_score(true, pred, average = 'micro') 
-		ps03 = met.precision_score(true, pred, average = 'weighted') 
-		ps_list = [ps01,ps02,ps03]
-		return ps_list
+	# 8) Silhouette Score
+	#def silhouette_score(self, true,pred ):
+	#	metric = mclu.silhouette_score(true, pred)
+	#	return metric
 
-	# 8) Recall Score
-	def recall_score( self,true,pred ):
-		recall01 = met.recall_score(true, pred, average = 'macro') 
-		recall02 = met.recall_score(true, pred, average = 'micro') 
-		recall03 = met.recall_score(true, pred, average = 'weighted') 
-		recall04 = met.recall_score(true, pred, average = None) 
-		recall_list = [recall01,recall02,recall03,recall04]
-		return recall_list
+	# 9) Silhouette Samples
+	def silhouette_samples(self, true,pred ):
+		metric = mclu.silhouette_samples(true, pred)
+		return metric
 
-	# 9) Zero-One-Loss
-	def zero_one_loss( self,true,pred ):
-		zero_one = met.zero_one_loss(true, pred)
-		return zero_one
-
-	"""
-	Auxilliary functions
-	"""
+	# 10) V Measure Score
+	def v_measure_score(self, true,pred ):
+		metric = mclu.v_measure_score(true, pred)
+		return metric
 
 	# Print a formated report of all accuracies
 	def report_accuracies(self,full = False):
-		print '*********************************'
+		print '\n'
+		print '*********************************************'
 		print 'Accuraccy report'
-		print '*********************************'
-		print 'Accuracy: \t \t \t \t \t' + str(self.out(self.accuracy))
-		print '---------------------------------'
-		print 'Hamming Loss:\t \t \t \t' + str(self.out( self.hamming))
-		print '---------------------------------'
-		print 'Jaccard Similarity Score: \t' + str(self.out( self.jaccard))
-		print '---------------------------------'
-		print 'Zero-One-Loss:\t \t \t \t' + str(self.out( self.zeroone))
-		print '---------------------------------'
-		print 'F1-Score'
-		print ''.ljust(2) + 'Macro:\t \t \t \t \t' + str(self.out( self.f1score[0]) )
-		print ''.ljust(2) + 'Micro:\t \t \t \t \t' + str(self.out( self.f1score[1]) )
-		print ''.ljust(2) + 'Weighted:\t \t \t \t \t' + str(self.out( self.f1score[2]) )
-		print '---------------------------------'
-		print 'Precision Score '
-		print ''.ljust(2) + 'Macro:\t \t \t \t \t' + str(self.out( self.ps[0]) )
-		print ''.ljust(2) + 'Micro:\t \t \t \t \t' + str(self.out( self.ps[1]) )
-		print ''.ljust(2) + 'Weighted:\t \t \t \t \t' + str(self.out( self.ps[2]) )
-		print '---------------------------------'
-		print 'Recall Score '
-		print ''.ljust(2) + 'Macro:\t \t \t \t \t' + str(self.out( self.recall[0]) )
-		print ''.ljust(2) + 'Micro:\t \t \t \t \t' + str(self.out( self.recall[1]) )
-		print ''.ljust(2) + 'Weighted:\t \t \t \t \t' + str(self.out( self.recall[2]) )
-		if full == True:
-			print '---------------------------------'
-			print 'Precision Recall Fscore Support'
-			print 'Macro'
-			print str(self.round_list(self.prfs[0]))
-			print 'Micro'
-			print str(self.round_list(self.prfs[1]))
-			print 'Weighted'
-			print str(self.round_list(self.prfs[2]))
-		print '*********************************'
-
-
-	def report_matrix(self):
-		print '*********************************'
-		print 'Confusion matrix'
-		print '*********************************'
-		print self.confusion_matrix
-		print '*********************************'
-
+		print '*********************************************'
+		print 'Adjusted Mutual Info Score: \t\t\t' + str(self.out(self.amis))
+		print '---------------------------------------------'
+		print 'Adjusted Rand Score: \t \t \t\t\t' + str(self.out(self.ars))
+		print '---------------------------------------------'
+		print 'Completeness Score: \t \t \t\t\t' + str(self.out(self.completness))
+		print '---------------------------------------------'
+		#print 'Homogeneity Completeness V Measure : \t' + str(self.out(self.hcvm))
+		#print '---------------------------------------------'
+		print 'Homogeneity Score: \t\t\t\t\t\t' + str(self.out(self.homogenity))
+		print '---------------------------------------------'
+		print 'Mutual info score: \t\t\t\t\t\t' + str(self.out(self.mis))
+		print '---------------------------------------------'
+		print 'Nomailzed Mutual info score: \t\t\t' + str(self.out(self.nmis))
+		print '---------------------------------------------'
+		#print 'Silhouette Score: \t\t\t' + str(self.out(self.sscore))
+		#print '---------------------------------------------'
+		#print 'Silhouette Samples: \t\t\t' + str(self.out(self.samples))
+		#print '---------------------------------------------'
+		print 'V Measure Score: \t\t\t\t\t\t' + str(self.out(self.vmeasure))
+		print '---------------------------------------------'
+		print '*********************************************'
+		print '\n'
 	# Round numbers
 	def out(self,number):
 		round = format(number, '.3f')

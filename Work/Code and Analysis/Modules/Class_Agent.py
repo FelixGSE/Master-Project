@@ -93,11 +93,15 @@ class agent:
         if self.decision_function == "softmax":
             
             for step in range( run_time ):
-                
+                if step == 0:
+                    first_descision = range(self.n_bandits)
+                    current_decision = self.weighted_sample(first_descision,probability=None)
+                    current_reward = bandits[current_decision][step]
+                else:
                 # Choose next action and reward
-                states = self.current_values_lookup( self.value_function )
-                current_decision = self.softmax( value_array = states , tau = self.tau)
-                current_reward = bandits[current_decision][step]
+                    states = self.current_values_lookup( self.value_function )
+                    current_decision = self.softmax( value_array = states , tau = self.tau)
+                    current_reward = bandits[current_decision][step]
                 
                 # Update value function and store decision and rewards 
                 self.choices.append( current_decision )
@@ -112,11 +116,15 @@ class agent:
         if self.decision_function == "epsgreedy":
          
             for step in range( run_time ):
-                
-                # Choose next action and reward
-                states = self.current_values_lookup(self.value_function)
-                current_decision = self.epsilon_greedy( value_array = states , probability = self.epsilon)
-                current_reward = bandits[current_decision][step]
+                if step == 0:
+                    first_descision = range(self.n_bandits)
+                    current_decision = self.weighted_sample(first_descision,probability=None)
+                    current_reward = bandits[current_decision][step]
+                else:
+                    # Choose next action and reward
+                    states = self.current_values_lookup(self.value_function)
+                    current_decision = self.epsilon_greedy( value_array = states , probability = self.epsilon)
+                    current_reward = bandits[current_decision][step]
      
                 # Update value function and store decision and rewards 
                 self.choices.append( current_decision )
