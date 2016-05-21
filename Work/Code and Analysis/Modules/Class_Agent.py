@@ -66,10 +66,6 @@ class agent:
             optimal = value_array.index(max(value_array))
             return optimal
 
-	"""
-	ENTROPY FUNCTION
-	"""
-       
     """ 
     LEARNING FUNCTION
     """

@@ -10,10 +10,11 @@ import json
 import time
 import math 
 import sklearn.metrics as met
+import sklearn.metrics.cluster as mclu
 import sklearn.metrics.pairwise as pa
 import sklearn.cluster as clu
-import sklearn.metrics.cluster as mclu
 import dtw 
+import sklearn.decomposition as decomp
 
 ### Source own modules
 path_modules = '/Users/felix/Documents/GSE/Term 3/Master_Project/Master-Project/Work/Code and Analysis/Modules/'
@@ -58,6 +59,9 @@ sim.categorical(y2)
 aff = sim.edtw
 aff2 = sim.overlap
 
+te = unsupervised()
+te.fit_all_with_affinity(aff,3)
+print te.affinity_prediction
 spec = clu.SpectralClustering(n_clusters=3,affinity = 'precomputed')
 spec.fit_predict(aff)
 p = spec.labels_
