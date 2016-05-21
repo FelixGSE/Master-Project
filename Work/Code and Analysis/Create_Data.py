@@ -36,7 +36,7 @@ os.chdir(path_data)
 # Specify variables  
 mu = [1,2,3]
 sigma = [1,1,1]
-cluster = 4
+cluster = [1,10,1]
 seed = None
 decision_function = "softmax"
 epsilon = [0,0] 
