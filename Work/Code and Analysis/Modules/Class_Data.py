@@ -16,11 +16,15 @@ class data:
 	"""
 
 	def create_data(self, individual = False, mu = [0,0], sigma = [1,1], N=10, seed=None,cluster_size=5,decision_function = "softmax", \
-					alpha = [0.1,0.9],tau=[0.1,0.9],epsilon = [0.01,0.1] ):
+					alpha = [0.1,0.9],tau=[0.1,0.9],epsilon = [0.01,0.1], ex_data = None ):
 
 		# Create data from class bandit
-		class_bandit = bandit(mu = mu, sigma = sigma ,N=N,seed=seed)
-		reward_data = class_bandit.bandits
+		if ex_data is not None:
+			reward_data = ex_data
+		else: 
+			class_bandit = bandit(mu = mu, sigma = sigma ,N=N,seed=seed)
+			reward_data = class_bandit.bandits
+		
 		number_of_agents =  len(alpha) 
 		cluster_range = self.cluster(cluster_size,number_of_agents)
 		# Train agent on bandots and create clusters for each alpha-tau combination

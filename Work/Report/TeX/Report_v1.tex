@@ -52,7 +52,7 @@
 	pdfnewwindow=true,
 	colorlinks=true,linkcolor=black,citecolor=black,filecolor=magenta,urlcolor=black}
 \pdfinfo{/CreationDate (D:20110620133321)}
-
+\DeclareMathOperator*{\argmin}{arg\,min}
 \begin{document}
 
 \titlespacing{\section}{0pt}{12pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
@@ -204,7 +204,12 @@ $\vspace{6cm}$
 \begin{tabular}{p{6cm}p{9cm}}
 \textbf{Symbol} 		& 		\textbf{Meaning} \\
 \midrule
-\vspace{0.3cm} & \vspace{0.3cm} 									
+\vspace{0.3cm} & \vspace{0.3cm} 			\\
+$a_t$				  & Action at time t			\\
+$Q(a)_t$	& Value function at time t \\
+$\epsilon$			& Probability of exploration in epsilon greedy \\
+$\alpha$ & Learning rate \\ 
+$\tau$ & Softmax parameter \\
 \end{tabular}
 
 \pagebreak
@@ -263,6 +268,37 @@ $\vspace{6cm}$
 
 \section{Introduction and conceptual approach}
 
+
+\section{Simmulation}
+
+\subsection{Data generation}
+
+Challange: 
+Categorical data with time series attributes. 
+Apply transformation choice probabilities ()
+Define similarity meassures on categories
+
+\subsection{Reinforcement Learning backround}
+
+
+
+$Q_t(a) = \frac{R_1 + R_2 + \dots + R_{K_\alpha}}{K_\alpha} $
+
+$Q_{k+1} = Q_k + \alpha\left[ R_k -  Q_k	 \right]$ 
+
+Let $Q_t(a)$ be the value function of action $a$. \textit{"Epsilon Greedy"}
+
+Choose next action $a$ as $a_{t+1} = \arg \max Q_t(a)$. Let $p_e$ be the probability of exploration. $p=\epsilon$
+
+Soft Max Selection 
+
+$P(a_{t}|X) = \frac{e^{\frac{Q_t(a)}{\tau}}}{\sum_{i}^{K} e^{\frac{Q_t(i)}{\tau}}}$
+
+
+\subsection{Unsupervised Learning}
+
+
+\subsection{Simmulation results}
 
 \pagebreak
 % ----------------------------------------------------------------------------------------------------------
