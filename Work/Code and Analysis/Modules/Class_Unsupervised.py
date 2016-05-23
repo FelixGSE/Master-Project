@@ -62,7 +62,7 @@ class unsupervised:
 		prediction = average.labels_
 		return prediction
 
-	def pca(self, data, n = 3,  ):
+	def pca(self, data, n = 3):
 		principal_components = decomp.PCA(n_components=n)
 		principal_components.fit( data )
 		variance = principal_components.explained_variance_ratio_
@@ -70,6 +70,10 @@ class unsupervised:
 		output = [variance,components]
 		return output
 
+	def pca_ward(self,data,nclus = 3, ncomp = 3):
+		pc = self.pca(data, n = ncomp)[1]
+		cluster = self.ward_clustering(data,nclust = nclus )
+		return cluster
 
 
 
@@ -87,5 +91,3 @@ print us
 
 print pca.explained_variance_ratio_
 """
-
-

@@ -26,7 +26,7 @@ class similarity:
 	def timeseries(self, data ):
 		self.euclidian = self.euclidian_similiarity( data = data )
 		self.edtw = self.euclidian_time_warp_similarity( data = data )
-
+		self.euclidian_dist = self.euclidian_distance( data, data )
 
 	"""
 	Similarity functions

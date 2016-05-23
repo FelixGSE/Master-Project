@@ -24,6 +24,12 @@ execfile("Class_Agent.py")
 execfile("Class_Data.py")
 execfile("Class_Similarity.py")
 execfile("Class_Accuracies.py")
+execfile("Class_Unsupervised.py")
+
+### Source own modules
+function_modules = '/Users/felix/Documents/GSE/Term 3/Master_Project/Master-Project/Work/Code and Analysis/Function/'
+os.chdir(path_modules) 
+#execfile("Function_Lineplot.py")
 
 # Reset Working Directory
 path_data = '/Users/felix/Documents/GSE/Term 3/Master_Project/Master-Project/Work/Code and Analysis/Artificial Data Sets/'
@@ -33,57 +39,114 @@ os.chdir(path_data)
 
 ####################################################################################################
 
+#---------------------------------------------------------------------------------------------------
+#
+#---------------------------------------------------------------------------------------------------
+
 # Specify variables  
-mu = [1,2,3]
+mu = [0,0.5,1]
 sigma = [1,1,1]
-cluster = [1,10,1]
+cluster = 19
 seed = None
 decision_function = "softmax"
-epsilon = [0,0] 
-alpha = [0.5, 1 , 0.5 ]
-tau = [0.1,0.5,10]	
+alpha = [1, 1 , 1]
+tau = [0.1,0.5,1]	
 N = 100
 
 # Create data set
-
 d01 = data()
 d01.create_data( individual = True, mu = mu, sigma = sigma, N = N,cluster_size = cluster, seed = seed, \
-				decision_function = decision_function, alpha = alpha,tau = tau,epsilon=epsilon)
+				decision_function = decision_function, alpha = alpha,tau = tau)
 
+e01 = d01.entropies
+c01 = d01.choices 
+l01 = d01.label
+
+# Compute Similiarity
 sim = similarity()
-y =d01.entropies
-y2 = d01.choices 
-sim.timeseries(y)
-sim.categorical(y2)
+sim.timeseries(e01)
+sim.categorical(c01)
 
-aff = sim.edtw
-aff2 = sim.overlap
+a01 = sim.edtw
+eu01 = sim.euclidian_dist
+# Unsupervised
+u01 = unsupervised()
+u01.fit_all_with_affinity(sim.overlap,3)
 
-te = unsupervised()
-te.fit_all_with_affinity(aff,3)
-print te.affinity_prediction
-spec = clu.SpectralClustering(n_clusters=3,affinity = 'precomputed')
-spec.fit_predict(aff)
-p = spec.labels_
-t = d01.label
-
-
-acc = accuracies(t,p)
-acc.report_accuracies()
-print p
-print t
+# Accuracies
+no = len(tau)
+pre01 = u01.spectral_prediction
+pre02 = u01.affinity_prediction
+pre03 = u01.kmeans(c01,no)
+pre04 = u01.kmeans(e01,no)
+pre05 = u01.kmeans(eu01,no)
+pre06 = u01.pca_ward(eu01,2,no)
 
 
 
-y =d01.choices
-x = range(N)
-y =d01.entropies
-lineplot(x,[y[2]])
-# Save data set to HD
-path_set = "d01"
-os.mkdir( path_set )
-path = path_data + path_set + "/"
-d01.save_history( path = path )
+print "\n"
+print "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+print "NEW RUN"
+print "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+print "\n"
+
+acc01 = accuracies(l01,pre01)
+acc01.report_accuracies()
+
+acc02 = accuracies(l01,pre02)
+acc02.report_accuracies()
+
+acc03 = accuracies(l01,pre03)
+acc03.report_accuracies()
+
+acc04 = accuracies(l01,pre05)
+acc04.report_accuracies()
+
+acc05 = accuracies(l01,pre06)
+acc05.report_accuracies()
+
+#---------------------------------------------------------------------------------------------------
+#
+#---------------------------------------------------------------------------------------------------
+x = range(len(e01[0]))
+lineplot(x,e01)
+
+
+
+
+#---------------------------------------------------------------------------------------------------
+#
+#---------------------------------------------------------------------------------------------------
+
+class miner:
+
+	def __init__(self, true_label = None, prediction = None):
+
+		self.accuracy_set = None
+
+
+	def prediction(self,):
+
+		# Create data 
+		temp_data = data()
+		temp_data.create_data( individual = True, mu = mu, sigma = sigma, N = N,
+						cluster_size = cluster, seed = seed, decision_function = decision_function, 
+						alpha = alpha, tau = tau)
+		
+		# Extract features
+		temp_entropy = temp_data.entropies
+		temp_choices = d01.choices 
+		temp_labels  = d01.label
+
+
+
+	def full_accuracies(self,true,prediction_set):
+		all_accurracies = []
+		for prediction in prediction_set:
+			temp_accuracies = accuracies(true,prediction)
+			all_accurracies.append( temp_accuracies.full )
+		return all_accurracies
+
 
 
 ####################################################################################################
