@@ -29,7 +29,7 @@ class accuracies:
 		#self.sscore = self.silhouette_score(self.true,self.prediction)
 		#self.samples = self.silhouette_samples(self.true,self.prediction)
 		self.vmeasure = self.v_measure_score(self.true,self.prediction)
-		self.full = [ self.amis, self.ars , self.completness, self.hcvm, self.homogenity, self.mis, self.nmis , self.vmeasure ]
+		self.full = [ self.amis, self.ars , self.completness, self.homogenity, self.mis, self.nmis , self.vmeasure ]
 
 	"""
 	Accuracy meassures

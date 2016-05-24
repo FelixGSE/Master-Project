@@ -82,8 +82,6 @@ pre04 = u01.kmeans(e01,no)
 pre05 = u01.kmeans(eu01,no)
 pre06 = u01.pca_ward(eu01,2,no)
 
-
-
 print "\n"
 print "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 print "NEW RUN"
@@ -117,35 +115,6 @@ lineplot(x,e01)
 #---------------------------------------------------------------------------------------------------
 #
 #---------------------------------------------------------------------------------------------------
-
-class miner:
-
-	def __init__(self, true_label = None, prediction = None):
-
-		self.accuracy_set = None
-
-
-	def prediction(self,):
-
-		# Create data 
-		temp_data = data()
-		temp_data.create_data( individual = True, mu = mu, sigma = sigma, N = N,
-						cluster_size = cluster, seed = seed, decision_function = decision_function, 
-						alpha = alpha, tau = tau)
-		
-		# Extract features
-		temp_entropy = temp_data.entropies
-		temp_choices = d01.choices 
-		temp_labels  = d01.label
-
-
-
-	def full_accuracies(self,true,prediction_set):
-		all_accurracies = []
-		for prediction in prediction_set:
-			temp_accuracies = accuracies(true,prediction)
-			all_accurracies.append( temp_accuracies.full )
-		return all_accurracies
 
 
 

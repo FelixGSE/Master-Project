@@ -17,6 +17,9 @@ class unsupervised:
 	 	self.spectral_prediction = self.spectral( data = data, n_clust = n )
 	 	self.affinity_prediction = self.affinity_propagation( data = data )
 
+	def
+
+
 	"""
 	Clustering functions
 	"""
