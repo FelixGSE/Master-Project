@@ -40,13 +40,13 @@ execfile("Function_Auxilliary.py")
 #---------------------------------------------------------------------------------------------------
 
 # Mean of the bandits 
-p01 = [ [0,0.5,1], [0,1,2] ]
+p01 = rep([0,2,4],6)
 # Standard Deviation of the bandits
-p02 = [ [1,1,1], [1,1,1] ] 
+p02 = rep([1,1,1],6)
 # Set of number of trials 
-p03 = [100,100]
+p03 = rep(100,6)
 # Set of number of clusters	
-p04 = [20,20] 		
+p04 = rep(20,6) 		
 
 
 
@@ -56,13 +56,14 @@ p04 = [20,20]
 
 
 # Set of decision functions
-p06 = rep("softmax",2)
+p06 = rep("softmax",6)
 
 # Set of alphas
-p07 = [ [1,2,3], [1,2,3] ]
+p07 = [ [1,2,3], [1,2,3], [1,2,3], [1,2,3], [1,2,3], [1,2,3] ]
 
 # Set of Taus
-tau = [ [0.1,0.5,0.8], [0.1,1,2] ] 	
+tau = [ [0.1,0.2,0.3], [0.1,0.3,0.5], [0.1,0.5,0.9],
+		[0.3,0.7,1.1], [0.5,0.9,1.3], [0.5,1.2,1.9] ] 	
 
 
 #---------------------------------------------------------------------------------------------------
@@ -81,7 +82,9 @@ prediction_accuracies.prediction( mu_set = p01,
 								  epsilon_set = None
 								 )
 
-print prediction_accuracies.dframe.round(5).to_csv("dataaaaaa.csv")
+print prediction_accuracies.dframe.round(5)
+
+print prediction_accuracies.dframe.round(5).to_csv("data_mu123_taudiff_bndt024.csv")
 ####################################################################################################
 
 ####################################################################################################
