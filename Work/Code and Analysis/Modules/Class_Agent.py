@@ -4,7 +4,9 @@ class agent:
     SET INITIAL CONDITIONS
     """
     
-    def __init__( self, alpha = 0.5, epsilon = 0.01, tau = 0.1 , decision_function = "softmax",                   reward_input = None, mu = [0,0] , sigma = [1,1], seed = None, init = None, time = 10, save = False ):
+    def __init__( self, alpha = 0.5, epsilon = 0.01, tau = 0.1 , \
+        decision_function = "softmax",reward_input = None, mu = [0,0] , \
+        sigma = [1,1], seed = None, init = None, time = 10, save = False ):
         
         # PARAMETERS
         self.alpha = alpha
