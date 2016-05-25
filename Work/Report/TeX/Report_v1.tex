@@ -32,6 +32,7 @@
 \usepackage{lipsum}
 \usepackage{booktabs}
 \usepackage{fix-cm}
+\usepackage{rotating}
 \lstset{basicstyle=\footnotesize, captionpos=t, breaklines=true, showstringspaces=false, tabsize=2, frame=lines, numbers=left, numberstyle=\tiny, xleftmargin=2em, framexleftmargin=2em}
 \makeatletter
 \def\l@lstlisting#1#2{\@dottedtocline{1}{0em}{1em}{\hspace{1,5em} Lst. #1}{#2}}
@@ -280,15 +281,19 @@ Define similarity meassures on categories
 
 \subsection{Reinforcement Learning backround}
 
-
+\textit{Reinforcement Learning} (RIL) is a branch of \textit{Machine Learning} try model how an artificial agents interact with its environment and learns from the process over time. \\
+In particular an agents is confronted with the task of choosing sequently from a set of choices. In comparison to \textit{supervised learning}, where an agent is learning based on set of examples an agent in RIL  The objective is to let the agent learn within a certain the optimal action. Since it doesn't have any apriori information about the system it has to explore new possible action and so has to deviate from the optimal action. Furthermore, it has to keep track of value of each action he did so far. So the main task of the agent is to balance exploration and explotation. There are to basic approaches to model this trade-off; An \textit{"Epsilon-Greedy"} selection method and Soft \textit{"Softmax"} selection method.\\
+Considering first epsilon greedy action selection mehtod: Let $Q_t(a)$ be the value function of action. In general select the next action as $a$ as $a_{t+1} = \arg \max Q_t(a)$. However, to model exploration there is a probability to deviate from that greedy strategy. Choose next action Let $p_e$ be the probability of exploration. $p=\epsilon$
 
 $Q_t(a) = \frac{R_1 + R_2 + \dots + R_{K_\alpha}}{K_\alpha} $
 
 $Q_{k+1} = Q_k + \alpha\left[ R_k -  Q_k	 \right]$ 
 
-Let $Q_t(a)$ be the value function of action $a$. \textit{"Epsilon Greedy"}
+There are two basic 
 
-Choose next action $a$ as $a_{t+1} = \arg \max Q_t(a)$. Let $p_e$ be the probability of exploration. $p=\epsilon$
+ $a$. \textit{"Epsilon Greedy"}
+
+
 
 Soft Max Selection 
 
@@ -331,9 +336,23 @@ $P(a_{t}|X) = \frac{e^{\frac{Q_t(a)}{\tau}}}{\sum_{i}^{K} e^{\frac{Q_t(i)}{\tau}
 
 \end{appendix}
 
+\pagebreak
 %----------------------------------------------------------------------------------------------------------
 % End Document
 %----------------------------------------------------------------------------------------------------------
+
+
+\begin{sidewaystable}[!h]
+	\centering
+	\begin{tabular}{| l || c |cl | c | c | c | c | c | c || c  |  c | c | c | c | c | }
+		\toprule \toprule
+		\textbf{Specification} &$\boldsymbol{\mu}$ & $\boldsymbol{\sigma}$ & \textbf{Cluster Size} & \textbf{Seed} & \textbf{Decision Function} & $\boldsymbol{\alpha}$  &  $\boldsymbol{\tau}$  & \textbf{N} & \textbf{MI} & \textbf{NMI} &  \textbf{AMI} &  \textbf{CS} &  \textbf{HS } & \textbf{VMS}     \\
+		\hline
+		1 & -  & -& -& -& -& -& -& -& -& -& -& -& - & - \\
+		\bottomrule
+	\end{tabular}
+	\caption{Overview Outcome }
+\end{sidewaystable}
 
 
 \end{document}

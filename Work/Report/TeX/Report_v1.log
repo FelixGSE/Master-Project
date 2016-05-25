@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.28)  22 MAY 2016 16:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.28)  25 MAY 2016 14:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -949,6 +949,18 @@ File: ts1enc.dfu 2014/09/29 v1.1m UTF-8 support for inputenc
    defining Unicode char U+25EF (decimal 9711)
    defining Unicode char U+266A (decimal 9834)
 )))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/rotating/rotating.sty
+Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count146
+\rotFPtop=\skip112
+\rotFPbot=\skip113
+\rot@float@box=\box37
+\rot@mess@toks=\toks31
+)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/pdflscape.sty
 Package: pdflscape 2008/08/11 v0.10 Display of landscape pages in PDF (HO)
 
@@ -957,46 +969,46 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
 )
-Package hyperref Info: Option `unicode' set `false' on input line 53.
-Package hyperref Info: Option `pdftoolbar' set `true' on input line 53.
-Package hyperref Info: Option `pdfmenubar' set `true' on input line 53.
-Package hyperref Info: Option `pdffitwindow' set `false' on input line 53.
-Package hyperref Info: Option `pdfnewwindow' set `true' on input line 53.
-Package hyperref Info: Option `colorlinks' set `true' on input line 53.
+Package hyperref Info: Option `unicode' set `false' on input line 54.
+Package hyperref Info: Option `pdftoolbar' set `true' on input line 54.
+Package hyperref Info: Option `pdfmenubar' set `true' on input line 54.
+Package hyperref Info: Option `pdffitwindow' set `false' on input line 54.
+Package hyperref Info: Option `pdfnewwindow' set `true' on input line 54.
+Package hyperref Info: Option `colorlinks' set `true' on input line 54.
 
 (./Report_v1.aux)
 \openout1 = `Report_v1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
 
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count146
+\scratchcounter=\count147
 \scratchdimen=\dimen173
-\scratchbox=\box37
-\nofMPsegments=\count147
-\nofMParguments=\count148
-\everyMPshowfont=\toks31
-\MPscratchCnt=\count149
+\scratchbox=\box38
+\nofMPsegments=\count148
+\nofMParguments=\count149
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count150
 \MPscratchDim=\dimen174
-\MPnumerator=\count150
-\makeMPintoPDFobject=\count151
-\everyMPtoPDFconversion=\toks32
+\MPnumerator=\count151
+\makeMPintoPDFobject=\count152
+\everyMPtoPDFconversion=\toks33
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -1051,38 +1063,39 @@ Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: floatflt package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
+Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box38
-Package hyperref Info: Link coloring ON on input line 56.
+\AtBeginShipoutBox=\box39
+Package hyperref Info: Link coloring ON on input line 57.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count152
+\c@section@level=\count153
 )
-LaTeX Info: Redefining \ref on input line 56.
-LaTeX Info: Redefining \pageref on input line 56.
-LaTeX Info: Redefining \nameref on input line 56.
+LaTeX Info: Redefining \ref on input line 57.
+LaTeX Info: Redefining \pageref on input line 57.
+LaTeX Info: Redefining \nameref on input line 57.
 
 (./Report_v1.out) (./Report_v1.out)
 \@outlinefile=\write4
 \openout4 = `Report_v1.out'.
 
-\c@lstlisting=\count153
+\c@lstlisting=\count154
 
-<Pictures/logo01.jpg, id=52, 1284.8pt x 232.87pt>
+<Pictures/logo01.jpg, id=60, 1284.8pt x 232.87pt>
 File: Pictures/logo01.jpg Graphic file (type jpg)
  <use Pictures/logo01.jpg>
-Package pdftex.def Info: Pictures/logo01.jpg used on input line 88.
+Package pdftex.def Info: Pictures/logo01.jpg used on input line 89.
 (pdftex.def)             Requested size: 455.24411pt x 82.51129pt.
-LaTeX Font Info:    Try loading font information for U+msa on input line 101.
+LaTeX Font Info:    Try loading font information for U+msa on input line 102.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 101.
+LaTeX Font Info:    Try loading font information for U+msb on input line 102.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1097,7 +1110,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.I}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.166 
+l.167 
        [1] (./Report_v1.lof)
 \tf@lof=\write6
 \openout6 = `Report_v1.lof'.
@@ -1118,7 +1131,7 @@ Class scrartcl Warning: \float@listhead detected!
 (scrartcl)              Loading of package `scrhack' may help to
 (scrartcl)              avoid this warning, if you are using a
 (scrartcl)              a package that still implements the
-(scrartcl)              deprecated \float@listhead interface  on input line 193
+(scrartcl)              deprecated \float@listhead interface  on input line 194
 .
 
 (./Report_v1.lol)
@@ -1130,37 +1143,34 @@ Class scrartcl Warning: \float@listhead detected!
 LaTeX Warning: Empty `thebibliography' environment or \BreakBibliography
                before end of `thebibliography' environment on input line 3.
 
-) [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 339.
- [1]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 339.
+) [2] [1]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 358.
+[2]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 358.
  (./Report_v1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 339.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 339.
-
-
-Package rerunfilecheck Warning: File `Report_v1.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Report_v1.out':
-(rerunfilecheck)             Before: AADC28C527646F76B80F09B3B4E65FE6;668
-(rerunfilecheck)             After:  6986D7EF6732D6387D169F9A9246F109;829.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 339.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 358.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 358.
+Package rerunfilecheck Info: File `Report_v1.out' has not changed.
+(rerunfilecheck)             Checksum: 6986D7EF6732D6387D169F9A9246F109;829.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 358.
  ) 
 Here is how much of TeX's memory you used:
- 13691 strings out of 493089
- 209065 string characters out of 6134842
- 464850 words of memory out of 5000000
- 16920 multiletter control sequences out of 15000+600000
- 11339 words of font info for 42 fonts, out of 8000000 for 9000
+ 13833 strings out of 493089
+ 210991 string characters out of 6134842
+ 467702 words of memory out of 5000000
+ 17047 multiletter control sequences out of 15000+600000
+ 13796 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 50i,11n,54p,328b,399s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,17n,54p,764b,411s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.
 pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.p
 fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><
 /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
 sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/
 local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
@@ -1168,10 +1178,10 @@ al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/lo
 cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
 al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local
 /texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Report_v1.pdf (10 pages, 184466 bytes).
+Output written on Report_v1.pdf (11 pages, 200429 bytes).
 PDF statistics:
- 167 PDF objects out of 1000 (max. 8388607)
- 140 compressed objects within 2 object streams
- 24 named destinations out of 1000 (max. 500000)
- 102 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 186 PDF objects out of 1000 (max. 8388607)
+ 157 compressed objects within 2 object streams
+ 26 named destinations out of 1000 (max. 500000)
+ 118 words of extra memory for PDF output out of 10000 (max. 10000000)
 
