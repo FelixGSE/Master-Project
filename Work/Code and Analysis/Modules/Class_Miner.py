@@ -40,7 +40,7 @@ class miner:
 			temp_data = data()
 			temp_data.create_data( individual = True, mu = mu, sigma = sigma, N = N,
 							cluster_size = cluster, seed = seed, decision_function = decision_function, 
-							alpha = alpha, tau = tau )
+							alpha = alpha, tau = tau, epsilon =  epsilon)
 			
 			# Extract features
 			temp_entropy = temp_data.entropies
