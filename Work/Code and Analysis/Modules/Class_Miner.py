@@ -9,8 +9,8 @@ class miner:
 
 		runtime = range(len(mu_set))
 
-		column_names=["mu","sigma","trials,","cluster","decision","alpha","tau",\
-			"clustering","mis","amis","nmis","ars","complet","homogen","vmeas"]
+		column_names=["mu","sigma","trials","cluster","decision","alpha","tau",\
+			"clustering","mut inf scr","adj mis","norm mis","adj rand s","complet","homogen","vmeas"]
 
 		dframe = pd.DataFrame(columns=column_names)
 
