@@ -4,7 +4,6 @@ class miner:
 
 		self.accuracy_set = []
 
-
 	def prediction(self, mu_set, sigma_set,N_set,cluster_set,seed_set,decision_function_set,alpha_set,tau_set,epsilon_set = None):
 
 		runtime = range(len(mu_set))
@@ -76,3 +75,9 @@ class miner:
 			temp_accuracies = accuracies(true,prediction)
 			all_accurracies.append( temp_accuracies.full )
 		return all_accurracies
+	
+
+
+
+
+
