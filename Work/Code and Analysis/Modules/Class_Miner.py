@@ -4,9 +4,15 @@ class miner:
 
 		self.accuracy_set = []
 
+
 	def prediction(self, mu_set, sigma_set,N_set,cluster_set,seed_set,decision_function_set,alpha_set,tau_set,epsilon_set = None):
 
 		runtime = range(len(mu_set))
+
+		column_names=["mu","sigma","trials,","cluster","decision","alpha","tau",\
+			"clustering","mis","amis","nmis","ars","complet","homogen","vmeas"]
+
+		dframe = pd.DataFrame(columns=column_names)
 
 		for step in runtime:
 
@@ -59,10 +65,25 @@ class miner:
 			p04 = temp_unsupervised.kmeans(temp_choices,no_clust)
 			p05 = temp_unsupervised.spectral( temp_overlap, no_clust)
 			p_set = [p01,p02,p03,p04,p05]
+			p_names = ["spectral warp","aff prop","pca","kmeans","spectral overlap"]
 
 			# Compute accuracies
 			acc_vector = self.full_accuracies(temp_labels,p_set)
 			self.accuracy_set.append(acc_vector)
+
+			####dom
+			results=acc_vector
+			
+
+			for i,clster in enumerate(results):
+				row = [mu_set[step],sigma_set[step],N_set[step],cluster_set[step],\
+				decision_function_set[step],alpha_set[step],tau_set[step],p_names[i],\
+				clster[0],clster[1],clster[2],clster[3],clster[4],clster[5],clster[6]]
+				dframe.loc[len(dframe)] = row
+
+			self.dframe = dframe
+
+			####
 
 
 			print "Finished with iteration  " + str(step)
@@ -75,6 +96,26 @@ class miner:
 			temp_accuracies = accuracies(true,prediction)
 			all_accurracies.append( temp_accuracies.full )
 		return all_accurracies
+
+	"""
+	def frame(self, mu_set, sigma_set,N_set,cluster_set,seed_set,decision_function_set,alpha_set,tau_set):
+		results=self.accuracy_set
+		column_names=["mu","sigma","trials,","cluster","decision","alpha","tau",\
+		"clustering","mis","amis","nmis","ars","complet","homogen","vmeas"]
+
+		dframe = pd.DataFrame(columns=column_names)
+
+		for i,desc in enumerate(results):
+			for j,clster in enumerate(desc):
+				row = [mu_set[i],sigma_set[i],N_set[i],cluster_set[i],\
+				decision_function_set[i],alpha_set[i],tau_set[i],p_set[j],clster]
+				dframe.append(row)
+
+		self.dframe = dframe
+	"""
+
+
+
 
 
 

@@ -15,6 +15,7 @@ import sklearn.metrics.pairwise as pa
 import sklearn.cluster as clu
 import dtw 
 import sklearn.decomposition as decomp
+import pandas as pd
 
 ### Source own modules
 path_modules = '/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Modules'
@@ -58,10 +59,10 @@ p04 = [20,20]
 p06 = rep("softmax",2)
 
 # Set of alphas
-p07 = [ [1, 1 , 1], [1,1,1] ]
+p07 = [ [1,20], [1,1,1] ]
 
 # Set of Taus
-tau = [ [0.1,0.5,1], [0.1,1,2] ] 	
+tau = [ [0.1,2], [0.1,1,2] ] 	
 
 
 #---------------------------------------------------------------------------------------------------
@@ -80,6 +81,7 @@ prediction_accuracies.prediction( mu_set = p01,
 								  epsilon_set = None
 								 )
 
+print prediction_accuracies.dframe
 ####################################################################################################
 
 ####################################################################################################
