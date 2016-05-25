@@ -75,7 +75,6 @@ class miner:
 			temp_accuracies = accuracies(true,prediction)
 			all_accurracies.append( temp_accuracies.full )
 		return all_accurracies
-	
 
 
 
