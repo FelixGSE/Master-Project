@@ -46,6 +46,7 @@ class miner:
 			temp_entropy = temp_data.entropies
 			temp_choices = temp_data.choices 
 			temp_labels  = temp_data.label
+			temp_concats = temp_data.concat 
 
 			# Compute Similarities
 			sim = similarity()
@@ -64,8 +65,12 @@ class miner:
 			p03 = temp_unsupervised.pca_ward(temp_eucliddist,2,no_clust)
 			p04 = temp_unsupervised.kmeans(temp_choices,no_clust)
 			p05 = temp_unsupervised.spectral( temp_overlap, no_clust)
-			p_set = [p01,p02,p03,p04,p05]
-			p_names = ["spectral warp","aff prop","pca","kmeans","spectral overlap"]
+			p06 = temp_unsupervised.kmeans( temp_concats, no_clust )
+			p07 = temp_unsupervised.kmeans( temp_entropy, no_clust )
+
+			p_set = [p01,p02,p03,p04,p05,p06,p07]
+			p_names = ["spectral warp","aff prop","pca","km_choice","spectral overlap",\
+					"km_con","km_ent"]
 
 			# Compute accuracies
 			acc_vector = self.full_accuracies(temp_labels,p_set)

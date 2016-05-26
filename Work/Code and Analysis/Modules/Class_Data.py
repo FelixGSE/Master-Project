@@ -10,6 +10,7 @@ class data:
 		self.entropies = []
 		self.label = []
 		self.decision_function = None
+		self.concat = []
 
 	"""
 	Create data set
@@ -46,6 +47,7 @@ class data:
 					self.entropies.append(temp_agent.entropy)
 					self.rewards.append( temp_agent.rewards )
 					self.label.append(temp_label)
+					self.concat.append( temp_agent.choices + temp_agent.entropy )
 		# Train agent on bandots and create clusters for each alpha-tau combination
 		if decision_function == "epsgreedy":
 			self.decision_function = decision_function
@@ -65,6 +67,8 @@ class data:
 					self.rewards.append( temp_agent.rewards )
 					self.entropies.append(temp_agent.entropy)
 					self.label.append(temp_label)
+					self.concat.append( temp_agent.choices + temp_agent.entropy )
+
 	 # Save current state of the value function, choices and experienced rewards
 	def save_history( self , path = None ):
 
