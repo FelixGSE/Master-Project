@@ -9,7 +9,7 @@ class miner:
 
 		runtime = range(len(mu_set))
 
-		column_names=["mu","sigma","trials","cluster","decision","alpha","tau",\
+		column_names=["mu","sigma","trials","cluster","decision","alpha","tau","epsilon",\
 			"clustering","labels","mut inf scr","adj mis","norm mis","adj rand s","complet","homogen","vmeas"]
 
 		dframe = pd.DataFrame(columns=column_names)
@@ -30,11 +30,16 @@ class miner:
 			seed = None
 			decision_function = decision_function_set[step]
 			alpha = alpha_set[step]
-			tau = tau_set[step]
+			if tau_set == None:
+				tau = None
+			else:
+				tau = tau_set[step]
+				param = tau_set[step]
 			if epsilon_set == None:
 				epsilon = None
 			else:
 				epsilon = epsilon_set[step]
+				param = tau_set[step]
 
 			# Create data 
 			temp_data = data()
@@ -69,8 +74,8 @@ class miner:
 			p07 = temp_unsupervised.kmeans( temp_entropy, no_clust )
 
 			p_set = [p01,p02,p03,p04,p05,p06,p07]
-			p_names = ["spectral warp","aff prop","pca","km_choice","spectral overlap",\
-					"km_con","km_ent"]
+			p_names = ["spectral warp","aff prop","pca","km_choice",\
+					"spectral overlap", "km_con","km_ent"]
 
 			# Compute accuracies
 			acc_vector = self.full_accuracies(temp_labels,p_set)
@@ -81,9 +86,9 @@ class miner:
 			
 
 			for i,clster in enumerate(results):
-				row = [mu_set[step],sigma_set[step],N_set[step],cluster_set[step],\
-				decision_function_set[step],alpha_set[step],tau_set[step],p_names[i],p_set[i],\
-				clster[0],clster[1],clster[2],clster[3],clster[4],clster[5],clster[6]]
+				row = [mu, sigma, N, cluster, decision_function,alpha,tau,\
+					epsilon,p_names[i],p_set[i], clster[0],clster[1],\
+					clster[2],clster[3],clster[4],clster[5],clster[6]]
 				dframe.loc[len(dframe)] = row
 
 			self.dframe = dframe
