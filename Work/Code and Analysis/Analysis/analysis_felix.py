@@ -88,7 +88,7 @@ prediction_accuracies.prediction( mu_set = p01,
 								  epsilon_set = epsilon
 								 )
 print prediction_accuracies.dframe
-prediction_accuracies.dframe.to_csv("res04.csv")
+prediction_accuracies.dframe.to_csv("../Results/res04.csv")
 ####################################################################################################
 
 ####################################################################################################
