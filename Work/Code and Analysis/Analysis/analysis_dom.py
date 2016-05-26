@@ -45,8 +45,8 @@ p01 = rep([0,2,4],6)
 p02 = rep([1,1,1],6)
 # Set of number of trials 
 p03 = rep(100,6)
-# Set of number of clusters	
-p04 = rep(20,6) 		
+# Set of size of clusters	
+p04 = rep(5,6) 		
 
 
 
@@ -59,7 +59,7 @@ p04 = rep(20,6)
 p06 = rep("softmax",6)
 
 # Set of alphas
-p07 = [ [1,2,3], [1,2,3], [1,2,3], [1,2,3], [1,2,3], [1,2,3] ]
+p07 = rep([0.5,0.5,0.5], 6 )
 
 # Set of Taus
 tau = [ [0.1,0.2,0.3], [0.1,0.3,0.5], [0.1,0.5,0.9],
@@ -84,7 +84,7 @@ prediction_accuracies.prediction( mu_set = p01,
 
 print prediction_accuracies.dframe.round(5)
 
-print prediction_accuracies.dframe.round(5).to_csv("data_mu123_taudiff_bndt024.csv")
+print prediction_accuracies.dframe.round(5).to_csv("data_mu123_taudiff_5guys2.csv")
 ####################################################################################################
 
 ####################################################################################################
