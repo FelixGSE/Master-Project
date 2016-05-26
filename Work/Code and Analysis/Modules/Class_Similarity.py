@@ -74,6 +74,24 @@ class similarity:
 		dist = dtw.dtw(X, Y, dist = lambda X, Y: np.linalg.norm(X - Y, ord=2))[0]
 		return dist
 
+	# Edit Distance on Real sequence
+	def edr(self, X,Y, eps ):
+	    m = len(X)
+	    n = len(Y)
+	    C = np.zeros(shape=( m + 1, n + 1))
+	    for i in range(1,m+1):
+	        for j in range(1, n+1):
+	            temp_x = X[i-1]
+	            temp_y = Y[j-1]
+	            temp_norm = self.norm( temp_x, temp_y )
+	        if temp_norm < eps:
+	            cost = 0
+	        else:
+	            cost = 1
+	        C[i][j] = min(C[i][j-1]+1, C[i-1][j]+1,C[i-1][j-1]+cost)
+	    final_edr = float(C[n0][n1])/max([n0,n1])
+	    return final_edr  
+
 	"""
 	Auxilliary functions
 	"""
@@ -109,6 +127,10 @@ class similarity:
 		dissimilarity_matrix = float(1) / ( similarity_matrix - 1 )
 		np.fill_diagonal(dissimilarity_matrix, 0)
 		return dissimilarity_matrix
+
+	def norm(self,x,y):
+    	result = np.linalg.norm(x-y)
+    	return result
 
 
 
