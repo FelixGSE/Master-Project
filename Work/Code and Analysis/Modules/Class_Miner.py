@@ -10,7 +10,7 @@ class miner:
 		runtime = range(len(mu_set))
 
 		column_names=["mu","sigma","trials","cluster","decision","alpha","tau",\
-			"clustering","mut inf scr","adj mis","norm mis","adj rand s","complet","homogen","vmeas"]
+			"clustering","labels","mut inf scr","adj mis","norm mis","adj rand s","complet","homogen","vmeas"]
 
 		dframe = pd.DataFrame(columns=column_names)
 
@@ -77,7 +77,7 @@ class miner:
 
 			for i,clster in enumerate(results):
 				row = [mu_set[step],sigma_set[step],N_set[step],cluster_set[step],\
-				decision_function_set[step],alpha_set[step],tau_set[step],p_names[i],\
+				decision_function_set[step],alpha_set[step],tau_set[step],p_names[i],p_set[i],\
 				clster[0],clster[1],clster[2],clster[3],clster[4],clster[5],clster[6]]
 				dframe.loc[len(dframe)] = row
 
