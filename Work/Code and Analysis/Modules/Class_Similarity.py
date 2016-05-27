@@ -49,6 +49,11 @@ class similarity:
 		euclidian_time_warp_similarity = self.similarity(dist)
 		return euclidian_time_warp_similarity
 
+	def edr_similarity(self,data,eps):
+		dist = self.pairwise_distance( data, self.edr, eps )
+		edit_distance_on_real_sequence = self.similarity(dist)
+		return edit_distance_on_real_sequence
+
 	"""
 	Pairwise distance functions
 	"""
@@ -89,7 +94,7 @@ class similarity:
 	        else:
 	            cost = 1
 	        C[i][j] = min(C[i][j-1]+1, C[i-1][j]+1,C[i-1][j-1]+cost)
-	    final_edr = float(C[n0][n1])/max([n0,n1])
+	    final_edr = float(C[m][n])/max([m,n])
 	    return final_edr  
 
 	"""
@@ -98,7 +103,7 @@ class similarity:
 
 	# Computes a pairwise distance matrix according to distance function
 	# Implementation is not efficient. Might be slow for big data sets
-	def pairwise_distance(self, list_of_list, distance_function ):
+	def pairwise_distance(self, list_of_list, distance_function, *args ):
 		dimensions = len( list_of_list )
 		i = 0
 		j = i + 1
@@ -109,7 +114,11 @@ class similarity:
 			temp_node_i = array[i,]
 			while j < dimensions:
 				temp_node_j = array[j,]
-				val =  distance_function(temp_node_i , temp_node_j)
+				if not args:
+					val =  distance_function(temp_node_i , temp_node_j)
+				else:
+					argument = args[0]
+					val =  distance_function(temp_node_i , temp_node_j,argument)
 				distance_matrix[i,j] = val
 				distance_matrix[j,i] = val
 				j = j + 1
@@ -129,12 +138,5 @@ class similarity:
 		return dissimilarity_matrix
 
 	def norm(self,x,y):
-    	result = np.linalg.norm(x-y)
-    	return result
-
-
-
-
-
-
-
+		result = np.linalg.norm(x-y)
+		return result
