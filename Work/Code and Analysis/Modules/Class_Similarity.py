@@ -54,7 +54,7 @@ class similarity:
 		edit_distance_on_real_sequence = self.similarity(dist)
 		return edit_distance_on_real_sequence
 
-	def rbf_similarity(self,data)
+	def rbf_similarity(self,data):
 		similarity = pa.rbf_kernel(data)
 		return similarity
 
@@ -62,6 +62,85 @@ class similarity:
 		similarity = pa.cosine_similarity(data)
 		return similarity
 
+	def eskin(self,choices):
+		frame = np.vstack((choices))
+		r = frame.shape[0]
+		s = frame.shape[1]
+
+		#recording variables
+		num_var = frame.shape[1]
+		num_row = frame.shape[0]
+		data2 = np.zeros((num_row, num_var))
+		for k in range(num_var):
+			categories = np.unique(frame[:,k])
+			cat_new = range(len(categories))
+			for l in range(len(categories)):
+				for i in range(num_row):
+					if frame[i,k] == categories[l]:
+						data2[i,k] = cat_new[l] +1
+
+		frame = data2
+
+		num_cat = np.apply_along_axis(self.my_unique,0,frame)
+
+		agreement = np.zeros(s)
+		eskin = np.zeros((r,r))
+
+		for i in range(r):
+			for j in range(r):
+				for k in range(s):
+					if frame[i,k] == frame[j,k]:
+						agreement[k] = 1
+					else:
+						agreement[k] = float(num_cat[k]**2) / (num_cat[k]**2 +2)
+				
+				eskin[i,j] = float(1) / ( (float(1) / s*sum(agreement)) ) - 1
+		
+		return eskin
+
+	def lin(self,choices):
+		frame = np.vstack((choices))
+		r = frame.shape[0]
+		s = frame.shape[1]
+
+		#recording variables
+		num_var = frame.shape[1]
+		num_row = frame.shape[0]
+		data2 = np.zeros((num_row, num_var))
+		for k in range(num_var):
+			categories = np.unique(frame[:,k])
+			cat_new = range(len(categories))
+			for l in range(len(categories)):
+				for i in range(num_row):
+					if frame[i,k] == categories[l]:
+						data2[i,k] = cat_new[l] + 1
+
+		frame = data2
+
+		freqabs = self.freq_abs(frame)
+		freqrel = freqabs / float(r)
+
+		agreement = np.zeros(s)
+		lin = np.zeros((r,r))
+		weights = np.zeros(s)
+
+		for i in range(int(r)):
+			for j in range(int(r)):
+				for k in range(int(s)):
+					c = frame[i,k] -1
+					d = frame[j,k] -1
+					if frame[i,k] == frame[j,k]:
+						agreement[k] = 2*np.log(freqrel[c,k])
+					else:
+						agreement[k] = 2*np.log(freqrel[c,k] + freqrel[d,k])
+					weights[k] = np.log(freqrel[c,k]) + np.log(freqrel[d,k])
+
+				if i == j:
+					lin[i,j] = 0
+				else:
+					lin[i,j]=float(1)/ (float(1) / sum(weights)*sum(agreement) ) -1
+
+		return lin
 	"""
 	Pairwise distance functions
 	"""
@@ -133,6 +212,30 @@ class similarity:
 			i = i + 1
 			j = i + 1
 		return distance_matrix
+
+	def my_unique(self,x):
+		u = np.unique(x)
+		l = len(u)
+		return l
+
+	def freq_abs(self,frame):
+		r = frame.shape[0]
+		s = frame.shape[1]
+
+		freq_table = np.zeros((max(np.unique(frame)),s))
+
+		for i in range(int(s)):
+			for j in range( int(max(frame[:,i])) ):
+				count = []
+				for k in range(int(r)):
+					if frame[k,i] == j+1:
+						count.append(1)
+					else:
+						count.append(0)
+
+				freq_table[j,i] = sum(count)
+
+		return freq_table
 
 	# Convertes a distance matrix to a similarity matrix
 	def similarity(self, distance_matrix ):
