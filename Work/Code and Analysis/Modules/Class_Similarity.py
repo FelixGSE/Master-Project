@@ -62,7 +62,15 @@ class similarity:
 		similarity = pa.cosine_similarity(data)
 		return similarity
 
-	def eskin(self,choices):
+	def eskin_similarity(self,data):
+		similarity = self.similarity(self.eskin_dissimilarity(data))
+		return similarity
+
+	def lin_similarity(self,data):
+		similarity = self.similarity(self.lin_dissimilarity(data))
+		return similarity
+
+	def eskin_dissimilarity(self,choices):
 		frame = np.vstack((choices))
 		r = frame.shape[0]
 		s = frame.shape[1]
@@ -98,7 +106,7 @@ class similarity:
 		
 		return eskin
 
-	def lin(self,choices):
+	def lin_dissimilarity(self,choices):
 		frame = np.vstack((choices))
 		r = frame.shape[0]
 		s = frame.shape[1]
@@ -141,6 +149,8 @@ class similarity:
 					lin[i,j]=float(1)/ (float(1) / sum(weights)*sum(agreement) ) -1
 
 		return lin
+
+
 	"""
 	Pairwise distance functions
 	"""
