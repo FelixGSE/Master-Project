@@ -54,6 +54,14 @@ class similarity:
 		edit_distance_on_real_sequence = self.similarity(dist)
 		return edit_distance_on_real_sequence
 
+	def rbf_similarity(self,data)
+		similarity = pa.rbf_kernel(data)
+		return similarity
+
+	def cosine_similarity(self,data):
+		similarity = pa.cosine_similarity(data)
+		return similarity
+
 	"""
 	Pairwise distance functions
 	"""

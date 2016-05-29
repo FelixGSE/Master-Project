@@ -106,6 +106,7 @@ $\vspace{6cm}$
 \textbf{Author:} \>\> Domagoj Fizulic\\
 \textbf{} \>\> Felix Gutmann\\
 \textbf{Student number:} 	\>\> 125604\\
+\textbf{} 	\>\> 125584\\
 \textbf{Program:} \>\> M.S. Data Science\\
 \textbf{E-Mail:} \>\> domagoj.fizulic@barcelonagse.eu\\
 \textbf{} \>\> felix.gutmann@barcelonagse.eu
@@ -329,10 +330,67 @@ $P(a_{t}|X) = \frac{e^{\frac{Q_t(a)}{\tau}}}{\sum_{i}^{K} e^{\frac{Q_t(i)}{\tau}
 
 \begin{appendix}
 	
-	\section*{Appendix}
-	\phantomsection
-	\addcontentsline{toc}{section}{Appendix}
-	\addtocontents{toc}{\vspace{-0.5em}}
+\section*{Appendix}
+\phantomsection
+\addcontentsline{toc}{section}{Appendix}
+\addtocontents{toc}{\vspace{-0.5em}}
+
+\subsection*{Metrics and Similarities}
+
+This part of the appendix is formally definining metrics and similarities and dissimilarities (proximity) used in this paper. The concepts are somehow related. First we describe the general concepts followed by a description of the applied tools. 
+
+First we introduce the concept of \textit{distance}. Let $\boldsymbol{X}$ be a dataset and $\boldsymbol{x_i},\boldsymbol{x_j}$ two datapoints, such that $\boldsymbol{x_i},\boldsymbol{x_j} \in \boldsymbol{X}$. A distance function assign for pairs a points a real number as distance. $d:\boldsymbol{X}\times \boldsymbol{X} \mapsto \mathbb{R}_0^+$. Formally there for axioms, which have to be staisfied:
+\begin{enumerate}
+\item $d(\boldsymbol{x_i},\boldsymbol{x_j}) \ge 0$
+\item $d(\boldsymbol{x_i},\boldsymbol{x_i}) \ge 0$
+\item $d(\boldsymbol{x_i},\boldsymbol{x_j}) = d(\boldsymbol{x_j},\boldsymbol{x_i}) $
+\item $d(\boldsymbol{x_i},\boldsymbol{x_j}) \le d(\boldsymbol{x_i},\boldsymbol{x_j})+ d(\boldsymbol{x_j},\boldsymbol{x_i}) $
+\end{enumerate}
+
+Besides distance some algorithms operate on a \textit{similarity} matrix. Formally a similarity is a function  $ S : \boldsymbol{X} \times \boldsymbol{X} \mapsto [0,1] $. Also for similarity we can define the following properties:
+
+\begin{enumerate}
+	\item $0 \le S(\boldsymbol{x_i},\boldsymbol{x_j}) \le 1, \text{for } i \neq j$
+	\item $S(\boldsymbol{x_i},\boldsymbol{x_j}) = 1$
+	\item $S(\boldsymbol{x_i},\boldsymbol{x_j}) = S(\boldsymbol{x_j},\boldsymbol{x_i})$
+\end{enumerate}
+
+Once we have computed distance for two data points we can use this information to transform it to a similarity:
+
+\begin{flalign}
+S(\boldsymbol{x_i},\boldsymbol{x_j}) = \frac{1}{1+d(\boldsymbol{x_i},\boldsymbol{x_j}) }
+\end{flalign}
+
+
+\pagebreak
+
+\subsection*{Principal Components and Multidimensional Scaling}
+
+
+\pagebreak
+\subsection*{Spectral Clustering}
+
+For the spectral clustering algorithm we formally introduce some graph notation. If not stated otherwise the following derivation follows [SOURCE]. In the following we consider a weighted and simple undirected graph. 
+\begin{flalign}
+G &= \{V,E\} \\
+V & = \{ v_1,\dots,v_n \} \\
+E & = \{e_1,\dots,e_n\} 
+\intertext{Furthermore let the graph has a weighted and symetric ($|V| \times |V|$) adjacency matrix, such that:}
+\boldsymbol{W} &= \begin{cases} 
+w_{i,j} & \text{,if } v_iv_j \in E \\
+0 & \text{otherwise }
+\end{cases}
+\intertext{The \textit{degree} of a node is defined as the sum of edge weights of connected nodes. Formmally we denote the degree of node $i$ as:}
+d_i &:= \sum_{j=1}^{n} w_{ij} = \sum_{i=1}^{n} w_{ij}
+\intertext{Using the last expression we define matrix $\boldsymbol{D}$ as the diagonal matrix of the degress}
+\boldsymbol{D} &:= diag(\boldsymbol{d})
+\intertext{The algorithm works on the \textit{Laplacian} matrix defined by:}
+\boldsymbol{L} &:= \boldsymbol{D} - \boldsymbol{W} 
+\intertext{Former versions of the algorithm are applied on the graph laplcian. However, there were proposed newer versions using the so called \textit{normalized laplacian}. Since also the python version is using this package we will focus on this version of the algorithhm. Following that the normalized graph laplacian is defined as:}
+\boldsymbol{L}_{norm} &:= \boldsymbol{D}^{1/2} \boldsymbol{L} \boldsymbol{D}^{1/2}  = \boldsymbol{I} - \boldsymbol{D}^{1/2} \boldsymbol{W} \boldsymbol{D}^{1/2}
+\end{flalign}
+
+
 
 \end{appendix}
 
