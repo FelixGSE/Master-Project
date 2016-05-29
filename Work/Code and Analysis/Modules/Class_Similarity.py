@@ -11,6 +11,8 @@ class similarity:
 		self.cosine_cat = None
 		self.eskin_sim = None
 		self.lin_sim = None
+		self.eskin_disim = None
+		self.lin_disim = None
 
 		# Time series
 		self.euclidian = None
@@ -18,6 +20,7 @@ class similarity:
 		self.euclidian_dist = None
 		self.cosine_ent = None
 		self.rbf = None
+		self.edr = None
 
 	"""
 	Conpute functions
@@ -30,6 +33,8 @@ class similarity:
 		self.cosine_cat = self.cosine_similarity(data = data)
 		self.eskin_sim = self.eskin_similarity(data=data)
 		self.lin_sim = self.lin_similarity(data=data)
+		self.eskin_disim = self.eskin_dissimilarity(data=data)
+		self.lin_disim = self.lin_dissimilarity(data=data)
 
 	# Computes similarities for time series and real valued data
 	def timeseries(self, data ):
@@ -38,6 +43,7 @@ class similarity:
 		self.euclidian_dist = self.euclidian_distance( data, data )
 		self.cosine_ent = self.cosine_similarity(data = data)
 		self.rbf = self.rbf_similarity(data=data)
+		#self.edr = self.edr_similarity(data=data,eps=0.1)
 
 	"""
 	Similarity functions
@@ -81,8 +87,8 @@ class similarity:
 		similarity = self.similarity(self.lin_dissimilarity(data))
 		return similarity
 
-	def eskin_dissimilarity(self,choices):
-		frame = np.vstack((choices))
+	def eskin_dissimilarity(self,data):
+		frame = np.vstack((data))
 		r = frame.shape[0]
 		s = frame.shape[1]
 
@@ -117,8 +123,8 @@ class similarity:
 		
 		return eskin
 
-	def lin_dissimilarity(self,choices):
-		frame = np.vstack((choices))
+	def lin_dissimilarity(self,data):
+		frame = np.vstack((data))
 		r = frame.shape[0]
 		s = frame.shape[1]
 
