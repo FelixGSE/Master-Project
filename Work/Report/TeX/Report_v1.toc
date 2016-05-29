@@ -6,11 +6,16 @@
 \contentsline {section}{\numberline {V}List of mathematical symbols}{V}{section.V}
 \contentsline {section}{\numberline {VI}List of abbreviations}{VI}{section.VI}
 \contentsline {section}{\numberline {1}Introduction and conceptual approach}{1}{section.1}
-\contentsline {section}{\numberline {2}Simmulation}{1}{section.2}
-\contentsline {subsection}{\numberline {2.1}Data generation}{1}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Reinforcement Learning backround}{1}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Unsupervised Learning}{1}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Simmulation results}{1}{subsection.2.4}
-\contentsline {section}{\numberline {3}List of Literature}{2}{section.3}
-\contentsline {section}{Appendix}{A}{section*.2}
+\contentsline {section}{\numberline {2}Relevant Literature}{2}{section.2}
+\contentsline {section}{\numberline {3}Theoretical Backround and experiments}{3}{section.3}
+\contentsline {subsection}{\numberline {3.1}Simmulation experiment design}{3}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Reinforcement Learning backround and multi arm bandits}{3}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Unsupervised Learning}{5}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Simmulation results}{5}{subsection.3.4}
+\contentsline {section}{\numberline {4}Data Analysis}{5}{section.4}
+\contentsline {subsection}{\numberline {4.1}Data Description}{5}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Results}{5}{subsection.4.2}
+\contentsline {section}{\numberline {5}Conclusion}{5}{section.5}
+\contentsline {section}{\numberline {6}List of Literature}{6}{section.6}
+\contentsline {section}{Appendix}{A}{section*.4}
 \vspace {-0.5em}

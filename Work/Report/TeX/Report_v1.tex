@@ -24,7 +24,6 @@
 \usepackage{titlesec}
 \usepackage{parskip}
 \usepackage[right]{eurosym}
-%\usepackage{picins}
 \usepackage[subfigure,titles]{tocloft}
 \usepackage[pdfpagelabels=true]{hyperref}
 \usepackage{mathdots}
@@ -33,18 +32,31 @@
 \usepackage{booktabs}
 \usepackage{fix-cm}
 \usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage[labelfont=bf]{caption}
+\captionsetup{labelfont=bf}
+
+% ----------------------------------------------------------------------------------------------------------
+% Packages
+% ----------------------------------------------------------------------------------------------------------
+
+
 \lstset{basicstyle=\footnotesize, captionpos=t, breaklines=true, showstringspaces=false, tabsize=2, frame=lines, numbers=left, numberstyle=\tiny, xleftmargin=2em, framexleftmargin=2em}
 \makeatletter
 \def\l@lstlisting#1#2{\@dottedtocline{1}{0em}{1em}{\hspace{1,5em} Lst. #1}{#2}}
 \makeatother
 
-\usepackage{pdflscape}
-%\usepackage{lscape}
+
 
 \geometry{a4paper, top=27mm, left=35mm, right=15mm, bottom=35mm, headsep=10mm, footskip=12mm}
 
+% ----------------------------------------------------------------------------------------------------------
+% Packages
+% ----------------------------------------------------------------------------------------------------------
+
+
 \hypersetup{unicode=false, pdftoolbar=true, pdfmenubar=true, pdffitwindow=false, pdfstartview={FitH},
-	pdftitle={Bachelor Thesis},
+	pdftitle={Master Thesis},
 	pdfauthor={Felix Gutmann},
 	pdfsubject={Bachelor Thesis},
 	pdfcreator={\LaTeX\ with package \flqq hyperref\frqq},
@@ -56,8 +68,9 @@
 \DeclareMathOperator*{\argmin}{arg\,min}
 \begin{document}
 
-\titlespacing{\section}{0pt}{12pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
-
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{30pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 % Headers and footers
 
 \renewcommand{\sectionmark}[1]{\markright{#1}}
@@ -112,16 +125,9 @@ $\vspace{6cm}$
 \textbf{} \>\> felix.gutmann@barcelonagse.eu
 \end{tabbing}
 \vspace{1cm}
-\pagebreak
-
-% ----------------------------------------------------------------------------------------------------------
-% Declaration
-% ----------------------------------------------------------------------------------------------------------
-
 
 
 \pagebreak
-
 % ----------------------------------------------------------------------------------------------------------
 % Abstract
 % ----------------------------------------------------------------------------------------------------------
@@ -129,7 +135,6 @@ $\vspace{6cm}$
 
 \onehalfspacing
 
-\titlespacing{\section}{0pt}{12pt plus 4pt minus 2pt}{2pt plus 2pt minus 2pt}
 
 
 
@@ -139,7 +144,6 @@ $\vspace{6cm}$
 % Index
 % ----------------------------------------------------------------------------------------------------------
 
-% TODO Typ vor Nummer
 
 \renewcommand{\cfttabpresnum}{Tab. }
 \renewcommand{\cftfigpresnum}{Fig. }
@@ -158,14 +162,15 @@ $\vspace{6cm}$
 % ----------------------------------------------------------------------------------------------------------
 % Table of contents
 % ----------------------------------------------------------------------------------------------------------
+
 \setcounter{page}{1}
 
 \rhead{Table of Contents}
 
 	\tableofcontents
 
-\pagebreak
 
+\pagebreak
 % ----------------------------------------------------------------------------------------------------------
 % List of figures
 % ----------------------------------------------------------------------------------------------------------
@@ -174,8 +179,8 @@ $\vspace{6cm}$
 
 	\listoffigures
 	
+	
 \pagebreak
-
 % ----------------------------------------------------------------------------------------------------------
 % List of tables
 % ----------------------------------------------------------------------------------------------------------
@@ -184,8 +189,8 @@ $\vspace{6cm}$
 
 	\listoftables
 	
-\pagebreak
 
+\pagebreak
 %----------------------------------------------------------------------------------------------------------
 % List of Listings
 % ----------------------------------------------------------------------------------------------------------
@@ -270,41 +275,112 @@ $\tau$ & Softmax parameter \\
 
 \section{Introduction and conceptual approach}
 
+Learning is a complex procedure. The learning procedure can affected due to social conditions... 
 
-\section{Simmulation}
 
-\subsection{Data generation}
+\pagebreak
+%---------------------------------------------------------------------------------------------------------
+% 2. Literature
+%---------------------------------------------------------------------------------------------------------
 
-Challange: 
-Categorical data with time series attributes. 
-Apply transformation choice probabilities ()
-Define similarity meassures on categories
+\section{Relevant Literature}
 
-\subsection{Reinforcement Learning backround}
+
+\pagebreak
+%---------------------------------------------------------------------------------------------------------
+% 3. Simmulation
+%---------------------------------------------------------------------------------------------------------
+
+\section{Theoretical Backround and experiments}
+
+In this section we provide ... 
+
+\subsection{Simmulation experiment design}
+
+Before analysing real data we run some simmulation experiments to indentify adequat approaches to model our data. To generate data artificially we follow a reinforcement learning and multi arm bandit approach where we let an agent learn the distribution of a simulated data set. The procedure is illustrated in figure \ref{fig:flow}. To keep things simple we draw a set of rewards from a normal distribution. We let several agents with different parameter setting process the reward data. From this procedure we obtain for each agent a time series of choices. 
+
+ \begin{figure}[!htb]
+	\includegraphics[width=\textwidth]{Pictures/flow01.png}
+	\caption{Flowchart experiment desgin}
+	\label{fig:flow}
+\end{figure}
+
+Concerning our data we find two main challanges. First, our data have a categorical nature. Furhtermore, the learning process also imposes a time series dependence on the data. We address this issue in the following ways. 
+
+
+
+\subsection{Reinforcement Learning backround and multi arm bandits}
 
 \textit{Reinforcement Learning} (RIL) is a branch of \textit{Machine Learning} try model how an artificial agents interact with its environment and learns from the process over time. \\
-In particular an agents is confronted with the task of choosing sequently from a set of choices. In comparison to \textit{supervised learning}, where an agent is learning based on set of examples an agent in RIL  The objective is to let the agent learn within a certain the optimal action. Since it doesn't have any apriori information about the system it has to explore new possible action and so has to deviate from the optimal action. Furthermore, it has to keep track of value of each action he did so far. So the main task of the agent is to balance exploration and explotation. There are to basic approaches to model this trade-off; An \textit{"Epsilon-Greedy"} selection method and Soft \textit{"Softmax"} selection method.\\
-Considering first epsilon greedy action selection mehtod: Let $Q_t(a)$ be the value function of action. In general select the next action as $a$ as $a_{t+1} = \arg \max Q_t(a)$. However, to model exploration there is a probability to deviate from that greedy strategy. Choose next action Let $p_e$ be the probability of exploration. $p=\epsilon$
+In particular an agents is confronted with the task of choosing sequently from a set of choices. In comparison to \textit{supervised learning}, where an agent is learning based on set of examples an agent in RIL doesn't have any knowledge about the system apriori. Therefore, it has to learn the nature of the system by sequentially interacting with its environment and keeping tack of the obtained information. Since the agent doesn't have any apriori information about the system it has to explore new possible action and so has to deviate from the optimal action. Furthermore, it has to keep track of value of each action he did so far. So the main task of the agent is to balance exploration and explotation. 
+There are to basic approaches to model this trade-off; An \textit{"Epsilon-Greedy"} selection method and Soft \textit{"Softmax"} selection method. Before explaining both cocepts we introduce the value function for a given action $a$. Therefore,  let $Q_t(a)$ be the value function of action defined as:
+\begin{flalign}
+Q_t(a) := \frac{R_1 + R_2 + \dots + R_{K_\alpha}}{K_\alpha}
+\end{flalign}
+The value function is the average over rewards. 
 
-$Q_t(a) = \frac{R_1 + R_2 + \dots + R_{K_\alpha}}{K_\alpha} $
+Considering now epsilon greedy action selection mehtod: The rule in general is to select the next action as the current current highest value function. However, to model exploration we introduce a random element to deviate from that greedy strategy. Following that the next action
+\begin{flalign}
+a_{t+1} = \begin{cases} 
+\text{random choice} & \text{, with probability } epsilon \\
+\arg \max_i Q_t(i) & \text{, with probability } 1-\epsilon
+\end{cases}
+\end{flalign}
+where $\epsilon \in [0,1]$ is a parameter controling the random behaviour of the agent. 
 
-$Q_{k+1} = Q_k + \alpha\left[ R_k -  Q_k	 \right]$ 
+In the softmax action selection method compute for each action a probability (also called \textit{Boltzmann Distribution)}. The probability for action a is computed by:
+\begin{flalign}
+P(a_{t}|X) = \frac{e^{\frac{Q_t(a)}{\tau}}}{\sum_{i}^{K} e^{\frac{Q_t(i)}{\tau}}}
+\end{flalign}
+In each iteration the next action of the agent is drawn with probability $p_a$: 
+\begin{flalign}
+a_{t+1} \sim p_a
+\end{flalign}
 
-There are two basic 
-
- $a$. \textit{"Epsilon Greedy"}
-
-
-
-Soft Max Selection 
-
-$P(a_{t}|X) = \frac{e^{\frac{Q_t(a)}{\tau}}}{\sum_{i}^{K} e^{\frac{Q_t(i)}{\tau}}}$
-
+After selecting an action the agent is updating its believe of the chosen action. Formally the update rule is defined
+\begin{flalign}
+Q(a)_{k+1} = Q(a)_k + \alpha \left[ R(a)_k -  Q(a)_k	 \right],
+\end{flalign}
+where $\alpha$ is a is the  non negativ \textit{learning rate} defining how much the current action is affecting the believes.
 
 \subsection{Unsupervised Learning}
 
+We consider several unsupervised clustering techniques. A technical description for all of the is provided in 
 
+\begin{table}[!htb]
+	\centering
+	\begin{tabular}{|c| c| c |}
+		\toprule \toprule
+		\textbf{Algorithm} & Input & Datatype  \\
+		\hline
+		Spectral Clustering & Similarity Matrix & -  \\
+		Affinity Propagation & Similarity Matrix & -  \\
+		K-Means Clustering & Data Matrix & -  \\
+		Ward Clustering & Data Matrix & -  \\
+		PCA  & Data Matrix & -  \\
+		\bottomrule
+	\end{tabular}
+	\caption{Overview clustering algorithms}
+\end{table}
+	
 \subsection{Simmulation results}
+
+
+%---------------------------------------------------------------------------------------------------------
+% 4. Data
+%---------------------------------------------------------------------------------------------------------
+
+\section{Data Analysis}
+
+\subsection{Data Description}
+
+\subsection{Results}
+
+%---------------------------------------------------------------------------------------------------------
+% 5. Data
+%---------------------------------------------------------------------------------------------------------
+
+\section{Conclusion}
 
 \pagebreak
 % ----------------------------------------------------------------------------------------------------------
@@ -337,19 +413,24 @@ $P(a_{t}|X) = \frac{e^{\frac{Q_t(a)}{\tau}}}{\sum_{i}^{K} e^{\frac{Q_t(i)}{\tau}
 
 \subsection*{Metrics and Similarities}
 
-This part of the appendix is formally definining metrics and similarities and dissimilarities (proximity) used in this paper. The concepts are somehow related. First we describe the general concepts followed by a description of the applied tools. 
+This part of the appendix formally defines metrics and similarities and dissimilarities (proximity) used in this paper. We first define some basic general concepts followed by a description of the applied distance and similarity concepts. 
 
-First we introduce the concept of \textit{distance}. Let $\boldsymbol{X}$ be a dataset and $\boldsymbol{x_i},\boldsymbol{x_j}$ two datapoints, such that $\boldsymbol{x_i},\boldsymbol{x_j} \in \boldsymbol{X}$. A distance function assign for pairs a points a real number as distance. $d:\boldsymbol{X}\times \boldsymbol{X} \mapsto \mathbb{R}_0^+$. Formally there for axioms, which have to be staisfied:
+Let $\boldsymbol{X}$ be a dataset and let $\boldsymbol{x_i},\boldsymbol{x_j}$ be two datapoints, such that $\boldsymbol{x_i},\boldsymbol{x_j} \in \boldsymbol{X}$. 
+
+A distance function assign for pairs a points a non negative real number as distance. $d:\boldsymbol{X}\times \boldsymbol{X} \mapsto \mathbb{R}_0^+$. Formally there for axioms, which have to be staisfied:
+
 \begin{enumerate}
-\item $d(\boldsymbol{x_i},\boldsymbol{x_j}) \ge 0$
-\item $d(\boldsymbol{x_i},\boldsymbol{x_i}) \ge 0$
-\item $d(\boldsymbol{x_i},\boldsymbol{x_j}) = d(\boldsymbol{x_j},\boldsymbol{x_i}) $
-\item $d(\boldsymbol{x_i},\boldsymbol{x_j}) \le d(\boldsymbol{x_i},\boldsymbol{x_j})+ d(\boldsymbol{x_j},\boldsymbol{x_i}) $
+	\setlength{\itemsep}{-5pt}
+	\item $d(\boldsymbol{x_i},\boldsymbol{x_j}) \ge 0$
+	\item $d(\boldsymbol{x_i},\boldsymbol{x_i}) \ge 0$
+	\item $d(\boldsymbol{x_i},\boldsymbol{x_j}) = d(\boldsymbol{x_j},\boldsymbol{x_i}) $
+	\item $d(\boldsymbol{x_i},\boldsymbol{x_j}) \le d(\boldsymbol{x_i},\boldsymbol{x_j})+ d(\boldsymbol{x_j},\boldsymbol{x_i}) $
 \end{enumerate}
 
 Besides distance some algorithms operate on a \textit{similarity} matrix. Formally a similarity is a function  $ S : \boldsymbol{X} \times \boldsymbol{X} \mapsto [0,1] $. Also for similarity we can define the following properties:
 
 \begin{enumerate}
+	\setlength{\itemsep}{-5pt}
 	\item $0 \le S(\boldsymbol{x_i},\boldsymbol{x_j}) \le 1, \text{for } i \neq j$
 	\item $S(\boldsymbol{x_i},\boldsymbol{x_j}) = 1$
 	\item $S(\boldsymbol{x_i},\boldsymbol{x_j}) = S(\boldsymbol{x_j},\boldsymbol{x_i})$

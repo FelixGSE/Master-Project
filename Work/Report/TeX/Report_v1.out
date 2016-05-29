@@ -5,10 +5,15 @@
 \BOOKMARK [1][-]{section.V}{List of mathematical symbols}{}% 5
 \BOOKMARK [1][-]{section.VI}{List of abbreviations}{}% 6
 \BOOKMARK [1][-]{section.1}{Introduction and conceptual approach}{}% 7
-\BOOKMARK [1][-]{section.2}{Simmulation}{}% 8
-\BOOKMARK [2][-]{subsection.2.1}{Data generation}{section.2}% 9
-\BOOKMARK [2][-]{subsection.2.2}{Reinforcement Learning backround}{section.2}% 10
-\BOOKMARK [2][-]{subsection.2.3}{Unsupervised Learning}{section.2}% 11
-\BOOKMARK [2][-]{subsection.2.4}{Simmulation results}{section.2}% 12
-\BOOKMARK [1][-]{section.3}{List of Literature}{}% 13
-\BOOKMARK [1][-]{section*.2}{Appendix}{}% 14
+\BOOKMARK [1][-]{section.2}{Relevant Literature}{}% 8
+\BOOKMARK [1][-]{section.3}{Theoretical Backround and experiments}{}% 9
+\BOOKMARK [2][-]{subsection.3.1}{Simmulation experiment design}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.2}{Reinforcement Learning backround and multi arm bandits}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.3}{Unsupervised Learning}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.4}{Simmulation results}{section.3}% 13
+\BOOKMARK [1][-]{section.4}{Data Analysis}{}% 14
+\BOOKMARK [2][-]{subsection.4.1}{Data Description}{section.4}% 15
+\BOOKMARK [2][-]{subsection.4.2}{Results}{section.4}% 16
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 17
+\BOOKMARK [1][-]{section.6}{List of Literature}{}% 18
+\BOOKMARK [1][-]{section*.4}{Appendix}{}% 19
