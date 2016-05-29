@@ -63,6 +63,8 @@ class miner:
 			cosine_cat = sim.cosine_cat
 			cosine_ent = sim.cosine_ent
 			rbf = sim.rbf
+			eskin_sim = sim.eskin_sim
+			lin_sim = sim.lin_sim
 			
 			# Compute Predictions
 			no_clust = len(alpha)

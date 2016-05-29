@@ -9,6 +9,8 @@ class similarity:
 		# Categorical similarity meassures
 		self.overlap = None
 		self.cosine_cat = None
+		self.eskin_sim = None
+		self.lin_sim = None
 
 		# Time series
 		self.euclidian = None
@@ -26,6 +28,8 @@ class similarity:
 
 		self.overlap = self.overlap_similarity( data = data )
 		self.cosine_cat = self.cosine_similarity(data = data)
+		self.eskin_sim = self.eskin_similarity(data=data)
+		self.lin_sim = self.lin_similarity(data=data)
 
 	# Computes similarities for time series and real valued data
 	def timeseries(self, data ):
