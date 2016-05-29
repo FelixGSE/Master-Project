@@ -46,7 +46,7 @@ p02 = rep([1,1,1],6)
 # Set of number of trials 
 p03 = rep(100,6)
 # Set of size of clusters	
-p04 = rep(50,6) 		
+p04 = rep(5,6) 		
 
 
 
@@ -84,7 +84,7 @@ prediction_accuracies.prediction( mu_set = p01,
 
 print prediction_accuracies.dframe.round(5)
 
-print prediction_accuracies.dframe.round(5).to_csv("../Results/data_50guys.csv")
+print prediction_accuracies.dframe.round(5).to_csv("../Results/data_5guys_p11.csv")
 ####################################################################################################
 
 ####################################################################################################

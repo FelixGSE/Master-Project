@@ -8,10 +8,14 @@ class similarity:
 
 		# Categorical similarity meassures
 		self.overlap = None
+		self.cosine_cat = None
 
 		# Time series
 		self.euclidian = None
 		self.edtw = None
+		self.euclidian_dist = None
+		self.cosine_ent = None
+		self.rbf = None
 
 	"""
 	Conpute functions
@@ -21,12 +25,15 @@ class similarity:
 	def categorical(self,data ):
 
 		self.overlap = self.overlap_similarity( data = data )
+		self.cosine_cat = self.cosine_similarity(data = data)
 
 	# Computes similarities for time series and real valued data
 	def timeseries(self, data ):
 		self.euclidian = self.euclidian_similiarity( data = data )
 		self.edtw = self.euclidian_time_warp_similarity( data = data )
 		self.euclidian_dist = self.euclidian_distance( data, data )
+		self.cosine_ent = self.cosine_similarity(data = data)
+		self.rbf = self.rbf_similarity(data=data)
 
 	"""
 	Similarity functions

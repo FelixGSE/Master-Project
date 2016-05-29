@@ -9,7 +9,7 @@ class miner:
 
 		runtime = range(len(mu_set))
 
-		column_names=["mu","sigma","trials","cluster","decision","alpha","tau","epsilon",\
+		column_names=["mu","sigma","trials","cluster size","decision","alpha","tau","epsilon",\
 			"clustering","labels","mut inf scr","adj mis","norm mis","adj rand s","complet","homogen","vmeas"]
 
 		dframe = pd.DataFrame(columns=column_names)
@@ -60,6 +60,9 @@ class miner:
 			temp_timewarp = sim.edtw
 			temp_eucliddist = sim.euclidian_dist
 			temp_overlap = sim.overlap
+			cosine_cat = sim.cosine_cat
+			cosine_ent = sim.cosine_ent
+			rbf = sim.rbf
 			
 			# Compute Predictions
 			no_clust = len(alpha)
@@ -68,14 +71,20 @@ class miner:
 			p01 = temp_unsupervised.spectral( temp_timewarp, no_clust)
 			p02 = temp_unsupervised.affinity_propagation( temp_timewarp )
 			p03 = temp_unsupervised.pca_ward(temp_eucliddist,2,no_clust)
-			p04 = temp_unsupervised.kmeans(temp_choices,no_clust)
-			p05 = temp_unsupervised.spectral( temp_overlap, no_clust)
-			p06 = temp_unsupervised.kmeans( temp_concats, no_clust )
-			p07 = temp_unsupervised.kmeans( temp_entropy, no_clust )
+			p04 = temp_unsupervised.spectral( temp_overlap, no_clust)
+			p05 = temp_unsupervised.kmeans(temp_choices,no_clust)
+			p06 = temp_unsupervised.kmeans( temp_entropy, no_clust )
+			p07 = temp_unsupervised.kmeans( temp_concats, no_clust )
+			p08 = temp_unsupervised.spectral(cosine_cat, no_clust)
+			p09 = temp_unsupervised.affinity_propagation(cosine_cat)
+			p10 = temp_unsupervised.spectral(cosine_ent, no_clust)
+			p11 = temp_unsupervised.affinity_propagation(cosine_ent)
+			
 
-			p_set = [p01,p02,p03,p04,p05,p06,p07]
-			p_names = ["spectral warp","aff prop","pca","km_choice",\
-					"spectral overlap", "km_con","km_ent"]
+			p_set = [p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11]
+			p_names = ["spectral warp","aff prop","pca","spectral overlap",\
+					"km_choice","km_ent","km_con","spect_cos_cat","aff_cos_cat",\
+					"spect_cos_ent","aff_cos_ent"]
 
 			# Compute accuracies
 			acc_vector = self.full_accuracies(temp_labels,p_set)
