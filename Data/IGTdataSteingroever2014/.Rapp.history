@@ -1,0 +1,5 @@
+load("/Users/felix/Downloads/IGTdataSteingroever2014/IGTdata.rdata")
+head(data)
+head(IGTdata)
+ls()
+head(choice_100)

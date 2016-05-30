@@ -85,6 +85,10 @@ prediction_accuracies.prediction( mu_set = p01,
 								 )
 print prediction_accuracies.dframe
 prediction_accuracies.dframe.to_csv("../Results/res04.csv")
+print prediction_accuracies.dframe.to_latex()
+print "\n"
+
+
 ####################################################################################################
 
 ####################################################################################################
