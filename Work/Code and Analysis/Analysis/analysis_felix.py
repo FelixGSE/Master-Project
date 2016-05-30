@@ -16,6 +16,7 @@ import sklearn.cluster as clu
 import dtw 
 import sklearn.decomposition as decomp
 import pandas as pd
+import csv 
 
 ### Source own modules
 #path_modules = '/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Modules'
@@ -30,7 +31,8 @@ execfile("Class_Accuracies.py")
 execfile("Class_Unsupervised.py")
 execfile("Class_Miner.py")
 execfile("Function_Auxilliary.py")
-
+execfile("Class_Auxilliary.py")
+execfile("Class_Data_Clustering.py")
 ####################################################################################################
 
 ####################################################################################################
@@ -88,3 +90,16 @@ prediction_accuracies.dframe.to_csv("../Results/res04.csv")
 ####################################################################################################
 
 ####################################################################################################
+
+path_modules = '/Users/felix/Documents/GSE/Term 3/External Data/mixed data/'
+os.chdir(path_modules)  
+aux = auxilliary()
+choices = aux.read_csv('choices_num.csv')
+entropy = aux.entropy(choices)
+miner = data_clustering()
+
+miner.prediction(choice_set = choices , entropy_set = entropy, cluster_range = range(2,6))
+miner.dframe.to_csv("real.csv")
+
+
+

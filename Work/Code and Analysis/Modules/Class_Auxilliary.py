@@ -13,4 +13,16 @@ class auxilliary:
 			entropies.append(entropy)
 		return entropies
 
+	def read_csv(self,name,delimiter = '\t',quotechar='|'):
+		with open(name, 'rb') as csvfile:
+			reader = csv.reader(csvfile, delimiter=delimiter, quotechar=quotechar)
+			file = list(reader)
+			final = []
+			for item in file:
+				sub = []
+				for character in item:
+					sub.append(int(character))
+				final.append(sub)
+		return final
+
 
