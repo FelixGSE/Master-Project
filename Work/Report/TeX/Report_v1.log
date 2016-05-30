@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.28)  29 MAY 2016 20:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.28)  30 MAY 2016 17:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -646,13 +646,16 @@ Package titlesec Warning: Non standard sectioning command detected
 Package scrartcl Warning: Activating an ugly workaround for a missing
 (scrartcl)                feature of package `titlesec` on input line 25.
 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/doublestroke/dsfont.sty
+Package: dsfont 1995/08/01 v0.1 Double stroke roman fonts
+)
 
 Class scrartcl Warning: Usage of package `parskip' together
 (scrartcl)              with a KOMA-Script class is not recommended.
 (scrartcl)              I'd suggest to use option
 (scrartcl)              `parskip' with one of it's several values.
 (scrartcl)              Nevertheless, using requested
-(scrartcl)              package `parskip' on input line 26.
+(scrartcl)              package `parskip' on input line 27.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2001/04/09 non-zero parskip adjustments
@@ -969,34 +972,40 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
 )
-Package hyperref Info: Option `unicode' set `false' on input line 66.
-Package hyperref Info: Option `pdftoolbar' set `true' on input line 66.
-Package hyperref Info: Option `pdfmenubar' set `true' on input line 66.
-Package hyperref Info: Option `pdffitwindow' set `false' on input line 66.
-Package hyperref Info: Option `pdfnewwindow' set `true' on input line 66.
-Package hyperref Info: Option `colorlinks' set `true' on input line 66.
+Package hyperref Info: Option `unicode' set `false' on input line 67.
+Package hyperref Info: Option `pdftoolbar' set `true' on input line 67.
+Package hyperref Info: Option `pdfmenubar' set `true' on input line 67.
+Package hyperref Info: Option `pdffitwindow' set `false' on input line 67.
+Package hyperref Info: Option `pdfnewwindow' set `true' on input line 67.
+Package hyperref Info: Option `colorlinks' set `true' on input line 67.
 
-(./Report_v1.aux)
+(./Report_v1.aux
+
+LaTeX Warning: Label `eq:esk' multiply defined.
+
+
+LaTeX Warning: Label `eq:ri' multiply defined.
+
+)
 \openout1 = `Report_v1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-
-(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+ (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count147
 \scratchdimen=\dimen173
@@ -1066,7 +1075,7 @@ Package caption Info: listings package is loaded.
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box39
-Package hyperref Info: Link coloring ON on input line 69.
+Package hyperref Info: Link coloring ON on input line 70.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -1075,9 +1084,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count153
 )
-LaTeX Info: Redefining \ref on input line 69.
-LaTeX Info: Redefining \pageref on input line 69.
-LaTeX Info: Redefining \nameref on input line 69.
+LaTeX Info: Redefining \ref on input line 70.
+LaTeX Info: Redefining \pageref on input line 70.
+LaTeX Info: Redefining \nameref on input line 70.
 
 (./Report_v1.out) (./Report_v1.out)
 \@outlinefile=\write4
@@ -1085,17 +1094,17 @@ LaTeX Info: Redefining \nameref on input line 69.
 
 \c@lstlisting=\count154
 
-<Pictures/logo01.jpg, id=80, 1284.8pt x 232.87pt>
+<Pictures/logo01.jpg, id=92, 1284.8pt x 232.87pt>
 File: Pictures/logo01.jpg Graphic file (type jpg)
  <use Pictures/logo01.jpg>
-Package pdftex.def Info: Pictures/logo01.jpg used on input line 102.
+Package pdftex.def Info: Pictures/logo01.jpg used on input line 103.
 (pdftex.def)             Requested size: 455.24411pt x 82.51129pt.
-LaTeX Font Info:    Try loading font information for U+msa on input line 115.
+LaTeX Font Info:    Try loading font information for U+msa on input line 116.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 115.
+LaTeX Font Info:    Try loading font information for U+msb on input line 116.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1110,7 +1119,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.I}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.177 
+l.178 
        [1] (./Report_v1.lof)
 \tf@lof=\write6
 \openout6 = `Report_v1.lof'.
@@ -1131,7 +1140,7 @@ Class scrartcl Warning: \float@listhead detected!
 (scrartcl)              Loading of package `scrhack' may help to
 (scrartcl)              avoid this warning, if you are using a
 (scrartcl)              a package that still implements the
-(scrartcl)              deprecated \float@listhead interface  on input line 200
+(scrartcl)              deprecated \float@listhead interface  on input line 201
 .
 
 (./Report_v1.lol)
@@ -1139,39 +1148,60 @@ Class scrartcl Warning: \float@listhead detected!
 \openout8 = `Report_v1.lol'.
 
  [4] [5] [6] [1] [2]
-<Pictures/flow01.png, id=151, 833.1125pt x 416.55624pt>
+<Pictures/flow01.png, id=169, 833.1125pt x 416.55624pt>
 File: Pictures/flow01.png Graphic file (type png)
 
 <use Pictures/flow01.png>
-Package pdftex.def Info: Pictures/flow01.png used on input line 305.
+Package pdftex.def Info: Pictures/flow01.png used on input line 306.
 (pdftex.def)             Requested size: 455.24411pt x 227.62566pt.
- [3 <./Pictures/flow01.png>] [4] [5] (./Report_v1.bbl
+ [3 <./Pictures/flow01.png>] [4] [5] [6]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7] (./Report_v1.bbl
 
 LaTeX Warning: Empty `thebibliography' environment or \BreakBibliography
                before end of `thebibliography' environment on input line 3.
 
-) [6] [1] [2] [3]
+) [8]
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 473.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 502.
-[4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 502.
+[1] [2]
+LaTeX Font Info:    Try loading font information for U+dsrom on input line 489.
+
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/doublestroke/Udsrom.fd
+File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
+)
+[3] [4]
+Overfull \hbox (51.74467pt too wide) in paragraph at lines 578--578
+[] 
+ []
+
+[5] [6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 642.
+ [7] [8]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 642.
  (./Report_v1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 502.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 502.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 642.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 642.
 Package rerunfilecheck Info: File `Report_v1.out' has not changed.
-(rerunfilecheck)             Checksum: 595C87AFF4BBAE4758B09A38E8B26C79;1164.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 502.
+(rerunfilecheck)             Checksum: 5B7434F2FD227EB490982C70BA1B079E;1429.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 642.
  ) 
 Here is how much of TeX's memory you used:
- 13884 strings out of 493089
- 211619 string characters out of 6134842
- 468718 words of memory out of 5000000
- 17061 multiletter control sequences out of 15000+600000
- 13796 words of font info for 50 fonts, out of 8000000 for 9000
+ 13964 strings out of 493089
+ 213026 string characters out of 6134842
+ 478064 words of memory out of 5000000
+ 17102 multiletter control sequences out of 15000+600000
+ 14084 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 50i,17n,54p,744b,435s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,19n,54p,744b,474s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
@@ -1183,12 +1213,14 @@ ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/loca
 l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/
 texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Report_v1.pdf (17 pages, 243980 bytes).
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/doublestroke/dsrom12.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Report_v1.pdf (23 pages, 274852 bytes).
 PDF statistics:
- 275 PDF objects out of 1000 (max. 8388607)
- 237 compressed objects within 3 object streams
- 61 named destinations out of 1000 (max. 500000)
- 163 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 352 PDF objects out of 1000 (max. 8388607)
+ 305 compressed objects within 4 object streams
+ 90 named destinations out of 1000 (max. 500000)
+ 187 words of extra memory for PDF output out of 10000 (max. 10000000)
 
