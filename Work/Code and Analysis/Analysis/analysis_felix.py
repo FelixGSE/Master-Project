@@ -40,13 +40,13 @@ execfile("Function_Auxilliary.py")
 #---------------------------------------------------------------------------------------------------
 
 # Mean of the bandits 
-p01 = rep( [0,0.5,1], 6 )
+p01 = rep( [0,0.5,1], 2 )
 # Standard Deviation of the bandits
-p02 = rep( [1,1,1], 6 )
+p02 = rep( [1,1,1], 2 )
 # Set of number of trials 
-p03 = rep( 100 , 6 ) 
+p03 = rep( 100 , 2 ) 
 # Set of number of clusters	
-p04 = rep( 20, 6 ) 		
+p04 = rep( 20, 2 ) 		
 
 
 
@@ -56,18 +56,14 @@ p04 = rep( 20, 6 )
 
 
 # Set of decision functions
-p06 = rep("epsgreedy",6)
+p06 = rep("softmax",2)
 
 # Set of alphas
-p07 = [ [1,1,1], [1,1,1],
-		[1,1,1], [0.1,0.5,1],
-		[0.5,1.5,2], [1,2,3]
+p07 = [ [1,1,1], [1,1,1]
 	  ]
 
 # Set of Taus
-epsilon = [ [0.01,0.1,0.1], [0.1,0.2,0.3],
-		[0.01,0.05,0.09], [0.01,0.1,0.1], [0.1,0.2,0.3],
-		[0.01,0.05,0.09]
+tau = [ [0.1,0.1,0.1], [0.1,0.2,0.3]
 	  ]
 	
 
@@ -84,8 +80,8 @@ prediction_accuracies.prediction( mu_set = p01,
 								  seed_set = None,
 								  decision_function_set = p06,
 								  alpha_set = p07,
-								  tau_set = rep(None,6), 
-								  epsilon_set = epsilon
+								  tau_set = tau, 
+								  epsilon_set = rep(None,6)
 								 )
 print prediction_accuracies.dframe
 prediction_accuracies.dframe.to_csv("../Results/res04.csv")

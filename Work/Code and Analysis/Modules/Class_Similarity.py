@@ -43,7 +43,7 @@ class similarity:
 		self.euclidian_dist = self.euclidian_distance( data, data )
 		self.cosine_ent = self.cosine_similarity(data = data)
 		self.rbf = self.rbf_similarity(data=data)
-		self.edr_sim = self.edr_similarity(data=data,eps=0.1)
+		self.edr_sim = self.edr_similarity(data,0.1)
 
 	"""
 	Similarity functions
@@ -202,7 +202,6 @@ class similarity:
 			for j in range(1, n+1):
 				temp_x = X[i-1]
 				temp_y = Y[j-1]
-				print j
 				temp_norm = self.norm( temp_x, temp_y )
 			if temp_norm < eps:
 				cost = 0
@@ -279,3 +278,7 @@ class similarity:
 	def norm(self,x,y):
 		result = np.linalg.norm(x-y)
 		return result
+
+
+
+
