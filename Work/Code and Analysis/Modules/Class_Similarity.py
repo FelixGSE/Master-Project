@@ -20,7 +20,7 @@ class similarity:
 		self.euclidian_dist = None
 		self.cosine_ent = None
 		self.rbf = None
-		self.edr = None
+		self.edr_sim = None
 
 	"""
 	Conpute functions
@@ -43,7 +43,7 @@ class similarity:
 		self.euclidian_dist = self.euclidian_distance( data, data )
 		self.cosine_ent = self.cosine_similarity(data = data)
 		self.rbf = self.rbf_similarity(data=data)
-		#self.edr = self.edr_similarity(data=data,eps=0.1)
+		self.edr_sim = self.edr_similarity(data=data,eps=0.1)
 
 	"""
 	Similarity functions
@@ -195,21 +195,22 @@ class similarity:
 
 	# Edit Distance on Real sequence
 	def edr(self, X,Y, eps ):
-	    m = len(X)
-	    n = len(Y)
-	    C = np.zeros(shape=( m + 1, n + 1))
-	    for i in range(1,m+1):
-	        for j in range(1, n+1):
-	            temp_x = X[i-1]
-	            temp_y = Y[j-1]
-	            temp_norm = self.norm( temp_x, temp_y )
-	        if temp_norm < eps:
-	            cost = 0
-	        else:
-	            cost = 1
-	        C[i][j] = min(C[i][j-1]+1, C[i-1][j]+1,C[i-1][j-1]+cost)
-	    final_edr = float(C[m][n])/max([m,n])
-	    return final_edr  
+		m = len(X)
+		n = len(Y)
+		C = np.zeros(shape=( m + 1, n + 1))
+		for i in range(1,m+1):
+			for j in range(1, n+1):
+				temp_x = X[i-1]
+				temp_y = Y[j-1]
+				print j
+				temp_norm = self.norm( temp_x, temp_y )
+			if temp_norm < eps:
+				cost = 0
+			else:
+				cost = 1
+			C[i][j] = min(C[i][j-1]+1, C[i-1][j]+1,C[i-1][j-1]+cost)
+		final_edr = float(C[m][n])/max([m,n])
+		return final_edr  
 
 	"""
 	Auxilliary functions
@@ -278,3 +279,68 @@ class similarity:
 	def norm(self,x,y):
 		result = np.linalg.norm(x-y)
 		return result
+
+
+### Load Modules
+import random as rd
+import numpy as np
+import os 
+import json
+import time
+import math 
+import sklearn.metrics as met
+import sklearn.metrics.cluster as mclu
+import sklearn.metrics.pairwise as pa
+import sklearn.cluster as clu
+import dtw 
+import sklearn.decomposition as decomp
+import pandas as pd
+
+
+t = similarity()
+se = [[1,2,3],[12,3,3],[12,3,4]]
+t.edr([1,2,3],[1,2,3],eps=0.2)
+
+X = [1,2,3]
+Y = [1,3,3]
+eps = 0.2
+m = len(X)
+n = len(Y)
+C = np.zeros(shape=( m + 1, n + 1))
+for i in range(1,m+1):
+	for j in range(1, n+1):
+		temp_x = X[i-1]
+		temp_y = Y[j-1]
+		temp_norm = norm( temp_x, temp_y )
+		if temp_norm < eps:
+			cost = 0
+		else:
+			cost = 1
+		C[i][j] = min(C[i][j-1]+1, C[i-1][j]+1,C[i-1][j-1]+cost)
+	final_edr = float(C[m][n])/max([m,n])
+		return final_edr  
+
+
+
+
+def norm(x,y):
+	result = np.linalg.norm(x-y)
+	return result
+
+def edr( X,Y, eps ):
+	m = len(X)
+	n = len(Y)
+	C = np.zeros(shape=( m + 1, n + 1))
+	for i in range(1,m+1):
+		for j in range(1, n+1):
+			temp_x = X[i-1]
+			temp_y = Y[j-1]
+			temp_norm = norm( temp_x, temp_y )
+		if temp_norm < eps:
+			cost = 0
+		else:
+			cost = 1
+		C[i][j] = min(C[i][j-1]+1, C[i-1][j]+1,C[i-1][j-1]+cost)
+	final_edr = float(C[m][n])/max([m,n])
+	return final_edr 
+

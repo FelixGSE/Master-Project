@@ -67,7 +67,7 @@ class miner:
 			lin_sim = sim.lin_sim
 			eskin_disim = sim.eskin_disim
 			lin_disim = sim.lin_disim
-			edr = sim.edr
+			edr_sim = sim.edr_sim
 			
 			# Compute Predictions
 			no_clust = len(alpha)
@@ -93,18 +93,18 @@ class miner:
 			p18 = temp_unsupervised.average_hierachical(eskin_disim,no_clust)
 			p19 = temp_unsupervised.complete_hierachical(lin_disim,no_clust)
 			p20 = temp_unsupervised.average_hierachical(lin_disim,no_clust)
-			#p21 = temp_unsupervised.spectral(edr,no_clust)
-			#p22 = temp_unsupervised.affinity_propagation(edr)
+			p21 = temp_unsupervised.spectral(edr_sim,no_clust)
+			p22 = temp_unsupervised.affinity_propagation(edr_sim)
 			
 
 			p_set = [p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,\
-					p15,p16,p17,p18,p19,p20]
+					p15,p16,p17,p18,p19,p20,p21,p22]
 			p_names = ["spectral warp","aff prop","pca","spectral overlap",\
 					"km_choice","km_ent","km_con","spect_cos_cat","aff_cos_cat",\
 					"spect_cos_ent","aff_cos_ent","spect_rbf","spect_esk_sim",\
 					"aff_esk_sim","spect_lin_sim","aff_lin_sim","comp_hr_esk_dis",\
-					"avg_hr_esk_dis","comp_hr_lin_din","avg_hr_lin_dis"]
-					#"spect_edr","aff_edr"]
+					"avg_hr_esk_dis","comp_hr_lin_din","avg_hr_lin_dis",\
+					"spect_edr","aff_edr"]
 
 			# Compute accuracies
 			acc_vector = self.full_accuracies(temp_labels,p_set)

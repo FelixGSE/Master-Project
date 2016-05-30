@@ -217,6 +217,8 @@ $Q(a)_t$	& Value function at time t \\
 $\epsilon$			& Probability of exploration in epsilon greedy \\
 $\alpha$ & Learning rate \\ 
 $\tau$ & Softmax parameter \\
+$H(X) $ &  Entropy of a  discrete random variable $X$ \\ 
+$ \mathbb{R}_0^+$ & Positve real numbers including zero 
 \end{tabular}
 
 \pagebreak
@@ -306,8 +308,11 @@ Before analysing real data we run some simmulation experiments to indentify adeq
 \end{figure}
 
 Concerning our data we find two main challanges. First, our data have a categorical nature. Furhtermore, the learning process also imposes a time series dependence on the data. We address this issue in the following ways. 
-
-
+The first approach is to map the series of choices to a real valued series. For each time step we can compute \textit{Shannon's Entropy} based on the empirical probability of the choices. Let $X$ be a discrete random variable with probability $p$, then the entropy is defined as:
+\begin{flalign}
+H(X) := -\sum_{i=1}^{N} p_i \log_2 p_i
+\end{flalign}
+Entropy gives measure on how random a random variable behaves. Therefore, transforming choices to sequentiel entropy is to discriminate individuals by the randomness
 
 \subsection{Reinforcement Learning backround and multi arm bandits}
 
@@ -322,7 +327,7 @@ The value function is the average over rewards.
 Considering now epsilon greedy action selection mehtod: The rule in general is to select the next action as the current current highest value function. However, to model exploration we introduce a random element to deviate from that greedy strategy. Following that the next action
 \begin{flalign}
 a_{t+1} = \begin{cases} 
-\text{random choice} & \text{, with probability } epsilon \\
+\text{random action} & \text{, with probability } \epsilon \\
 \arg \max_i Q_t(i) & \text{, with probability } 1-\epsilon
 \end{cases}
 \end{flalign}
@@ -357,7 +362,7 @@ We consider several unsupervised clustering techniques. A technical description 
 		Affinity Propagation & Similarity Matrix & -  \\
 		K-Means Clustering & Data Matrix & -  \\
 		Ward Clustering & Data Matrix & -  \\
-		PCA  & Data Matrix & -  \\
+		PCA + 	Ward Clustering   & Data Matrix & -  \\
 		\bottomrule
 	\end{tabular}
 	\caption{Overview clustering algorithms}
@@ -417,7 +422,7 @@ This part of the appendix formally defines metrics and similarities and dissimil
 
 Let $\boldsymbol{X}$ be a dataset and let $\boldsymbol{x_i},\boldsymbol{x_j}$ be two datapoints, such that $\boldsymbol{x_i},\boldsymbol{x_j} \in \boldsymbol{X}$. 
 
-A distance function assign for pairs a points a non negative real number as distance. $d:\boldsymbol{X}\times \boldsymbol{X} \mapsto \mathbb{R}_0^+$. Formally there for axioms, which have to be staisfied:
+A distance function assign for pairs a points a non negative real number as distance. $d:\boldsymbol{X}\times \boldsymbol{X} \mapsto \mathbb{R}_0^+$. Formally if the following properties are additionally staisfied the distance is also metric.
 
 \begin{enumerate}
 	\setlength{\itemsep}{-5pt}
@@ -427,7 +432,7 @@ A distance function assign for pairs a points a non negative real number as dist
 	\item $d(\boldsymbol{x_i},\boldsymbol{x_j}) \le d(\boldsymbol{x_i},\boldsymbol{x_j})+ d(\boldsymbol{x_j},\boldsymbol{x_i}) $
 \end{enumerate}
 
-Besides distance some algorithms operate on a \textit{similarity} matrix. Formally a similarity is a function  $ S : \boldsymbol{X} \times \boldsymbol{X} \mapsto [0,1] $. Also for similarity we can define the following properties:
+A distance can be seen as a measure for disimilarity of two points. Besides distance some algorithms operate on a \textit{similarity} matrix. Formally a similarity is a function  $ S : \boldsymbol{X} \times \boldsymbol{X} \mapsto [0,1] $. Also for similarity we can define the following properties:
 
 \begin{enumerate}
 	\setlength{\itemsep}{-5pt}
@@ -436,10 +441,10 @@ Besides distance some algorithms operate on a \textit{similarity} matrix. Formal
 	\item $S(\boldsymbol{x_i},\boldsymbol{x_j}) = S(\boldsymbol{x_j},\boldsymbol{x_i})$
 \end{enumerate}
 
-Once we have computed distance for two data points we can use this information to transform it to a similarity:
+Once we have computed distance or a similarity we can compute for two data points we can use this information to transform it to a similarity or the distance vice versa:
 
 \begin{flalign}
-S(\boldsymbol{x_i},\boldsymbol{x_j}) = \frac{1}{1+d(\boldsymbol{x_i},\boldsymbol{x_j}) }
+S(\boldsymbol{x_i},\boldsymbol{x_j}) = \frac{1}{1+d(\boldsymbol{x_i},\boldsymbol{x_j}) } \hspace{0.5cm} \Leftrightarrow \hspace{0.5cm} d(\boldsymbol{x_i},\boldsymbol{x_j}) =  \frac{1}{S(\boldsymbol{x_i},\boldsymbol{x_j})} -1 
 \end{flalign}
 
 
