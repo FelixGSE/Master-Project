@@ -22,6 +22,7 @@
 \usepackage{paralist}
 \usepackage{array}
 \usepackage{titlesec}
+\usepackage{dsfont}
 \usepackage{parskip}
 \usepackage[right]{eurosym}
 \usepackage[subfigure,titles]{tocloft}
@@ -297,7 +298,7 @@ Learning is a complex procedure. The learning procedure can affected due to soci
 
 In this section we provide ... 
 
-\subsection{Simmulation experiment design}
+\subsection{Experiment design}
 
 Before analysing real data we run some simmulation experiments to indentify adequat approaches to model our data. To generate data artificially we follow a reinforcement learning and multi arm bandit approach where we let an agent learn the distribution of a simulated data set. The procedure is illustrated in figure \ref{fig:flow}. To keep things simple we draw a set of rewards from a normal distribution. We let several agents with different parameter setting process the reward data. From this procedure we obtain for each agent a time series of choices. 
 
@@ -367,8 +368,27 @@ We consider several unsupervised clustering techniques. A technical description 
 	\end{tabular}
 	\caption{Overview clustering algorithms}
 \end{table}
-	
+
+\pagebreak	
 \subsection{Simmulation results}
+
+The following table shows a snippet of our simmulation results. 
+\pagebreak
+
+\begin{sidewaystable}[!h]
+	\centering
+	\begin{tabular}{| l || c | c | c | c | c | c | c | c | c | c || c  |  c | c | c | c | c | }
+		\toprule \toprule
+		\textbf{Specification} &$\boldsymbol{\mu}$ & $\boldsymbol{\sigma}$ & \textbf{CL Size} & \textbf{SD} & \textbf{Decision} & $\boldsymbol{\alpha}$  &  $\boldsymbol{\tau}$  & \textbf{N} & \textbf{ALG} & \textbf{TRNS} &  \textbf{MI} & \textbf{NMI} &  \textbf{AMI} &  \textbf{CS} &  \textbf{HS } & \textbf{VMS}     \\
+		\hline
+		1 & -  & -& -& -& -& -& -& -& -& -& -& -& - & - \\
+		\bottomrule
+	\end{tabular}
+	\caption{Overview Outcome }
+\end{sidewaystable}
+
+
+
 
 
 %---------------------------------------------------------------------------------------------------------
@@ -420,6 +440,8 @@ We consider several unsupervised clustering techniques. A technical description 
 
 This part of the appendix formally defines metrics and similarities and dissimilarities (proximity) used in this paper. We first define some basic general concepts followed by a description of the applied distance and similarity concepts. 
 
+\subsubsection*{Distances vs. Similarities}
+
 Let $\boldsymbol{X}$ be a dataset and let $\boldsymbol{x_i},\boldsymbol{x_j}$ be two datapoints, such that $\boldsymbol{x_i},\boldsymbol{x_j} \in \boldsymbol{X}$. 
 
 A distance function assign for pairs a points a non negative real number as distance. $d:\boldsymbol{X}\times \boldsymbol{X} \mapsto \mathbb{R}_0^+$. Formally if the following properties are additionally staisfied the distance is also metric.
@@ -445,16 +467,148 @@ Once we have computed distance or a similarity we can compute for two data point
 
 \begin{flalign}
 S(\boldsymbol{x_i},\boldsymbol{x_j}) = \frac{1}{1+d(\boldsymbol{x_i},\boldsymbol{x_j}) } \hspace{0.5cm} \Leftrightarrow \hspace{0.5cm} d(\boldsymbol{x_i},\boldsymbol{x_j}) =  \frac{1}{S(\boldsymbol{x_i},\boldsymbol{x_j})} -1 
+\label{eq:sim}
+\end{flalign}
+
+\subsubsection{Similarity measures for timeseries data}
+
+We use three different similarity measures for time series. Empirical research suggest that simple euclidian distance for time series performs quite well and is hard to beat. Hence, the first distance measure for time series is simply eucldian distance between two time series. They might be converted to similarity based on equation \ref{eq:sim}. Let $\boldsymbol{x},\boldsymbol{y}$ be two time series over N-periods. Then the distance 
+
+\begin{flalign}
+d_E (\boldsymbol{x},\boldsymbol{y}) :=  \sqrt{\left( \sum_{i=1}^{N} \left( x_i - y_i \right)^2 \right)}
+\label{eq:ets}
+\end{flalign}
+\pagebreak
+
+\subsubsection{Similarity measures for categorical data}
+
+Reffering to equation \ref{eq:ets} we define a simple measure for the categorical aspect of the data. Note that [SOURCE] defines the simplest measure for categorical data. Howevere, since the probability that to people behave exaclty the same in our context is arguably zero we modify this concept slightly. So we relax that and define the overlap similarity just as the count of overlapping instances. This serves as a benchmark similarity for categorical data.
+
+\begin{flalign}
+d_O (\boldsymbol{x},\boldsymbol{y}) :=  \sum_{i=1}^{N} \mathds{1}_{x_i = y_i}
+\end{flalign}
+
+In [Boriah 2008] we find a rich class of further categorical measures. To keep it conceise we considered two of them. The first one is \textit{Eskin} similarity measures.
+
+\begin{flalign}
+d_O (\boldsymbol{x},\boldsymbol{y}) := \begin{cases} 
+1 & \text{,if } \boldsymbol{x} = \boldsymbol{y}  \\
+\frac{n_k^2} {n_k^2 + 2} & \text{otherwise }
+\end{cases}
+\label{eq:esk}
+\end{flalign}
+
+Furthermore, we consider lins similarity 
+
+\begin{flalign}
+d_{lin} (\boldsymbol{x},\boldsymbol{y}) := \begin{cases} 
+2 \log \hat{p}_k (X_k) & \text{,if } \boldsymbol{x} = \boldsymbol{y}  \\
+2 \log \left( \hat{p}_k (x_k) + \hat{p}_k (y_k)\right) & \text{otherwise }
+\end{cases}
+\label{eq:esk}
+\end{flalign}
+
+\subsection*{Clustering Evaluation}
+
+In this section we formally derive and explain the applied clustering metrics. Evaluating clustering performance has some issues. The algorithm is producing labels. Nevertheless we generated the "true" labels the might not be comparable. A simple example we might consider the following situation. Let y denote the labels of data the data and $y'$ the corresponding prediction such that  $y,y' \in \{0,1\}$. In a small example let our data points be like $y=(1,1,0,0)$ and the corresponding prediction $y'=(0,0,1,1)$. Obviously the clustering worked perfectly, however comparing "labels" would produce an accruacy of zero. 
+
+There a several clustering metrics, which respect such a situation. We consider a bunch of information based metrics. Most of the measures use some sort of entropy. Therefore, we stick to the notation of [SOURCE]. 
+
+Hence we introduce  the contigency table. 
+
+\begin{table}[htb]
+	\centering
+	\begin{tabular}{c | c c c c| c}
+		 & $V_1$ & $V_2$ & $\dots$ & $V_c$ & $\Sigma$ \\
+		\hline
+		$U_1$ & $n_{1,1}$ &$n_{1,2}$  &$\dots$ & & $a_1$ \\ 
+		$U_2$ & $n_{2,1}$ & $\ddots$ & & & $a_1$ \\ 
+		$\vdots$ & $n_{1,1}$ & $\dots$ & & & $a_1$ \\ 
+		$U_R$ & $n_{1,1}$ & $\dots$ & & & $a_1$ \\ 
+		\hline
+		& $b_1$ & $b_2$ & $\dots$ & $b_c$ & N
+	\end{tabular}
+\caption{Contigency Table}
+\end{table}
+
+
+\begin{tabbing}
+	\hspace*{1cm}\=\hspace*{1cm}\=\hspace*{3cm}\=\hspace*{2.7cm}\= \kill
+	\onehalfspacing
+	\textbf{$N_{11}$:} \>\> Number of pairs in the same cluster \\ 
+	\textbf{$N_{00}$:} \>\> Number of pairs that are in different clusters in both $v$ and $u$ \\ 
+	\textbf{$N_{01}$:} \>\> Number of pairs that are in the same cluster in both $u$ but different in $v$ \\ 
+	\textbf{$N_{10}$:} \>\>  Number of pairs that are in the same cluster in both $v$ but different in $u$ \\ 
+\end{tabbing}
+
+\begin{flalign}
+RI(u,v) = \frac{N_{00}+N_{11}}{\binom{N}{2}}
+\label{eq:ri}
+\end{flalign}
+
+\begin{flalign}
+ARI(u,v) = \frac{2 \left(N_{00}N_{11} - N_{01} N_{10} \right)}{\left(N_{00} + N_{01} \right)\left( N_{01} + N_{11}\right) + \left(N_{00} + N_{10} \right)\left( N_{10} + N_{11}\right)}
+\label{eq:ri}
+\end{flalign}
+
+\begin{flalign}
+H(u) &= - \sum_{i=1}^{R} \frac{a_i}{N} \log  \frac{a_i}{N} \\
+H(v) &= - \sum_{i=1}^{C} \frac{b_i}{N} \log  \frac{a_i}{N} \\
+H(u,v) &= - \sum_{i=1}^{R}  \sum_{j=1}^{C}  \frac{n_{i,j}}{N} \log \frac{n_{i,j}}{N} \\ 
+H(u|v) &= - \sum_{i=1}^{R}  \sum_{j=1}^{C}  \frac{n_{i,j}}{N} \log \frac{n_{i,j}/N}{b_j/N} \\
+H(v|u) &= - \sum_{i=1}^{C}  \sum_{j=1}^{R}  \frac{n_{i,j}}{N} \log \frac{n_{i,j}/N}{b_j/N} \\
+I(u,v) &= \sum_{i=1}^{R}  \sum_{j=1}^{C}  \frac{n_{i,j}}{N} \log \frac{n_{i,j}/N}{a_i b_j/N} \\
+\end{flalign}
+
+Normalized Info Score:
+
+This is one example of a normalized version 
+\begin{flalign}
+NMI_{max}(u,v) = \frac{I(u,v)}{\max\left( H(u),H(v)\right)}
 \end{flalign}
 
 
+\begin{flalign}
+AMI_{max}(u,v) &= \frac{NMI_{max}(u,v) - \mathbb{E}\left[NMI_{max}(u,v)\right] }{1-\mathbb{E}\left[ NMI_{max}(u,v)\right]} \nonumber \\ 
+&=\frac{I(u,v) - \mathbb{E}\left[ I(u,v)\right]}{ \max \left(H(u), H(v)\right) - \mathbb{E}\left[ I(u,v)\right] }
+\end{flalign}
+
+\begin{flalign}
+\mathbb{E}\left[I(u,v) \right] = \sum_{i=1}^{R}  \sum_{j=1}^{C} \sum_{ n_{i,j}=\max \left(a_i + b_j-N,0\right) }^{ \min \left( a,b \right) } \frac{n_{ij}}{N} \log \left( \frac{N n_{ij}}{a_i b_j} \right) \frac{a_i! b_j!(N-a_i)!(N-b_j)!}{N! n_{ij}! (a_i-n_{ij})(b_j - n_{ij})!(N-a_i-b_j+n_{ij})!}
+\end{flalign}
+
+Homogeneity: 
+
+\begin{flalign}
+h = \begin{cases} 
+1 & \text{,if } H(u,v) = 0 \\
+1 - \frac{H(u|v)} {H(u)} & \text{otherwise}
+\end{cases}
+\end{flalign}
+
+Completeness:
+\begin{flalign}
+c = \begin{cases} 
+1 & \text{,if } H(v,u) = 0 \\
+1 - \frac{H(v|u)} {H(v)} & \text{otherwise}
+\end{cases}
+\end{flalign}
+
+V Measure Score:
+
+\begin{flalign}
+V_\beta = \frac{(1+\beta)h c}{\beta h + c}
+\end{flalign}
+
+
+\subsection{Algorithms}
+
+
+\subsubsection*{Principal Components and Multidimensional Scaling}
+
+
 \pagebreak
-
-\subsection*{Principal Components and Multidimensional Scaling}
-
-
-\pagebreak
-\subsection*{Spectral Clustering}
+\subsubsection*{Spectral Clustering}
 
 For the spectral clustering algorithm we formally introduce some graph notation. If not stated otherwise the following derivation follows [SOURCE]. In the following we consider a weighted and simple undirected graph. 
 \begin{flalign}
@@ -484,19 +638,5 @@ d_i &:= \sum_{j=1}^{n} w_{ij} = \sum_{i=1}^{n} w_{ij}
 %----------------------------------------------------------------------------------------------------------
 % End Document
 %----------------------------------------------------------------------------------------------------------
-
-
-\begin{sidewaystable}[!h]
-	\centering
-	\begin{tabular}{| l || c | c | c | c | c | c | c | c | c | c || c  |  c | c | c | c | c | }
-		\toprule \toprule
-		\textbf{Specification} &$\boldsymbol{\mu}$ & $\boldsymbol{\sigma}$ & \textbf{CL Size} & \textbf{SD} & \textbf{Decision} & $\boldsymbol{\alpha}$  &  $\boldsymbol{\tau}$  & \textbf{N} & \textbf{ALG} & \textbf{TRNS} &  \textbf{MI} & \textbf{NMI} &  \textbf{AMI} &  \textbf{CS} &  \textbf{HS } & \textbf{VMS}     \\
-		\hline
-		1 & -  & -& -& -& -& -& -& -& -& -& -& -& - & - \\
-		\bottomrule
-	\end{tabular}
-	\caption{Overview Outcome }
-\end{sidewaystable}
-
 
 \end{document}
