@@ -110,7 +110,7 @@ class data:
 		json.dump(self.value_functions, file(value_file, 'w'))
 		json.dump(self.choices, file(choice_file, 'w'))
 		json.dump(self.rewards, file(reward_file, 'w'))
-		json.dump(self.rewards, file(entropy_file, 'w'))
+		json.dump(self.entropies, file(entropy_file, 'w'))
 		json.dump(self.label, file(label_file, 'w'))
 
 	def cluster(self, item, n ):
