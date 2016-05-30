@@ -10,9 +10,13 @@ class miner:
 		runtime = range(len(mu_set))
 
 		column_names=["mu","sigma","trials","cluster size","decision","alpha","tau","epsilon",\
-			"clustering","labels","mut inf scr","adj mis","norm mis","adj rand s","complet","homogen","vmeas"]
+			"clustering","labels","mut inf scr","adj mis","norm mis","adj rand s","complet","homogen","vmeas",\
+			"mut inf scr1","adj mis1","norm mis1","adj rand s1","complet1","homogen1","vmeas1"]
+
+		column_names_1=["mut inf scr","adj mis","norm mis","adj rand s","complet","homogen","vmeas"]
 
 		dframe = pd.DataFrame(columns=column_names)
+		dframe1 = pd.DataFrame(columns=column_names_1)
 
 		for step in runtime:
 
@@ -116,9 +120,19 @@ class miner:
 
 			for i,clster in enumerate(results):
 				row = [mu, sigma, N, cluster, decision_function,alpha,tau,\
-					epsilon,p_names[i],p_set[i], clster[0],clster[1],\
-					clster[2],clster[3],clster[4],clster[5],clster[6]]
+					epsilon,p_names[i],p_set[i],[clster[0].round(5)],[clster[1]],\
+					[clster[2]],[clster[3]],[clster[4]],[clster[5]],[clster[6]],\
+					0,0,0,0,0,0,0]
 				dframe.loc[len(dframe)] = row
+
+			####dom further edit
+			p_len = len(p_set)
+			for i in range(10,17):
+				dframe.ix[:,i][step*p_len:(step+1)*p_len]=\
+				zip(sum(dframe.ix[:,i][step*p_len:(step+1)*p_len],[]),dframe.ix[:,i][step*p_len:(step+1)*p_len].rank(method="min"))
+				dframe.ix[:,i+7][step*p_len:(step+1)*p_len]=dframe.ix[:,i][step*p_len:(step+1)*p_len].rank(method="min")
+
+			####
 
 			self.dframe = dframe
 
