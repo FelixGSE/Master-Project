@@ -55,8 +55,8 @@ class data_clustering:
 			eskin_disim_name = path + 'eskin_disim_name' + file_type
 			lin_disim_name = path + 'lin_disim' +  file_type
 			edr_sim_name = path + 'edr_sim' + file_type 
- 
-			json.dump(temp_timewarp.tolist(), file(edtw_name, 'w'))
+
+ 			json.dump(temp_timewarp.tolist(), file(edtw_name, 'w'))
 			json.dump(temp_eucliddist.tolist(), file(eucliddist_name, 'w'))
 			json.dump(temp_overlap.tolist(), file(overlap_name, 'w'))
 			json.dump(cosine_cat.tolist(), file(cosine_cat_name, 'w'))

@@ -22,3 +22,11 @@ my.heatmap <- function( matrix, dendr = NA, dendc = NA, colors = "Reds", nco = 1
 #--------------------------------------------------------------------------------
 # 
 #--------------------------------------------------------------------------------
+
+line.plot <- function(){
+  
+  reds  <- colorRampPalette(brewer.pal(9,"Reds"))(ncoolor)
+  blues <- colorRampPalette(brewer.pal(9,"Blues"))(ncoolor)
+  diverging.colors <- c(reds,blues)
+  
+}

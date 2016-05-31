@@ -35,7 +35,6 @@ class auxilliary:
 	def subset_data(self,list_of_list,list_of_labels,labels_to_find,healthy_list = None, n = None):
 		ordered_subset = []
 		for label in labels_to_find:
-			print label
 			indices = [i for i, x in enumerate(list_of_labels) if x == label ]
 			items = [ list_of_list[index] for index in indices ]
 			ordered_subset= ordered_subset + items
@@ -43,7 +42,7 @@ class auxilliary:
 			if n == None:
 				n = len(ordered_subset)
 			nrows = len(healthy_list)
-			new_indices = random.sample(range(nrows), n )
+			new_indices = rd.sample(range(nrows), n )
 			additional_items = [ healthy_list[index] for index in new_indices ]
 			ordered_subset = ordered_subset + additional_items
 		return ordered_subset
