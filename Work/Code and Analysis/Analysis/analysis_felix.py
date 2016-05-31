@@ -100,6 +100,16 @@ os.chdir(path_modules)
 aux = auxilliary()
 choices = aux.read_csv('choices_num.csv')
 entropy = aux.entropy(choices)
+labels = aux.read_csv2('labels_tab_t.csv',delimiter='\t')
+
+test = aux.subset_data(choices,labels,[1])
+
+
+
+
+
+
+
 miner = data_clustering()
 
 miner.prediction(choice_set = choices , entropy_set = entropy, cluster_range = range(2,6))

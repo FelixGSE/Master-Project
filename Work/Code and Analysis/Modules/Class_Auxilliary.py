@@ -25,9 +25,17 @@ class auxilliary:
 				final.append(sub)
 		return final
 
-	def subset_data(self,list_of_list,list_of_labels,label_list,healthy_list = None, n = None):
+	def read_csv2(self,name,delimiter = '\t',quotechar='|'):
+		with open(name, 'rb') as csvfile:
+			reader = csv.reader(csvfile, delimiter=delimiter, quotechar=quotechar)
+			file = list(reader)
+			final = [int(i[0]) for i in file ]
+		return final
+
+	def subset_data(self,list_of_list,list_of_labels,labels_to_find,healthy_list = None, n = None):
 		ordered_subset = []
-		for label in label_list:
+		for label in labels_to_find:
+			print label
 			indices = [i for i, x in enumerate(list_of_labels) if x == label ]
 			items = [ list_of_list[index] for index in indices ]
 			ordered_subset= ordered_subset + items
@@ -39,5 +47,6 @@ class auxilliary:
 			additional_items = [ healthy_list[index] for index in new_indices ]
 			ordered_subset = ordered_subset + additional_items
 		return ordered_subset
+
 
 

@@ -23,6 +23,7 @@ class data_clustering:
 		
 		print "Finished computing similarity"
 		print "*************************************"
+		
 		temp_timewarp = sim.edtw
 		temp_eucliddist = sim.euclidian_dist
 		temp_overlap = sim.overlap
@@ -34,6 +35,13 @@ class data_clustering:
 		eskin_disim = sim.eskin_disim
 		lin_disim = sim.lin_disim
 		edr_sim = sim.edr_sim
+		
+		
+
+
+
+
+
 		
 		counter = 1
 		for no_clust in cluster_range:
