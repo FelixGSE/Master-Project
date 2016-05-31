@@ -1,6 +1,6 @@
 class data_clustering:
 
-	def prediction(self, choice_set, entropy_set,cluster_range):
+	def prediction(self, choice_set, entropy_set,cluster_range,save = True,path = None):
 
 		column_names=["no_clust","algorithm", "predictions"]
 
@@ -36,13 +36,38 @@ class data_clustering:
 		lin_disim = sim.lin_disim
 		edr_sim = sim.edr_sim
 		
-		
+		if save == True:
+			
+			if path == None:
+				path = os.getcwd() + "/"
+			else:
+				path = path
+			file_type = ".txt"
 
+			edtw_name = path + 'timewarp' + file_type
+			eucliddist_name =  path + 'eucliddist' + file_type
+			overlap_name = path + 'overlap' + file_type 
+			cosine_cat_name = path + 'cosine_cat' + file_type 
+			cosine_ent_name = path + 'cosine_ent' + file_type 
+			rbf_name = path + 'rbf' + file_type 
+			eskin_sim_name = path + 'eskin_sim' + file_type
+			lin_sim_name = path + 'lin_sim' + file_type
+			eskin_disim_name = path + 'eskin_disim_name' + file_type
+			lin_disim_name = path + 'lin_disim' +  file_type
+			edr_sim_name = path + 'edr_sim' + file_type 
+ 
+			json.dump(temp_timewarp.tolist(), file(edtw_name, 'w'))
+			json.dump(temp_eucliddist.tolist(), file(eucliddist_name, 'w'))
+			json.dump(temp_overlap.tolist(), file(overlap_name, 'w'))
+			json.dump(cosine_cat.tolist(), file(cosine_cat_name, 'w'))
+			json.dump(cosine_ent.tolist(), file(cosine_ent_name, 'w'))
+			json.dump(rbf.tolist(), file(rbf_name, 'w'))
+			json.dump(eskin_sim.tolist(), file(eskin_sim_name, 'w'))
+			json.dump(lin_sim.tolist(), file(lin_sim_name, 'w'))
+			json.dump(eskin_disim.tolist(), file(eskin_disim_name, 'w'))
+			json.dump(lin_disim.tolist(), file(lin_disim_name, 'w'))
+			json.dump(edr_sim.tolist() , file(edr_sim_name, 'w'))
 
-
-
-
-		
 		counter = 1
 		for no_clust in cluster_range:
 

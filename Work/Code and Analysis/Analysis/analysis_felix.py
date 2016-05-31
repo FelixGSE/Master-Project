@@ -109,8 +109,10 @@ test = aux.subset_data(choices,labels,[1])
 
 
 
-
+execfile("Class_Data_Clustering.py")
 miner = data_clustering()
+miner.prediction(choice_set = [[1,2,3],[4,5,6],[1,2,3],[4,5,6]] , entropy_set = [[1,2,3],[4,5,6],[1,2,3],[4,5,6]], cluster_range = range(2,3),save=True,)
+
 
 miner.prediction(choice_set = choices , entropy_set = entropy, cluster_range = range(2,6))
 miner.dframe.to_csv("real.csv")
