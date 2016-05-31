@@ -25,4 +25,15 @@ class auxilliary:
 				final.append(sub)
 		return final
 
+	def subset_data(self,list_of_list,list_of_labels,labels_to_find):
+		ordered_subset = []
+		for label in labels_to_find:
+			indices = [i for i, x in enumerate(list_of_labels) if x == label ]
+			items = [ list_of_list[index] for index in indices ]
+			ordered_subset = ordered_subset + items 
+		return ordered_subset
+
+
+
+
 
