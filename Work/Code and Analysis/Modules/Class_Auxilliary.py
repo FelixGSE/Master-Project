@@ -25,15 +25,19 @@ class auxilliary:
 				final.append(sub)
 		return final
 
-	def subset_data(self,list_of_list,list_of_labels,labels_to_find):
+	def subset_data(self,list_of_list,list_of_labels,label_list,healthy_list = None, n = None):
 		ordered_subset = []
-		for label in labels_to_find:
+		for label in label_list:
 			indices = [i for i, x in enumerate(list_of_labels) if x == label ]
 			items = [ list_of_list[index] for index in indices ]
-			ordered_subset = ordered_subset + items 
+			ordered_subset= ordered_subset + items
+		if healthy_list is not None:
+			if n == None:
+				n = len(ordered_subset)
+			nrows = len(healthy_list)
+			new_indices = random.sample(range(nrows), n )
+			additional_items = [ healthy_list[index] for index in new_indices ]
+			ordered_subset = ordered_subset + additional_items
 		return ordered_subset
-
-
-
 
 
