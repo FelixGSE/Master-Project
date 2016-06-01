@@ -11,6 +11,8 @@ class data:
 		self.label = []
 		self.decision_function = None
 		self.concat = []
+		self.choices_avg = []
+		self.entropies_avg = []
 
 	"""
 	Create data set
@@ -68,6 +70,22 @@ class data:
 					self.entropies.append(temp_agent.entropy)
 					self.label.append(temp_label)
 					self.concat.append( temp_agent.choices + temp_agent.entropy )
+
+		
+		avg_size = N/10
+
+		for ind in self.choices:
+			avg_ind=[]
+			for i in range(10):
+				avg_ind.append(np.mean(ind[i*avg_size:(i+1)*avg_size]))
+			self.choices_avg.append(avg_ind)
+
+		for ind in self.entropies:
+			avg_ind=[]
+			for i in range(10):
+				avg_ind.append(np.mean(ind[i*avg_size:(i+1)*avg_size]))
+			self.entropies_avg.append(avg_ind)
+
 
 	 # Save current state of the value function, choices and experienced rewards
 	def save_history( self , path = None ):
