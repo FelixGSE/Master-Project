@@ -116,13 +116,22 @@ entropy = aux.entropy(choices)
 
 choices_avg = aux.avg(choices)
 entropy_avg = aux.avg(entropy)
+choice_bad = aux.avg_bad(choices)
 
 print choices_avg[0]
 print entropy_avg[0]
+print choice_bad[1]
+print choices[0]
 
 labels = aux.read_csv2('labels_tab_t.csv',delimiter='\t')
 
 choices2= aux.read_csv('choice_100.csv',delimiter=';')[:162]
+
+choices2 = pd.read_csv('choice_100.csv')[:162]
+choices2 = choices2.values.tolist()
+
+print choices2
+print choices2.shape
 
 unique_labels = list(set(labels))
 c00 = aux.subset_data(choices,labels,[1,2,3,4,5,6,7,8,9,10,20])
@@ -167,3 +176,21 @@ l10 = aux.labels(labels,[10],n=None)
 l20 = aux.labels(labels,[20],n=None)
 l21 = aux.labels(labels,[1,2,3,4,5,6,7,8,9,10,20],n=None)
 
+
+
+
+# Run computation 01
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/01/')
+miner = data_clustering()
+miner.prediction(choice_set = c01 , entropy_set = e01 , labelset=l01, cluster_range = range(2,10),save = False )
+miner.dframe.to_csv("c01_e01_dom.csv")
+
+
+
+print len(c01[0])
+
+c01 = [[1,2,3,4],[2,2,2,2],[3,3,3,3],[4,4,4,4]]
+e01 = aux.entropy(c01)
+l01 = [1,2,1,1]
+
+print l01

@@ -119,8 +119,7 @@ class data_clustering:
 					]
 
 			# Compute accuracies
-			acc_vector = self.full_accuracies(temp_labels,p_set)
-			self.accuracy_set.append(acc_vector)
+			acc_vector = self.full_accuracies(labelset,p_set)
 
 			results=acc_vector
 			
@@ -132,14 +131,14 @@ class data_clustering:
 
 			p_len = len(p_set)
 			for i in range(3,10):
-				dframe.ix[:,i+7][step*p_len:(step+1)*p_len]=dframe.ix[:,i][step*p_len:(step+1)*p_len].rank(method="min")
+				dframe.ix[:,i+7][no_clust*p_len:(no_clust+1)*p_len]=dframe.ix[:,i][no_clust*p_len:(no_clust+1)*p_len].rank(method="min")
 
 			"""
 			for i,clster in enumerate(p_set):
 				row = [no_clust,p_names[i],p_set[i]]
 				dframe.loc[len(dframe)] = row
 			"""
-			
+
 			####
 			print "Finished with iteration  " + str(counter)
 			print "*************************************"
