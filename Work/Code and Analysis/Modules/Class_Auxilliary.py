@@ -50,7 +50,6 @@ class auxilliary:
 	def avg(self,list_of_list):
 		lol_avg=[]
 		avg_size = len(list_of_list[0])/10
-		print avg_size
 		for ind in list_of_list:
 			avg_ind = []
 			for i in range(10):
@@ -69,5 +68,17 @@ class auxilliary:
 		else:
 			labelset = labelset + [66]*n
 		return labelset
+
+	def avg_bad(self,list_of_list):
+		lol_avg=[]
+		avg_size = len(list_of_list[0])/10
+		for ind in list_of_list:
+			avg_ind = []
+			for i in range(10):
+				avg_ind.append((ind[i*avg_size:(i+1)*avg_size].count(1) + \
+					ind[i*avg_size:(i+1)*avg_size].count(2)) / float(10))
+			lol_avg.append(avg_ind)
+		return lol_avg
+
 
 
