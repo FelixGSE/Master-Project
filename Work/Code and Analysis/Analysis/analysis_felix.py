@@ -133,10 +133,25 @@ e10 = aux.entropy(c10)
 e20 = aux.entropy(c20)
 e21 = aux.entropy(c21)
 
+l00 = aux.labels(labels,[1,2,3,4,5,6,7,8,9,10,20])
+l01 = aux.labels(labels,[1],n=None)
+l02 = aux.labels(labels,[2],n=None)
+l03 = aux.labels(labels,[3],n=None)
+l04 = aux.labels(labels,[4],n=None)
+l05 = aux.labels(labels,[5],n=None)
+l06 = aux.labels(labels,[6],n=None)
+l07 = aux.labels(labels,[7],n=None)
+l08 = aux.labels(labels,[8],n=None)
+l09 = aux.labels(labels,[9],n=None)
+l10 = aux.labels(labels,[10],n=None)
+l20 = aux.labels(labels,[20],n=None)
+l21 = aux.labels(labels,[1,2,3,4,5,6,7,8,9,10,20],n=None)
+
+
 # Run computation 00
 os.chdir('/Users/felix/Documents/GSE/Term 3/Master_Project/Master-Project/Work/Code and Analysis/Results/Real data/00/')
 miner = data_clustering()
-miner.prediction(choice_set = c00 , entropy_set = e00 , cluster_range = range(2,10),save = True )
+miner.prediction(choice_set = c00 , entropy_set = e00 , cluster_range = range(2,10),labelset=l00,save = True )
 miner.dframe.to_csv("c00_e00.csv")
 
 # Run computation 01

@@ -47,7 +47,7 @@ p01 = rep([0,2,4],6)
 # Standard Deviation of the bandits
 p02 = rep([1,1,1],6)
 # Set of number of trials 
-p03 = rep(100,6)
+p03 = rep(10,6)
 # Set of size of clusters	
 p04 = rep(5,6)
 
@@ -122,6 +122,48 @@ print entropy_avg[0]
 
 labels = aux.read_csv2('labels_tab_t.csv',delimiter='\t')
 
-choices2= aux.read_csv('choice_100.csv',delimiter=';')
+choices2= aux.read_csv('choice_100.csv',delimiter=';')[:162]
 
+unique_labels = list(set(labels))
+c00 = aux.subset_data(choices,labels,[1,2,3,4,5,6,7,8,9,10,20])
+c01 = aux.subset_data(choices,labels,[1],choices2)
+c02 = aux.subset_data(choices,labels,[2],choices2)
+c03 = aux.subset_data(choices,labels,[3],choices2)
+c04 = aux.subset_data(choices,labels,[4],choices2)
+c05 = aux.subset_data(choices,labels,[5],choices2)
+c06 = aux.subset_data(choices,labels,[6],choices2)
+c07 = aux.subset_data(choices,labels,[7],choices2)
+c08 = aux.subset_data(choices,labels,[8],choices2)
+c09 = aux.subset_data(choices,labels,[9],choices2)
+c10 = aux.subset_data(choices,labels,[10],choices2)
+c20 = aux.subset_data(choices,labels,[20],choices2)
+c21 = aux.subset_data(choices,labels,[1,2,3,4,5,6,7,8,9,10,20],choices2)
+
+e00 = aux.entropy(c00)
+e01 = aux.entropy(c01)
+e02 = aux.entropy(c02)
+e03 = aux.entropy(c03)
+e04 = aux.entropy(c04)
+e05 = aux.entropy(c05)
+e06 = aux.entropy(c06)
+e07 = aux.entropy(c07)
+e08 = aux.entropy(c08)
+e09 = aux.entropy(c09)
+e10 = aux.entropy(c10)
+e20 = aux.entropy(c20)
+e21 = aux.entropy(c21)
+
+l00 = aux.labels(labels,[1,2,3,4,5,6,7,8,9,10,20])
+l01 = aux.labels(labels,[1],n=None)
+l02 = aux.labels(labels,[2],n=None)
+l03 = aux.labels(labels,[3],n=None)
+l04 = aux.labels(labels,[4],n=None)
+l05 = aux.labels(labels,[5],n=None)
+l06 = aux.labels(labels,[6],n=None)
+l07 = aux.labels(labels,[7],n=None)
+l08 = aux.labels(labels,[8],n=None)
+l09 = aux.labels(labels,[9],n=None)
+l10 = aux.labels(labels,[10],n=None)
+l20 = aux.labels(labels,[20],n=None)
+l21 = aux.labels(labels,[1,2,3,4,5,6,7,8,9,10,20],n=None)
 

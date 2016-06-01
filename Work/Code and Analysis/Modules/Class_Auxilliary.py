@@ -58,6 +58,16 @@ class auxilliary:
 			lol_avg.append(avg_ind)
 		return lol_avg
 
-
+	def labels(self,list_of_labels,labels_to_find, n = None):
+		labelset = []
+		for label in labels_to_find:
+			indices = [i for i, x in enumerate(list_of_labels) if x == label ]
+			items = [ list_of_labels[index] for index in indices ]
+			labelset = labelset + items
+		if n == None:
+			labelset = labelset + [66]*len(labelset)
+		else:
+			labelset = labelset + [66]*n
+		return labelset
 
 

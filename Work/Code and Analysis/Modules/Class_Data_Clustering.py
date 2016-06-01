@@ -1,8 +1,10 @@
 class data_clustering:
 
-	def prediction(self, choice_set, entropy_set,cluster_range,save = True,path = None):
+	def prediction(self, choice_set, entropy_set,cluster_range,labelset,save = True,path = None):
 
-		column_names=["no_clust","algorithm", "predictions"]
+		column_names=["no_clust","algorithm", "predictions",\
+		"mut inf scr","adj mis","norm mis","adj rand s","complet","homogen","vmeas",\
+		"mut inf scr1","adj mis1","norm mis1","adj rand s1","complet1","homogen1","vmeas1"]
 
 		dframe = pd.DataFrame(columns=column_names)
 		
@@ -116,9 +118,27 @@ class data_clustering:
 					"spect_edr","aff_edr"
 					]
 
+			# Compute accuracies
+			acc_vector = self.full_accuracies(temp_labels,p_set)
+			self.accuracy_set.append(acc_vector)
+
+			results=acc_vector
+			
+			for i,clster in enumerate(results):
+				row = [no_clust,p_names[i],p_set[i],clster[0],clster[1],\
+					clster[2],clster[3],clster[4],clster[5],clster[6],\
+					0,0,0,0,0,0,0]
+				dframe.loc[len(dframe)] = row
+
+			p_len = len(p_set)
+			for i in range(3,10):
+				dframe.ix[:,i+7][step*p_len:(step+1)*p_len]=dframe.ix[:,i][step*p_len:(step+1)*p_len].rank(method="min")
+
+			"""
 			for i,clster in enumerate(p_set):
 				row = [no_clust,p_names[i],p_set[i]]
 				dframe.loc[len(dframe)] = row
+			"""
 			
 			####
 			print "Finished with iteration  " + str(counter)
@@ -128,5 +148,10 @@ class data_clustering:
 
 		self.dframe = dframe
 
-
+	def full_accuracies(self,true,prediction_set):
+		all_accurracies = []
+		for prediction in prediction_set:
+			temp_accuracies = accuracies(true,prediction)
+			all_accurracies.append( temp_accuracies.full )
+		return all_accurracies
 
