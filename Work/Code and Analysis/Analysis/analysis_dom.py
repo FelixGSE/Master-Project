@@ -194,3 +194,9 @@ e01 = aux.entropy(c01)
 l01 = [1,2,1,1]
 
 print l01
+
+rng = range(2,10)
+print rng
+
+for i,no_clust in enumerate(rng):
+	print no_clust

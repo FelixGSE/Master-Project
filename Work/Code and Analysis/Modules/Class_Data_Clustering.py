@@ -71,7 +71,7 @@ class data_clustering:
 			json.dump(edr_sim.tolist() , file(edr_sim_name, 'w'))
 
 		counter = 1
-		for no_clust in cluster_range:
+		for itr,no_clust in enumerate(cluster_range):
 
 			print "\n"
 			print "*************************************"
@@ -131,7 +131,7 @@ class data_clustering:
 
 			p_len = len(p_set)
 			for i in range(3,10):
-				dframe.ix[:,i+7][no_clust*p_len:(no_clust+1)*p_len]=dframe.ix[:,i][no_clust*p_len:(no_clust+1)*p_len].rank(method="min")
+				dframe.ix[:,i+7][itr*p_len:(itr+1)*p_len]=dframe.ix[:,i][itr*p_len:(itr+1)*p_len].rank(method="min")
 
 			"""
 			for i,clster in enumerate(p_set):
