@@ -47,5 +47,17 @@ class auxilliary:
 			ordered_subset = ordered_subset + additional_items
 		return ordered_subset
 
+	def avg(self,list_of_list):
+		lol_avg=[]
+		avg_size = len(list_of_list[0])/10
+		print avg_size
+		for ind in list_of_list:
+			avg_ind = []
+			for i in range(10):
+				avg_ind.append(np.mean(ind[i*avg_size:(i+1)*avg_size]))
+			lol_avg.append(avg_ind)
+		return lol_avg
+
+
 
 

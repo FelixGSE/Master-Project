@@ -16,6 +16,7 @@ import sklearn.cluster as clu
 import dtw 
 import sklearn.decomposition as decomp
 import pandas as pd
+import csv
 
 ### Source own modules
 path_modules = '/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Modules'
@@ -30,6 +31,8 @@ execfile("Class_Accuracies.py")
 execfile("Class_Unsupervised.py")
 execfile("Class_Miner.py")
 execfile("Function_Auxilliary.py")
+execfile("Class_Auxilliary.py")
+execfile("Class_Data_Clustering.py")
 
 ####################################################################################################
 
@@ -104,71 +107,21 @@ pd.DataFrame(dat.choices).to_csv("../Artificial Data Sets/d02/data_choices.csv")
 
 
 
+#########
+path_modules = '/home/fizlaz/bgse/Master_Thesis/prisondata_dom/'
+os.chdir(path_modules)  
+aux = auxilliary()
+choices = aux.read_csv('choices_num.csv')
+entropy = aux.entropy(choices)
 
-#### ranking per metric
-df = prediction_accuracies.dframe.round(5)
-print df["norm mis"]
-print len(df["norm mis"])
-print df.ix[:,0]
+choices_avg = aux.avg(choices)
+entropy_avg = aux.avg(entropy)
 
-for i in range(len(df["norm mis"])/22):
-	print ([df["norm mis"][i*22:(i+1)*22],\
-	df["norm mis"][i*22:(i+1)*22].rank(method="min")])
+print choices_avg[0]
+print entropy_avg[0]
 
+labels = aux.read_csv2('labels_tab_t.csv',delimiter='\t')
 
-print df.columns.values[10:]
-
-for i in range(10,17):
-	print df.columns.values[i]
-
-print df["norm mis"][:22]
-
-print df["norm mis"][:22].rank(method="min")
-
-ser = df["norm mis"][:22].rank(method="min")
-print ser.round(0)
-
-
-for i in df["norm mis"][:22].rank(method="min"):
-	print int(i)
-
-print np.array(df["norm mis"][:22])
-
-print np.vstack((np.array(df["norm mis"][:22]),np.array(df["norm mis"][:22].rank(method="min"))))
-
-print zip(df["norm mis"][:22],df["norm mis"][:22].rank(method="min"))
-
-zipped = zip(df["norm mis"][:22],df["norm mis"][:22].rank(method="min"))
-print type(zipped)
-
-
-for i in zipped:
-	print list(i)
-
-
-for i in df.columns.values[10:]:
-	print type(i)
-
-
-for step in range(6):
-	p_len = 22
-	for i in df.columns.values[10:]:
-		#print zip(df[i][step*p_len:(step+1)*p_len],df[i][step*p_len:(step+1)*p_len].rank(method="min"))
-		df[i][step*p_len:(step+1)*p_len].replace(zip(df[i][step*p_len:(step+1)*p_len],df[i][step*p_len:(step+1)*p_len].rank(method="min")))
-		print df[i][step*p_len:(step+1)*p_len]
-		#df[i][step*p_len:(step+1)*p_len]=df[i][step*p_len:(step+1)*p_len]**2
-
-
-print np.NAN
-
-dom = [np.NAN,np.NAN]
-print dom
-
-print df.ix[1,16]
-
-print df.dtypes
-
-l=[[1,2,1],[3]]
-print sum(l, [])
+choices2= aux.read_csv('choice_100.csv',delimiter=';')
 
 
