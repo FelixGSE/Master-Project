@@ -1,6 +1,6 @@
 class data_clustering:
 
-	def prediction(self, choice_set, entropy_set,cluster_range,labelset,save = True,path = None):
+	def prediction(self, choice_set, entropy_set,bad_set,cluster_range,labelset,save = True,path = None):
 
 		column_names=["no_clust","algorithm", "predictions",\
 		"mut inf scr","adj mis","norm mis","adj rand s","complet","homogen","vmeas",\
@@ -37,7 +37,17 @@ class data_clustering:
 		eskin_disim = sim.eskin_disim
 		lin_disim = sim.lin_disim
 		edr_sim = sim.edr_sim
-		
+
+		# Reinitialize sim
+		sim = similarity()
+		sim.timeseries(bad_set)
+		bad_timewarp = sim.edtw
+		bad_euclidian = sim.euclidian_dist
+		bad_euclidian_sim = sim.euclidian
+		bad_cosine = sim.cosine_ent
+		bad_rbf = sim.rbf
+		bad_edr = sim.edr_sim
+
 		if save == True:
 			
 			if path == None:
@@ -57,6 +67,13 @@ class data_clustering:
 			eskin_disim_name = path + 'eskin_disim_name' + file_type
 			lin_disim_name = path + 'lin_disim' +  file_type
 			edr_sim_name = path + 'edr_sim' + file_type 
+			bad_timewarp_name = path + 'bad_timewarp' + file_type
+			bad_euclidian_name =  path + 'bad_euclidian' + file_type
+			bad_euclidian_sim_name = path + 'bad_euclidian_sim' + file_type
+			bad_cosine_name  =path + 'bad_cosine' + file_type
+			bad_rbf_name = path + 'bad_rbf' + file_type
+			bad_edr_name = path + 'bad_edr' + file_type
+
 
  			json.dump(temp_timewarp.tolist(), file(edtw_name, 'w'))
 			json.dump(temp_eucliddist.tolist(), file(eucliddist_name, 'w'))
@@ -69,6 +86,13 @@ class data_clustering:
 			json.dump(eskin_disim.tolist(), file(eskin_disim_name, 'w'))
 			json.dump(lin_disim.tolist(), file(lin_disim_name, 'w'))
 			json.dump(edr_sim.tolist() , file(edr_sim_name, 'w'))
+
+			json.dump(bad_timewarp.tolist(), file(bad_timewarp_name, 'w'))
+			json.dump(bad_euclidian.tolist(), file(bad_euclidian_name, 'w'))
+			json.dump(bad_euclidian_sim.tolist(), file(bad_euclidian_sim_name, 'w'))
+			json.dump(bad_cosine.tolist(), file(bad_cosine_name, 'w'))
+			json.dump(bad_rbf.tolist(), file(bad_rbf_name, 'w'))
+			json.dump(bad_edr.tolist() , file(bad_edr_name, 'w'))
 
 		counter = 1
 		for itr,no_clust in enumerate(cluster_range):
@@ -105,9 +129,34 @@ class data_clustering:
 			p21 = temp_unsupervised.spectral(edr_sim,no_clust)
 			p22 = temp_unsupervised.affinity_propagation(edr_sim)
 			
+			bad_timewarp = sim.edtw
+			bad_euclidian = sim.euclidian_dist
+			bad_euclidian_sim = sim.euclidian
+			bad_cosine = sim.cosine_ent
+			bad_rbf = sim.rbf
+			bad_edr = sim.edr_sim
+
+			p23 = temp_unsupervised.spectral(bad_timewarp,no_clust)
+			p24 = temp_unsupervised.affinity_propagation(bad_timewarp)
+			p25 = temp_unsupervised.pca_ward(bad_euclidian,2,no_clust)
+			p26 = temp_unsupervised.spectral(bad_euclidian_sim,no_clust)
+			p27 = temp_unsupervised.affinity_propagation(bad_euclidian_sim)
+			p28 = temp_unsupervised.spectral(bad_cosine,no_clust)
+			p29 = temp_unsupervised.affinity_propagation(bad_cosine)
+			p30 = temp_unsupervised.spectral(bad_rbf,no_clust)
+			p31 = temp_unsupervised.affinity_propagation(bad_rbf)
+			p32 = temp_unsupervised.spectral(bad_edr,no_clust)
+			p33 = temp_unsupervised.affinity_propagation(bad_edr)
+			p34 = temp_unsupervised.kmeans( bad_set, no_clust )
+			p35 = temp_unsupervised.complete_hierachical(bad_set,no_clust)
+			p36 = temp_unsupervised.average_hierachical(bad_set,no_clust)
+			p37 = temp_unsupervised.ward_clustering(bad_set,no_clust)
+
+		
 
 			p_set = [p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,\
-					p15,p16,p17,p18,p19,p20,p21,p22]
+					p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,\
+					p30,p31,p32,p33,p34,p35,p36,p37]
 
 			p_names = [
 					"spectral warp","aff prop","pca","spectral overlap",\
@@ -115,7 +164,11 @@ class data_clustering:
 					"spect_cos_ent","aff_cos_ent","spect_rbf","spect_esk_sim",\
 					"aff_esk_sim","spect_lin_sim","aff_lin_sim","comp_hr_esk_dis",\
 					"avg_hr_esk_dis","comp_hr_lin_din","avg_hr_lin_dis",\
-					"spect_edr","aff_edr"
+					"spect_edr","aff_edr", "spectral bad warp","affinity bad warp","PCA bad euclid",\
+					"spectral bad eucsim","affinity bad eucsim","spectral bad cosine",\
+					"affinity bad cosine", "spectral bad rbf",\
+					"affinity bad rbf", "spectral bad edr", "affinity bad edr", \
+					"kmeans badset","complete badset","average badset","ward badset"
 					]
 
 			# Compute accuracies

@@ -102,7 +102,7 @@ choices = aux.read_csv('choices_num.csv')
 entropy = aux.entropy(choices)
 labels = aux.read_csv2('labels_tab_t.csv',delimiter='\t')
 
-choices2= aux.read_csv('choice_100.csv',delimiter=';')
+choices2= aux.read_csv('choice_100.csv',delimiter=';')[0:161]
 
 unique_labels = list(set(labels))
 c00 = aux.subset_data(choices,labels,[1,2,3,4,5,6,7,8,9,10,20])
@@ -133,38 +133,27 @@ e10 = aux.entropy(c10)
 e20 = aux.entropy(c20)
 e21 = aux.entropy(c21)
 
-l00 = aux.labels(labels,[1,2,3,4,5,6,7,8,9,10,20])
-l01 = aux.labels(labels,[1],n=None)
-l02 = aux.labels(labels,[2],n=None)
-l03 = aux.labels(labels,[3],n=None)
-l04 = aux.labels(labels,[4],n=None)
-l05 = aux.labels(labels,[5],n=None)
-l06 = aux.labels(labels,[6],n=None)
-l07 = aux.labels(labels,[7],n=None)
-l08 = aux.labels(labels,[8],n=None)
-l09 = aux.labels(labels,[9],n=None)
-l10 = aux.labels(labels,[10],n=None)
-l20 = aux.labels(labels,[20],n=None)
-l21 = aux.labels(labels,[1,2,3,4,5,6,7,8,9,10,20],n=None)
-
-
+b02 = aux.avg_bad(c02)
 # Run computation 00
 os.chdir('/Users/felix/Documents/GSE/Term 3/Master_Project/Master-Project/Work/Code and Analysis/Results/Real data/00/')
 miner = data_clustering()
-miner.prediction(choice_set = c00 , entropy_set = e00 , cluster_range = range(2,10),labelset=l00,save = True )
+miner.prediction(choice_set = c00 , entropy_set = e00 , cluster_range = range(2,10),save = True )
 miner.dframe.to_csv("c00_e00.csv")
 
 # Run computation 01
+os.chdir('/Users/felix/Documents/GSE/Term 3/Master_Project/Master-Project/Work/Code and Analysis/Results/Real data/01/')
 miner = data_clustering()
 miner.prediction(choice_set = c01 , entropy_set = e01 , cluster_range = range(2,10),save = True )
 miner.dframe.to_csv("c01_e01.csv")
 
 # Run computation 02
+os.chdir('/Users/felix/Documents/GSE/Term 3/Master_Project/Master-Project/Work/Code and Analysis/Results/Real data/02/')
 miner = data_clustering()
-miner.prediction(choice_set = c02 , entropy_set = e02 , cluster_range = range(2,10),save = True )
-miner.dframe.to_csv("c02_e02.csv")
+miner.prediction(choice_set = c02 , entropy_set = e02 , bad_set = b02, cluster_range = range(2,10), save = False,path = None )
+miner.dframe.to_csv("c02_e02_TEST.csv")
 
 # Run computation 03
+os.chdir('/Users/felix/Documents/GSE/Term 3/Master_Project/Master-Project/Work/Code and Analysis/Results/Real data/03/')
 miner = data_clustering()
 miner.prediction(choice_set = c03 , entropy_set = e03, cluster_range = range(2,10),save = True )
 miner.dframe.to_csv("c03_e03.csv")
@@ -196,7 +185,7 @@ miner.dframe.to_csv("c07_e07.csv")
 # Run computation 08
 os.chdir('/Users/felix/Documents/GSE/Term 3/Master_Project/Master-Project/Work/Code and Analysis/Results/Real data/08/')
 miner = data_clustering()
-miner.prediction(choice_set = c07 , entropy_set = e07, cluster_range = range(2),save = True )
+miner.prediction(choice_set = c07 , entropy_set = e07, cluster_range = range(2,2),save = True )
 miner.dframe.to_csv("c07_e07.csv")
 
 # Run computation 09
@@ -214,7 +203,7 @@ miner.dframe.to_csv("c09_e09.csv")
 # Run computation 20
 os.chdir('/Users/felix/Documents/GSE/Term 3/Master_Project/Master-Project/Work/Code and Analysis/Results/Real data/20/')
 miner = data_clustering()
-miner.prediction(choice_set = c20 , entropy_set = e20, cluster_range = range(2),save = True )
+miner.prediction(choice_set = c20 , entropy_set = e20, cluster_range = range(2,2),save = True )
 miner.dframe.to_csv("c20_e20.csv")
 
 # Run computation 21
@@ -222,3 +211,20 @@ os.chdir('/Users/felix/Documents/GSE/Term 3/Master_Project/Master-Project/Work/C
 miner = data_clustering()
 miner.prediction(choice_set = c21 , entropy_set = e21, cluster_range = range(2,10),save = True )
 miner.dframe.to_csv("c21_e21.csv")
+
+
+
+
+def jload(self,name):
+	with open(name) as file:
+		file_content = file.read()
+		full_file = json.loads(file_content)
+	return full_file
+
+
+file_handle = open("1929_Hoover_felix.txt") 
+file_content = file_handle.read()
+speech = json.loads(file_content)
+
+
+
