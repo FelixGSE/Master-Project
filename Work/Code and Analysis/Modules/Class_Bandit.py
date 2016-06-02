@@ -35,3 +35,9 @@ class bandit:
         number = np.random.normal(mu, sigma, N)
         result = number.tolist()
         return result
+
+    # Wrapper for sampling a random number from an array with corresponding probabilities
+    def weighted_sample(self, items, probability ):
+        number = np.random.choice(items,1,p=probability)
+        rchoice = number.tolist()[0]
+        return rchoice   

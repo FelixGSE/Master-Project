@@ -43,13 +43,13 @@ execfile("Class_Data_Clustering.py")
 #---------------------------------------------------------------------------------------------------
 
 # Mean of the bandits 
-p01 = rep([0,2,4],6)
+p01 = rep([0,0.5,1],1)
 # Standard Deviation of the bandits
-p02 = rep([1,1,1],6)
+p02 = rep([1,1,1],1)
 # Set of number of trials 
-p03 = rep(10,6)
+p03 = rep(100,1)
 # Set of size of clusters	
-p04 = rep(5,6)
+p04 = rep(20,1)
 
 
 
@@ -59,14 +59,16 @@ p04 = rep(5,6)
 
 
 # Set of decision functions
-p06 = rep("softmax",6)
+p06 = rep("softmax",1)
 
 # Set of alphas
-p07 = rep([0.5,0.5,0.5], 6 )
+p07 = rep([0.5,0.5,0.5], 1 )
 
 # Set of Taus
 tau = [ [0.1,0.2,0.3], [0.1,0.3,0.5], [0.1,0.5,0.9],
 		[0.3,0.7,1.1], [0.5,0.9,1.3], [0.1,1,5] ] 	
+
+tau = [ [0.1,0.7,1.8] ]
 
 
 #---------------------------------------------------------------------------------------------------
@@ -87,7 +89,8 @@ prediction_accuracies.prediction( mu_set = p01,
 
 print prediction_accuracies.dframe.round(5)
 
-print prediction_accuracies.dframe.round(5).to_csv("../Results/data_5guys_p22_1.csv")
+print prediction_accuracies.dframe.round(5).to_csv("../Results/Simulation/data_20guys_p22_SINGLErun.csv")
+
 ####################################################################################################
 
 ####################################################################################################
@@ -95,9 +98,9 @@ print prediction_accuracies.dframe.round(5).to_csv("../Results/data_5guys_p22_1.
 #Create data
 dat = data()
 
-dat.create_data(mu=[0,2,4],sigma=[1,1,1],N=100,cluster_size=10,alpha=[0.5,0.5,0.5],tau=[0.1,1,5])
+dat.create_data(mu=[0,0.5,1],sigma=[1,1,1],N=100,cluster_size=200,alpha=[0.5,0.5,0.5],tau=[0.1,0.7,1.8])
 
-dat.save_history()
+dat.save_history('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Data/Artificial Data Sets/d03/')
 
 print len(dat.choices)
 
