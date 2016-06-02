@@ -12,7 +12,7 @@ my.heatmap <- function( matrix, dendr = NA, dendc = NA, colors = "Reds", nco = 1
   cols       <- colorRampPalette(brewer.pal(bparam,colors))(nco)
   heatmap    <- heatmap(new.matrix, Rowv=dendr, Colv=dendc, col = cols, scale="column", margins=margin,distfun=NULL)
   }
-}
+
 
 #--------------------------------------------------------------------------------
 # 
