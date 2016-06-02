@@ -20,13 +20,13 @@ class data:
 	"""
 
 	def create_data(self, individual = False, mu = [0,0], sigma = [1,1], N=10, seed=None,cluster_size=5,decision_function = "softmax", \
-					alpha = [0.1,0.9],tau=[0.1,0.9],epsilon = [0.01,0.1], ex_data = None, no_bin = 10 ):
+					alpha = [0.1,0.9],tau=[0.1,0.9],epsilon = [0.01,0.1], iowa=False, ex_data = None, no_bin = 10 ):
 
 		# Create data from class bandit
 		if ex_data is not None:
 			reward_data = ex_data
 		else: 
-			class_bandit = bandit(mu = mu, sigma = sigma ,N=N,seed=seed)
+			class_bandit = bandit(mu = mu, sigma = sigma ,N=N,seed=seed,iowa=iowa)
 			reward_data = class_bandit.bandits
 		
 		number_of_agents =  len(alpha) 
@@ -41,7 +41,7 @@ class data:
 				temp_cluster_range = cluster_range[i]
 				for j in range( temp_cluster_range ):
 					if individual == True:
-						class_bandit = bandit(mu = mu, sigma = sigma ,N=N,seed=None)
+						class_bandit = bandit(mu = mu, sigma = sigma ,N=N,seed=None,iowa=iowa)
 						reward_data = class_bandit.bandits
 					temp_agent = agent( alpha = temp_alpha, tau = temp_tau, reward_input = reward_data,decision_function = decision_function )
 					temp_agent.learn()
@@ -61,7 +61,7 @@ class data:
 				temp_cluster_range = cluster_range[i]
 				for j in range( temp_cluster_range ):
 					if individual == True:
-						class_bandit = bandit(mu = mu, sigma = sigma ,N=N,seed=None)
+						class_bandit = bandit(mu = mu, sigma = sigma ,N=N,seed=None,iowa=iowa)
 						reward_data = class_bandit.bandits
 					temp_agent = agent( alpha = temp_alpha, epsilon = temp_epsilon, reward_input = reward_data,decision_function = decision_function )
 					temp_agent.learn()

@@ -49,7 +49,7 @@ p02 = rep([1,1,1],1)
 # Set of number of trials 
 p03 = rep(100,1)
 # Set of size of clusters	
-p04 = rep(20,1)
+p04 = rep(5,1)
 
 
 
@@ -84,12 +84,13 @@ prediction_accuracies.prediction( mu_set = p01,
 								  decision_function_set = p06,
 								  alpha_set = p07,
 								  tau_set = tau, 
-								  epsilon_set = None
+								  epsilon_set = None,
+								  iowa = True
 								 )
 
 print prediction_accuracies.dframe.round(5)
 
-print prediction_accuracies.dframe.round(5).to_csv("../Results/Simulation/data_20guys_p22_SINGLErun.csv")
+print prediction_accuracies.dframe.round(5).to_csv("../Results/Simulation/data_20guys_p22_IOWA.csv")
 
 ####################################################################################################
 

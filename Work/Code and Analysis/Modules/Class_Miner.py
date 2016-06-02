@@ -5,7 +5,7 @@ class miner:
 		self.accuracy_set = []
 
 
-	def prediction(self, mu_set, sigma_set,N_set,cluster_set,seed_set,decision_function_set,alpha_set,tau_set,epsilon_set = None):
+	def prediction(self, mu_set, sigma_set,N_set,cluster_set,seed_set,decision_function_set,alpha_set,tau_set,epsilon_set = None, iowa = False):
 
 		runtime = range(len(mu_set))
 
@@ -49,8 +49,8 @@ class miner:
 			temp_data = data()
 			temp_data.create_data( individual = True, mu = mu, sigma = sigma, N = N,
 							cluster_size = cluster, seed = seed, decision_function = decision_function, 
-							alpha = alpha, tau = tau, epsilon =  epsilon)
-			
+							alpha = alpha, tau = tau, epsilon =  epsilon, iowa=iowa)
+			print temp_data.rewards		
 			# Extract features
 			temp_entropy = temp_data.entropies
 			temp_choices = temp_data.choices 
