@@ -125,13 +125,12 @@ print choices[0]
 
 labels = aux.read_csv2('labels_tab_t.csv',delimiter='\t')
 
-choices2= aux.read_csv('choice_100.csv',delimiter=';')[:162]
+#choices2= aux.read_csv('choice_100.csv',delimiter=';')[:162]
 
 choices2 = pd.read_csv('choice_100.csv')[:162]
 choices2 = choices2.values.tolist()
 
 print choices2
-print choices2.shape
 
 unique_labels = list(set(labels))
 c00 = aux.subset_data(choices,labels,[1,2,3,4,5,6,7,8,9,10,20])
@@ -203,6 +202,21 @@ pd.DataFrame(b09).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/W
 pd.DataFrame(b10).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/10/b10.csv')
 pd.DataFrame(b20).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/20/b20.csv')
 pd.DataFrame(b21).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/21/b21.csv')
+
+
+pd.DataFrame(e00).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/00/e00.csv')
+pd.DataFrame(e01).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/01/e01.csv')
+pd.DataFrame(e02).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/02/e02.csv')
+pd.DataFrame(e03).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/03/e03.csv')
+pd.DataFrame(e04).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/04/e04.csv')
+pd.DataFrame(e05).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/05/e05.csv')
+pd.DataFrame(e06).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06/e06.csv')
+pd.DataFrame(e07).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/07/e07.csv')
+pd.DataFrame(e08).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/08/e08.csv')
+pd.DataFrame(e09).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/09/e09.csv')
+pd.DataFrame(e10).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/10/e10.csv')
+pd.DataFrame(e20).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/20/e20.csv')
+pd.DataFrame(e21).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/21/e21.csv')
 
 
 # Run computation 00
