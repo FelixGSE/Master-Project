@@ -160,7 +160,8 @@ b09 = aux.avg_bad(c09)
 b10 = aux.avg_bad(c10)
 b20 = aux.avg_bad(c20)
 b21 = aux.avg_bad(c21)
-
+b66 = aux.avg_bad(choices2)
+pd.DataFrame(b66).to_csv('b66.csv')
 # Run computation 00
 os.chdir('/Users/felix/Documents/GSE/Term 3/Master_Project/Master-Project/Work/Code and Analysis/Results/Real data/00/')
 miner = data_clustering()
