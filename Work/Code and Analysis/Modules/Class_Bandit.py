@@ -5,12 +5,16 @@ class bandit:
     """
     
     def __init__( self, mu = [0,0] , sigma = [1,1], N = 10 , seed = None, iowa=False,\
-                p1=0.5,p2=0.9,p3=0.5,p4=0.9,s1=[100,-150],s2=[100,-1150],s3=[50,0],s4=[50,-200]):
+                prob=[[0.5,0.5],[0.9,0.1],[0.5,0.5],[0.9,0.1]],\
+                decl=[[100,-150],[100,-1150],[50,0],[50,-200]]):
         self.mu = mu
+        self.prob = prob
+        self.deck = deck
         if iowa == False:
             self.sigma = sigma
         else:
             self.sigma = ["no","sigma"]
+            self.bandits = create_bandits()
         self.N = N
         self.seed = seed
         if self.seed == None:
@@ -23,7 +27,7 @@ class bandit:
     Function to create bandits
     """
     
-    def create_bandits(self, mu ,sigma, N, iowa, p1,p2,p3,p4,s1,s2,s3,s4 ):
+    def create_bandits(self, mu ,sigma, N, iowa, prob,deck ):
         if iowa == False:
             n_bandit = len( mu )
             bandits = []
@@ -35,7 +39,9 @@ class bandit:
             n_bandit = 4
             bandits = []
             for i in range(n_bandit):
-                number = weighted_sample()
+                number = self.weighted_sample(deck[i],N,p=prob[i])
+                bandits.append(number)
+            return bandits
 
     
     """ 
@@ -48,7 +54,7 @@ class bandit:
         return result
 
     # Wrapper for sampling a random number from an array with corresponding probabilities
-    def weighted_sample(self, items, probability ):
-        number = np.random.choice(items,1,p=probability)
+    def weighted_sample(self, items, times, probability ):
+        number = np.random.choice(items,times,p=probability)
         rchoice = number.tolist()[0]
         return rchoice   
