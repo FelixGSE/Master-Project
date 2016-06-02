@@ -129,12 +129,7 @@ class data_clustering:
 			p21 = temp_unsupervised.spectral(edr_sim,no_clust)
 			p22 = temp_unsupervised.affinity_propagation(edr_sim)
 			
-			bad_timewarp = sim.edtw
-			bad_euclidian = sim.euclidian_dist
-			bad_euclidian_sim = sim.euclidian
-			bad_cosine = sim.cosine_ent
-			bad_rbf = sim.rbf
-			bad_edr = sim.edr_sim
+
 
 			p23 = temp_unsupervised.spectral(bad_timewarp,no_clust)
 			p24 = temp_unsupervised.affinity_propagation(bad_timewarp)
@@ -148,8 +143,8 @@ class data_clustering:
 			p32 = temp_unsupervised.spectral(bad_edr,no_clust)
 			p33 = temp_unsupervised.affinity_propagation(bad_edr)
 			p34 = temp_unsupervised.kmeans( bad_set, no_clust )
-			p35 = temp_unsupervised.complete_hierachical(bad_set,no_clust)
-			p36 = temp_unsupervised.average_hierachical(bad_set,no_clust)
+			p35 = temp_unsupervised.complete_hierachical(bad_euclidian,no_clust)
+			p36 = temp_unsupervised.average_hierachical(bad_euclidian,no_clust)
 			p37 = temp_unsupervised.ward_clustering(bad_set,no_clust)
 
 		
