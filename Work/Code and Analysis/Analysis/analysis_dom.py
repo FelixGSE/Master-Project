@@ -99,9 +99,9 @@ print prediction_accuracies.dframe.round(5).to_csv("../Results/Simulation/data_2
 #Create data
 dat = data()
 
-dat.create_data(mu=[0,0.5,1],sigma=[1,1,1],N=100,cluster_size=20,alpha=[0.5,0.5,0.5],tau=[0.1,0.7,1.8])
+dat.create_data(mu=[0,0.5,1],sigma=[1,1,1],N=100,cluster_size=20,alpha=[0.5,0.5,0.5],tau=[0.1,0.7,1.8],iowa=True)
 
-dat.save_history('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Data/Artificial Data Sets/d05/')
+dat.save_history('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Data/Artificial Data Sets/d06/')
 
 print len(dat.choices)
 
