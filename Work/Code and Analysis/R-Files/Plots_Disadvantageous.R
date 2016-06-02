@@ -36,10 +36,12 @@ setwd('Report/TeX/Pictures/')
 ################################################################################
 
 ################################################################################
+
 N <- 12
 M <- ncol(b00)
 
 variables   <- ls()[1:12]
+
 my.env      <- new.env()
 col.average <- matrix( NA , nrow = N , ncol = (M-1) )
 for( i in 1:N ){
@@ -49,16 +51,41 @@ for( i in 1:N ){
 }
 
 
-x <- 1:(M-1)
-plot(x,col.average[1,],type="l",ylim=c(0,1))
-for( i in 2:nrow(col.average)){
-  
-  lines(x,col.average[i,])
+x    <- 1:(M-1)
+cols <- brewer.pal(12, 'Set3')
+plot(x,col.average[2,],type="l",ylim=c(0,1), col = cols[1], 
+     xlab = "Steps", ylab= "Avergage disadvantage choice" )
+for( i in 3:nrow(col.average)){
+  lines(x,col.average[i,],col = cols[i])
 }
 
+axis(1, at = seq(1, 10, by = 2), las=1)
+
+legend("bottomleft",
+       c("Theft","Robbery","Sex", "Drug","OWI","Assault/Murder","Escape","Forgery","Other","Healthy"),
+       lty = 1,
+       col = cols[1:10],
+       cex = 1,
+       bty = "n",
+       ncol = 2,
+       y.intersp = 2,
+)
 
 
-plot(x,col.average[N,],type="l",ylim=c(0,1))
+# Average 
+plot(x, col.average[1,],type="l",ylim=c(0,1), col = 'red',
+     xlab = "Steps", ylab= "Avergage disadvantage choice")
+lines(x,col.average[M,],col ='blue')
+axis(1, at = seq(1, 10, by = 2), las=1)
+legend("bottomleft",
+       c("Criminals","Healthy"),
+       lty = 1,
+       col = c('red','blue'),
+       cex = 1,
+       bty = "n",
+       ncol = 2,
+       y.intersp = 2,
+)
 
 ################################################################################
 
