@@ -126,6 +126,8 @@ print choices[0]
 labels = aux.read_csv2('labels_tab_t.csv',delimiter='\t')
 
 #choices2= aux.read_csv('choice_100.csv',delimiter=';')[:162]
+index_normal = pd.read_csv("index_100.csv")
+print index_normal[index_normal[,1]=="Wood"]
 
 choices2 = pd.read_csv('choice_100.csv')[:162]
 choices2 = choices2.values.tolist()
@@ -160,6 +162,7 @@ e09 = aux.entropy(c09)
 e10 = aux.entropy(c10)
 e20 = aux.entropy(c20)
 e21 = aux.entropy(c21)
+e66 = aux.entropy(choices2)
 
 l00 = aux.labels(labels,[1,2,3,4,5,6,7,8,9,10,20],healthy=False)
 l01 = aux.labels(labels,[1],n=None)
@@ -217,6 +220,7 @@ pd.DataFrame(e09).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/W
 pd.DataFrame(e10).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/10/e10.csv')
 pd.DataFrame(e20).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/20/e20.csv')
 pd.DataFrame(e21).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/21/e21.csv')
+pd.DataFrame(e66).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/66/e66.csv')
 
 
 # Run computation 00
