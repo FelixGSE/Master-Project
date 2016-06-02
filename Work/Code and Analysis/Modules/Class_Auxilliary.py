@@ -57,28 +57,33 @@ class auxilliary:
 			lol_avg.append(avg_ind)
 		return lol_avg
 
-	def labels(self,list_of_labels,labels_to_find, n = None):
+	def labels(self,list_of_labels,labels_to_find, n = None, healthy=True):
 		labelset = []
 		for label in labels_to_find:
 			indices = [i for i, x in enumerate(list_of_labels) if x == label ]
 			items = [ list_of_labels[index] for index in indices ]
 			labelset = labelset + items
+		if healthy == False:
+			return labelset
 		if n == None:
 			labelset = labelset + [66]*len(labelset)
 		else:
 			labelset = labelset + [66]*n
 		return labelset
 
-	def avg_bad(self,list_of_list):
+	def avg_bad(self,list_of_list,no_bin=10,ch1=1,ch2=2):
 		lol_avg=[]
-		avg_size = len(list_of_list[0])/10
+		avg_size = len(list_of_list[0])/no_bin
 		for ind in list_of_list:
 			avg_ind = []
-			for i in range(10):
-				avg_ind.append((ind[i*avg_size:(i+1)*avg_size].count(1) + \
-					ind[i*avg_size:(i+1)*avg_size].count(2)) / float(10))
+			for i in range(no_bin):
+				avg_ind.append((ind[i*avg_size:(i+1)*avg_size].count(ch1) + \
+					ind[i*avg_size:(i+1)*avg_size].count(ch2)) / float(10))
 			lol_avg.append(avg_ind)
 		return lol_avg
 
-
-
+	def jload(self,name):
+			with open(name) as file:
+				file_content = file.read()
+				full_file = json.loads(file_content)
+			return full_file

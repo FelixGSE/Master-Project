@@ -13,13 +13,14 @@ class data:
 		self.concat = []
 		self.choices_avg = []
 		self.entropies_avg = []
+		self.avg_bad = []
 
 	"""
 	Create data set
 	"""
 
 	def create_data(self, individual = False, mu = [0,0], sigma = [1,1], N=10, seed=None,cluster_size=5,decision_function = "softmax", \
-					alpha = [0.1,0.9],tau=[0.1,0.9],epsilon = [0.01,0.1], ex_data = None ):
+					alpha = [0.1,0.9],tau=[0.1,0.9],epsilon = [0.01,0.1], ex_data = None, no_bin = 10 ):
 
 		# Create data from class bandit
 		if ex_data is not None:
@@ -72,19 +73,26 @@ class data:
 					self.concat.append( temp_agent.choices + temp_agent.entropy )
 
 		
-		avg_size = N/10
+		avg_size = N/no_bin
 
 		for ind in self.choices:
 			avg_ind=[]
-			for i in range(10):
+			for i in range(no_bin):
 				avg_ind.append(np.mean(ind[i*avg_size:(i+1)*avg_size]))
 			self.choices_avg.append(avg_ind)
 
 		for ind in self.entropies:
 			avg_ind=[]
-			for i in range(10):
+			for i in range(no_bin):
 				avg_ind.append(np.mean(ind[i*avg_size:(i+1)*avg_size]))
 			self.entropies_avg.append(avg_ind)
+
+		for ind in self.choices:
+			avg_ind=[]
+			for i in range(no_bin):
+				good = ind[i*avg_size:(i+1)*avg_size].count(mu.index(max(mu))) / float(10)
+				avg_ind.append(1-good)
+			self.avg_bad.append(avg_ind)
 
 
 	 # Save current state of the value function, choices and experienced rewards

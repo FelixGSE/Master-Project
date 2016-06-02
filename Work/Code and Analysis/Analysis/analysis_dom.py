@@ -162,7 +162,7 @@ e10 = aux.entropy(c10)
 e20 = aux.entropy(c20)
 e21 = aux.entropy(c21)
 
-l00 = aux.labels(labels,[1,2,3,4,5,6,7,8,9,10,20])
+l00 = aux.labels(labels,[1,2,3,4,5,6,7,8,9,10,20],healthy=False)
 l01 = aux.labels(labels,[1],n=None)
 l02 = aux.labels(labels,[2],n=None)
 l03 = aux.labels(labels,[3],n=None)
@@ -178,25 +178,15 @@ l21 = aux.labels(labels,[1,2,3,4,5,6,7,8,9,10,20],n=None)
 
 
 
+# Run computation 00
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/00/')
+miner = data_clustering()
+miner.prediction(choice_set = c00 , entropy_set = e00 , cluster_range = range(2,10),labelset=l00,save = False )
+miner.dframe.to_csv("c00_e00_dom.csv")
 
 # Run computation 01
 os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/01/')
 miner = data_clustering()
-miner.prediction(choice_set = c01 , entropy_set = e01 , labelset=l01, cluster_range = range(2,10),save = False )
+miner.prediction(choice_set = c01 , entropy_set = e01 , cluster_range = range(2,10),labelset=l01,save = False )
 miner.dframe.to_csv("c01_e01_dom.csv")
 
-
-
-print len(c01[0])
-
-c01 = [[1,2,3,4],[2,2,2,2],[3,3,3,3],[4,4,4,4]]
-e01 = aux.entropy(c01)
-l01 = [1,2,1,1]
-
-print l01
-
-rng = range(2,10)
-print rng
-
-for i,no_clust in enumerate(rng):
-	print no_clust
