@@ -1,6 +1,6 @@
 class data_clustering:
 
-	def prediction(self, choice_set, entropy_set,bad_set,cluster_range,labelset,save = True,path = None):
+	def prediction(self, choice_set, entropy_set,bad_set,ent_block,cluster_range,labelset,save = True,path = None):
 
 		column_names=["no_clust","algorithm", "predictions",\
 		"mut inf scr","adj mis","norm mis","adj rand s","complet","homogen","vmeas",\
@@ -47,6 +47,16 @@ class data_clustering:
 		bad_cosine = sim.cosine_ent
 		bad_rbf = sim.rbf
 		bad_edr = sim.edr_sim
+
+		# Reinitialize sim
+		sim = similarity()
+		sim.timeseries(ent_block)
+		eb_timewarp = sim.edtw
+		eb_euclidian = sim.euclidian_dist
+		eb_euclidian_sim = sim.euclidian
+		eb_cosine = sim.cosine_ent
+		eb_rbf = sim.rbf
+		eb_edr = sim.edr_sim
 
 		if save == True:
 			
@@ -147,11 +157,28 @@ class data_clustering:
 			p36 = temp_unsupervised.average_hierachical(bad_euclidian,no_clust)
 			p37 = temp_unsupervised.ward_clustering(bad_set,no_clust)
 
+
+			p38 = temp_unsupervised.spectral(eb_timewarp,no_clust)
+			p39 = temp_unsupervised.affinity_propagation(eb_timewarp)
+			p40 = temp_unsupervised.pca_ward(eb_euclidian,2,no_clust)
+			p41 = temp_unsupervised.spectral(eb_euclidian_sim,no_clust)
+			p42 = temp_unsupervised.affinity_propagation(eb_euclidian_sim)
+			p43 = temp_unsupervised.spectral(eb_cosine,no_clust)
+			p44 = temp_unsupervised.affinity_propagation(eb_cosine)
+			p45 = temp_unsupervised.spectral(eb_rbf,no_clust)
+			p46 = temp_unsupervised.affinity_propagation(eb_rbf)
+			p47 = temp_unsupervised.spectral(eb_edr,no_clust)
+			p48 = temp_unsupervised.affinity_propagation(eb_edr)
+			p49 = temp_unsupervised.kmeans( ent_block, no_clust )
+			p50 = temp_unsupervised.complete_hierachical(eb_euclidian,no_clust)
+			p51 = temp_unsupervised.average_hierachical(eb_euclidian,no_clust)
+			p52 = temp_unsupervised.ward_clustering(ent_block,no_clust)
 		
 
 			p_set = [p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,\
 					p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,\
-					p30,p31,p32,p33,p34,p35,p36,p37]
+					p30,p31,p32,p33,p34,p35,p36,p37,p38,p39,p40,p41,p42,p43,p44,\
+					p45,p46,p47,p48,p49,p50,p51,p52]
 
 			p_names = [
 					"spectral warp","aff prop","pca","spectral overlap",\
@@ -163,7 +190,12 @@ class data_clustering:
 					"spectral bad eucsim","affinity bad eucsim","spectral bad cosine",\
 					"affinity bad cosine", "spectral bad rbf",\
 					"affinity bad rbf", "spectral bad edr", "affinity bad edr", \
-					"kmeans badset","complete badset","average badset","ward badset"
+					"kmeans badset","complete badset","average badset","ward badset",\
+					"spectral eblock warp","affinity eblock warp","PCA eblock euclid",\
+					"spectral eblock eucsim","affinity eblock eucsim","spectral eblock cosine",\
+					"affinity eblock cosine", "spectral eblock rbf",\
+					"affinity eblock rbf", "spectral eblock edr", "affinity eblock edr", \
+					"kmeans eblockset","complete eblockset","average eblockset","ward eblockset"
 					]
 
 			# Compute accuracies

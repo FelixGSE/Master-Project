@@ -134,10 +134,6 @@ choices_avg = aux.avg(choices)
 entropy_avg = aux.avg(entropy)
 choice_bad = aux.avg_bad(choices)
 
-print choices_avg[0]
-print entropy_avg[0]
-print choice_bad[1]
-print choices[0]
 
 labels = aux.read_csv2('labels_tab_t.csv',delimiter='\t')
 
@@ -148,7 +144,7 @@ print index_normal[index_normal[,1]=="Wood"]
 choices2 = pd.read_csv('choice_100.csv')[:162]
 choices2 = choices2.values.tolist()
 
-print choices2
+#print choices2
 
 unique_labels = list(set(labels))
 c00 = aux.subset_data(choices,labels,[1,2,3,4,5,6,7,8,9,10,20])
@@ -302,3 +298,14 @@ miner = data_clustering()
 miner.prediction(choice_set = c01 , entropy_set = e01 , cluster_range = range(2,10),labelset=l01,save = False )
 miner.dframe.to_csv("c01_e01_dom.csv")
 
+# Run computation 02
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/02/')
+miner = data_clustering()
+miner.prediction(choice_set = c02 , entropy_set = e02 , bad_set = b02,labelset = l02,ent_block=eb02, cluster_range = range(2,4), save = False)
+miner.dframe.to_csv("c02_e02_dom_eb.csv")
+
+# Run computation 06
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06/')
+miner = data_clustering()
+miner.prediction(choice_set = c06 , entropy_set = e06 , bad_set = b06,labelset = l06,ent_block=eb06, cluster_range = range(2,10), save = False)
+miner.dframe.to_csv("c06_e06_dom_eb.csv")
