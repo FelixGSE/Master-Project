@@ -13,6 +13,7 @@
 \usepackage{tabularx}
 \usepackage{geometry}
 \usepackage{setspace}
+
 \usepackage[right]{eurosym}
 \usepackage[printonlyused]{acronym}
 \usepackage{subfig}
@@ -36,7 +37,7 @@
 \usepackage{pdflscape}
 \usepackage[labelfont=bf]{caption}
 \captionsetup{labelfont=bf}
-
+\usepackage{tikz}
 % ----------------------------------------------------------------------------------------------------------
 % Packages
 % ----------------------------------------------------------------------------------------------------------
@@ -67,6 +68,10 @@
 	colorlinks=true,linkcolor=black,citecolor=black,filecolor=magenta,urlcolor=black}
 \pdfinfo{/CreationDate (D:20110620133321)}
 \DeclareMathOperator*{\argmin}{arg\,min}
+
+
+\tikzset{fontscale/.style = {font=\relsize{#1}}
+}
 \begin{document}
 
 \titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
@@ -388,7 +393,7 @@ The following table shows a snippet of our simmulation results.
 \end{sidewaystable}
 
 
-
+\include{tikz-example.tex}
 
 
 %---------------------------------------------------------------------------------------------------------
@@ -631,6 +636,14 @@ d_i &:= \sum_{j=1}^{n} w_{ij} = \sum_{i=1}^{n} w_{ij}
 \end{flalign}
 
 
+\begin{figure}[!htb]
+	\centering
+	\begin{tabular}{cc}
+		\input{Pictures/tikz-example.tex} &  \input{Pictures/tikz-example.tex} \\
+		(a) ACF  & (b) PACF  \\[4pt]
+	\end{tabular}
+	\caption{ACF and PACF of MCSI}
+\end{figure}
 
 \end{appendix}
 

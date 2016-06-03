@@ -39,3 +39,25 @@ json.unlist <- function(data){
   colnames(mat) <- NULL
   return(mat)
 }
+
+#--------------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------------
+
+my.mode <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
+
+#--------------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------------
+
+insertaCols<-function(dad){   
+  nueva<-as.data.frame(matrix(rep(0,nrow(daf)*ncol(daf)*2 ),ncol=ncol(daf)*2))  
+  for(k in 1:ncol(daf)){   
+    nueva[,(k*2)-1]=daf[,k]   
+    colnames(nueva)[(k*2)-1]=colnames(daf)[k]  
+  }  
+  return(nueva)   
+}
