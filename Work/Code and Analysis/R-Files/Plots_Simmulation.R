@@ -31,15 +31,16 @@ setwd('Report/TeX/Pictures/')
 cols <- c(rep('red',20),rep('green',20),rep('blue',20))
 x    <- 1:ncol(entropy.sim)
 tikz("tikz-example.tex", width = 3.5, height =3.5)
-plot(x,entropy.sim[1,],type="l",ylim=c(0,1.6), col = cols[1], xlab = "Steps", ylab= "Sequentiel Entropy" )
+plot(x,entropy.sim[1,],type="l",ylim=c(0,1.6), col = cols[1], xlab = "Steps", ylab= "Sequentiel Entropy",cex.lab=0.5,cex.axis=0.5,
+     mgp=c(1,0.1,0),tck=-0.01)
 for( i in 2:nrow(entropy.sim)){
   lines(x,entropy.sim[i,],col = cols[i])
 }
 legend("bottomright",
-       c("alpha = 0.5 | tau = 0.1","alpha = 0.5 | tau = 0.7"," alpha = 0.5 | tau = 1.8"),
+       c("$\\alpha = 0.5$ | tau = 0.1","alpha = 0.5 | tau = 0.7"," alpha = 0.5 | tau = 1.8"),
        lty = 1,
        col = c('red','green','blue'),
-       cex = 1,
+       cex = 0.3,
        bty = "n",
        ncol = 1,
        y.intersp = 2,

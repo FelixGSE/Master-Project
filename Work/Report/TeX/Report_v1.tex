@@ -13,7 +13,6 @@
 \usepackage{tabularx}
 \usepackage{geometry}
 \usepackage{setspace}
-
 \usepackage[right]{eurosym}
 \usepackage[printonlyused]{acronym}
 \usepackage{subfig}
@@ -23,7 +22,7 @@
 \usepackage{paralist}
 \usepackage{array}
 \usepackage{titlesec}
-\usepackage{dsfont}
+%\usepackage{dsfont}
 \usepackage{parskip}
 \usepackage[right]{eurosym}
 \usepackage[subfigure,titles]{tocloft}
@@ -70,8 +69,7 @@
 \DeclareMathOperator*{\argmin}{arg\,min}
 
 
-\tikzset{fontscale/.style = {font=\relsize{#1}}
-}
+
 \begin{document}
 
 \titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
@@ -489,9 +487,9 @@ d_E (\boldsymbol{x},\boldsymbol{y}) :=  \sqrt{\left( \sum_{i=1}^{N} \left( x_i -
 
 Reffering to equation \ref{eq:ets} we define a simple measure for the categorical aspect of the data. Note that [SOURCE] defines the simplest measure for categorical data. Howevere, since the probability that to people behave exaclty the same in our context is arguably zero we modify this concept slightly. So we relax that and define the overlap similarity just as the count of overlapping instances. This serves as a benchmark similarity for categorical data.
 
-\begin{flalign}
-d_O (\boldsymbol{x},\boldsymbol{y}) :=  \sum_{i=1}^{N} \mathds{1}_{x_i = y_i}
-\end{flalign}
+%\begin{flalign}
+%d_O (\boldsymbol{x},\boldsymbol{y}) :=  \sum_{i=1}^{N} \mathds{1}_{x_i = y_i}
+%\end{flalign}
 
 In [Boriah 2008] we find a rich class of further categorical measures. To keep it conceise we considered two of them. The first one is \textit{Eskin} similarity measures.
 
