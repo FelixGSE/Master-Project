@@ -13,6 +13,20 @@ class auxilliary:
 			entropies.append(entropy)
 		return entropies
 
+	def entropy_block(self,list_of_lists,no_bin=10):
+		entropies = []
+		avg_size = len(list_of_lists[0])/no_bin
+		for lis in list_of_lists:
+			entropy = []
+			for i in range(no_bin):
+				subset = lis[i*avg_size:(i+1)*avg_size]
+				freq = [subset.count(p) for p in subset]
+				freqset = dict(zip(subset,freq)).values()
+				probs = [x / float(sum(freqset)) for x in freqset]
+				entropy.append(-sum([x * np.log2(x) for x in probs]))
+			entropies.append(entropy)
+		return entropies
+
 	def read_csv(self,name,delimiter = '\t',quotechar='|'):
 		with open(name, 'rb') as csvfile:
 			reader = csv.reader(csvfile, delimiter=delimiter, quotechar=quotechar)

@@ -117,6 +117,7 @@ os.chdir(path_modules)
 aux = auxilliary()
 choices = aux.read_csv('choices_num.csv')
 entropy = aux.entropy(choices)
+entropy_block = aux.entropy_block(choices)
 
 choices_avg = aux.avg(choices)
 entropy_avg = aux.avg(entropy)
@@ -168,6 +169,21 @@ e20 = aux.entropy(c20)
 e21 = aux.entropy(c21)
 e66 = aux.entropy(choices2)
 
+eb00 = aux.entropy_block(c00)
+eb01 = aux.entropy_block(c01)
+eb02 = aux.entropy_block(c02)
+eb03 = aux.entropy_block(c03)
+eb04 = aux.entropy_block(c04)
+eb05 = aux.entropy_block(c05)
+eb06 = aux.entropy_block(c06)
+eb07 = aux.entropy_block(c07)
+eb08 = aux.entropy_block(c08)
+eb09 = aux.entropy_block(c09)
+eb10 = aux.entropy_block(c10)
+eb20 = aux.entropy_block(c20)
+eb21 = aux.entropy_block(c21)
+eb66 = aux.entropy_block(choices2)
+
 l00 = aux.labels(labels,[1,2,3,4,5,6,7,8,9,10,20],healthy=False)
 l01 = aux.labels(labels,[1],n=None)
 l02 = aux.labels(labels,[2],n=None)
@@ -196,6 +212,8 @@ b10 = aux.avg_bad(c10)
 b20 = aux.avg_bad(c20)
 b21 = aux.avg_bad(c21)
 
+
+"""
 pd.DataFrame(b00).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/00/b00.csv')
 pd.DataFrame(b01).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/01/b01.csv')
 pd.DataFrame(b02).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/02/b02.csv')
@@ -226,6 +244,22 @@ pd.DataFrame(e20).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/W
 pd.DataFrame(e21).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/21/e21.csv')
 pd.DataFrame(e66).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/66/e66.csv')
 
+
+pd.DataFrame(eb00).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/00/eb00.csv')
+pd.DataFrame(eb01).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/01/eb01.csv')
+pd.DataFrame(eb02).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/02/eb02.csv')
+pd.DataFrame(eb03).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/03/eb03.csv')
+pd.DataFrame(eb04).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/04/eb04.csv')
+pd.DataFrame(eb05).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/05/eb05.csv')
+pd.DataFrame(eb06).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06/eb06.csv')
+pd.DataFrame(eb07).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/07/eb07.csv')
+pd.DataFrame(eb08).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/08/eb08.csv')
+pd.DataFrame(eb09).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/09/eb09.csv')
+pd.DataFrame(eb10).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/10/eb10.csv')
+pd.DataFrame(eb20).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/20/eb20.csv')
+pd.DataFrame(eb21).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/21/eb21.csv')
+pd.DataFrame(eb66).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/66/eb66.csv')
+"""
 
 # Run computation 00
 os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/00/')
