@@ -109,6 +109,17 @@ print pd.DataFrame(dat.choices)
 
 pd.DataFrame(dat.choices).to_csv("../Artificial Data Sets/d02/data_choices.csv")
 
+#####
+cho = pd.read_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Data/Artificial Data Sets/d06/choices_softmax_00_29_58.txt', sep=",", header = None)
+cho = choices2.values.tolist()
+
+#####
+choc = aux.jload('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Data/Artificial Data Sets/d06/choices_softmax_00_29_58.txt')
+ebsim = aux.entropy_block(choc)
+
+pd.DataFrame(ebsim).to_csv('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Data/Artificial Data Sets/d06/ebsim.csv')
+
+#####
 
 
 #########
