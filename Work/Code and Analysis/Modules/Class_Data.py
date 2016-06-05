@@ -19,52 +19,87 @@ class data:
 	Create data set
 	"""
 
+	# Create data set for input parameter
 	def create_data(self, individual = False, mu = [0,0], sigma = [1,1], N=10, seed=None,cluster_size=5,decision_function = "softmax", \
 					alpha = [0.1,0.9],tau=[0.1,0.9],epsilon = [0.01,0.1], iowa=False, ex_data = None, no_bin = 10 ):
 
-		# Create data from class bandit
+		# Check if input reward set is given
 		if ex_data is not None:
 			reward_data = ex_data
+
+		# If not create one from class bandits
 		else: 
 			class_bandit = bandit(mu = mu, sigma = sigma ,N=N,seed=seed,iowa=iowa)
 			reward_data = class_bandit.bandits
 		
+		# Determine the number of agents
 		number_of_agents =  len(alpha) 
+
+		# Define the number of agents that should be computed for each parameter setting
 		cluster_range = self.cluster(cluster_size,number_of_agents)
+
 		# Train agent on bandots and create clusters for each alpha-tau combination
 		if decision_function == "softmax":
+
+			# Save decision function
 			self.decision_function = decision_function
+			
 			for i in range( number_of_agents ):
+
+				# Subset parameters for generating agents
 				temp_alpha = alpha[i]
 				temp_tau = tau[i]
 				temp_label = i
 				temp_cluster_range = cluster_range[i]
+
+				# Compute for one parameter setting a cluster of agents and choices etc.
 				for j in range( temp_cluster_range ):
+
+					# Overwrite the reward set if for each agent an individual reward set should be computed
 					if individual == True:
 						class_bandit = bandit(mu = mu, sigma = sigma ,N=N,seed=None,iowa=iowa)
 						reward_data = class_bandit.bandits
+					
+					# Intialize agent and start learning
 					temp_agent = agent( alpha = temp_alpha, tau = temp_tau, reward_input = reward_data,decision_function = decision_function )
 					temp_agent.learn()
+					
+					# Save the resulting output
 					self.value_functions.append( temp_agent.value_function )
 					self.choices.append( temp_agent.choices )
 					self.entropies.append(temp_agent.entropy)
 					self.rewards.append( temp_agent.rewards )
 					self.label.append(temp_label)
 					self.concat.append( temp_agent.choices + temp_agent.entropy )
+
 		# Train agent on bandots and create clusters for each alpha-tau combination
 		if decision_function == "epsgreedy":
+			
+			# Save decision function
 			self.decision_function = decision_function
+			
+
 			for i in range( number_of_agents  ):
+				
+				# Subset parameters for generating agents
 				temp_alpha = alpha[i]
 				temp_epsilon = epsilon[i]
 				temp_label = i
 				temp_cluster_range = cluster_range[i]
+				
+				# Compute for one parameter setting a cluster of agents and choices etc.
 				for j in range( temp_cluster_range ):
+
+					# Overwrite the reward set if for each agent an individual reward set should be computed
 					if individual == True:
 						class_bandit = bandit(mu = mu, sigma = sigma ,N=N,seed=None,iowa=iowa)
 						reward_data = class_bandit.bandits
+					
+					# Intialize agent and start learning
 					temp_agent = agent( alpha = temp_alpha, epsilon = temp_epsilon, reward_input = reward_data,decision_function = decision_function )
 					temp_agent.learn()
+
+					# Save the resulting output
 					self.value_functions.append( temp_agent.value_function )
 					self.choices.append( temp_agent.choices )
 					self.rewards.append( temp_agent.rewards )
