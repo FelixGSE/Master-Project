@@ -26,14 +26,27 @@ class bandit:
     Function to create bandits
     """
     
-    def create_bandits(self, mu ,sigma, N, iowa, probability,deck ):
+    # Create Bandits with input arguments 
+    def create_bandits(self, mu ,sigma, N, iowa, probability, deck ):
+        
+        # Compute bandits from normal distribution
         if iowa == False:
+
+            # Define the number of bandits to create
             n_bandit = len( mu )
+            # Initialize storage list
             bandits = []
+
             for i in range( n_bandit ):
+
+                # Compute a vector of N normally distributed numbers with mu and sigma
                 number = self.rnorm( mu[i] , sigma[i] , N )
+                # Append vector to bandits
                 bandits.append(number)
+
             return bandits
+
+        # Simmulate bandits like IOWA test
         else:
             n_bandit = 4
             bandits = []
@@ -47,6 +60,7 @@ class bandit:
     Auxilliary functions
     """
     
+    # Wrapper to compute a vector with N normally distributed numbers
     def rnorm(self, mu, sigma, N ):
         number = np.random.normal(mu, sigma, N)
         result = number.tolist()
@@ -58,7 +72,10 @@ class bandit:
         rchoice = number.tolist()[0]
         return rchoice   
 
+    # Sample items from a list with probility distribution
     def weighted_iowa(self, items, times, probability ):
         number = np.random.choice(items,times,p=probability)
         rchoice = number.tolist()
         return rchoice  
+
+

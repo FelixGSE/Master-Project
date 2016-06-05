@@ -42,28 +42,45 @@ class agent:
     
     
     """ 
-    LEARNING FUNCTIONS
+    Decision Functions
     """
     
     # Softmax-Decision - Returns the next choice based on boltzman distrubution
     def softmax(self, value_array, tau):
-        # Check for correct input specification 
+        
+        # Check for correct input specification - too low tau causes numerical problems
         if tau < 0.05:
             raise ValueError('Value of tau causing numerical domain error of softmax function')
+        
+        # Compute a vector of possible next action (bandits)
         bandits = range(self.n_bandits)
+        
+        # Compute Softmax formula - See Sutton[2012] page 31
         numerator = np.exp( np.array( value_array ) / float( tau ) ) 
         denominator = sum( numerator )
         boltzman_distribution = numerator / denominator
+
+        # Sample from possible actions with probability from softmax function
         choice = self.weighted_sample(bandits,probability = boltzman_distribution)
+        
+        # Return next action
         return choice
     
     # Epsilon-Greedy-Decision - Returns greedy vs. random choice
     def epsilon_greedy(self, value_array, probability ):
+
+        # Compute number of possible actions
         choice_count = len( value_array )
+        
+        # Sample True or False to decide whether to explore or exploite
         explore = self.random_bool( p = probability )
+
+        # If explore is True sample unifomrly a next random action
         if explore == 1:
             choice = np.random.choice(choice_count)
             return choice
+
+        # If explore is false choose the next action as the max of the current value functions
         else:
             optimal = value_array.index(max(value_array))
             return optimal
@@ -78,25 +95,32 @@ class agent:
         # Control run time and initilize bandits 
         if run_time == None:
             run_time = self.time
+
+        # If no reward set is given to the agent - Create one with input arguments
         if self.reward_set == None:
             raw = bandit( mu = self.mu, sigma = self.sigma, N = run_time, seed = self.seed )
             bandits = raw.bandits
         else:
             bandits = self.reward_set
+
+        # Adjust runtime to lenth of bandit
         if  self.reward_set is not None:
             run_time = len( self.reward_set[0] )
-            #print "WARNING: Note that run time was fixed to length of bandits"
+
 
         # Run learning procedure for option softmax
         if self.decision_function == "softmax":
             
             for step in range( run_time ):
+
+                # In the first step choose a random action
                 if step == 0:
                     first_descision = range(self.n_bandits)
                     current_decision = self.weighted_sample(first_descision,probability=None)
                     current_reward = bandits[current_decision][step]
+                
+                # Otherwise run learning with softmax function to choose the next action and reward
                 else:
-                # Choose next action and reward
                     states = self.current_values_lookup( self.value_function )
                     current_decision = self.softmax( value_array = states , tau = self.tau)
                     current_reward = bandits[current_decision][step]
@@ -114,12 +138,16 @@ class agent:
         if self.decision_function == "epsgreedy":
          
             for step in range( run_time ):
+
+                # In the first step choose a random action
                 if step == 0:
                     first_descision = range(self.n_bandits)
                     current_decision = self.weighted_sample(first_descision,probability=None)
                     current_reward = bandits[current_decision][step]
+                
+                # Otherwise run learning with epsilon greedy function to choose the next action and reward
                 else:
-                    # Choose next action and reward
+                    
                     states = self.current_values_lookup(self.value_function)
                     current_decision = self.epsilon_greedy( value_array = states , probability = self.epsilon)
                     current_reward = bandits[current_decision][step]
