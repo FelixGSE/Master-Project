@@ -222,7 +222,7 @@ $\epsilon$			& Probability of exploration in epsilon greedy \\
 $\alpha$ & Learning rate \\ 
 $\tau$ & Softmax parameter \\
 $H(X) $ &  Entropy of a  discrete random variable $X$ \\ 
-$ \mathbb{R}_0^+$ & Positve real numbers including zero 
+$ \mathbb{R}_0^+$ & Positive real numbers including zero 
 \end{tabular}
 
 \pagebreak
@@ -303,7 +303,7 @@ In this section we provide ...
 
 \subsection{Experiment design}
 
-Before analysing real data we run some simmulation experiments to indentify adequat approaches to model our data. To generate data artificially we follow a reinforcement learning and multi arm bandit approach where we let an agent learn the distribution of a simulated data set. The procedure is illustrated in figure \ref{fig:flow}. To keep things simple we draw a set of rewards from a normal distribution. We let several agents with different parameter setting process the reward data. From this procedure we obtain for each agent a time series of choices. 
+Before analysing real data we run some simulation experiments to identify adequate approaches to model our data. To generate data artificially we follow a reinforcement learning and multi arm bandit approach where we let an agent learn the distribution of a simulated data set. The procedure is illustrated in figure \ref{fig:flow}. To keep things simple we draw a set of rewards from a normal distribution. We let several agents with different parameter setting process the reward data. From this procedure we obtain for each agent a time series of choices. 
 
  \begin{figure}[!htb]
 	\includegraphics[width=\textwidth]{Pictures/flow01.png}
@@ -311,7 +311,7 @@ Before analysing real data we run some simmulation experiments to indentify adeq
 	\label{fig:flow}
 \end{figure}
 
-Concerning our data we find two main challanges. First, our data have a categorical nature. Furhtermore, the learning process also imposes a time series dependence on the data. We address this issue in the following ways. 
+Concerning our data we find two main challenges. First, our data have a categorical nature. Furthermore, the learning process also imposes a time series dependence on the data. We address this issue in the following ways. 
 The first approach is to map the series of choices to a real valued series. For each time step we can compute \textit{Shannon's Entropy} based on the empirical probability of the choices. Let $X$ be a discrete random variable with probability $p$, then the entropy is defined as:
 \begin{flalign}
 H(X) := -\sum_{i=1}^{N} p_i \log_2 p_i
@@ -322,7 +322,7 @@ Entropy gives measure on how random a random variable behaves. Therefore, transf
 
 \textit{Reinforcement Learning} (RIL) is a branch of \textit{Machine Learning} try model how an artificial agents interact with its environment and learns from the process over time. \\
 In particular an agents is confronted with the task of choosing sequently from a set of choices. In comparison to \textit{supervised learning}, where an agent is learning based on set of examples an agent in RIL doesn't have any knowledge about the system apriori. Therefore, it has to learn the nature of the system by sequentially interacting with its environment and keeping tack of the obtained information. Since the agent doesn't have any apriori information about the system it has to explore new possible action and so has to deviate from the optimal action. Furthermore, it has to keep track of value of each action he did so far. So the main task of the agent is to balance exploration and explotation. 
-There are to basic approaches to model this trade-off; An \textit{"Epsilon-Greedy"} selection method and Soft \textit{"Softmax"} selection method. Before explaining both cocepts we introduce the value function for a given action $a$. Therefore,  let $Q_t(a)$ be the value function of action defined as:
+There are to basic approaches to model this trade-off; An \textit{"Epsilon-Greedy"} selection method and Soft \textit{"Softmax"} selection method. Before explaining both concepts we introduce the value function for a given action $a$. Therefore,  let $Q_t(a)$ be the value function of action defined as:
 \begin{flalign}
 Q_t(a) := \frac{R_1 + R_2 + \dots + R_{K_\alpha}}{K_\alpha}
 \end{flalign}
@@ -350,7 +350,7 @@ After selecting an action the agent is updating its believe of the chosen action
 \begin{flalign}
 Q(a)_{k+1} = Q(a)_k + \alpha \left[ R(a)_k -  Q(a)_k	 \right],
 \end{flalign}
-where $\alpha$ is a is the  non negativ \textit{learning rate} defining how much the current action is affecting the believes.
+where $\alpha$ is a is the  non negative \textit{learning rate} defining how much the current action is affecting the believes.
 
 \subsection{Unsupervised Learning}
 
@@ -485,13 +485,13 @@ d_E (\boldsymbol{x},\boldsymbol{y}) :=  \sqrt{\left( \sum_{i=1}^{N} \left( x_i -
 
 \subsubsection{Similarity measures for categorical data}
 
-Reffering to equation \ref{eq:ets} we define a simple measure for the categorical aspect of the data. Note that [SOURCE] defines the simplest measure for categorical data. Howevere, since the probability that to people behave exaclty the same in our context is arguably zero we modify this concept slightly. So we relax that and define the overlap similarity just as the count of overlapping instances. This serves as a benchmark similarity for categorical data.
+Reffering to equation \ref{eq:ets} we define a simple measure for the categorical aspect of the data. Note that [SOURCE] defines the simplest measure for categorical data. However, since the probability that two people behave exactly the same in our context is arguably zero we modify this concept slightly. So we relax that and define the overlap similarity just as the count of overlapping instances. This serves as a benchmark similarity for categorical data.
 
 %\begin{flalign}
 %d_O (\boldsymbol{x},\boldsymbol{y}) :=  \sum_{i=1}^{N} \mathds{1}_{x_i = y_i}
 %\end{flalign}
 
-In [Boriah 2008] we find a rich class of further categorical measures. To keep it conceise we considered two of them. The first one is \textit{Eskin} similarity measures.
+In [Boriah 2008] we find a rich class of further categorical measures. To keep it concise we considered two of them. The first one is \textit{Eskin} similarity measures.
 
 \begin{flalign}
 d_O (\boldsymbol{x},\boldsymbol{y}) := \begin{cases} 
@@ -517,7 +517,7 @@ In this section we formally derive and explain the applied clustering metrics. E
 
 There a several clustering metrics, which respect such a situation. We consider a bunch of information based metrics. Most of the measures use some sort of entropy. Therefore, we stick to the notation of [SOURCE]. 
 
-Hence we introduce  the contigency table. 
+Hence we introduce  the contingency table. 
 
 \begin{table}[htb]
 	\centering
@@ -629,7 +629,7 @@ d_i &:= \sum_{j=1}^{n} w_{ij} = \sum_{i=1}^{n} w_{ij}
 \boldsymbol{D} &:= diag(\boldsymbol{d})
 \intertext{The algorithm works on the \textit{Laplacian} matrix defined by:}
 \boldsymbol{L} &:= \boldsymbol{D} - \boldsymbol{W} 
-\intertext{Former versions of the algorithm are applied on the graph laplcian. However, there were proposed newer versions using the so called \textit{normalized laplacian}. Since also the python version is using this package we will focus on this version of the algorithhm. Following that the normalized graph laplacian is defined as:}
+\intertext{Former versions of the algorithm are applied on the graph laplcian. However, there were proposed newer versions using the so called \textit{normalized laplacian}. Since also the python version is using this package we will focus on this version of the algorithm. Following that the normalized graph laplacian is defined as:}
 \boldsymbol{L}_{norm} &:= \boldsymbol{D}^{1/2} \boldsymbol{L} \boldsymbol{D}^{1/2}  = \boldsymbol{I} - \boldsymbol{D}^{1/2} \boldsymbol{W} \boldsymbol{D}^{1/2}
 \end{flalign}
 
