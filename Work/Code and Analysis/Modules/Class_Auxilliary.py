@@ -101,3 +101,9 @@ class auxilliary:
 				file_content = file.read()
 				full_file = json.loads(file_content)
 			return full_file
+
+	def rep(self, item, n ):
+	    new = []
+	    for i in range(n):
+	        new.append(item)
+	    return new

@@ -7,14 +7,17 @@ class miner:
 
 	def prediction(self, mu_set, sigma_set,N_set,cluster_set,seed_set,decision_function_set,alpha_set,tau_set,epsilon_set = None, iowa = False):
 
+		# Detect runtime by computing the number of mean sets
 		runtime = range(len(mu_set))
 
+		# Set column names for final data frame
 		column_names=["mu","sigma","trials","cluster size","decision","alpha","tau","epsilon",\
 			"clustering","labels","mut inf scr","adj mis","norm mis","adj rand s","complet","homogen","vmeas",\
 			"mut inf scr1","adj mis1","norm mis1","adj rand s1","complet1","homogen1","vmeas1"]
 
 		column_names_1=["mut inf scr","adj mis","norm mis","adj rand s","complet","homogen","vmeas"]
 
+		# Intialize final data frame
 		dframe = pd.DataFrame(columns=column_names)
 		dframe1 = pd.DataFrame(columns=column_names_1)
 
@@ -26,7 +29,7 @@ class miner:
 			print "Started with iteration \t " + str(step)
 			print "-------------------------------------"
 
-			# Subset data 
+			# Subset for current iteration  
 			mu = mu_set[step]
 			sigma = sigma_set[step]
 			N = N_set[step]
@@ -45,13 +48,13 @@ class miner:
 				epsilon = epsilon_set[step]
 				param = tau_set[step]
 
-			# Create data 
+			# Create data set
 			temp_data = data()
 			temp_data.create_data( individual = True, mu = mu, sigma = sigma, N = N,
 							cluster_size = cluster, seed = seed, decision_function = decision_function, 
 							alpha = alpha, tau = tau, epsilon =  epsilon, iowa=iowa)
-			print temp_data.rewards		
-			# Extract features
+
+			# Extract features from current data set
 			temp_entropy = temp_data.entropies
 			temp_choices = temp_data.choices 
 			temp_labels  = temp_data.label
@@ -100,9 +103,11 @@ class miner:
 			p21 = temp_unsupervised.spectral(edr_sim,no_clust)
 			p22 = temp_unsupervised.affinity_propagation(edr_sim)
 			
-
+			# Combine predictions for saving
 			p_set = [p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,\
 					p15,p16,p17,p18,p19,p20,p21,p22]
+
+			# Save names for each similarity - clustering combination
 			p_names = ["spectral warp","aff prop","pca","spectral overlap",\
 					"km_choice","km_ent","km_con","spect_cos_cat","aff_cos_cat",\
 					"spect_cos_ent","aff_cos_ent","spect_rbf","spect_esk_sim",\
@@ -138,11 +143,16 @@ class miner:
 
 			####
 
-
+			# Close trace
 			print "Finished with iteration  " + str(step)
 			print "*************************************"
 			print "\n .\n . \n . \n"
 
+	"""
+	Auxilliary functions
+	"""
+
+	# Wrapper to compute accuracies for a set of predictions and a vector of true lables
 	def full_accuracies(self,true,prediction_set):
 		all_accurracies = []
 		for prediction in prediction_set:

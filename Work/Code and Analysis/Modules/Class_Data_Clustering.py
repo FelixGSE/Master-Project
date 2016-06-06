@@ -2,30 +2,33 @@ class data_clustering:
 
 	def prediction(self, choice_set, entropy_set,bad_set,ent_block,cluster_range,labelset,save = True,path = None):
 
+		# Set column names for final data frame 
 		column_names=["no_clust","algorithm", "predictions",\
 		"mut inf scr","adj mis","norm mis","adj rand s","complet","homogen","vmeas",\
 		"mut inf scr1","adj mis1","norm mis1","adj rand s1","complet1","homogen1","vmeas1"]
 
+		# Intialize final data frame as storage object
 		dframe = pd.DataFrame(columns=column_names)
 		
+		# Init variables for prediction procedure
 		temp_choices = choice_set
 		temp_entropy = entropy_set
 		temp_concats = []
+
+		# Compute a concatenated vector
 		for i in range(len(choice_set)):
 			temp = choice_set[i] + entropy_set[i]
 			temp_concats.append(temp)
-				# Compute Similarities 
-				
+		
+		# Compute Similarities - Begin Trace	
 		print "*************************************"
 		print "Start computing similarity"
 		print "-------------------------------------"
 		sim = similarity()
 		sim.timeseries(temp_entropy)	
 		sim.categorical(temp_choices)
-		
-		print "Finished computing similarity"
-		print "*************************************"
-		
+
+		# Subset result similarities
 		temp_timewarp = sim.edtw
 		temp_eucliddist = sim.euclidian_dist
 		temp_overlap = sim.overlap
@@ -38,7 +41,7 @@ class data_clustering:
 		lin_disim = sim.lin_disim
 		edr_sim = sim.edr_sim
 
-		# Reinitialize sim
+		# Compute similarities for bad choices
 		sim = similarity()
 		sim.timeseries(bad_set)
 		bad_timewarp = sim.edtw
@@ -48,7 +51,7 @@ class data_clustering:
 		bad_rbf = sim.rbf
 		bad_edr = sim.edr_sim
 
-		# Reinitialize sim
+		# Compute similarties for blockwise entropy
 		sim = similarity()
 		sim.timeseries(ent_block)
 		eb_timewarp = sim.edtw
@@ -58,6 +61,11 @@ class data_clustering:
 		eb_rbf = sim.rbf
 		eb_edr = sim.edr_sim
 
+		# Closing trace for similarity
+		print "Finished computing similarity"
+		print "*************************************"
+		
+		# Save similarities for ploting etc.
 		if save == True:
 			
 			if path == None:
@@ -104,17 +112,19 @@ class data_clustering:
 			json.dump(bad_rbf.tolist(), file(bad_rbf_name, 'w'))
 			json.dump(bad_edr.tolist() , file(bad_edr_name, 'w'))
 
+		# Set counter for trace
 		counter = 1
+
+		# Run clustering
 		for itr,no_clust in enumerate(cluster_range):
 
+			# Open Trace for clustering
 			print "\n"
 			print "*************************************"
 			print "Started with iteration \t " + str(counter)
 			print "-------------------------------------"
 
-	
-				
-			# Cluster
+			# Cluster entropy, choices and concat
 			temp_unsupervised = unsupervised()
 			p01 = temp_unsupervised.spectral( temp_timewarp, no_clust)
 			p02 = temp_unsupervised.affinity_propagation( temp_timewarp )
@@ -138,9 +148,8 @@ class data_clustering:
 			p20 = temp_unsupervised.average_hierachical(lin_disim,no_clust)
 			p21 = temp_unsupervised.spectral(edr_sim,no_clust)
 			p22 = temp_unsupervised.affinity_propagation(edr_sim)
-			
-
-
+		
+			# Cluster bad choices
 			p23 = temp_unsupervised.spectral(bad_timewarp,no_clust)
 			p24 = temp_unsupervised.affinity_propagation(bad_timewarp)
 			p25 = temp_unsupervised.pca_ward(bad_euclidian,2,no_clust)
@@ -157,7 +166,7 @@ class data_clustering:
 			p36 = temp_unsupervised.average_hierachical(bad_euclidian,no_clust)
 			p37 = temp_unsupervised.ward_clustering(bad_set,no_clust)
 
-
+			# Cluster blockwise entropy
 			p38 = temp_unsupervised.spectral(eb_timewarp,no_clust)
 			p39 = temp_unsupervised.affinity_propagation(eb_timewarp)
 			p40 = temp_unsupervised.pca_ward(eb_euclidian,2,no_clust)
@@ -174,12 +183,13 @@ class data_clustering:
 			p51 = temp_unsupervised.average_hierachical(eb_euclidian,no_clust)
 			p52 = temp_unsupervised.ward_clustering(ent_block,no_clust)
 		
-
+			# combine predictions for output
 			p_set = [p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,\
 					p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,\
 					p30,p31,p32,p33,p34,p35,p36,p37,p38,p39,p40,p41,p42,p43,p44,\
 					p45,p46,p47,p48,p49,p50,p51,p52]
 
+			# Set names for similarity - clustering combination
 			p_names = [
 					"spectral warp","aff prop","pca","spectral overlap",\
 					"km_choice","km_ent","km_con","spect_cos_cat","aff_cos_cat",\
@@ -203,6 +213,7 @@ class data_clustering:
 
 			results=acc_vector
 			
+
 			for i,clster in enumerate(results):
 				row = [no_clust,p_names[i],p_set[i],clster[0],clster[1],\
 					clster[2],clster[3],clster[4],clster[5],clster[6],\
@@ -219,14 +230,22 @@ class data_clustering:
 				dframe.loc[len(dframe)] = row
 			"""
 
-			####
+			# Closing trace for clustering 
 			print "Finished with iteration  " + str(counter)
 			print "*************************************"
 			print "\n .\n . \n . \n"
+
+			# Update counter for trace
 			counter = counter + 1
 
+		# Save data frame
 		self.dframe = dframe
 
+	"""
+	Auxilliary functions
+	"""
+
+	# Wrapper to compute accuracies for a set of predictions and a vector of true lables
 	def full_accuracies(self,true,prediction_set):
 		all_accurracies = []
 		for prediction in prediction_set:
