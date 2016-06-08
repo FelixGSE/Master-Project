@@ -307,7 +307,7 @@ Before analysing real data we run some simulation experiments to identify adequa
 
  \begin{figure}[!htb]
 	\includegraphics[width=\textwidth]{Pictures/flow01.png}
-	\caption{Flowchart experiment desgin}
+	\caption{Flowchart experiment design}
 	\label{fig:flow}
 \end{figure}
 
@@ -316,26 +316,26 @@ The first approach is to map the series of choices to a real valued series. For 
 \begin{flalign}
 H(X) := -\sum_{i=1}^{N} p_i \log_2 p_i
 \end{flalign}
-Entropy gives measure on how random a random variable behaves. Therefore, transforming choices to sequentiel entropy is to discriminate individuals by the randomness
+Entropy gives measure on how random a random variable behaves. Therefore, transforming choices to sequential entropy is to discriminate individuals by the randomness
 
 \subsection{Reinforcement Learning backround and multi arm bandits}
 
 \textit{Reinforcement Learning} (RIL) is a branch of \textit{Machine Learning} try model how an artificial agents interact with its environment and learns from the process over time. \\
-In particular an agents is confronted with the task of choosing sequently from a set of choices. In comparison to \textit{supervised learning}, where an agent is learning based on set of examples an agent in RIL doesn't have any knowledge about the system apriori. Therefore, it has to learn the nature of the system by sequentially interacting with its environment and keeping tack of the obtained information. Since the agent doesn't have any apriori information about the system it has to explore new possible action and so has to deviate from the optimal action. Furthermore, it has to keep track of value of each action he did so far. So the main task of the agent is to balance exploration and explotation. 
+In particular an agents is confronted with the task of choosing sequentially from a set of choices. In comparison to \textit{supervised learning}, where an agent is learning based on set of examples an agent in REL doesn't have any knowledge about the system apriori. Therefore, it has to learn the nature of the system by sequentially interacting with its environment and keeping tack of the obtained information. Since the agent doesn't have any apriori information about the system it has to explore new possible action and so has to deviate from the optimal action. Furthermore, it has to keep track of value of each action he did so far. So the main task of the agent is to balance exploration and exploitation. 
 There are to basic approaches to model this trade-off; An \textit{"Epsilon-Greedy"} selection method and Soft \textit{"Softmax"} selection method. Before explaining both concepts we introduce the value function for a given action $a$. Therefore,  let $Q_t(a)$ be the value function of action defined as:
 \begin{flalign}
 Q_t(a) := \frac{R_1 + R_2 + \dots + R_{K_\alpha}}{K_\alpha}
 \end{flalign}
 The value function is the average over rewards. 
 
-Considering now epsilon greedy action selection mehtod: The rule in general is to select the next action as the current current highest value function. However, to model exploration we introduce a random element to deviate from that greedy strategy. Following that the next action
+Considering now epsilon greedy action selection method: The rule in general is to select the next action as the current current highest value function. However, to model exploration we introduce a random element to deviate from that greedy strategy. Following that the next action
 \begin{flalign}
 a_{t+1} = \begin{cases} 
 \text{random action} & \text{, with probability } \epsilon \\
 \arg \max_i Q_t(i) & \text{, with probability } 1-\epsilon
 \end{cases}
 \end{flalign}
-where $\epsilon \in [0,1]$ is a parameter controling the random behaviour of the agent. 
+where $\epsilon \in [0,1]$ is a parameter controlling the random behaviour of the agent. 
 
 In the softmax action selection method compute for each action a probability (also called \textit{Boltzmann Distribution)}. The probability for action a is computed by:
 \begin{flalign}
@@ -457,7 +457,7 @@ A distance function assign for pairs a points a non negative real number as dist
 	\item $d(\boldsymbol{x_i},\boldsymbol{x_j}) \le d(\boldsymbol{x_i},\boldsymbol{x_j})+ d(\boldsymbol{x_j},\boldsymbol{x_i}) $
 \end{enumerate}
 
-A distance can be seen as a measure for disimilarity of two points. Besides distance some algorithms operate on a \textit{similarity} matrix. Formally a similarity is a function  $ S : \boldsymbol{X} \times \boldsymbol{X} \mapsto [0,1] $. Also for similarity we can define the following properties:
+A distance can be seen as a measure for dissimilarity of two points. Besides distance some algorithms operate on a \textit{similarity} matrix. Formally a similarity is a function  $ S : \boldsymbol{X} \times \boldsymbol{X} \mapsto [0,1] $. Also for similarity we can define the following properties:
 
 \begin{enumerate}
 	\setlength{\itemsep}{-5pt}
@@ -475,7 +475,7 @@ S(\boldsymbol{x_i},\boldsymbol{x_j}) = \frac{1}{1+d(\boldsymbol{x_i},\boldsymbol
 
 \subsubsection{Similarity measures for timeseries data}
 
-We use three different similarity measures for time series. Empirical research suggest that simple euclidian distance for time series performs quite well and is hard to beat. Hence, the first distance measure for time series is simply eucldian distance between two time series. They might be converted to similarity based on equation \ref{eq:sim}. Let $\boldsymbol{x},\boldsymbol{y}$ be two time series over N-periods. Then the distance 
+We use three different similarity measures for time series. Empirical research suggest that simple euclidean distance for time series performs quite well and is hard to beat. Hence, the first distance measure for time series is simply euclidean distance between two time series. They might be converted to similarity based on equation \ref{eq:sim}. Let $\boldsymbol{x},\boldsymbol{y}$ be two time series over N-periods. Then the distance 
 
 \begin{flalign}
 d_E (\boldsymbol{x},\boldsymbol{y}) :=  \sqrt{\left( \sum_{i=1}^{N} \left( x_i - y_i \right)^2 \right)}
@@ -513,7 +513,7 @@ d_{lin} (\boldsymbol{x},\boldsymbol{y}) := \begin{cases}
 
 \subsection*{Clustering Evaluation}
 
-In this section we formally derive and explain the applied clustering metrics. Evaluating clustering performance has some issues. The algorithm is producing labels. Nevertheless we generated the "true" labels the might not be comparable. A simple example we might consider the following situation. Let y denote the labels of data the data and $y'$ the corresponding prediction such that  $y,y' \in \{0,1\}$. In a small example let our data points be like $y=(1,1,0,0)$ and the corresponding prediction $y'=(0,0,1,1)$. Obviously the clustering worked perfectly, however comparing "labels" would produce an accruacy of zero. 
+In this section we formally derive and explain the applied clustering metrics. Evaluating clustering performance has some issues. The algorithm is producing labels. Nevertheless we generated the "true" labels the might not be comparable. A simple example we might consider the following situation. Let y denote the labels of data the data and $y'$ the corresponding prediction such that  $y,y' \in \{0,1\}$. In a small example let our data points be like $y=(1,1,0,0)$ and the corresponding prediction $y'=(0,0,1,1)$. Obviously the clustering worked perfectly, however comparing "labels" would produce an accuracy of zero. 
 
 There a several clustering metrics, which respect such a situation. We consider a bunch of information based metrics. Most of the measures use some sort of entropy. Therefore, we stick to the notation of [SOURCE]. 
 

@@ -1,0 +1,32 @@
+Descriptions taken from z.sulc (2014)
+
+## Eskin Similarity/measure
+
+The Eskin measure was proposed by Eskin et al. (2002). Its basic idea is to assign higher weights to mismatches by variables with the higher number of categories. The similarity between two objects for the c-th variable is then expressed as 
+
+[insert formula] 
+
+where nc is a number of categories of the c-th variable. Equation (2) can be used for computation of the similarity between two objects. The dissimilarity measure is computed as 
+
+[insert formula]
+
+The inverse occurrence frequency (IOF) treats mismatches of more frequent categories by lower weights, i.e. 
+
+[insert formula]
+
+where f(xic) expresses a frequency of the value xic of the c-th variable. The similarity and dissimilarity measure can be computed by using Equations (2) and (5). The
+
+
+
+## Lin Similarity/measure
+
+The Lin measure, which was introduced by Lin (1998), assigns higher weights to more
+frequent categories in case of matches and lower weights to less frequent categories in case of mismatches, i.e.
+
+[insert formula]
+
+where p(xic) expresses a relative frequency of the value xic of the c-th variable. The similarity measure between two objects is computed as
+
+[insert formula]
+
+and the dissimilarity measure according to Equation (5).
