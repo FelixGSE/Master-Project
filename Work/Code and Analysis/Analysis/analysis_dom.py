@@ -30,7 +30,7 @@ execfile("Class_Similarity.py")
 execfile("Class_Accuracies.py")
 execfile("Class_Unsupervised.py")
 execfile("Class_Miner.py")
-execfile("Function_Auxilliary.py")
+#execfile("Function_Auxilliary.py")
 execfile("Class_Auxilliary.py")
 execfile("Class_Data_Clustering.py")
 
@@ -309,3 +309,55 @@ os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Ana
 miner = data_clustering()
 miner.prediction(choice_set = c06 , entropy_set = e06 , bad_set = b06,labelset = l06,ent_block=eb06, cluster_range = range(2,10), save = False)
 miner.dframe.to_csv("c06_e06_dom_eb.csv")
+
+
+########################################################################
+#hrvoje multiarm data
+
+#########
+path_modules = '/home/fizlaz/bgse/Master_Thesis/hrvoje_multiarm/'
+os.chdir(path_modules)  
+
+hrv_choices = pd.read_csv("hrvoje_multiarm_choices.csv")
+hrv_choices = hrv_choices.values.tolist()
+
+hrv_gender = pd.read_csv("hrvoje_multiarm_gender.csv")
+hrv_gender = hrv_gender['x'].values.tolist()
+
+label = [0] * 104
+for i in range(104):
+	if hrv_gender[i]=="Male":
+		label[i]=1
+
+
+aux = auxilliary()
+
+entropy = aux.entropy(hrv_choices)
+entropy_block = aux.entropy_block(hrv_choices)
+
+choices_avg = aux.avg(hrv_choices)
+entropy_avg = aux.avg(entropy)
+choice_bad = aux.avg_bad(hrv_choices)
+
+
+
+c00 = aux.subset_data(hrv_choices,label,[0,1])
+
+
+e00 = aux.entropy(c00)
+
+
+eb00 = aux.entropy_block(c00)
+
+
+l00 = aux.labels(label,[0,1],healthy=False)
+
+b00 = aux.avg_bad(c00)
+
+
+
+# Run computation 06
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real_data_multiarm/')
+miner = data_clustering()
+miner.prediction(choice_set = c00 , entropy_set = e00 , bad_set = c00,labelset = l00,ent_block=eb00, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c00_dom.csv")
