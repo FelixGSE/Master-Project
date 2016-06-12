@@ -135,11 +135,11 @@ entropy_avg = aux.avg(entropy)
 choice_bad = aux.avg_bad(choices)
 
 
-labels = aux.read_csv2('labels_tab_t.csv',delimiter='\t')
+#labels = aux.read_csv2('labels_tab_t.csv',delimiter='\t')
 
 #choices2= aux.read_csv('choice_100.csv',delimiter=';')[:162]
 index_normal = pd.read_csv("index_100.csv")
-print index_normal[index_normal[,1]=="Wood"]
+#print index_normal[index_normal[,1]=="Wood"]
 
 choices2 = pd.read_csv('choice_100.csv')[:162]
 choices2 = choices2.values.tolist()
@@ -361,3 +361,8 @@ os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Ana
 miner = data_clustering()
 miner.prediction(choice_set = c00 , entropy_set = e00 , bad_set = c00,labelset = l00,ent_block=eb00, cluster_range = range(2,3), save = True)
 miner.dframe.to_csv("c01_dom.csv")
+
+
+
+import matplotlib.pyplot as plt
+plt.plot(c00[100]),plt.show()
