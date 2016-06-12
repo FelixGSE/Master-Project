@@ -135,6 +135,8 @@ class data_clustering:
 			p07 = temp_unsupervised.kmeans( temp_concats, no_clust )
 			p08 = temp_unsupervised.spectral(cosine_cat, no_clust)
 			p09 = temp_unsupervised.affinity_propagation(cosine_cat)
+
+
 			p10 = temp_unsupervised.spectral(cosine_ent, no_clust)
 			p11 = temp_unsupervised.affinity_propagation(cosine_ent)
 			p12 = temp_unsupervised.spectral(rbf, no_clust)
@@ -150,38 +152,186 @@ class data_clustering:
 			p22 = temp_unsupervised.affinity_propagation(edr_sim)
 		
 			# Cluster bad choices
-			p23 = temp_unsupervised.spectral(bad_timewarp,no_clust)
-			p24 = temp_unsupervised.affinity_propagation(bad_timewarp)
-			p25 = temp_unsupervised.pca_ward(bad_euclidian,2,no_clust)
-			p26 = temp_unsupervised.spectral(bad_euclidian_sim,no_clust)
-			p27 = temp_unsupervised.affinity_propagation(bad_euclidian_sim)
-			p28 = temp_unsupervised.spectral(bad_cosine,no_clust)
-			p29 = temp_unsupervised.affinity_propagation(bad_cosine)
-			p30 = temp_unsupervised.spectral(bad_rbf,no_clust)
-			p31 = temp_unsupervised.affinity_propagation(bad_rbf)
-			p32 = temp_unsupervised.spectral(bad_edr,no_clust)
-			p33 = temp_unsupervised.affinity_propagation(bad_edr)
-			p34 = temp_unsupervised.kmeans( bad_set, no_clust )
-			p35 = temp_unsupervised.complete_hierachical(bad_euclidian,no_clust)
-			p36 = temp_unsupervised.average_hierachical(bad_euclidian,no_clust)
-			p37 = temp_unsupervised.ward_clustering(bad_set,no_clust)
+			try:
+				print 'BAD CHOICES 1'
+				p23 = temp_unsupervised.spectral(bad_timewarp,no_clust)
+			except:
+				print 'ERROR in 1'
+			
+			try:	
+				print 'BAD CHOICES 2'
+				p24 = temp_unsupervised.affinity_propagation(bad_timewarp)
+			except:
+				print 'ERROR in 2'
+			
+			try:
+				print 'BAD CHOICES 3'
+				p25 = temp_unsupervised.pca_ward(bad_euclidian,2,no_clust)
+			except:
+				print 'ERROR in 3'
+			
+			try:
+				print 'BAD CHOICES 4'
+				p26 = temp_unsupervised.spectral(bad_euclidian_sim,no_clust)
+			except:
+				print 'ERROR in 4'
+			
+			try:
+				print 'BAD CHOICES 5'
+				p27 = temp_unsupervised.affinity_propagation(bad_euclidian_sim)
+			except:
+				print 'ERROR in 5'
+			
+			try:
+				print 'BAD CHOICES 6'
+				p28 = temp_unsupervised.spectral(bad_cosine,no_clust)
+			except:
+				print 'ERROR in 6'
+
+			try:
+				print 'BAD CHOICES 7'
+				p29 = temp_unsupervised.affinity_propagation(bad_cosine)
+			except:
+				print 'ERROR in 7'
+			
+			try:
+
+				print 'BAD CHOICES 8'
+				p30 = temp_unsupervised.spectral(bad_rbf,no_clust)
+			except:
+				print 'ERROR in 4'
+			
+			try:
+				print 'BAD CHOICES 9'
+				p31 = temp_unsupervised.affinity_propagation(bad_rbf)
+			except:
+				print 'ERROR in 9'
+			
+			try:
+				print 'BAD CHOICES 10'
+				p32 = temp_unsupervised.spectral(bad_edr,no_clust)
+			except:
+				print 'ERROR in 10'
+
+			try:
+				print 'BAD CHOICES 11'
+				p33 = temp_unsupervised.affinity_propagation(bad_edr)
+			except:
+				print 'ERROR in 11'
+
+			try:
+				print 'BAD CHOICES 12'
+				p34 = temp_unsupervised.kmeans( bad_set, no_clust )
+			except:
+				print 'ERROR in 12'
+			
+			try:
+				print 'BAD CHOICES 13'
+				p35 = temp_unsupervised.complete_hierachical(bad_euclidian,no_clust)
+			except:
+				print 'ERROR in 13'
+			
+			try:
+				print 'BAD CHOICES 14'
+				p36 = temp_unsupervised.average_hierachical(bad_euclidian,no_clust)
+			except:
+				print 'ERROR in 14'
+			
+			try:
+				print 'BAD CHOICES 15'
+				p37 = temp_unsupervised.ward_clustering(bad_set,no_clust)
+			except:
+				print 'ERROR in 15'
 
 			# Cluster blockwise entropy
-			p38 = temp_unsupervised.spectral(eb_timewarp,no_clust)
-			p39 = temp_unsupervised.affinity_propagation(eb_timewarp)
-			p40 = temp_unsupervised.pca_ward(eb_euclidian,2,no_clust)
-			p41 = temp_unsupervised.spectral(eb_euclidian_sim,no_clust)
-			p42 = temp_unsupervised.affinity_propagation(eb_euclidian_sim)
-			p43 = temp_unsupervised.spectral(eb_cosine,no_clust)
-			p44 = temp_unsupervised.affinity_propagation(eb_cosine)
-			p45 = temp_unsupervised.spectral(eb_rbf,no_clust)
-			p46 = temp_unsupervised.affinity_propagation(eb_rbf)
-			p47 = temp_unsupervised.spectral(eb_edr,no_clust)
-			p48 = temp_unsupervised.affinity_propagation(eb_edr)
-			p49 = temp_unsupervised.kmeans( ent_block, no_clust )
-			p50 = temp_unsupervised.complete_hierachical(eb_euclidian,no_clust)
-			p51 = temp_unsupervised.average_hierachical(eb_euclidian,no_clust)
-			p52 = temp_unsupervised.ward_clustering(ent_block,no_clust)
+			try:
+				print 'BLOCKWISE 1'
+				p38 = temp_unsupervised.spectral(eb_timewarp,no_clust)
+			except:
+				print 'ERROR in BLOCKWISE 1'	
+			try:			
+				print 'BLOCKWISE 2'
+				p39 = temp_unsupervised.affinity_propagation(eb_timewarp)
+			except:
+				print 'ERROR in BLOCKWISE 2'
+			try:			
+				print 'BLOCKWISE 3'
+				p40 = temp_unsupervised.pca_ward(eb_euclidian,2,no_clust)
+			except:
+				print 'ERROR in BLOCKWISE 3'				
+			
+			try:
+				print 'BLOCKWISE 4'
+				p41 = temp_unsupervised.spectral(eb_euclidian_sim,no_clust)
+			except:
+				print 'ERROR in BLOCKWISE 4'				
+			
+			try:
+				print 'BLOCKWISE 5'
+				p42 = temp_unsupervised.affinity_propagation(eb_euclidian_sim)
+			except:
+				print 'ERROR in BLOCKWISE 5'
+
+			try:
+				print 'BLOCKWISE 6'
+				p43 = temp_unsupervised.spectral(eb_cosine,no_clust)
+			except:
+				print 'ERROR in BLOCKWISE 6'				
+			
+			try:
+				print 'BLOCKWISE 7'
+				p44 = temp_unsupervised.affinity_propagation(eb_cosine)
+			except:
+				print 'ERROR in BLOCKWISE 6'
+			
+			try:					
+				print 'BLOCKWISE 8'
+				p45 = temp_unsupervised.spectral(eb_rbf,no_clust)
+			except:
+				print 'ERROR in BLOCKWISE 8'
+
+			try:
+				print 'BLOCKWISE 9'
+				p46 = temp_unsupervised.affinity_propagation(eb_rbf)
+			except:
+				print 'ERROR in BLOCKWISE 9'	
+			
+			try:
+				print 'BLOCKWISE 10'
+				p47 = temp_unsupervised.spectral(eb_edr,no_clust)
+			except:
+				print 'ERROR in BLOCKWISE 10'	
+
+			try:
+				print 'BLOCKWISE 11'
+				p48 = temp_unsupervised.affinity_propagation(eb_edr)
+			except:
+				print 'ERROR in BLOCKWISE 11'	
+
+			try:
+				print 'BLOCKWISE 12'
+				p49 = temp_unsupervised.kmeans( ent_block, no_clust )
+			except:
+				print 'ERROR in BLOCKWISE 12'
+
+			try:	
+				print 'BLOCKWISE 13'
+				p50 = temp_unsupervised.complete_hierachical(eb_euclidian,no_clust)
+			except:
+				print 'ERROR in BLOCKWISE 13'	
+			
+			try:
+				print 'BLOCKWISE 14'
+				p51 = temp_unsupervised.average_hierachical(eb_euclidian,no_clust)
+			except:
+				print 'ERROR in BLOCKWISE 14'
+
+			try:
+				print 'BLOCKWISE 15'
+				p52 = temp_unsupervised.ward_clustering(ent_block,no_clust)
+			except:
+				print 'ERROR in BLOCKWISE 15'	
+
 		
 			# combine predictions for output
 			p_set = [p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,\
