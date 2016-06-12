@@ -199,7 +199,7 @@ class data_clustering:
 				print 'BAD CHOICES 8'
 				p30 = temp_unsupervised.spectral(bad_rbf,no_clust)
 			except:
-				print 'ERROR in 4'
+				print 'ERROR in 8'
 			
 			try:
 				print 'BAD CHOICES 9'

@@ -359,8 +359,8 @@ b00 = aux.avg_bad(c00)
 # Run computation 06
 os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real_data_multiarm/')
 miner = data_clustering()
-miner.prediction(choice_set = c00 , entropy_set = e00 , bad_set = c00,labelset = l00,ent_block=eb00, cluster_range = range(2,3), save = True)
-miner.dframe.to_csv("c01_dom.csv")
+miner.prediction(choice_set = c00 , entropy_set = e00 , bad_set = e00,labelset = l00,ent_block=eb00, cluster_range = range(2,3), save = True)
+miner.dframe.to_csv("c02_gender_dom.csv")
 
 
 
