@@ -92,7 +92,7 @@ class auxilliary:
 			avg_ind = []
 			for i in range(no_bin):
 				avg_ind.append((ind[i*avg_size:(i+1)*avg_size].count(ch1) + \
-					ind[i*avg_size:(i+1)*avg_size].count(ch2)) / float(10))
+					ind[i*avg_size:(i+1)*avg_size].count(ch2)) / float(avg_size))
 			lol_avg.append(avg_ind)
 		return lol_avg
 
