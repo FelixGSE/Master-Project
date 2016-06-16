@@ -49,7 +49,7 @@
 
 
 
-\geometry{a4paper, top=27mm, left=35mm, right=15mm, bottom=35mm, headsep=10mm, footskip=12mm}
+\geometry{a4paper, top=27mm, left=27mm, right=27mm, bottom=35mm, headsep=10mm, footskip=12mm}
 
 % ----------------------------------------------------------------------------------------------------------
 % Packages
@@ -221,8 +221,16 @@ $Q(a)_t$	& Value function at time t \\
 $\epsilon$			& Probability of exploration in epsilon greedy \\
 $\alpha$ & Learning rate \\ 
 $\tau$ & Softmax parameter \\
+$X$ & Random variable \\
 $H(X) $ &  Entropy of a  discrete random variable $X$ \\ 
-$ \mathbb{R}_0^+$ & Positive real numbers including zero 
+$d(\cdot,\cdot)$ & Distance Function \\
+$S(\cdot,\cdot)$ & Similarity Function \\
+$ \mathbb{R}_0^+$ & Positive real numbers including zero \\
+$\mathcal{X}$ & Data set \\ 
+\textbf{W} & Weighted adjacency matrix \\
+$d_i$ & Degree of node $i$ \\
+\textbf{D} & Diagonal matrix of degrees \\
+\textbf{L} & Graph laplacian \\
 \end{tabular}
 
 \pagebreak
@@ -248,9 +256,9 @@ $ \mathbb{R}_0^+$ & Positive real numbers including zero
 
 % Title spacing
 
-\titlespacing{\section}{0pt}{12pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
-\titlespacing{\subsection}{0pt}{12pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
-\titlespacing{\subsubsection}{0pt}{12pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
+%\titlespacing{\section}{1cm}{12pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
+%\titlespacing{\subsection}{0pt}{12pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
+%\titlespacing{\subsubsection}{0pt}{12pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
 
 % Header
 
@@ -281,8 +289,14 @@ $ \mathbb{R}_0^+$ & Positive real numbers including zero
 
 \section{Introduction and conceptual approach}
 
-Learning is a complex procedure. The learning procedure can affected due to social conditions... 
+Learning is a complex procedure. The learning procedure can affected due to social conditions... Due to their mental ability people should show different learning behavior.\\
+In \textit{supervised learning} data are predicted by training a classifier based on features and corresponding categories . In comparison to that in \textit{unsupervised learning} we don't know the ground truth and we try discover natural clustering behavior in the data. \cite[page 9 et. seqq.]{Murphy2012}. A vast class of clustering algorithms are proposed in the literature. 
+In this paper we are investigating whether we can use unsupervised learning methods to cluster different groups of people with respect to their behavior. This paper is therefore in the intersection of machine learning and cognitive science. To our knowledge this particular setting was not studied before.\\ 
+We first used a reinforcement learning based approach to simulate data and study theoretical boundaries of our methods and under which conditions they might be applicable. We then apply our methods to two real world data sets. In particular we have data of people with different criminal profile performing a standardized test. Furthermore, we have data of people with different sex, level of education and age doing a simple n-armed bandit experiment.\\
 
+The report has the following structure. In section two we provide a short overview of related literature in the field.\\ 
+The following section three is dedicated to the theoretical foundation and the simulation. We first provide a basic knowledge of reinforcement and line out our experiment design. Since this a pioneer work we address the topic in a broad manner. Hence, this section includes an overview of applied similarity concepts and algorithms. Finally we  present the results of our simulation and a short interim conclusion.\\ 
+After that we provide results for the real world data. Since this a first research on this subject we can only address a small part of the problem. Therefore, we close the paper with discussion of possible extensions and summary of found results. 
 
 \pagebreak
 %---------------------------------------------------------------------------------------------------------
@@ -291,19 +305,20 @@ Learning is a complex procedure. The learning procedure can affected due to soci
 
 \section{Relevant Literature}
 
+There exists a rich literature on identifying behavioral groups using the Iowa Gambling Task experiment. It has been shown that individuals with pre-frontal brain damage and decision-making defects continue to choose disadvantageously even after they learned the optimal strategy \cite{Bechara1997}. A broad overview is given in \cite{Steingroever2013} Several studies identify specific drug-user groups, e.g. cocaine addicts \cite{Stout2004}, chronic cannabis users \cite{Fridberg2010}, heavy alcohol users(heavy drinkers) \cite{Gullo2011}. Extensive set of research is focused around particular mental disabilities, e.g. Asperger's disorder \cite{Johnson2006}, psychopathic tendencies \cite{Blair2001}, bipolar disorder \cite{Brambilla2012}, schizophrenia \cite{Martino2007} pathological gambling disorder \cite{Cavedini2002}, attention-deficit-hyperactivity disorder \cite{NiritAgay2010}. Most popular reinforcement learning models for identifying behavioural differences between different disorders are Expectancy Valence model \cite{Busemeyer2002} and Prospect Valence Learning model \cite{Ahn2008}.
 
 \pagebreak
 %---------------------------------------------------------------------------------------------------------
 % 3. Simmulation
 %---------------------------------------------------------------------------------------------------------
 
-\section{Theoretical Backround and experiments}
+\section{Theoretical Background and simulation experiments}
 
-In this section we provide ... 
+This section is dedicated to the a more detailed outline of our analysis approach and the results of our simulation experiments. We find that our data are not immediately suitable for common unsupervised learning methods. Hence, we also discuss how we approach this problem. Besides the introduction to reinforcement learning this section will be rather a qualitative discussion. The appendix provides in more detail a mathematical background to applied algorithms, distance concepts and related clustering evaluation techniques. 
 
-\subsection{Experiment design}
+\subsection{Experiment design and problem formulation}
 
-Before analysing real data we run some simulation experiments to identify adequate approaches to model our data. To generate data artificially we follow a reinforcement learning and multi arm bandit approach where we let an agent learn the distribution of a simulated data set. The procedure is illustrated in figure \ref{fig:flow}. To keep things simple we draw a set of rewards from a normal distribution. We let several agents with different parameter setting process the reward data. From this procedure we obtain for each agent a time series of choices. 
+Before analyzing real data we run some simulation experiments to identify adequate approaches to model our data. To generate data artificially we follow a reinforcement learning and multi arm bandit approach where we let an agent learn the distribution of a simulated data set. The procedure is illustrated in figure \ref{fig:flow}. To keep things simple we draw a set of rewards from a normal distribution. We let several agents with different parameter setting process the reward data. From this procedure we obtain for each agent a time series of choices. 
 
  \begin{figure}[!htb]
 	\includegraphics[width=\textwidth]{Pictures/flow01.png}
@@ -311,16 +326,9 @@ Before analysing real data we run some simulation experiments to identify adequa
 	\label{fig:flow}
 \end{figure}
 
-Concerning our data we find two main challenges. First, our data have a categorical nature. Furthermore, the learning process also imposes a time series dependence on the data. We address this issue in the following ways. 
-The first approach is to map the series of choices to a real valued series. For each time step we can compute \textit{Shannon's Entropy} based on the empirical probability of the choices. Let $X$ be a discrete random variable with probability $p$, then the entropy is defined as:
-\begin{flalign}
-H(X) := -\sum_{i=1}^{N} p_i \log_2 p_i
-\end{flalign}
-Entropy gives measure on how random a random variable behaves. Therefore, transforming choices to sequential entropy is to discriminate individuals by the randomness
+\subsection{Reinforcement Learning background and multi arm bandits}
 
-\subsection{Reinforcement Learning backround and multi arm bandits}
-
-\textit{Reinforcement Learning} (RIL) is a branch of \textit{Machine Learning} try model how an artificial agents interact with its environment and learns from the process over time. \\
+In the following we provide some basics of \textit{Reinforcement Learning} (RL) \cite[chapter 1 and 2]{Sutton2012}. RL is a branch of \textit{machine learning} try model how an artificial agents interact with its environment and learns from the process over time. \\
 In particular an agents is confronted with the task of choosing sequentially from a set of choices. In comparison to \textit{supervised learning}, where an agent is learning based on set of examples an agent in REL doesn't have any knowledge about the system apriori. Therefore, it has to learn the nature of the system by sequentially interacting with its environment and keeping tack of the obtained information. Since the agent doesn't have any apriori information about the system it has to explore new possible action and so has to deviate from the optimal action. Furthermore, it has to keep track of value of each action he did so far. So the main task of the agent is to balance exploration and exploitation. 
 There are to basic approaches to model this trade-off; An \textit{"Epsilon-Greedy"} selection method and Soft \textit{"Softmax"} selection method. Before explaining both concepts we introduce the value function for a given action $a$. Therefore,  let $Q_t(a)$ be the value function of action defined as:
 \begin{flalign}
@@ -352,30 +360,77 @@ Q(a)_{k+1} = Q(a)_k + \alpha \left[ R(a)_k -  Q(a)_k	 \right],
 \end{flalign}
 where $\alpha$ is a is the  non negative \textit{learning rate} defining how much the current action is affecting the believes.
 
-\subsection{Unsupervised Learning}
+\subsection{Unsupervised learning methods, data handling and similarity}
 
-We consider several unsupervised clustering techniques. A technical description for all of the is provided in 
+We find two main challenges. First, our data have a categorical nature. Furthermore, the learning process also imposes a time series dependence on the data.\\
+A well studied approach clustering such data are \textit{hidden markov models}. For example a decent research on that can be found in \cite{Pamminger2007}, \cite{Pamminger2009} and \cite{Pamminger2010a}. However, we focus our attention only on partition based clustering algorithms. \\
+Some of applied algorithms operate on different distance or similarity concepts. Given our data we  have to think carefully think about distance and similarity measures to respect the nature of our data and algorithms.\footnote{A formal definition of the distance and similarity can be found in the appendix} 
+In extension to only considering raw choices we might try to re-express our data to discriminate them according to different purposes. 
+The first approach is to map the series of choices to a real valued series. One way is to consider \textit{Shannon's Entropy}  introduced by \cite{Shannon1948} based on the empirical probability of the choices. Let $X$ be a discrete random variable with probability $p$, then the entropy is defined as \cite[page 32]{MacKay2005}:
+\begin{flalign}
+H(X) := -\sum_{i=1}^{N} p_i \log_2 p_i
+\end{flalign}
+Entropy gives measure on how random a random variable behaves. Withing the entropy framework we consider to types of entropies. For each time step we compute the entropy using the choices done so far. We call this \textit{cumulative entropy}. Furthermore, we might want to observe more clearly how individuals adapt their behavior over time. Considering an experiment with 100 trials. We then compute the entropy for set of ten choices. We call this \textit{blockwise entropy}. Mapping choices to and entropy based data set is therefore aims to discriminate individuals by their level randomness in their behavior. 
+
+A second approach is based on the experimental setting. We know within out simulation and our simulation and real data frame work the set of choices which are disadvantageous for the participant. Following e.g. \cite{Yechiam2008} or \cite{Ahn2008}, we then compute block wise the ratio of disadvantageous choices. We call this \textit{disadvantageous choice}. 
+
+Within our analysis we consider a broad selection of several clustering techniques and similarity concepts. Table \ref{tab:cla} shows an overview of the algorithms and their corresponding distance/similarity requirement. A technical description for all of them is provided in the appendix. 
 
 \begin{table}[!htb]
 	\centering
 	\begin{tabular}{|c| c| c |}
-		\toprule \toprule
+		\toprule 
 		\textbf{Algorithm} & Input & Datatype  \\
 		\hline
-		Spectral Clustering & Similarity Matrix & -  \\
-		Affinity Propagation & Similarity Matrix & -  \\
-		K-Means Clustering & Data Matrix & -  \\
+		Spectral Clustering & Similarity  & -  \\
+		Affinity Propagation & Similarity  & -  \\
+		K-Means Clustering & $L_2$ Distance  & -  \\
 		Ward Clustering & Data Matrix & -  \\
 		PCA + 	Ward Clustering   & Data Matrix & -  \\
 		\bottomrule
 	\end{tabular}
 	\caption{Overview clustering algorithms}
+	\label{tab:cla}
+\end{table}
+
+Accoding to our different data types and for our different algorithms we apply the following distance and similarity concepts.\footnote{Note that distance and similarity can be converted according to equation \eqref{eq:sim} in the appendix}
+
+
+\begin{table}[!htb]
+	\centering
+	\begin{tabular}{c| c}
+		\toprule 
+		\hline
+		\textbf{Similarity/Distance} & \textbf{Data type} \\
+		\hline
+		Cosine Similarity & Categorical \\
+		Levenstein Distance & Categorical \\
+		Lin Similarity & Categorical \\
+		Edit Distance on Real Sequence  & Time series \\
+		Dynamic Time Warp & Time series \\
+		RBF Kernel & Real Data\\
+		\bottomrule
+	\end{tabular}
+	\caption{Overview similarity and distance measures}
+	\label{tab:simue}
 \end{table}
 
 \pagebreak	
-\subsection{Simmulation results}
+\subsection{Simulation results}
 
-The following table shows a snippet of our simmulation results. 
+\begin{figure}[!htb]
+	\centering
+	\begin{tabular}{cc}
+		\input{Pictures/tikz-example.tex} &  \input{Pictures/tikz-example.tex} \\
+		(a) ACF  & (b) PACF  \\[4pt]
+	\end{tabular}
+	\caption{ACF and PACF of MCSI}
+\end{figure}
+
+The following table shows a snippet of our simmulation results. We have a broad range o similarity measures. Some of them are task specific meaning being designed for either categorical or time series data or both.\footnote{For example Levenstein distance (or edit distance) is a basic way to measure similarity between categorical sequences \cite[page 1]]{Richter} or \cite[page 2]{Gabadinho2009}, however some authors stating that it might perform poorly in their task \cite[page 3]{Ren2011} or a poor measure at all \cite[page 5]{Morzy}}
+
+We also considered some specilised articles. \cite{Garcia2014} provide an algorithm to cluster categorical time series.
+
 \pagebreak
 
 \begin{sidewaystable}[!h]
@@ -391,6 +446,7 @@ The following table shows a snippet of our simmulation results.
 \end{sidewaystable}
 
 
+
 \include{tikz-example.tex}
 
 
@@ -400,9 +456,63 @@ The following table shows a snippet of our simmulation results.
 
 \section{Data Analysis}
 
-\subsection{Data Description}
+Our simulation result suggested that we can cluster the decision behavior under some give constraints. We apply our approach to different real data sets
 
-\subsection{Results}
+\subsection{Prison data and approach}
+
+With acknowledgment to [HERE WE ADD THE GUY] we were provided with experimental data from \cite{Yechiam2008}. We try to apply our methods to cluster different groups in the data. The participants had to perform the Iowa gambling task (detailed description see later on). \cite{Steingroever2015} assembled a collection of data of healthy individuals performing the IGT test from various sources. We extended the data set we got with a set of healthy people, which we hope will behave significantly different than the individuals with criminal profile.
+
+\subsubsection{Data summary and experimental design}
+
+In particular we have data of 96 individuals with different criminal profile. Table \ref{tab:tabps} gives a broad summary of some demographics. 
+
+\begin{table}[!htbp]
+	\footnotesize
+	 \centering 
+	\begin{tabular}{ l|ccccc} 
+		\toprule 
+		Crime & \textbf{Count} & \textbf{Age} & \textbf{TABE Score} & \textbf{Education} & \textbf{Beta IQ} \\ 
+		\hline
+	Theft/Burglary & $22$ & $25.36$  (7.03) & $11.09$ (1.29) & $7.38$ (3.34 )& $92.91$ (14.37) \\ 
+	Robbery & $6$ & $24.17$ (9.83) & $11.00$ (0.63) & $9.22$ (3.30) & $96.50$ (7.58) \\          
+	Sex & $17$ & $33.41$ (13.59) & $10.97$ (1.47) & $9.15$ (2.98) & $99.65$ (11.74) \\       
+	Drug & $22$ & $30.91$ (10.11)  & $11.64$ (1.85)& $9.06$   (2.70)  & $100.36$ (12.92) \\     
+	OWI & $4$ & $38.75$ (7.27) & $10.88$ (1.93) & $7.12$ (1.17)& $94.25$ (10.40) \\        
+	Assault & $10$ & $27.20$ (8.77) & $12.30$ (2.41)& $7.62$ (2.28) & $94.50$ (11.29) \\       
+	Escape/ Failure To Appear & $4$ & $2.008$ (5.60)& $11.00$ (1.35)& $7.78$  (3.21)& $96.50$  (14.18)\\     
+	Vandalism & $1$ & $18.00$ (NA)& $11.00$ (NA)& $9.40$ (NA)& $90.00$ (NA)\\ 
+	Forgery & $7$ & $34.57$ (13.14)& $10.93$ (5.15) & $9.83$ (3.82)& $100.71$ (11.01)\\       
+	Probabiton & $1$ & $38.00$ (NA)& $12.00$ (NA)& $6.30$ (NA)& $92.00$ (NA)\\ 
+	Other & $2$ & $35.00$ (9.90)& $11.50$ (0.00)& $9.20$ (4.67)& $95.00$ (5.66)\\       
+		\bottomrule 
+	\end{tabular} 
+		\caption{Summary prision data (means with standard deviation in parenthesis)} 
+		\label{tab:tabps} 
+\end{table} 
+
+Propositi had to perform the \textit{Iowa gambling tast} (IGT), where they have to pick sequentially a card from four different decks. Two decks have distributions with negative expectations while two have positive. However, they different according to their variance. \\
+Figure \ref{fig:ent} (a) shows the average cumulative entropy averaged across groups. We observe a random behavior independent from group affiliation. However, normal people show the least random behavior. Furthermore, Figure \ref{fig:ent} (b) shows the average people of negative choices people chose over steps of ten periods averaged across groups.     
+
+\setlength{\tabcolsep}{-0.2cm}
+\renewcommand{\arraystretch}{-0.6}
+\begin{figure}[!htbp]
+	\small
+	\begin{tabular}{cc}
+	\input{Pictures/avgent.tex} & \input{Pictures/disad.tex} \\
+	(a) Average Entropy across groups & (b) Blockwise picks from disadvantageous deck \\
+	\input{Pictures/entbl.tex} & \input{Pictures/fullavg.tex} \\
+	(c) Average Entropy across groups & (d) Blockwise picks from disadvantageous deck 
+	\end{tabular}
+	\caption{Average py and disadvantageous behavior}
+	\label{fig:ent}
+\end{figure}
+
+\subsubsection{Prison results}
+
+Following the last section we provide a summary of our results. 
+
+
+
 
 %---------------------------------------------------------------------------------------------------------
 % 5. Data
@@ -419,7 +529,7 @@ The following table shows a snippet of our simmulation results.
 
 \bibliographystyle{apalike}
 
-\bibliography{bib}
+\bibliography{unsupervised}
 
 
 \pagebreak
@@ -445,9 +555,9 @@ This part of the appendix formally defines metrics and similarities and dissimil
 
 \subsubsection*{Distances vs. Similarities}
 
-Let $\boldsymbol{X}$ be a dataset and let $\boldsymbol{x_i},\boldsymbol{x_j}$ be two datapoints, such that $\boldsymbol{x_i},\boldsymbol{x_j} \in \boldsymbol{X}$. 
+Let $\mathcal{X}$ be a dataset and let $\boldsymbol{x_i},\boldsymbol{x_j}$ be two datapoints, such that $\boldsymbol{x_i},\boldsymbol{x_j} \in \mathcal{X}$. 
 
-A distance function assign for pairs a points a non negative real number as distance. $d:\boldsymbol{X}\times \boldsymbol{X} \mapsto \mathbb{R}_0^+$. Formally if the following properties are additionally staisfied the distance is also metric.
+A distance function assign for pairs a points a non negative real number as distance. $d:\mathcal{X}\times \mathcal{X} \mapsto \mathbb{R}_0^+$. Formally if the following properties are additionally staisfied the distance is also metric \cite[page 28]{Shirali06a}.
 
 \begin{enumerate}
 	\setlength{\itemsep}{-5pt}
@@ -457,25 +567,25 @@ A distance function assign for pairs a points a non negative real number as dist
 	\item $d(\boldsymbol{x_i},\boldsymbol{x_j}) \le d(\boldsymbol{x_i},\boldsymbol{x_j})+ d(\boldsymbol{x_j},\boldsymbol{x_i}) $
 \end{enumerate}
 
-A distance can be seen as a measure for dissimilarity of two points. Besides distance some algorithms operate on a \textit{similarity} matrix. Formally a similarity is a function  $ S : \boldsymbol{X} \times \boldsymbol{X} \mapsto [0,1] $. Also for similarity we can define the following properties:
+A distance can be seen as a measure for dissimilarity of two points. Besides distance some algorithms operate on a \textit{similarity} matrix. Formally a similarity is a function  $ S : \mathcal{X} \times \mathcal{X} \mapsto [0,1] $. Also for similarity we can define the following properties \cite[page 3]{Fratev1979}:
 
 \begin{enumerate}
 	\setlength{\itemsep}{-5pt}
 	\item $0 \le S(\boldsymbol{x_i},\boldsymbol{x_j}) \le 1, \text{for } i \neq j$
-	\item $S(\boldsymbol{x_i},\boldsymbol{x_j}) = 1$
+	\item $S(\boldsymbol{x_i},\boldsymbol{x_i}) = 1$
 	\item $S(\boldsymbol{x_i},\boldsymbol{x_j}) = S(\boldsymbol{x_j},\boldsymbol{x_i})$
 \end{enumerate}
 
-Once we have computed distance or a similarity we can compute for two data points we can use this information to transform it to a similarity or the distance vice versa:
+Once we have computed distance or a similarity we can compute for two data points we can use this information to transform it to a similarity or the distance vice versa \cite[page 4]{Boriah2008}:
 
 \begin{flalign}
 S(\boldsymbol{x_i},\boldsymbol{x_j}) = \frac{1}{1+d(\boldsymbol{x_i},\boldsymbol{x_j}) } \hspace{0.5cm} \Leftrightarrow \hspace{0.5cm} d(\boldsymbol{x_i},\boldsymbol{x_j}) =  \frac{1}{S(\boldsymbol{x_i},\boldsymbol{x_j})} -1 
 \label{eq:sim}
 \end{flalign}
 
-\subsubsection{Similarity measures for timeseries data}
+\subsubsection{Similarity measures for time series data}
 
-We use three different similarity measures for time series. Empirical research suggest that simple euclidean distance for time series performs quite well and is hard to beat. Hence, the first distance measure for time series is simply euclidean distance between two time series. They might be converted to similarity based on equation \ref{eq:sim}. Let $\boldsymbol{x},\boldsymbol{y}$ be two time series over N-periods. Then the distance 
+We use three different similarity measures for time series. E.g. \cite{Wang2013} or \cite{Serr2014} provide an overview and empirical evaluation on common similarity measures for time series. The following definitions are taken from the latter. Empirical research suggest that simple euclidean distance for time series performs quite well and is hard to beat. Hence, the first distance measure for time series is simply euclidean distance between two time series. They might be converted to similarity based on equation \ref{eq:sim}. Let $\boldsymbol{x},\boldsymbol{y}$ be two time series over N-periods. Then the $L_2$ distance between two time series is define as: 
 
 \begin{flalign}
 d_E (\boldsymbol{x},\boldsymbol{y}) :=  \sqrt{\left( \sum_{i=1}^{N} \left( x_i - y_i \right)^2 \right)}
@@ -511,14 +621,17 @@ d_{lin} (\boldsymbol{x},\boldsymbol{y}) := \begin{cases}
 \label{eq:esk}
 \end{flalign}
 
+
 \subsection*{Clustering Evaluation}
 
 In this section we formally derive and explain the applied clustering metrics. Evaluating clustering performance has some issues. The algorithm is producing labels. Nevertheless we generated the "true" labels the might not be comparable. A simple example we might consider the following situation. Let y denote the labels of data the data and $y'$ the corresponding prediction such that  $y,y' \in \{0,1\}$. In a small example let our data points be like $y=(1,1,0,0)$ and the corresponding prediction $y'=(0,0,1,1)$. Obviously the clustering worked perfectly, however comparing "labels" would produce an accuracy of zero. 
 
-There a several clustering metrics, which respect such a situation. We consider a bunch of information based metrics. Most of the measures use some sort of entropy. Therefore, we stick to the notation of [SOURCE]. 
+There a several clustering metrics, which respect such a situation. We consider a bunch of information based metrics. Most of the measures use some sort of entropy. The following concepts can be found in \cite{Rosenberg2007} and  \cite{Vinh2010} and as additional reading \cite{Hubert1985}. 
 
-Hence we introduce  the contingency table. 
+First we might introduce the contingency table. 
 
+\setlength{\tabcolsep}{0.2cm}
+\renewcommand{\arraystretch}{1}
 \begin{table}[htb]
 	\centering
 	\begin{tabular}{c | c c c c| c}
@@ -609,11 +722,12 @@ V_\beta = \frac{(1+\beta)h c}{\beta h + c}
 
 \subsubsection*{Principal Components and Multidimensional Scaling}
 
+Coming to principal component analysis. \cite{Shlens2014} provides an excellent contribution considering both practical applications and theoretical background. The following derivations are from this source. 
 
 \pagebreak
 \subsubsection*{Spectral Clustering}
 
-For the spectral clustering algorithm we formally introduce some graph notation. If not stated otherwise the following derivation follows [SOURCE]. In the following we consider a weighted and simple undirected graph. 
+For the spectral clustering algorithm we formally introduce some graph notation. If not stated otherwise the following derivation follows \cite{Luxburg2007}. In the following we consider a weighted and simple undirected graph. 
 \begin{flalign}
 G &= \{V,E\} \\
 V & = \{ v_1,\dots,v_n \} \\
@@ -633,15 +747,9 @@ d_i &:= \sum_{j=1}^{n} w_{ij} = \sum_{i=1}^{n} w_{ij}
 \boldsymbol{L}_{norm} &:= \boldsymbol{D}^{1/2} \boldsymbol{L} \boldsymbol{D}^{1/2}  = \boldsymbol{I} - \boldsymbol{D}^{1/2} \boldsymbol{W} \boldsymbol{D}^{1/2}
 \end{flalign}
 
+\section{Affinity Propagation}
 
-\begin{figure}[!htb]
-	\centering
-	\begin{tabular}{cc}
-		\input{Pictures/tikz-example.tex} &  \input{Pictures/tikz-example.tex} \\
-		(a) ACF  & (b) PACF  \\[4pt]
-	\end{tabular}
-	\caption{ACF and PACF of MCSI}
-\end{figure}
+\cite{Brusco2008}
 
 \end{appendix}
 

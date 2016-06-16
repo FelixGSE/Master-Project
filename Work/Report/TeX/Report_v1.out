@@ -6,17 +6,19 @@
 \BOOKMARK [1][-]{section.VI}{List of abbreviations}{}% 6
 \BOOKMARK [1][-]{section.1}{Introduction and conceptual approach}{}% 7
 \BOOKMARK [1][-]{section.2}{Relevant Literature}{}% 8
-\BOOKMARK [1][-]{section.3}{Theoretical Backround and experiments}{}% 9
-\BOOKMARK [2][-]{subsection.3.1}{Experiment design}{section.3}% 10
-\BOOKMARK [2][-]{subsection.3.2}{Reinforcement Learning backround and multi arm bandits}{section.3}% 11
-\BOOKMARK [2][-]{subsection.3.3}{Unsupervised Learning}{section.3}% 12
-\BOOKMARK [2][-]{subsection.3.4}{Simmulation results}{section.3}% 13
+\BOOKMARK [1][-]{section.3}{Theoretical Background and simulation experiments}{}% 9
+\BOOKMARK [2][-]{subsection.3.1}{Experiment design and problem formulation}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.2}{Reinforcement Learning background and multi arm bandits}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.3}{Unsupervised learning methods, data handling and similarity}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.4}{Simulation results}{section.3}% 13
 \BOOKMARK [1][-]{section.4}{Data Analysis}{}% 14
-\BOOKMARK [2][-]{subsection.4.1}{Data Description}{section.4}% 15
-\BOOKMARK [2][-]{subsection.4.2}{Results}{section.4}% 16
-\BOOKMARK [1][-]{section.5}{Conclusion}{}% 17
-\BOOKMARK [1][-]{section.6}{List of Literature}{}% 18
-\BOOKMARK [1][-]{section*.5}{Appendix}{}% 19
-\BOOKMARK [2][-]{subsubsection.Alph0.0.1}{Similarity measures for timeseries data}{section*.5}% 20
-\BOOKMARK [3][-]{subsubsection.Alph0.0.2}{Similarity measures for categorical data}{subsubsection.Alph0.0.1}% 21
-\BOOKMARK [2][-]{subsection.Alph0.1}{Algorithms}{section*.5}% 22
+\BOOKMARK [2][-]{subsection.4.1}{Prison data and approach}{section.4}% 15
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Data summary and experimental design}{subsection.4.1}% 16
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Prison results}{subsection.4.1}% 17
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 18
+\BOOKMARK [1][-]{section.6}{List of Literature}{}% 19
+\BOOKMARK [1][-]{section*.9}{Appendix}{}% 20
+\BOOKMARK [2][-]{subsubsection.Alph0.0.1}{Similarity measures for time series data}{section*.9}% 21
+\BOOKMARK [3][-]{subsubsection.Alph0.0.2}{Similarity measures for categorical data}{subsubsection.Alph0.0.1}% 22
+\BOOKMARK [2][-]{subsection.Alph0.1}{Algorithms}{section*.9}% 23
+\BOOKMARK [1][-]{appendix.A}{Affinity Propagation}{}% 24

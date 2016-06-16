@@ -1,4 +1,6 @@
 \select@language {english}
-\contentsline {table}{\numberline {1}{\ignorespaces Overview clustering algorithms\relax }}{5}{table.caption.3}
-\contentsline {table}{\numberline {2}{\ignorespaces Overview Outcome \relax }}{7}{table.caption.4}
-\contentsline {table}{\numberline {3}{\ignorespaces Contigency Table\relax }}{D}{table.caption.6}
+\contentsline {table}{\numberline {1}{\ignorespaces Overview clustering algorithms\relax }}{6}{table.caption.3}
+\contentsline {table}{\numberline {2}{\ignorespaces Overview similarity and distance measures\relax }}{7}{table.caption.4}
+\contentsline {table}{\numberline {3}{\ignorespaces Overview Outcome \relax }}{9}{table.caption.6}
+\contentsline {table}{\numberline {4}{\ignorespaces Summary prision data (means with standard deviation in parenthesis)\relax }}{10}{table.caption.7}
+\contentsline {table}{\numberline {5}{\ignorespaces Contigency Table\relax }}{D}{table.caption.10}
