@@ -297,6 +297,7 @@ We first used a reinforcement learning based approach to simulate data and study
 The report has the following structure. In section two we provide a short overview of related literature in the field.\\ 
 The following section three is dedicated to the theoretical foundation and the simulation. We first provide a basic knowledge of reinforcement and line out our experiment design. Since this a pioneer work we address the topic in a broad manner. Hence, this section includes an overview of applied similarity concepts and algorithms. Finally we  present the results of our simulation and a short interim conclusion.\\ 
 After that we provide results for the real world data. Since this a first research on this subject we can only address a small part of the problem. Therefore, we close the paper with discussion of possible extensions and summary of found results. 
+The appendix contains the theoretical foundation of the applied algorithms, similarity measures and cluster evaluation techniques. Since are our data are fairly small we will not discuss complexity of the algorithms. 
 
 \pagebreak
 %---------------------------------------------------------------------------------------------------------
@@ -456,7 +457,11 @@ We also considered some specilised articles. \cite{Garcia2014} provide an algori
 
 \section{Data Analysis}
 
-Our simulation result suggested that we can cluster the decision behavior under some give constraints. We apply our approach to different real data sets
+Our simulation result suggested that we can cluster the decision behavior under some give constraints. We apply our approach to different real data sets. In total we are considering five different data sets. As mentioned in the introduction the Iowa gambling task is popular way to monitor decision and learning process. We were provided with data from various sources and with various types of bad behavior (namely people with criminal background, mental illness, drug habits). The first four data sets we approach are based on that test setting. The last data set is gathered in a multi arm bandit context.\\
+In the simulation setting we initially define participants with a certain set of parameters. There exists techniques to estimate to those parameters from actual data. 
+
+\subsection{Recover cognitive parameters}
+
 
 \subsection{Prison data and approach}
 
@@ -512,7 +517,63 @@ Figure \ref{fig:ent} (a) shows the average cumulative entropy averaged across gr
 Following the last section we provide a summary of our results. 
 
 
+\subsection{Multi-arm Bandit Data}
 
+The second data set we are considering are related to \cite{Stojic2015}. In this setting we consider a 20-arm bandits situation. The data were gathered online were users were compensated with small amount of money. Four different distributional settings were given to different people. In total the data sets consists of 429 participants divided in 199 female and 229 male participants.\footnote{One did not wish to answer} The average age 33.04 with standard deviation 11.75. Furthermore, the participants overall have a stronger higher education background where 261 participants have college degree and and 39 with graduate degree and Phd. 127 have a high school degree and 2 declined to answer.
+
+We tried to identify different clusterings according to demographics within those four sub experiments. Our results show not a significantly different behavior. 
+
+\subsection{Huntington Data}
+
+\cite{Stout2001} conducted research on behavior of patients with Huntington disease (HD) and Parkinson disease (PD).\footnote{The Huntington Disease is an illness of the central nervous system. The are are a wide range of associated symptoms including physical symptoms like uncontrollable muscular movements and clumsiness and psychological symptoms like minored concentration, short term memory lapses etc . Moreover a related possible symptom is Parkinson disease \cite{hunt}. Parkinson is chronic and progressive movement  disorder. Also Parkinson goes along with physical, such as tremors and rigidity and psychological symptoms, such as memory problems, minored speed of thinking fear and anxiety (among others) \cite{parc}} 
+In the study there were considered 14 participants with HD and 22 participants with PD. They participants are required to don't have ongoing drug problems (including alcohol), free of other major diseases (physical or psychological nature). A group of 33 people serves as a control group. This group can further distinguished in younger (YHC) and older control participants (OHC). Table \ref{tab:hus} gives a basic summary of the demographic of the participants.
+
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1}
+\begin{table}[!htbp]
+	\centering 
+	\scriptsize
+	\begin{tabularx}{\textwidth}{lccccc}
+		\toprule
+		\textbf{Demographic} & \textbf{Hunting Disease} & \textbf{Parkinson Disease} & \textbf{YHC} & \textbf{OHF} \\
+		\hline
+		Age & 		44.60 (11.70) & 66.00 (8.30) & 45.30 (10.60) & 65.50 (10.70) \\
+		Education (years) & 15.30 (2.30) & 14.20 (2.90) & 14.30 (2.10) &14.70 (2.40) \\
+		Sex & 130.60 (10.10) & 131.70 (7.60) & 139.50 (2.20) & 138.00 (4.60) \\
+		Years since diagnosis & 4.10 (2.80) & 7.70 (5.50) & NA (NA) & NA (NA) \\
+		Estimated age at diagnosis & 40.50 (10.80) & 58.30 (7.60) & NA (NA) & NA (NA) \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Shortened summary of HD, PD and control people (means with standard deviations in parenthesis)}
+	\label{tab:hus}
+	\textbf{Source:} Summary of \cite[page 3]{Stout2001} 
+\end{table}
+
+
+\subsection{Cocaine Abusers data}
+
+We have data from several individuals of cocaine abusers. There are 12 individuals performing the IGT. The control group consist out of 14 participants. Candidates among the drug abusers were selected as active users with additional drug abusing past and without any known additional mental illness \cite{stout2004}. Table \ref{tab:cla} gives a summary of demographic profile.
+
+\setlength{\tabcolsep}{12pt}
+\renewcommand{\arraystretch}{1}
+\begin{table}[!htbp]
+	\centering 
+	\begin{tabular}{lcc}
+		\toprule
+		\textbf{demographic} & \textbf{Drug abusers} & \textbf{Control Group} \\
+		\hline
+		Share of men &  79\% & 100\%\\
+		Age & 36.90 (10.30) & 30.00 (6.10) \\
+		Estimated IQ & 105.00 (7.62) & 93.70 (10.30) \\
+		\bottomrule
+	\end{tabular}
+	\caption{Demographic summary of cocaine abusers (means with standard deviations in parenthesis)}
+	\label{tab:cocs}
+\end{table}
+
+\section{Discussion of results and possible extensions }
+
+Our analysis so far showed that people are not separate themselves. In general we assume that healthy participants and those with assumed decision making deficits show significantly different behavior. However, we observe that their behavior seem to be quite similar given our data and applied mappings. Furthermore , in most of the applied unsupervised techniques we as analysts have to to set the number of clusters we assume to be in the data (so in our case two for control group and patients with habits). We apply another algorithm called affinity propagation, which identifies the number of clusters itself (algorithm formulation see appendix). In general we find that the algorithm is assign , which suggest that there more natural clusters in the data than the  one we assume due to their status labeled as healthy and ill.
 
 %---------------------------------------------------------------------------------------------------------
 % 5. Data

@@ -2,6 +2,11 @@ This is BibTeX, Version 0.99d (TeX Live 2015)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Report_v1.aux
 A level-1 auxiliary file: tikz-example.tex.aux
+Case mismatch error between cite keys stout2004 and Stout2004
+---line 88 of file Report_v1.aux
+ : \citation{stout2004
+ :                    }
+I'm skipping whatever remains of this command
 The style file: apalike.bst
 Database file #1: unsupervised.bib
 Repeated entry---line 569 of file unsupervised.bib
@@ -48,6 +53,10 @@ Repeated entry---line 892 of file unsupervised.bib
  : @article{Ahn2008
  :                 ,
 I'm skipping whatever remains of this entry
+Warning--entry type for "hunt" isn't style-file defined
+--line 933 of file unsupervised.bib
+Warning--entry type for "parc" isn't style-file defined
+--line 941 of file unsupervised.bib
 Warning--I didn't find a database entry for "]"
 Warning--can't use both volume and number fields in Garcia2014
 Warning--empty publisher in Garcia2014
@@ -61,46 +70,47 @@ Warning--there's a number but no volume in NiritAgay2010
 Warning--empty journal in Pamminger2007
 Warning--empty journal in Pamminger2009
 Warning--empty journal in Ren2011
+Warning--empty journal in Stout2001
 Warning--empty journal in Sutton2012
-You've used 37 entries,
+You've used 41 entries,
             1935 wiz_defined-function locations,
-            723 strings with 11177 characters,
-and the built_in function-call counts, 15567 in all, are:
-= -- 1492
-> -- 749
-< -- 23
-+ -- 258
-- -- 258
-* -- 1413
-:= -- 2734
-add.period$ -- 106
-call.type$ -- 37
-change.case$ -- 310
-chr.to.int$ -- 37
-cite$ -- 50
-duplicate$ -- 525
-empty$ -- 1014
-format.name$ -- 317
-if$ -- 2960
+            741 strings with 11664 characters,
+and the built_in function-call counts, 16917 in all, are:
+= -- 1629
+> -- 799
+< -- 26
++ -- 274
+- -- 274
+* -- 1514
+:= -- 2975
+add.period$ -- 116
+call.type$ -- 41
+change.case$ -- 338
+chr.to.int$ -- 41
+cite$ -- 55
+duplicate$ -- 580
+empty$ -- 1102
+format.name$ -- 337
+if$ -- 3221
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 41
-newline$ -- 183
-num.names$ -- 111
-pop$ -- 277
+missing$ -- 43
+newline$ -- 201
+num.names$ -- 123
+pop$ -- 301
 preamble$ -- 1
-purify$ -- 314
+purify$ -- 342
 quote$ -- 0
-skip$ -- 401
+skip$ -- 448
 stack$ -- 0
-substring$ -- 1089
-swap$ -- 48
-text.length$ -- 5
+substring$ -- 1177
+swap$ -- 56
+text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 214
-warning$ -- 13
-while$ -- 126
+type$ -- 238
+warning$ -- 14
+while$ -- 139
 width$ -- 0
-write$ -- 460
-(There were 11 error messages)
+write$ -- 505
+(There were 12 error messages)
