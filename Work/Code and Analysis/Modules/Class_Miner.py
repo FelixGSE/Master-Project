@@ -121,21 +121,29 @@ class miner:
 
 			####dom
 			results=acc_vector
-			
 
+			for i,clster in enumerate(results):
+				row = [mu, sigma, N, cluster, decision_function,alpha,tau,\
+					epsilon,p_names[i],p_set[i],clster[0],clster[1],\
+					clster[2],clster[3],clster[4],clster[5],clster[6],\
+					0,0,0,0,0,0,0]
+				dframe.loc[len(dframe)] = row
+			"""
 			for i,clster in enumerate(results):
 				row = [mu, sigma, N, cluster, decision_function,alpha,tau,\
 					epsilon,p_names[i],p_set[i],[clster[0].round(5)],[clster[1]],\
 					[clster[2]],[clster[3]],[clster[4]],[clster[5]],[clster[6]],\
 					0,0,0,0,0,0,0]
 				dframe.loc[len(dframe)] = row
-
+			"""
 			####dom further edit
 			p_len = len(p_set)
 			for i in range(10,17):
+				"""
 				dframe.ix[:,i][step*p_len:(step+1)*p_len]=\
-				zip(sum(dframe.ix[:,i][step*p_len:(step+1)*p_len],[]),dframe.ix[:,i][step*p_len:(step+1)*p_len].rank(method="min"))
-				dframe.ix[:,i+7][step*p_len:(step+1)*p_len]=dframe.ix[:,i][step*p_len:(step+1)*p_len].rank(method="min")
+				zip(sum(dframe.ix[:,i][step*p_len:(step+1)*p_len],[]),dframe.ix[:,i][step*p_len:(step+1)*p_len].rank(method="min",ascending=False))
+				""" # uncomment to get tupples
+				dframe.ix[:,i+7][step*p_len:(step+1)*p_len]=dframe.ix[:,i][step*p_len:(step+1)*p_len].rank(method="min",ascending=False)
 
 			####
 

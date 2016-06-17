@@ -38,18 +38,20 @@ execfile("Class_Data_Clustering.py")
 
 ####################################################################################################
 
+aux=auxilliary()
+
 #---------------------------------------------------------------------------------------------------
 # Bandits
 #---------------------------------------------------------------------------------------------------
 
 # Mean of the bandits 
-p01 = rep([0,0.5,1],1)
+p01 = aux.rep([0,2,4],6)
 # Standard Deviation of the bandits
-p02 = rep([1,1,1],1)
+p02 = aux.rep([1,1,1],6)
 # Set of number of trials 
-p03 = rep(100,1)
+p03 = aux.rep(100,6)
 # Set of size of clusters	
-p04 = rep(5,1)
+p04 = aux.rep(10,6)
 
 
 
@@ -59,16 +61,16 @@ p04 = rep(5,1)
 
 
 # Set of decision functions
-p06 = rep("softmax",1)
+p06 = aux.rep("softmax",6)
 
 # Set of alphas
-p07 = rep([0.5,0.5,0.5], 1 )
+p07 = aux.rep([0.5,0.5], 6 )
 
 # Set of Taus
-tau = [ [0.1,0.2,0.3], [0.1,0.3,0.5], [0.1,0.5,0.9],
-		[0.3,0.7,1.1], [0.5,0.9,1.3], [0.1,1,5] ] 	
+tau = [ [0.1,0.3], [0.1,0.5], [0.1,0.9],
+		[0.3,0.7], [0.5,0.9], [0.9,1.5] ] 	
 
-tau = [ [0.1,0.7,1.8] ]
+#tau = [ [0.1,0.7,1.8] ]
 
 
 #---------------------------------------------------------------------------------------------------
@@ -90,7 +92,7 @@ prediction_accuracies.prediction( mu_set = p01,
 
 print prediction_accuracies.dframe.round(5)
 
-print prediction_accuracies.dframe.round(5).to_csv("../Results/Simulation/data_20guys_p22_IOWA.csv")
+print prediction_accuracies.dframe.round(5).to_csv("../Results/Simulation_new/data_10_m2_a1.csv")
 
 ####################################################################################################
 

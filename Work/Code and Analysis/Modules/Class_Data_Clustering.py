@@ -372,7 +372,7 @@ class data_clustering:
 
 			p_len = len(p_set)
 			for i in range(3,10):
-				dframe.ix[:,i+7][itr*p_len:(itr+1)*p_len]=dframe.ix[:,i][itr*p_len:(itr+1)*p_len].rank(method="min")
+				dframe.ix[:,i+7][itr*p_len:(itr+1)*p_len]=dframe.ix[:,i][itr*p_len:(itr+1)*p_len].rank(method="min",ascending=False)
 
 			"""
 			for i,clster in enumerate(p_set):

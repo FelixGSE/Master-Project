@@ -30,3 +30,25 @@ where p(xic) expresses a relative frequency of the value xic of the c-th variabl
 [insert formula]
 
 and the dissimilarity measure according to Equation (5).
+
+
+
+
+############################################# Literature review
+
+This paper explores a pioneering approach in analysing individual behaviour in the context of the Iowa Gambling Task. Papers xyz used expectancy valence model and identified different clusters based on three behavioural parameters. There are many/several choices of discrete data similarity measures, among the less known ones we considered xyz. 
+
+This paper explores a pioneering approach in analysing individual behaviour in the context of the Iowa Gambling Task. The literature used can be grouped motivation and methodology borrowed from different problems
+
+######### scratch that
+
+
+
+The literature used in this paper can be split in two groups, one exploring individual behaviour difference using IGT and SGT and the second group containing papers about similarity measures and unsupervised methods. Our starting point was the research done by Eldad Yechiam who through several papers explored decision making of individuals with various potential social impairments(difficulties).
+Yechiam(2005)(et al?) evaluates different decision behaviour between 10 different populations of drug abusers. Their model successfully identifies and distinguishes several of these subgroups. Same method was used for the criminals dataset used in this paper. We explored several similarity/distance measures and multiple clustering methods. 
+
+
+################
+
+
+There exists a rich literature on identifying behavioural groups using the Iowa Gambling Task experiment. It has been shown that individuals with prefrontal brain damage and decision-making defects continue to choose disadvantageously even after they learned the optimal strategy.(Bechera et al., 1997). Several studies identify specific drug-user groups, e.g. cocaine addicts (Stout et al., 2004), chronic cannabis users (Fridberg et al., 2010), heavy alcohol users(heavy drinkers)(Gullo & Stieger, 2011). Extensive set of research is focused around particular mental disabilities, e.g. Asperger's disorder(Johnson, Yechiam et al., 2006), psychopathic tendencies (Blair et al., 2001), bipolar disorder (Brambilla et al., 2012), schizophrenia (Martino et al., 2007), pathological gambling disorder (Cavedini et al., 2002), attention-deficit-hyperactivity disorder (Agay, Yechiam, et al., 2010). Most popular reinforcement learning models for identifying behavioural differences between different disorders are Expectancy Valence model (Busemeyer & Stout, 2002) and Prospect Valence Learning model (Ahn, Busemeyer, Wagenmakers & Stout, 2008).
