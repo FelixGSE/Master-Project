@@ -53,24 +53,29 @@ for( i in 1:N ){
 
 x    <- 1:(M-1)
 cols <- brewer.pal(12, 'Set3')
-plot(x,col.average[2,],type="l",ylim=c(0,1), col = cols[1], 
-     xlab = "Steps", ylab= "Avergage disadvantage choice" )
-for( i in 3:nrow(col.average)){
-  lines(x,col.average[i,],col = cols[i])
-}
 
-axis(1, at = seq(1, 10, by = 2), las=1)
-
-legend("bottomleft",
-       c("Theft","Robbery","Sex", "Drug","OWI","Assault/Murder","Escape","Forgery","Other","Healthy"),
-       lty = 1,
-       col = cols[1:10],
-       cex = 1,
-       bty = "n",
-       ncol = 2,
-       y.intersp = 2,
-)
-
+tikz("disad.tex", width = 3.5, height =3.5)
+  plot(x,col.average[2,],type="l",ylim=c(0,1), col = cols[1], 
+       xlab = "Steps", ylab= "Avergage disadvantage choice",
+       lwd=1.5,
+       cex.lab=0.8,
+       cex.axis = 0.5,
+       tck=-0.03,
+       las=1,
+       mgp = c(2, 0.5, 0) ) 
+  for( i in 3:nrow(col.average)){
+    lines(x,col.average[i,],col = cols[i])
+  }
+  legend("bottomleft",
+         c("Theft","Robbery","Sex", "Drug","OWI","Assault/Murder","Escape","Forgery","Other","Healthy"),
+         lty = 1,
+         col = cols[1:10],
+         cex = 0.4,
+         bty = "n",
+         ncol = 2,
+         y.intersp = 2,
+  )
+dev.off()
 
 # Average 
 plot(x, col.average[1,],type="l",ylim=c(0,1), col = 'red',

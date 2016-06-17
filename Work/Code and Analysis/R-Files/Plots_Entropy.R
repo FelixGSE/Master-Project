@@ -10,14 +10,15 @@ setwd('~/Documents/GSE/Term 3/Master_Project/Master-Project/Work/')
 
 ### Load Packages 
 if (!require("RColorBrewer")) install.packages("RColorBrewer"); library(RColorBrewer)
+if (!require("tikzDevice"))   install.packages("tikzDevice");   library(tikzDevice)
 
 ### Get auxilliary functions
 source('Code and Analysis/R-Files/Auxlliary_Functions.R')
 
 ### Get Data 
 
-e00 <- read.csv('Code and Analysis/Results/Real data/00/e00.csv')
-e01 <- read.csv('Code and Analysis/Results/Real data/01/e01.csv')
+e00  <- read.csv('Code and Analysis/Results/Real data/00/e00.csv')
+e01  <- read.csv('Code and Analysis/Results/Real data/01/e01.csv')
 e02 <- read.csv('Code and Analysis/Results/Real data/02/e02.csv')
 e03 <- read.csv('Code and Analysis/Results/Real data/03/e03.csv')
 e04 <- read.csv('Code and Analysis/Results/Real data/04/e04.csv')
@@ -56,43 +57,49 @@ for( i in 1:N ){
 x    <- 1:(M-1)
 cols <- brewer.pal(12, 'Set3')
 
-plot(x,col.average[2,],type="l",ylim=c(0,2), col = cols[1], 
-     xlab = "Steps", ylab= "Avergage entropy accross groups" )
-for( i in 3:nrow(col.average)){
-  lines(x,col.average[i,],col = cols[i])
-}
-legend("bottomright",
-       c("Theft","Robbery","Sex", "Drug","OWI","Assault/Murder","Escape","Forgery","Other","Healthy"),
-       lty = 1,
-       col = cols[1:10],
-       cex = 1,
-       bty = "n",
-       ncol = 2,
-       y.intersp = 2,
-)
-title(main ="Average Entropy of Criminals vs. Controll Group")
+tikz("avgent.tex", width = 3.5, height =3.5)
+  plot(x,col.average[2,],type="l",ylim=c(0,2), col = cols[1], 
+       xlab = "Steps", ylab= "Avergage entropy", lwd=1.5,
+       cex.lab=0.8,
+       cex.axis = 0.5,
+       tck=-0.03,
+       las=1,
+       mgp = c(2, 0.5, 0) )
+  for( i in 3:nrow(col.average)){
+    lines(x,col.average[i,],col = cols[i],lwd=1.5)
+  }
+  legend("bottomright",
+         c("Theft","Robbery","Sex", "Drug","OWI","Assault/Murder","Escape","Forgery","Other","Healthy"),
+         lty = 1,
+         col = cols[1:10],
+         cex = 0.4,
+         bty = "n",
+         ncol = 2,
+         y.intersp = 2
+  )
+dev.off()
 
 # 2) Full average
 M02 <- nrow(col.average)
-plot(x, col.average[1,],type="l",ylim=c(0,2), col = 'red',
-     xlab = "Steps", ylab= "Avergage entropy choice")
-lines(x,col.average[M02,],col ='blue')
-legend("bottomright",
-       c("Criminals","Controll"),
-       lty = 1,
-       col = c('red','blue'),
-       cex = 1,
-       bty = "n",
-       ncol = 1,
-       y.intersp = 2,
-)
-title(main ="Average Entropy of Criminals vs. Controll Group")
-################################################################################
 
-################################################################################
-
-# 3) Individual entropies
-
-
-
+tikz("fullavg.tex", width = 3.5, height =3.5)
+  plot(x, col.average[1,],type="l",ylim=c(0,2), col = 'red',
+       xlab = "Steps", ylab= "Avergage entropy", 
+       lwd=1.5,
+       cex.lab=0.8,
+       cex.axis = 0.5,
+       tck=-0.03,
+       las=1,
+       mgp = c(2, 0.5, 0) )
+  lines(x,col.average[M02,],col ='blue')
+  legend("bottomright",
+         c("Criminals","Controll"),
+         lty = 1,
+         col = c('red','blue'),
+         cex = 0.4,
+         bty = "n",
+         ncol = 1,
+         y.intersp = 2,
+  )
+dev.off()
 

@@ -29,7 +29,7 @@ rownames(df02) <- df01[,1]
 df03 <- t(df02)
 colnames(df03)[21] <- "iq"
 colnames(df03)[20] <- "tabe"
-
+sum(df.count)
 #  Means by crime
 df.count <- as.numeric(table(df03[,5]))
 df.age   <- aggregate( age  ~ crime , data=df03, mean )
@@ -43,8 +43,8 @@ sd.age   <- aggregate( age  ~ crime , data=df03, sd )
 sd.educ  <- aggregate( education  ~ crime , data=df03, sd ) 
 sd.tabe  <- aggregate( tabe ~ crime , data=df03, sd ) 
 sd.IQ    <- aggregate( iq ~ crime , data=df03, sd ) 
-sd.merge <- Reduce(merge, list(sd.age,sd.educ,sd.tabe,sd.IQ))
-
+sd.merge <- round(Reduce(merge, list(sd.age,sd.educ,sd.tabe,sd.IQ)),2)
+sd.merge
 
 # Merge 
 rnames <- c("Theft/Burglary","Robbery","Sex","Drug","OWI","Assault",
@@ -57,8 +57,8 @@ rownames(final.frame) <- rnames
 colnames(final.frame) <- cnames
 is.num <- sapply(final.frame, is.numeric)
 final.frame[is.num] <- lapply(final.frame[is.num], round, 2)
-
-stargazer(final.frame, summary=TRUE, rownames=TRUE)
+final.frame
+stargazer(final.frame,summary=FALSE,digits=2)
 
 
 

@@ -79,6 +79,11 @@ class similarity:
 		similarity = pa.cosine_similarity(data)
 		return similarity
 
+	def levenstein_similarity(self,data):
+		dist = self.pairwise_distance( list_of_list = data, distance_function = self.levenstein_distance )
+		levenstein_similarity = self.similarity(dist)
+		return levenstein_similarity
+
 	def eskin_similarity(self,data):
 		similarity = self.similarity(self.eskin_dissimilarity(data))
 		return similarity
@@ -178,6 +183,10 @@ class similarity:
 	def overlap_distance( self, X , Y ):
 		overlap_distance = sum( X == Y )
 		return overlap_distance
+
+	def levenstein_distance(self,X,Y):
+		dist = editdistance.eval(X, Y)
+		return dist
 
 	# 2) Time series and real-valued data
 
