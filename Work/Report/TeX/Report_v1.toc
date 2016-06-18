@@ -13,12 +13,17 @@
 \contentsline {subsection}{\numberline {3.3}Unsupervised learning methods, data handling and similarity}{5}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Simulation results}{7}{subsection.3.4}
 \contentsline {section}{\numberline {4}Data Analysis}{10}{section.4}
-\contentsline {subsection}{\numberline {4.1}Prison data and approach}{10}{subsection.4.1}
-\contentsline {subsubsection}{\numberline {4.1.1}Data summary and experimental design}{10}{subsubsection.4.1.1}
-\contentsline {subsubsection}{\numberline {4.1.2}Prison results}{11}{subsubsection.4.1.2}
-\contentsline {section}{\numberline {5}Conclusion}{11}{section.5}
-\contentsline {section}{\numberline {6}List of Literature}{13}{section.6}
-\contentsline {section}{Appendix}{A}{section*.9}
+\contentsline {subsection}{\numberline {4.1}Recover cognitive parameters}{10}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Prison data and approach}{10}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Data summary and experimental design}{10}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Prison results}{12}{subsubsection.4.2.2}
+\contentsline {subsection}{\numberline {4.3}Multi-arm Bandit Data}{12}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Huntington Data}{13}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Cocaine Abusers data}{13}{subsection.4.5}
+\contentsline {section}{\numberline {5}Discussion of results and possible extensions }{14}{section.5}
+\contentsline {section}{\numberline {6}Conclusion}{14}{section.6}
+\contentsline {section}{\numberline {7}List of Literature}{15}{section.7}
+\contentsline {section}{Appendix}{A}{section*.11}
 \vspace {-0.5em}
 \contentsline {subsubsection}{\numberline {.0.1}Similarity measures for time series data}{B}{subsubsection.Alph0.0.1}
 \contentsline {subsubsection}{\numberline {.0.2}Similarity measures for categorical data}{C}{subsubsection.Alph0.0.2}

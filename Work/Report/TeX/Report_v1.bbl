@@ -82,6 +82,10 @@ Hubert, L. and Arabie, P. (1985).
 \newblock {Comparing partitions}.
 \newblock {\em Journal of Classification}, 2(1):193--218.
 
+\bibitem[Huntington’s-Disease-Association, 2016]{hunt}
+Huntington’s-Disease-Association (2016).
+\newblock About huntington’s disease.
+
 \bibitem[Johnson et~al., 2006]{Johnson2006}
 Johnson, S.~a., Yechiam, E., Murphy, R.~R., Queller, S., and Stout, J.~C.
   (2006).
@@ -127,8 +131,8 @@ Pamminger, C. (2007).
   of Markov Chain Models Bayesian Clustering of Categorical Time Series Using
   Finite Mixtures of Markov Chain Models}.
 
-\bibitem[Pamminger and Fr??hwirth-Schnattery, 2010]{Pamminger2010a}
-Pamminger, C. and Fr??hwirth-Schnattery, S. (2010).
+\bibitem[Pamminger and Fruehwirth-Schnattery, 2010]{Pamminger2010a}
+Pamminger, C. and Fruehwirth-Schnattery, S. (2010).
 \newblock {Model-based clustering of categorical time series}.
 \newblock {\em Bayesian Analysis}, 5(2):345--368.
 
@@ -137,6 +141,10 @@ Pamminger, C. and Fruhwirth-Schnatter, S. (2009).
 \newblock {Bayesian Clustering of Categorical Time Series Using Finite Mixtures
   of Markov Chain Models}.
 \newblock 43(0907).
+
+\bibitem[Parkinson’s-Disease-Foundation, 2016]{parc}
+Parkinson’s-Disease-Foundation (2016).
+\newblock About parkinson’s disease.
 
 \bibitem[Ren et~al., 2011]{Ren2011}
 Ren, J., Cao, S., and Hu, C. (2011).
@@ -187,12 +195,23 @@ Steingroever, H., Wetzels, R., and Wagenmakers, E.-J. (2013).
   Gambling Task}.
 \newblock {\em Decision}.
 
+\bibitem[Stojic et~al., 2015]{Stojic2015}
+Stojic, H., Analytis, P.~P., and Speekenbrink, M. (2015).
+\newblock {Human behavior in contextual multi-armed bandit problems}.
+\newblock {\em Proceedings of the 37th Annual Conference of the Cognitive
+  Science Society}, 1:1--6.
+
 \bibitem[Stout et~al., 2004]{Stout2004}
 Stout, J.~C., Busemeyer, J.~R., Lin, A., Grant, S.~J., and Bonson, K.~R.
   (2004).
 \newblock {Cognitive modeling analysis of decision-making processes in cocaine
   abusers}.
 \newblock {\em Psychonomic Bulletin {\&} Review}, 11(4):742--747.
+
+\bibitem[Stout et~al., 2001]{Stout2001}
+Stout, J.~C., Rodawalt, W.~C., and Siemers, E.~R. (2001).
+\newblock {Risky decision making in Huntington ' s disease}.
+\newblock pages 92--101.
 
 \bibitem[Sutton and Barto, 2012]{Sutton2012}
 Sutton, R. and Barto, A. (2012).
