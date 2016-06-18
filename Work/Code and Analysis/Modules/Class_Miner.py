@@ -21,6 +21,8 @@ class miner:
 		dframe = pd.DataFrame(columns=column_names)
 		dframe1 = pd.DataFrame(columns=column_names_1)
 
+		aux = auxilliary()
+
 		for step in runtime:
 
 			# Print trace
@@ -58,7 +60,16 @@ class miner:
 			temp_entropy = temp_data.entropies
 			temp_choices = temp_data.choices 
 			temp_labels  = temp_data.label
-			temp_concats = temp_data.concat 
+			temp_concats = temp_data.concat
+
+			##
+			bad_set = aux.avg_bad_multi(temp_choices)
+			ent_block = aux.entropy_block(temp_choices)
+
+			# Compute Similarities - Begin Trace	
+			print "*************************************"
+			print "Start computing similarity"
+			print "-------------------------------------"
 
 			# Compute Similarities
 			sim = similarity()
@@ -76,6 +87,34 @@ class miner:
 			lin_disim = sim.lin_disim
 			edr_sim = sim.edr_sim
 			
+			## new
+
+			# Compute similarities for bad choices
+			sim = similarity()
+			sim.timeseries(bad_set)
+			bad_timewarp = sim.edtw
+			bad_euclidian = sim.euclidian_dist
+			bad_euclidian_sim = sim.euclidian
+			bad_cosine = sim.cosine_ent
+			bad_rbf = sim.rbf
+			bad_edr = sim.edr_sim
+
+			# Compute similarties for blockwise entropy
+			sim = similarity()
+			sim.timeseries(ent_block)
+			eb_timewarp = sim.edtw
+			eb_euclidian = sim.euclidian_dist
+			eb_euclidian_sim = sim.euclidian
+			eb_cosine = sim.cosine_ent
+			eb_rbf = sim.rbf
+			eb_edr = sim.edr_sim
+
+			## new above
+
+			# Closing trace for similarity
+			print "Finished computing similarity"
+			print "*************************************"
+
 			# Compute Predictions
 			no_clust = len(alpha)
 			temp_unsupervised = unsupervised()
@@ -102,10 +141,195 @@ class miner:
 			p20 = temp_unsupervised.average_hierachical(lin_disim,no_clust)
 			p21 = temp_unsupervised.spectral(edr_sim,no_clust)
 			p22 = temp_unsupervised.affinity_propagation(edr_sim)
+
+			# Cluster bad choices
+			try:
+				print 'BAD CHOICES 1'
+				p23 = temp_unsupervised.spectral(bad_timewarp,no_clust)
+			except:
+				print 'ERROR in 1'
+			
+			try:	
+				print 'BAD CHOICES 2'
+				p24 = temp_unsupervised.affinity_propagation(bad_timewarp)
+			except:
+				print 'ERROR in 2'
+			
+			try:
+				print 'BAD CHOICES 3'
+				p25 = temp_unsupervised.pca_ward(bad_euclidian,2,no_clust)
+			except:
+				print 'ERROR in 3'
+			
+			try:
+				print 'BAD CHOICES 4'
+				p26 = temp_unsupervised.spectral(bad_euclidian_sim,no_clust)
+			except:
+				print 'ERROR in 4'
+			
+			try:
+				print 'BAD CHOICES 5'
+				p27 = temp_unsupervised.affinity_propagation(bad_euclidian_sim)
+			except:
+				print 'ERROR in 5'
+			
+			try:
+				print 'BAD CHOICES 6'
+				p28 = temp_unsupervised.spectral(bad_cosine,no_clust)
+			except:
+				print 'ERROR in 6'
+
+			try:
+				print 'BAD CHOICES 7'
+				p29 = temp_unsupervised.affinity_propagation(bad_cosine)
+			except:
+				print 'ERROR in 7'
+			
+			try:
+
+				print 'BAD CHOICES 8'
+				p30 = temp_unsupervised.spectral(bad_rbf,no_clust)
+			except:
+				print 'ERROR in 8'
+			
+			try:
+				print 'BAD CHOICES 9'
+				p31 = temp_unsupervised.affinity_propagation(bad_rbf)
+			except:
+				print 'ERROR in 9'
+			
+			try:
+				print 'BAD CHOICES 10'
+				p32 = temp_unsupervised.spectral(bad_edr,no_clust)
+			except:
+				print 'ERROR in 10'
+
+			try:
+				print 'BAD CHOICES 11'
+				p33 = temp_unsupervised.affinity_propagation(bad_edr)
+			except:
+				print 'ERROR in 11'
+
+			try:
+				print 'BAD CHOICES 12'
+				p34 = temp_unsupervised.kmeans( bad_set, no_clust )
+			except:
+				print 'ERROR in 12'
+			
+			try:
+				print 'BAD CHOICES 13'
+				p35 = temp_unsupervised.complete_hierachical(bad_euclidian,no_clust)
+			except:
+				print 'ERROR in 13'
+			
+			try:
+				print 'BAD CHOICES 14'
+				p36 = temp_unsupervised.average_hierachical(bad_euclidian,no_clust)
+			except:
+				print 'ERROR in 14'
+			
+			try:
+				print 'BAD CHOICES 15'
+				p37 = temp_unsupervised.ward_clustering(bad_set,no_clust)
+			except:
+				print 'ERROR in 15'
+
+			# Cluster blockwise entropy
+			try:
+				print 'BLOCKWISE 1'
+				p38 = temp_unsupervised.spectral(eb_timewarp,no_clust)
+			except:
+				print 'ERROR in BLOCKWISE 1'	
+			try:			
+				print 'BLOCKWISE 2'
+				p39 = temp_unsupervised.affinity_propagation(eb_timewarp)
+			except:
+				print 'ERROR in BLOCKWISE 2'
+			try:			
+				print 'BLOCKWISE 3'
+				p40 = temp_unsupervised.pca_ward(eb_euclidian,2,no_clust)
+			except:
+				print 'ERROR in BLOCKWISE 3'				
+			
+			try:
+				print 'BLOCKWISE 4'
+				p41 = temp_unsupervised.spectral(eb_euclidian_sim,no_clust)
+			except:
+				print 'ERROR in BLOCKWISE 4'				
+			
+			try:
+				print 'BLOCKWISE 5'
+				p42 = temp_unsupervised.affinity_propagation(eb_euclidian_sim)
+			except:
+				print 'ERROR in BLOCKWISE 5'
+
+			try:
+				print 'BLOCKWISE 6'
+				p43 = temp_unsupervised.spectral(eb_cosine,no_clust)
+			except:
+				print 'ERROR in BLOCKWISE 6'				
+			
+			try:
+				print 'BLOCKWISE 7'
+				p44 = temp_unsupervised.affinity_propagation(eb_cosine)
+			except:
+				print 'ERROR in BLOCKWISE 6'
+			
+			try:					
+				print 'BLOCKWISE 8'
+				p45 = temp_unsupervised.spectral(eb_rbf,no_clust)
+			except:
+				print 'ERROR in BLOCKWISE 8'
+
+			try:
+				print 'BLOCKWISE 9'
+				p46 = temp_unsupervised.affinity_propagation(eb_rbf)
+			except:
+				print 'ERROR in BLOCKWISE 9'	
+			
+			try:
+				print 'BLOCKWISE 10'
+				p47 = temp_unsupervised.spectral(eb_edr,no_clust)
+			except:
+				print 'ERROR in BLOCKWISE 10'	
+
+			try:
+				print 'BLOCKWISE 11'
+				p48 = temp_unsupervised.affinity_propagation(eb_edr)
+			except:
+				print 'ERROR in BLOCKWISE 11'	
+
+			try:
+				print 'BLOCKWISE 12'
+				p49 = temp_unsupervised.kmeans( ent_block, no_clust )
+			except:
+				print 'ERROR in BLOCKWISE 12'
+
+			try:	
+				print 'BLOCKWISE 13'
+				p50 = temp_unsupervised.complete_hierachical(eb_euclidian,no_clust)
+			except:
+				print 'ERROR in BLOCKWISE 13'	
+			
+			try:
+				print 'BLOCKWISE 14'
+				p51 = temp_unsupervised.average_hierachical(eb_euclidian,no_clust)
+			except:
+				print 'ERROR in BLOCKWISE 14'
+
+			try:
+				print 'BLOCKWISE 15'
+				p52 = temp_unsupervised.ward_clustering(ent_block,no_clust)
+			except:
+				print 'ERROR in BLOCKWISE 15'	
+
+
 			
 			# Combine predictions for saving
 			p_set = [p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,\
-					p15,p16,p17,p18,p19,p20,p21,p22]
+					p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,\
+					p30,p31,p32,p33,p34,p35,p36,p37,p38,p39,p40,p41,p42,p43,p44,\
+					p45,p46,p47,p48,p49,p50,p51,p52]
 
 			# Save names for each similarity - clustering combination
 			p_names = ["spectral warp","aff prop","pca","spectral overlap",\
@@ -113,7 +337,16 @@ class miner:
 					"spect_cos_ent","aff_cos_ent","spect_rbf","spect_esk_sim",\
 					"aff_esk_sim","spect_lin_sim","aff_lin_sim","comp_hr_esk_dis",\
 					"avg_hr_esk_dis","comp_hr_lin_din","avg_hr_lin_dis",\
-					"spect_edr","aff_edr"]
+					"spect_edr","aff_edr", "spectral bad warp","affinity bad warp","PCA bad euclid",\
+					"spectral bad eucsim","affinity bad eucsim","spectral bad cosine",\
+					"affinity bad cosine", "spectral bad rbf",\
+					"affinity bad rbf", "spectral bad edr", "affinity bad edr", \
+					"kmeans badset","complete badset","average badset","ward badset",\
+					"spectral eblock warp","affinity eblock warp","PCA eblock euclid",\
+					"spectral eblock eucsim","affinity eblock eucsim","spectral eblock cosine",\
+					"affinity eblock cosine", "spectral eblock rbf",\
+					"affinity eblock rbf", "spectral eblock edr", "affinity eblock edr", \
+					"kmeans eblockset","complete eblockset","average eblockset","ward eblockset"]
 
 			# Compute accuracies
 			acc_vector = self.full_accuracies(temp_labels,p_set)

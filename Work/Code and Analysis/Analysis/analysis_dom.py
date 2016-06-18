@@ -67,11 +67,13 @@ p06 = aux.rep("softmax",6)
 p07 = aux.rep([0.5,0.5], 6 )
 
 # Set of Taus
-tau = [ [0.1,0.3], [0.1,0.5], [0.1,0.9],
-		[0.3,0.7], [0.5,0.9], [0.9,1.5] ] 	
+tau = [ [0.1,1.5], [0.1,0.5], [0.1,0.9],
+		[0.1,1.8], [0.1,2.5], [0.9,1.5] ] 	
 
 #tau = [ [0.1,0.7,1.8] ]
-
+tau=aux.rep([1.5,1.5],6)
+p07 = [[0.1,0.3], [0.1,0.5], [0.1,0.7],
+	   [0.1,0.9], [0.5,0.9], [0.7,0.9]]
 
 #---------------------------------------------------------------------------------------------------
 # Analysis 
@@ -92,7 +94,7 @@ prediction_accuracies.prediction( mu_set = p01,
 
 print prediction_accuracies.dframe.round(5)
 
-print prediction_accuracies.dframe.round(5).to_csv("../Results/Simulation_new/data_10_m2_a1.csv")
+print prediction_accuracies.dframe.round(5).to_csv("../Results/Simulation_new/data1_10_m2_t3_1.csv")
 
 ####################################################################################################
 
@@ -368,3 +370,105 @@ miner.dframe.to_csv("c02_gender_dom.csv")
 
 import matplotlib.pyplot as plt
 plt.plot(c00[100]),plt.show()
+
+
+############## yechiam data
+
+os.chdir('/home/fizlaz/bgse/Master_Thesis/')  
+
+ch_drug_1 = pd.read_csv("yechiam_drugs_pd_choices_v1.csv")
+ch_drug_1 = ch_drug_1.values.tolist()
+
+ch_drug_2 = pd.read_csv("yechiam_drugs_pd_choices_v2.csv")
+ch_drug_2 = ch_drug_2.values.tolist()
+
+ch_normal_1 = pd.read_csv("yechiam_normals_pd_choices_v1.csv")
+ch_normal_1 = ch_normal_1.values.tolist()
+
+ch_normal_2 = pd.read_csv("yechiam_normals_pd_choices_v2.csv")
+ch_normal_2 = ch_normal_2.values.tolist()
+
+
+e_d1 = aux.entropy(ch_drug_1)
+e_d2 = aux.entropy(ch_drug_2)
+e_n1 = aux.entropy(ch_normal_1)
+e_n2 = aux.entropy(ch_normal_2)
+
+eb_d1 = aux.entropy_block(ch_drug_1)
+eb_d2 = aux.entropy_block(ch_drug_2)
+eb_n1 = aux.entropy_block(ch_normal_1)
+eb_n2 = aux.entropy_block(ch_normal_2)
+
+
+b_d1 = aux.avg_bad(ch_drug_1)
+b_d2 = aux.avg_bad(ch_drug_2)
+b_n1 = aux.avg_bad(ch_normal_1)
+b_n2 = aux.avg_bad(ch_normal_2)
+
+
+pd.DataFrame(e_d1).to_csv('/home/fizlaz/bgse/Master_Thesis/e_d1.csv')
+pd.DataFrame(e_d2).to_csv('/home/fizlaz/bgse/Master_Thesis/e_d2.csv')
+pd.DataFrame(e_n1).to_csv('/home/fizlaz/bgse/Master_Thesis/e_n1.csv')
+pd.DataFrame(e_n2).to_csv('/home/fizlaz/bgse/Master_Thesis/e_n2.csv')
+
+pd.DataFrame(eb_d1).to_csv('/home/fizlaz/bgse/Master_Thesis/eb_d1.csv')
+pd.DataFrame(eb_d2).to_csv('/home/fizlaz/bgse/Master_Thesis/eb_d2.csv')
+pd.DataFrame(eb_n1).to_csv('/home/fizlaz/bgse/Master_Thesis/eb_n1.csv')
+pd.DataFrame(eb_n2).to_csv('/home/fizlaz/bgse/Master_Thesis/eb_n2.csv')
+
+pd.DataFrame(b_d1).to_csv('/home/fizlaz/bgse/Master_Thesis/b_d1.csv')
+pd.DataFrame(b_d2).to_csv('/home/fizlaz/bgse/Master_Thesis/b_d2.csv')
+pd.DataFrame(b_n1).to_csv('/home/fizlaz/bgse/Master_Thesis/b_n1.csv')
+pd.DataFrame(b_n2).to_csv('/home/fizlaz/bgse/Master_Thesis/b_n2.csv')
+
+
+############################################ cocaine
+
+os.chdir('/home/fizlaz/bgse/Master_Thesis/hrvoje_new/s_Stout_etal_2004_cocaine/')  
+
+files=[]
+for i in range(2,33):
+  if i < 10:
+    files.append('g0'+str(i)+'.txt')
+  else:
+    files.append('g'+str(i)+'.txt')
+
+cocaine_data = []
+for sub in files:
+  temp = pd.read_csv(sub, sep="\t", header = None).ix[:,0].tolist()
+  cocaine_data.append(temp)
+
+remove = [2,11,16,24,30]
+
+coc_data =[element for i,element in enumerate(cocaine_data) if cocaine_data.index(element)  not in remove ]
+
+control = coc_data[:14]
+cocaine = coc_data[14:]
+
+e_c = aux.entropy(control)
+e_d = aux.entropy(cocaine)
+
+eb_c = aux.entropy_block(control)
+eb_d = aux.entropy_block(cocaine)
+
+b_c = aux.avg_bad(control)
+b_d = aux.avg_bad(cocaine)
+
+
+pd.DataFrame(e_c).to_csv('/home/fizlaz/bgse/Master_Thesis/e_c.csv')
+pd.DataFrame(e_d).to_csv('/home/fizlaz/bgse/Master_Thesis/e_d.csv')
+pd.DataFrame(eb_c).to_csv('/home/fizlaz/bgse/Master_Thesis/eb_c.csv')
+pd.DataFrame(eb_d).to_csv('/home/fizlaz/bgse/Master_Thesis/eb_d.csv')
+pd.DataFrame(b_c).to_csv('/home/fizlaz/bgse/Master_Thesis/b_c.csv')
+pd.DataFrame(b_d).to_csv('/home/fizlaz/bgse/Master_Thesis/b_d.csv')
+
+b_cum_c = aux.avg_bad_cum(control)
+b_cum_d = aux.avg_bad_cum(cocaine)
+
+pd.DataFrame(b_cum_c).to_csv('/home/fizlaz/bgse/Master_Thesis/b_cum_c.csv')
+pd.DataFrame(b_cum_d).to_csv('/home/fizlaz/bgse/Master_Thesis/b_cum_d.csv')
+
+
+
+##################################### parkinson
+

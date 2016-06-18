@@ -96,6 +96,16 @@ class auxilliary:
 			lol_avg.append(avg_ind)
 		return lol_avg
 
+	def avg_bad_multi(self,list_of_list,no_bin=10,n=3):
+		lol_avg=[]
+		avg_size = len(list_of_list[0])/no_bin
+		for ind in list_of_list:
+			avg_ind = []
+			for i in range(no_bin):
+				avg_ind.append(1 - (ind[i*avg_size:(i+1)*avg_size].count(n) / float(avg_size)))
+			lol_avg.append(avg_ind)
+		return lol_avg
+
 	def jload(self,name):
 			with open(name) as file:
 				file_content = file.read()
@@ -103,7 +113,20 @@ class auxilliary:
 			return full_file
 
 	def rep(self, item, n ):
-	    new = []
-	    for i in range(n):
-	        new.append(item)
-	    return new
+		new = []
+		for i in range(n):
+			new.append(item)
+		return new
+
+	def column(self, matrix, i):
+		return [row[i] for row in matrix]
+
+	def avg_bad_cum(self,list_of_list, ch1=1, ch2=2):
+		lol_avg = []
+		for lis in list_of_list:
+			ind = []
+			for i in range(len(lis)):
+				subset = lis[:i+1]
+				ind.append((subset.count(ch1) + subset.count(ch2)) / float(len(subset)))
+			lol_avg.append(ind)
+		return lol_avg
