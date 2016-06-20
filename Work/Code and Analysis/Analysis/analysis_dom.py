@@ -17,6 +17,7 @@ import dtw
 import sklearn.decomposition as decomp
 import pandas as pd
 import csv
+import editdistance
 
 ### Source own modules
 path_modules = '/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Modules'
@@ -139,7 +140,7 @@ entropy_avg = aux.avg(entropy)
 choice_bad = aux.avg_bad(choices)
 
 
-#labels = aux.read_csv2('labels_tab_t.csv',delimiter='\t')
+labels = aux.read_csv2('labels_tab_t.csv',delimiter='\t')
 
 #choices2= aux.read_csv('choice_100.csv',delimiter=';')[:162]
 index_normal = pd.read_csv("index_100.csv")
@@ -305,8 +306,14 @@ miner.dframe.to_csv("c01_e01_dom.csv")
 # Run computation 02
 os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/02/')
 miner = data_clustering()
-miner.prediction(choice_set = c02 , entropy_set = e02 , bad_set = b02,labelset = l02,ent_block=eb02, cluster_range = range(2,4), save = False)
-miner.dframe.to_csv("c02_e02_dom_eb.csv")
+miner.prediction(choice_set = c02 , entropy_set = e02 , bad_set = b02,labelset = l02,ent_block=eb02, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c02_e02_dom_b_cum_1.csv")
+
+# Run computation 03
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/03/')
+miner = data_clustering()
+miner.prediction(choice_set = c03 , entropy_set = e03 , bad_set = b03,labelset = l03,ent_block=eb03, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c03_e03_dom_b_cum.csv")
 
 # Run computation 06
 os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06/')
@@ -442,6 +449,10 @@ remove = [2,11,16,24,30]
 
 coc_data =[element for i,element in enumerate(cocaine_data) if cocaine_data.index(element)  not in remove ]
 
+ent = aux.entropy(coc_data)
+ent_b = aux.entropy_block(coc_data)
+bad = aux.avg_bad(coc_data)
+
 control = coc_data[:14]
 cocaine = coc_data[14:]
 
@@ -472,3 +483,35 @@ pd.DataFrame(b_cum_d).to_csv('/home/fizlaz/bgse/Master_Thesis/b_cum_d.csv')
 
 ##################################### parkinson
 
+os.chdir('/home/fizlaz/bgse/Master_Thesis/hrvoje_new/')  
+
+park_choice = pd.read_csv("parkinson_choices.csv").values.tolist()
+
+e_park = aux.entropy(park_choice)
+
+eb_park = aux.entropy_block(park_choice)
+
+b_park = aux.avg_bad(park_choice)
+
+b_cum_park = aux.avg_bad_cum(park_choice)
+
+pd.DataFrame(e_park).to_csv('/home/fizlaz/bgse/Master_Thesis/e_park.csv')
+pd.DataFrame(eb_park).to_csv('/home/fizlaz/bgse/Master_Thesis/eb_park.csv')
+pd.DataFrame(b_park).to_csv('/home/fizlaz/bgse/Master_Thesis/b_park.csv')
+pd.DataFrame(b_cum_park).to_csv('/home/fizlaz/bgse/Master_Thesis/b_cum_park.csv')
+
+############### clustering cocaine
+
+# Run computation 06
+os.chdir('/home/fizlaz/bgse/Master_Thesis/hrvoje_new_extracted/cocaine/results/')
+
+print aux.rep(0,14)
+
+label = aux.rep(0,14) + aux.rep(1,12)
+
+
+miner = data_clustering()
+miner.prediction(choice_set = coc_data , entropy_set = ent , bad_set = bad,labelset = label,ent_block=ent_b, cluster_range = range(2,3), save = True)
+
+
+miner.dframe.to_csv("cocaine1.csv")

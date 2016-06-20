@@ -14,6 +14,8 @@ class data_clustering:
 		temp_choices = choice_set
 		temp_entropy = entropy_set
 		temp_concats = []
+		aux = auxilliary()
+		temp_bad_cum = aux.avg_bad_cum(choice_set)
 
 		# Compute a concatenated vector
 		for i in range(len(choice_set)):
@@ -51,7 +53,7 @@ class data_clustering:
 		bad_rbf = sim.rbf
 		bad_edr = sim.edr_sim
 
-		# Compute similarties for blockwise entropy
+		# Compute similarities for blockwise entropy
 		sim = similarity()
 		sim.timeseries(ent_block)
 		eb_timewarp = sim.edtw
@@ -61,6 +63,20 @@ class data_clustering:
 		eb_rbf = sim.rbf
 		eb_edr = sim.edr_sim
 
+		# Compute similarities 
+		sim = similarity()
+		sim.timeseries(temp_bad_cum)
+		b_cum_timewarp = sim.edtw
+		b_cum_euclidian = sim.euclidian_dist
+		b_cum_euclidian_sim = sim.euclidian
+		b_cum_cosine = sim.cosine_ent
+		b_cum_rbf = sim.rbf
+		b_cum_edr = sim.edr_sim
+
+		# levenstein
+		sim = similarity()
+		leven = sim.levenstein_similarity(temp_choices)
+		
 		# Closing trace for similarity
 		print "Finished computing similarity"
 		print "*************************************"
@@ -92,6 +108,13 @@ class data_clustering:
 			bad_rbf_name = path + 'bad_rbf' + file_type
 			bad_edr_name = path + 'bad_edr' + file_type
 
+			b_cum_timewarp_name = path + 'b_cum_timewarp' + file_type
+			b_cum_euclidian_name =  path + 'b_cum_euclidian' + file_type
+			b_cum_euclidian_sim_name = path + 'b_cum_euclidian_sim' + file_type
+			b_cum_cosine_name  =path + 'b_cum_cosine' + file_type
+			b_cum_rbf_name = path + 'b_cum_rbf' + file_type
+			b_cum_edr_name = path + 'b_cum_edr' + file_type
+
 
  			json.dump(temp_timewarp.tolist(), file(edtw_name, 'w'))
 			json.dump(temp_eucliddist.tolist(), file(eucliddist_name, 'w'))
@@ -111,6 +134,13 @@ class data_clustering:
 			json.dump(bad_cosine.tolist(), file(bad_cosine_name, 'w'))
 			json.dump(bad_rbf.tolist(), file(bad_rbf_name, 'w'))
 			json.dump(bad_edr.tolist() , file(bad_edr_name, 'w'))
+
+			json.dump(b_cum_timewarp.tolist(), file(b_cum_timewarp_name, 'w'))
+			json.dump(b_cum_euclidian.tolist(), file(b_cum_euclidian_name, 'w'))
+			json.dump(b_cum_euclidian_sim.tolist(), file(b_cum_euclidian_sim_name, 'w'))
+			json.dump(b_cum_cosine.tolist(), file(b_cum_cosine_name, 'w'))
+			json.dump(b_cum_rbf.tolist(), file(b_cum_rbf_name, 'w'))
+			json.dump(b_cum_edr.tolist() , file(b_cum_edr_name, 'w'))
 
 		# Set counter for trace
 		counter = 1
@@ -332,12 +362,111 @@ class data_clustering:
 			except:
 				print 'ERROR in BLOCKWISE 15'	
 
+			# Cluster bad cumulative choices
+			try:
+				print 'BAD CHOICES 1'
+				p53 = temp_unsupervised.spectral(b_cum_timewarp,no_clust)
+			except:
+				print 'ERROR in 1'
+			
+			try:	
+				print 'BAD CHOICES 2'
+				p54 = temp_unsupervised.affinity_propagation(b_cum_timewarp)
+			except:
+				print 'ERROR in 2'
+			
+			try:
+				print 'BAD CHOICES 3'
+				p55 = temp_unsupervised.pca_ward(b_cum_euclidian,2,no_clust)
+			except:
+				print 'ERROR in 3'
+			
+			try:
+				print 'BAD CHOICES 4'
+				p56 = temp_unsupervised.spectral(b_cum_euclidian_sim,no_clust)
+			except:
+				print 'ERROR in 4'
+			
+			try:
+				print 'BAD CHOICES 5'
+				p57 = temp_unsupervised.affinity_propagation(b_cum_euclidian_sim)
+			except:
+				print 'ERROR in 5'
+			
+			try:
+				print 'BAD CHOICES 6'
+				p58 = temp_unsupervised.spectral(b_cum_cosine,no_clust)
+			except:
+				print 'ERROR in 6'
+
+			try:
+				print 'BAD CHOICES 7'
+				p59 = temp_unsupervised.affinity_propagation(b_cum_cosine)
+			except:
+				print 'ERROR in 7'
+			
+			try:
+
+				print 'BAD CHOICES 8'
+				p60 = temp_unsupervised.spectral(b_cum_rbf,no_clust)
+			except:
+				print 'ERROR in 8'
+			
+			try:
+				print 'BAD CHOICES 9'
+				p61 = temp_unsupervised.affinity_propagation(b_cum_rbf)
+			except:
+				print 'ERROR in 9'
+			
+			try:
+				print 'BAD CHOICES 10'
+				p62 = temp_unsupervised.spectral(b_cum_edr,no_clust)
+			except:
+				print 'ERROR in 10'
+
+			try:
+				print 'BAD CHOICES 11'
+				p63 = temp_unsupervised.affinity_propagation(b_cum_edr)
+			except:
+				print 'ERROR in 11'
+
+			try:
+				print 'BAD CHOICES 12' # has to be on initial set
+				p64 = temp_unsupervised.kmeans( temp_bad_cum, no_clust )
+			except:
+				print 'ERROR in 12'
+			
+			try:
+				print 'BAD CHOICES 13'
+				p65 = temp_unsupervised.complete_hierachical(b_cum_euclidian,no_clust)
+			except:
+				print 'ERROR in 13'
+			
+			try:
+				print 'BAD CHOICES 14'
+				p66 = temp_unsupervised.average_hierachical(b_cum_euclidian,no_clust)
+			except:
+				print 'ERROR in 14'
+			
+			try:
+				print 'BAD CHOICES 15' # also has to be on initial set
+				p67 = temp_unsupervised.ward_clustering(temp_bad_cum,no_clust)
+			except:
+				print 'ERROR in 15'
+
+			try:
+				print "Levenstein"
+				p68 = temp_unsupervised.spectral(leven,no_clust)
+			except:
+				print "Error in Levenstein"
 		
+
 			# combine predictions for output
 			p_set = [p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,\
 					p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,\
 					p30,p31,p32,p33,p34,p35,p36,p37,p38,p39,p40,p41,p42,p43,p44,\
-					p45,p46,p47,p48,p49,p50,p51,p52]
+					p45,p46,p47,p48,p49,p50,p51,p52,p53,p54,p55,p56,p57,p58,p59,\
+					p60,p61,p62,p63,p64,p65,p66,p67,p68]
 
 			# Set names for similarity - clustering combination
 			p_names = [
@@ -355,7 +484,13 @@ class data_clustering:
 					"spectral eblock eucsim","affinity eblock eucsim","spectral eblock cosine",\
 					"affinity eblock cosine", "spectral eblock rbf",\
 					"affinity eblock rbf", "spectral eblock edr", "affinity eblock edr", \
-					"kmeans eblockset","complete eblockset","average eblockset","ward eblockset"
+					"kmeans eblockset","complete eblockset","average eblockset","ward eblockset",\
+					"spectral b_cum warp","affinity b_cum warp","PCA b_cum euclid",\
+					"spectral b_cum eucsim","affinity b_cum eucsim","spectral b_cum cosine",\
+					"affinity b_cum cosine", "spectral b_cum rbf",\
+					"affinity b_cum rbf", "spectral b_cum edr", "affinity b_cum edr", \
+					"kmeans badcumset","complete badcumset","average badcumset","ward badcumset",\
+					"levenstein"
 					]
 
 			# Compute accuracies
