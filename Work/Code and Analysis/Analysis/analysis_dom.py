@@ -303,6 +303,12 @@ miner = data_clustering()
 miner.prediction(choice_set = c01 , entropy_set = e01 , cluster_range = range(2,10),labelset=l01,save = False )
 miner.dframe.to_csv("c01_e01_dom.csv")
 
+# Run computation 01 new
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/01/')
+miner = data_clustering()
+miner.prediction(choice_set = c01 , entropy_set = e01 , bad_set = b01,labelset = l01,ent_block=eb01, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c01_e01_dom_b_cum.csv")
+
 # Run computation 02
 os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/02/')
 miner = data_clustering()
