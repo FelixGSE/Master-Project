@@ -524,7 +524,6 @@ pd.DataFrame(b_cum_park).to_csv('/home/fizlaz/bgse/Master_Thesis/b_cum_park.csv'
 # Run computation 06
 os.chdir('/home/fizlaz/bgse/Master_Thesis/hrvoje_new_extracted/cocaine/results/')
 
-print aux.rep(0,14)
 
 label = aux.rep(0,14) + aux.rep(1,12)
 
@@ -534,3 +533,144 @@ miner.prediction(choice_set = coc_data , entropy_set = ent , bad_set = bad,label
 
 
 miner.dframe.to_csv("cocaine1.csv")
+
+
+############################## prison vs prison unbalanced
+
+c61 = aux.subset_data(choices,labels,[6,1])
+c62 = aux.subset_data(choices,labels,[6,2])
+c63 = aux.subset_data(choices,labels,[6,3])
+c64 = aux.subset_data(choices,labels,[6,4])
+c69 = aux.subset_data(choices,labels,[6,9])
+
+e61 = aux.entropy(c61)
+e62 = aux.entropy(c62)
+e63 = aux.entropy(c63)
+e64 = aux.entropy(c64)
+e69 = aux.entropy(c69)
+
+eb61 = aux.entropy_block(c61)
+eb62 = aux.entropy_block(c62)
+eb63 = aux.entropy_block(c63)
+eb64 = aux.entropy_block(c64)
+eb69 = aux.entropy_block(c69)
+
+l61 = aux.labels(labels,[6,1],healthy=False)
+l62 = aux.labels(labels,[6,2],healthy=False)
+l63 = aux.labels(labels,[6,3],healthy=False)
+l64 = aux.labels(labels,[6,4],healthy=False)
+l69 = aux.labels(labels,[6,9],healthy=False)
+
+b61 = aux.avg_bad(c61)
+b62 = aux.avg_bad(c62)
+b63 = aux.avg_bad(c63)
+b64 = aux.avg_bad(c64)
+b69 = aux.avg_bad(c69)
+
+
+# Run computation 06 vs 01
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06_vs_rest/06_01/')
+miner = data_clustering()
+miner.prediction(choice_set = c61 , entropy_set = e61 , bad_set = b61,labelset = l61,ent_block=eb61, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c61_b_cum_1.csv")
+
+# Run computation 06 vs 02
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06_vs_rest/06_02/')
+miner = data_clustering()
+miner.prediction(choice_set = c62 , entropy_set = e62 , bad_set = b62,labelset = l62,ent_block=eb62, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c62_b_cum_1.csv")
+
+# Run computation 06 vs 03
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06_vs_rest/06_03/')
+miner = data_clustering()
+miner.prediction(choice_set = c63 , entropy_set = e63 , bad_set = b63,labelset = l63,ent_block=eb63, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c63_b_cum_1.csv")
+
+# Run computation 06 vs 04
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06_vs_rest/06_04/')
+miner = data_clustering()
+miner.prediction(choice_set = c64 , entropy_set = e64 , bad_set = b64,labelset = l64,ent_block=eb64, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c64_b_cum_1.csv")
+
+# Run computation 06 vs 09
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06_vs_rest/06_09/')
+miner = data_clustering()
+miner.prediction(choice_set = c69 , entropy_set = e69 , bad_set = b69,labelset = l69,ent_block=eb69, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c69_b_cum_1.csv")
+
+
+
+
+############################## prison vs prison unbalanced
+
+c1 = aux.subset_data(choices,labels,[1])
+c2 = aux.subset_data(choices,labels,[2])
+c3 = aux.subset_data(choices,labels,[3])
+c4 = aux.subset_data(choices,labels,[4])
+c6 = aux.subset_data(choices,labels,[6])
+c9 = aux.subset_data(choices,labels,[9])
+
+
+
+c61 = aux.subset_data(choices,labels,[6],c1)
+c62 = aux.subset_data(choices,labels,[2],c6)
+c63 = aux.subset_data(choices,labels,[6],c3)
+c64 = aux.subset_data(choices,labels,[6],c4)
+c69 = aux.subset_data(choices,labels,[9],c6)
+
+e61 = aux.entropy(c61)
+e62 = aux.entropy(c62)
+e63 = aux.entropy(c63)
+e64 = aux.entropy(c64)
+e69 = aux.entropy(c69)
+
+eb61 = aux.entropy_block(c61)
+eb62 = aux.entropy_block(c62)
+eb63 = aux.entropy_block(c63)
+eb64 = aux.entropy_block(c64)
+eb69 = aux.entropy_block(c69)
+
+l61 = aux.labels(labels,[6],healthy=True)
+l62 = aux.labels(labels,[2],healthy=True)
+l63 = aux.labels(labels,[6],healthy=True)
+l64 = aux.labels(labels,[6],healthy=True)
+l69 = aux.labels(labels,[9],healthy=True)
+
+b61 = aux.avg_bad(c61)
+b62 = aux.avg_bad(c62)
+b63 = aux.avg_bad(c63)
+b64 = aux.avg_bad(c64)
+b69 = aux.avg_bad(c69)
+
+
+# Run computation 06 vs 01
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06_vs_rest/06_01/')
+miner = data_clustering()
+miner.prediction(choice_set = c61 , entropy_set = e61 , bad_set = b61,labelset = l61,ent_block=eb61, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c61_b_cum_bal_1.csv")
+
+# Run computation 06 vs 02
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06_vs_rest/06_02/')
+miner = data_clustering()
+miner.prediction(choice_set = c62 , entropy_set = e62 , bad_set = b62,labelset = l62,ent_block=eb62, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c62_b_cum_bal_1.csv")
+
+# Run computation 06 vs 03
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06_vs_rest/06_03/')
+miner = data_clustering()
+miner.prediction(choice_set = c63 , entropy_set = e63 , bad_set = b63,labelset = l63,ent_block=eb63, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c63_b_cum_bal_1.csv")
+
+# Run computation 06 vs 04
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06_vs_rest/06_04/')
+miner = data_clustering()
+miner.prediction(choice_set = c64 , entropy_set = e64 , bad_set = b64,labelset = l64,ent_block=eb64, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c64_b_cum_bal_1.csv")
+
+# Run computation 06 vs 09
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06_vs_rest/06_09/')
+miner = data_clustering()
+miner.prediction(choice_set = c69 , entropy_set = e69 , bad_set = b69,labelset = l69,ent_block=eb69, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c69_b_cum_bal_1.csv")
+
+
