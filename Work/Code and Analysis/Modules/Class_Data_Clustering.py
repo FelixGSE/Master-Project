@@ -406,7 +406,6 @@ class data_clustering:
 				print 'ERROR in 7'
 			
 			try:
-
 				print 'BAD CHOICES 8'
 				p60 = temp_unsupervised.spectral(b_cum_rbf,no_clust)
 			except:

@@ -307,37 +307,37 @@ miner.dframe.to_csv("c01_e01_dom.csv")
 os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/01/')
 miner = data_clustering()
 miner.prediction(choice_set = c01 , entropy_set = e01 , bad_set = b01,labelset = l01,ent_block=eb01, cluster_range = range(2,3), save = False)
-miner.dframe.to_csv("c01_e01_dom_b_cum.csv")
+miner.dframe.to_csv("c01_e01_dom_b_cum_rerun1.csv")
 
 # Run computation 02
 os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/02/')
 miner = data_clustering()
 miner.prediction(choice_set = c02 , entropy_set = e02 , bad_set = b02,labelset = l02,ent_block=eb02, cluster_range = range(2,3), save = False)
-miner.dframe.to_csv("c02_e02_dom_b_cum_1.csv")
+miner.dframe.to_csv("c02_e02_dom_b_cum_rerun1.csv")
 
 # Run computation 03
 os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/03/')
 miner = data_clustering()
 miner.prediction(choice_set = c03 , entropy_set = e03 , bad_set = b03,labelset = l03,ent_block=eb03, cluster_range = range(2,3), save = False)
-miner.dframe.to_csv("c03_e03_dom_b_cum.csv")
+miner.dframe.to_csv("c03_e03_dom_b_cum_rerun1.csv")
 
 # Run computation 04
 os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/04/')
 miner = data_clustering()
 miner.prediction(choice_set = c04 , entropy_set = e04 , bad_set = b04,labelset = l04,ent_block=eb04, cluster_range = range(2,3), save = False)
-miner.dframe.to_csv("c04_e04_dom_b_cum.csv")
+miner.dframe.to_csv("c04_e04_dom_b_cum_rerun1.csv")
 
 # Run computation 06
 os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06/')
 miner = data_clustering()
 miner.prediction(choice_set = c06 , entropy_set = e06 , bad_set = b06,labelset = l06,ent_block=eb06, cluster_range = range(2,3), save = False)
-miner.dframe.to_csv("c06_e06_dom_b_cum_2.csv")
+miner.dframe.to_csv("c06_e06_dom_b_cum_rerun3.csv")
 
 # Run computation 09
 os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/09/')
 miner = data_clustering()
 miner.prediction(choice_set = c09 , entropy_set = e09 , bad_set = b09,labelset = l09,ent_block=eb09, cluster_range = range(2,3), save = False)
-miner.dframe.to_csv("c09_e09_dom_b_cum.csv")
+miner.dframe.to_csv("c09_e09_dom_b_cum_rerun1.csv")
 
 
 
