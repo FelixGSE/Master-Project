@@ -68,8 +68,8 @@ p06 = aux.rep("softmax",6)
 p07 = aux.rep([0.5,0.5], 6 )
 
 # Set of Taus
-tau = [ [0.1,1.5], [0.1,0.5], [0.1,0.9],
-		[0.1,1.8], [0.1,2.5], [0.9,1.5] ] 	
+tau = [ [0.1,0.3], [0.1,0.5], [0.1,0.7],
+		[0.1,1], [0.1,1.5], [0.1,2] ] 	
 
 #tau = [ [0.1,0.7,1.8] ]
 tau=aux.rep([1.5,1.5],6)
@@ -90,12 +90,12 @@ prediction_accuracies.prediction( mu_set = p01,
 								  alpha_set = p07,
 								  tau_set = tau, 
 								  epsilon_set = None,
-								  iowa = True
+								  iowa = False
 								 )
 
 print prediction_accuracies.dframe.round(5)
 
-print prediction_accuracies.dframe.round(5).to_csv("../Results/Simulation_new/data1_10_m2_t3_1.csv")
+print prediction_accuracies.dframe.round(5).to_csv("../Results/Simulation_new_2/data_10_m1_t1_1.csv")
 
 ####################################################################################################
 

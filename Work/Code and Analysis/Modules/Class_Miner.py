@@ -61,7 +61,7 @@ class miner:
 			temp_choices = temp_data.choices 
 			temp_labels  = temp_data.label
 			temp_concats = temp_data.concat
-
+			
 			##
 			bad_set = aux.avg_bad_multi(temp_choices)
 			ent_block = aux.entropy_block(temp_choices)

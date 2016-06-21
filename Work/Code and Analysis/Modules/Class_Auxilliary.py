@@ -96,7 +96,7 @@ class auxilliary:
 			lol_avg.append(avg_ind)
 		return lol_avg
 
-	def avg_bad_multi(self,list_of_list,no_bin=10,n=3):
+	def avg_bad_multi(self,list_of_list,no_bin=10,n=2):
 		lol_avg=[]
 		avg_size = len(list_of_list[0])/no_bin
 		for ind in list_of_list:
