@@ -130,3 +130,79 @@ class auxilliary:
 				ind.append((subset.count(ch1) + subset.count(ch2)) / float(len(subset)))
 			lol_avg.append(ind)
 		return lol_avg
+
+	def setdiff(self,first_list,second_list):
+		# Compute the difference in sets - Erase stuff that is both the first and the secon
+		difference = list(set(first_list) - set(second_list))
+
+		# Return the remaining items in list one
+		return difference
+
+	def sumamry_df(self,list_of_frames,col_list):
+
+		# Subset names
+		full_names = list_of_frames[0].columns
+		# Define names which are excluded from summary
+
+		# Compute data frame with those columns
+		df01 = list_of_frames[0].ix[:,:9]
+
+		# Compute summary for measure columns
+		df02 = self.statistics_df(list_of_frames,col_list)
+
+		# Compute final data frame
+		temp_data_frame = pd.concat([df01,df02],axis=1)
+
+		rankings = self.rankings_df(temp_data_frame)
+
+		final_data_frame = pd.concat([temp_data_frame,rankings],axis=1)
+
+		# Return results
+		return final_data_frame
+
+
+	def statistics_df(self,list_of_frames,cols):
+
+		# Filter from all data frames columns with measures
+		new_frames = self.filter_df(list_of_frames,cols)
+
+		# Concat all measure columns from list of frames
+		big_df  = pd.concat(new_frames)
+
+		# Compute the mean and standard deviations
+		grouped_mean = big_df.groupby(level=0).mean()
+		grouped_sd   = big_df.groupby(level=0).std()
+
+		# Concat results and rename columns
+		final_frame = pd.concat([grouped_mean,grouped_sd],axis=1)
+		names = ['MI-M','ADMI-M','NMI-M','ARI-M','CO-M','HO-M','VM-M',
+				 'MI-S','ADMI-S','NMI-S','ARI-S','CO-S','HO-S','VM-S']
+		final_frame.columns = names
+
+		# Return data frame with summary
+		return final_frame
+
+	def filter_df(self,list_of_frames,list_of_columns):
+
+		# Initialize list for filtered data frames
+		new_frames = []
+
+		# Subset from each data frame the column according to arguments
+		for frame in list_of_frames:
+			temp_df = frame[list_of_columns]
+			new_frames.append(temp_df)
+
+		# Return new list of data frames
+		return new_frames
+
+
+	def rankings_df(self,dframe,p_len = 53, sim_size = 6):
+		temp_names = ['MI-MR','ADMI-MR','NMI-MR','ARI-MR','CO-MR','HO-MR','VM-MR']
+		rank_frame = pd.DataFrame(0,index=np.arange(dframe.shape[0]),columns=temp_names)
+		for step in range(sim_size):
+			for i in range(9,16):
+				rank_frame.ix[:,i-9][step*p_len:(step+1)*p_len]=dframe.ix[:,i][step*p_len:(step+1)*p_len].rank(method="min",ascending=False)
+		return rank_frame
+
+
+
