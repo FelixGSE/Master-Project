@@ -109,6 +109,10 @@ class miner:
 			eb_rbf = sim.rbf
 			eb_edr = sim.edr_sim
 
+			# levenstein
+			sim = similarity()
+			leven = sim.levenstein_similarity(temp_choices)
+
 			## new above
 
 			# Closing trace for similarity
@@ -323,13 +327,18 @@ class miner:
 			except:
 				print 'ERROR in BLOCKWISE 15'	
 
+			try:
+				print 'Levenstein'
+				p53 = temp_unsupervised.spectral(leven,no_clust)
+			except:
+				print "Error in Levenstein"	
 
 			
 			# Combine predictions for saving
 			p_set = [p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,\
 					p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,\
 					p30,p31,p32,p33,p34,p35,p36,p37,p38,p39,p40,p41,p42,p43,p44,\
-					p45,p46,p47,p48,p49,p50,p51,p52]
+					p45,p46,p47,p48,p49,p50,p51,p52,p53]
 
 			# Save names for each similarity - clustering combination
 			p_names = ["spectral warp","aff prop","pca","spectral overlap",\
@@ -344,9 +353,9 @@ class miner:
 					"kmeans badset","complete badset","average badset","ward badset",\
 					"spectral eblock warp","affinity eblock warp","PCA eblock euclid",\
 					"spectral eblock eucsim","affinity eblock eucsim","spectral eblock cosine",\
-					"affinity eblock cosine", "spectral eblock rbf",\
-					"affinity eblock rbf", "spectral eblock edr", "affinity eblock edr", \
-					"kmeans eblockset","complete eblockset","average eblockset","ward eblockset"]
+					"affinity eblock cosine", "spectral eblock rbf","affinity eblock rbf",\
+					"spectral eblock edr", "affinity eblock edr","kmeans eblockset",\
+					"complete eblockset","average eblockset","ward eblockset","levenstein"]
 
 			# Compute accuracies
 			acc_vector = self.full_accuracies(temp_labels,p_set)

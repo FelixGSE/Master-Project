@@ -72,7 +72,8 @@ tau = [ [0.1,0.3], [0.1,0.5], [0.1,0.7],
 		[0.1,1], [0.1,1.5], [0.1,2] ] 	
 
 #tau = [ [0.1,0.7,1.8] ]
-tau=aux.rep([2,2],6)
+tau=aux.rep([0.1,0.1],6)
+
 p07 = [[0.1,0.3], [0.1,0.5], [0.1,0.7],
 	   [0.1,0.9], [0.5,0.9], [0.7,0.9]]
 
@@ -95,7 +96,7 @@ prediction_accuracies.prediction( mu_set = p01,
 
 print prediction_accuracies.dframe.round(5)
 
-print prediction_accuracies.dframe.round(5).to_csv("../Results/Simulation_new_2/data_mean1_m10_t_20_1.csv")
+print prediction_accuracies.dframe.round(5).to_csv("../Results/Simulation_new_2/data_mean1_m_t_01_1.csv")
 
 ####################################################################################################
 
