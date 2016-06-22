@@ -675,3 +675,68 @@ miner.prediction(choice_set = c69 , entropy_set = e69 , bad_set = b69,labelset =
 miner.dframe.to_csv("c69_b_cum_bal_1.csv")
 
 
+
+
+
+
+
+#############################looping
+
+frame_list=[]
+
+for i in range(50):
+
+	print "\n"
+	print "#  #  #  #  #  #  #  #  #  #  #  #  "
+	print "Started with iteration \t " + str(i)
+	print "#  #  #  #  #  #  #  #  #  #  #  #  "
+
+
+	# Mean of the bandits 
+	p01 = aux.rep([0,2,4],6)
+	# Standard Deviation of the bandits
+	p02 = aux.rep([1,1,1],6)
+	# Set of number of trials 
+	p03 = aux.rep(100,6)
+	# Set of size of clusters	
+	p04 = aux.rep(10,6)
+
+	# Set of decision functions
+	p06 = aux.rep("softmax",6)
+
+	# Set of alphas
+	p07 = aux.rep([0.5,0.5], 6 )
+
+	# Set of Taus
+	tau = [ [0.1,0.3], [0.1,0.5], [0.1,0.7],
+			[0.1,1], [0.1,1.5], [0.1,2] ] 	
+
+	"""
+	tau=aux.rep([0.1,0.1],6)
+
+	p07 = [[0.1,0.3], [0.1,0.5], [0.1,0.7],
+		   [0.1,0.9], [0.5,0.9], [0.7,0.9]]
+	"""
+
+	prediction_accuracies = miner()
+	prediction_accuracies.prediction( mu_set = p01, 
+									  sigma_set = p02,
+									  N_set = p03,
+									  cluster_set = p04,
+									  seed_set = None,
+									  decision_function_set = p06,
+									  alpha_set = p07,
+									  tau_set = tau, 
+									  epsilon_set = None,
+									  iowa = False
+									 )
+
+	frame_list.append(prediction_accuracies.dframe)
+
+
+cols = ["mut inf scr","adj mis","norm mis","adj rand s","complet","homogen","vmeas"]
+avg_frame = aux.summary_df(frame_list,cols)
+
+avg_frame.round(5).to_csv("../Results/Simulation_repeated/data_mean2_a05_t_50_1.csv")
+
+print avg_frame

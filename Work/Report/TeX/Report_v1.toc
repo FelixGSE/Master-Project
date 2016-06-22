@@ -16,8 +16,8 @@
 \contentsline {subsection}{\numberline {4.1}Recover cognitive parameters}{10}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Prison data and approach}{10}{subsection.4.2}
 \contentsline {subsubsection}{\numberline {4.2.1}Data summary and experimental design}{10}{subsubsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.2}Prison results}{12}{subsubsection.4.2.2}
-\contentsline {subsection}{\numberline {4.3}Multi-arm Bandit Data}{12}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.2.2}Prison results}{11}{subsubsection.4.2.2}
+\contentsline {subsection}{\numberline {4.3}Multi-arm Bandit Data}{11}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}Huntington Data}{13}{subsection.4.4}
 \contentsline {subsection}{\numberline {4.5}Cocaine Abusers data}{13}{subsection.4.5}
 \contentsline {section}{\numberline {5}Discussion of results and possible extensions }{14}{section.5}

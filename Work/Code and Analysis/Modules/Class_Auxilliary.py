@@ -138,7 +138,7 @@ class auxilliary:
 		# Return the remaining items in list one
 		return difference
 
-	def sumamry_df(self,list_of_frames,col_list):
+	def summary_df(self,list_of_frames,col_list):
 
 		# Subset names
 		full_names = list_of_frames[0].columns
