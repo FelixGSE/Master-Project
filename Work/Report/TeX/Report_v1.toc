@@ -9,7 +9,7 @@
 \contentsline {section}{\numberline {2}Relevant Literature}{2}{section.2}
 \contentsline {section}{\numberline {3}Theoretical Background and simulation experiments}{3}{section.3}
 \contentsline {subsection}{\numberline {3.1}Experiment design and problem formulation}{3}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Reinforcement Learning background and multi arm bandits}{4}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.2}Reinforcement Learning background and multi arm bandits}{3}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Unsupervised learning methods, data handling and similarity}{5}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Simulation results}{7}{subsection.3.4}
 \contentsline {section}{\numberline {4}Data Analysis}{10}{section.4}

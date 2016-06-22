@@ -37,6 +37,7 @@
 \usepackage[labelfont=bf]{caption}
 \captionsetup{labelfont=bf}
 \usepackage{tikz}
+\usepackage{breakcites}
 % ----------------------------------------------------------------------------------------------------------
 % Packages
 % ----------------------------------------------------------------------------------------------------------
@@ -289,26 +290,25 @@ $d_i$ & Degree of node $i$ \\
 
 \section{Introduction and conceptual approach}
 
-SHUT UP DOM
-
-Learning is a complex procedure. The learning procedure can affected due to social conditions... Due to their mental ability people should show different learning behavior.\\
-In \textit{supervised learning} data are predicted by training a classifier based on features and corresponding categories . In comparison to that in \textit{unsupervised learning} we don't know the ground truth and we try discover natural clustering behavior in the data. \cite[page 9 et. seqq.]{Murphy2012}. A vast class of clustering algorithms are proposed in the literature. 
-In this paper we are investigating whether we can use unsupervised learning methods to cluster different groups of people with respect to their behavior. This paper is therefore in the intersection of machine learning and cognitive science. To our knowledge this particular setting was not studied before.\\ 
-We first used a reinforcement learning based approach to simulate data and study theoretical boundaries of our methods and under which conditions they might be applicable. We then apply our methods to two real world data sets. In particular we have data of people with different criminal profile performing a standardized test. Furthermore, we have data of people with different sex, level of education and age doing a simple n-armed bandit experiment.\\
+Learning is a complex procedure. The learning procedure can affected due to social conditions... Due to their mental ability people should show different learning behavior. The decision making process is studied by monitoring peoples sequential choices in a controlled experiment environment.\\
+In \textit{supervised learning} data are predicted by training a classifier based on features and corresponding categories. In comparison to that in \textit{unsupervised learning} we don't know the ground truth. The objective is to discover natural clustering behavior in the data. \cite[page 9 et. seqq.]{Murphy2012}. A vast class of clustering algorithms based on different approaches are proposed in the literature. Roughly spoken they can. A detailed overview of the algorithms and corresponding distance and similarity concepts is provided in section \ref{algosim}.\\
+This paper investigates, whether such unsupervised learning techniques can be used in the context of human decision making process to identify latent grouping. This paper is operates in the intersection of machine learning and cognitive science. To our knowledge this particular setting has not been studied before.\\ 
+To approach this issue, we first set up a reinforcement learning based simulation framework to study theoretical boundaries of several clustering techniques and when they are applicable. Subsequently, we test our chosen methods on several  real world data sets. Corresponding to our simulation framework we first apply clustering algorithms on a real n-armed bandit experiment.\footnote{A detailed introduction is given in section \ref{reinf}} A widely used approach to monitor human decision making process is the \textit{Iowa gambling task}, where participants try maximize rewards by choosing from different deck with different reward structures.\footnote{There are existing several slightly different versions of test. \cite{Steingroever2015} provides a data collection for from several sources giving a broad overview of different variations of the test.} Within that framework we analyse  data from people with different criminal profiles. Furthermore, we use data from cocaine abusers.\\
 
 The report has the following structure. In section two we provide a short overview of related literature in the field.\\ 
-The following section three is dedicated to the theoretical foundation and the simulation. We first provide a basic knowledge of reinforcement and line out our experiment design. Since this a pioneer work we address the topic in a broad manner. Hence, this section includes an overview of applied similarity concepts and algorithms. Finally we  present the results of our simulation and a short interim conclusion.\\ 
-After that we provide results for the real world data. Since this a first research on this subject we can only address a small part of the problem. Therefore, we close the paper with discussion of possible extensions and summary of found results. 
-The appendix contains the theoretical foundation of the applied algorithms, similarity measures and cluster evaluation techniques. Since are our data are fairly small we will not discuss complexity of the algorithms. 
+The following section three is dedicated to the theoretical foundation and the simulation. Therefore, we first provide knowledge of reinforcement and line out our experiment design in more detail. This section also includes an overview of applied algorithms, similarity and distance concepts. Finally, we study their simulation performance and try to identify situations where they are applicable.\\ 
+The rest of this paper is dedicated to the data sets. Our data sets are studied before from a cognitive science perspective. We introduce relevant concepts such as expectancy valence models and compare the findings of the authors to the results we obtain from the clustering algorithms.\\
+We try to keep the scope of this paper tight and there are some open questions left. Thus we dedicated another section to discussing some possible extensions. We close this paper with a final summary of our results.
+A mathematical formulation of the applied algorithms, applied algorithms, similarity measures and cluster evaluation techniques.\footnote{Since our data are fairly small we will not discuss complexity of the algorithms.}
 
-\pagebreak
 %---------------------------------------------------------------------------------------------------------
 % 2. Literature
 %---------------------------------------------------------------------------------------------------------
 
 \section{Relevant Literature}
 
-There exists a rich literature on identifying behavioral groups using the Iowa Gambling Task experiment. It has been shown that individuals with pre-frontal brain damage and decision-making defects continue to choose disadvantageously even after they learned the optimal strategy \cite{Bechara1997}. A broad overview is given in \cite{Steingroever2013} Several studies identify specific drug-user groups, e.g. cocaine addicts \cite{Stout2004}, chronic cannabis users \cite{Fridberg2010}, heavy alcohol users(heavy drinkers) \cite{Gullo2011}. Extensive set of research is focused around particular mental disabilities, e.g. Asperger's disorder \cite{Johnson2006}, psychopathic tendencies \cite{Blair2001}, bipolar disorder \cite{Brambilla2012}, schizophrenia \cite{Martino2007} pathological gambling disorder \cite{Cavedini2002}, attention-deficit-hyperactivity disorder \cite{NiritAgay2010}. Most popular reinforcement learning models for identifying behavioural differences between different disorders are Expectancy Valence model \cite{Busemeyer2002} and Prospect Valence Learning model \cite{Ahn2008}.
+There exists a rich literature in cognitive science on identifying different behavioral groups. As mentioned in the introduction a commonly applied tool is the Iowa Gambling Task experiment. It has been shown that individuals with pre-frontal brain damage and decision-making defects continue to choose disadvantageously even after they learned the optimal strategy \cite{Bechara1997}.\\
+A broad overview on various results in the field can be found in \cite{Steingroever2013}. Several studies identify especially specific drug-user groups, e.g. cocaine addicts \cite{Stout2004}, chronic cannabis users \cite{Fridberg2010}, heavy alcohol users(heavy drinkers) \cite{Gullo2011}. Furthermore, extensive set of research is focused around particular mental disabilities, e.g. Asperger's disorder \cite{Johnson2006}, psychopathic tendencies \cite{Blair2001}, bipolar disorder \cite{Brambilla2012}, schizophrenia \cite{Martino2007} pathological gambling disorder \cite{Cavedini2002}, attention-deficit-hyperactivity disorder \cite{NiritAgay2010}. Most popular reinforcement learning models for identifying behavioural differences between different disorders are Expectancy Valence model \cite{Busemeyer2002} and Prospect Valence Learning model \cite{Ahn2008}.
 
 \pagebreak
 %---------------------------------------------------------------------------------------------------------
@@ -317,11 +317,11 @@ There exists a rich literature on identifying behavioral groups using the Iowa G
 
 \section{Theoretical Background and simulation experiments}
 
-This section is dedicated to the a more detailed outline of our analysis approach and the results of our simulation experiments. We find that our data are not immediately suitable for common unsupervised learning methods. Hence, we also discuss how we approach this problem. Besides the introduction to reinforcement learning this section will be rather a qualitative discussion. The appendix provides in more detail a mathematical background to applied algorithms, distance concepts and related clustering evaluation techniques. 
+This section is dedicated to a more detailed outline of our analysis approach and the results of our simulation experiments. The data we are analysing are gathered by observing peoples decisions over time. Hence, our data set are in the form $N \times M$ data set, where a row $N$ is the number of individuals and $M$ is the number of trials in the experiments. The data for each individual can be seen as a categorical time series. In terms of modeling there are two challenges. Some algorithms relying on euclidean distance while others operating on similarity concepts. On one hand we introduce how repress those data and introduce related distance and similarity concepts for the algorithms. The section has a rather qualitative character. The appendix provides in more detail a mathematical background to applied algorithms, distance concepts and related clustering evaluation techniques. 
 
 \subsection{Experiment design and problem formulation}
 
-Before analyzing real data we run some simulation experiments to identify adequate approaches to model our data. To generate data artificially we follow a reinforcement learning and multi arm bandit approach where we let an agent learn the distribution of a simulated data set. The procedure is illustrated in figure \ref{fig:flow}. To keep things simple we draw a set of rewards from a normal distribution. We let several agents with different parameter setting process the reward data. From this procedure we obtain for each agent a time series of choices. 
+Figure \ref{fig:flow} depicts our simulation design.\footnote{ We implemented related coding for this project mainly in python. The code can be found on our  \href{https://github.com/FelixGSE/Master-Project}{github} repository.} The objective is to obtain a set of sequential choices for a given parameter setting of the artificial agent. We first generate a set of rewards by sampling from $n-$vectors from a normal distribution ("\textit{multi arm bandit}"). The agent processes those rewards by sequentially choosing from those $n-$vectors.  We repeat this procedure for several parameter settings for the agents and keep track of those choices which will define our data set.
 
  \begin{figure}[!htb]
 	\includegraphics[width=\textwidth]{Pictures/flow01.png}
@@ -330,55 +330,50 @@ Before analyzing real data we run some simulation experiments to identify adequa
 \end{figure}
 
 \subsection{Reinforcement Learning background and multi arm bandits}
-
-In the following we provide some basics of \textit{Reinforcement Learning} (RL) \cite[chapter 1 and 2]{Sutton2012}. RL is a branch of \textit{machine learning} try model how an artificial agents interact with its environment and learns from the process over time. \\
-In particular an agents is confronted with the task of choosing sequentially from a set of choices. In comparison to \textit{supervised learning}, where an agent is learning based on set of examples an agent in REL doesn't have any knowledge about the system apriori. Therefore, it has to learn the nature of the system by sequentially interacting with its environment and keeping tack of the obtained information. Since the agent doesn't have any apriori information about the system it has to explore new possible action and so has to deviate from the optimal action. Furthermore, it has to keep track of value of each action he did so far. So the main task of the agent is to balance exploration and exploitation. 
-There are to basic approaches to model this trade-off; An \textit{"Epsilon-Greedy"} selection method and Soft \textit{"Softmax"} selection method. Before explaining both concepts we introduce the value function for a given action $a$. Therefore,  let $Q_t(a)$ be the value function of action defined as:
+\label{reinf}
+In the following we provide some basic background of \textit{Reinforcement Learning} (RL). The following definitions coming from \cite[chapter 1 and 2]{Sutton2012}. RL is a branch of \textit{machine learning} try model how an artificial agents interact with its environment and learns from the process over time. \\
+In our particular setting the agent is confronted with the task of choosing sequentially from a set of possible choices. The doesn't have any knowledge about the system a priori. Therefore, it has to learn the nature of the system by sequentially interacting with its environment and keeping tack of the obtained information. Because of the lack of examples it has to explore different possible actions to identify the best action. Hence, it is useful to deviate from time to time from the current optimal strategy. It is necessary for the agent to keep track and updates the value of a each state it discovered so far. This is done by defining a value function for each state or action $a$. Denote the value function of an action $a$ as $Q_t(a)$ and define it as:
 \begin{flalign}
-Q_t(a) := \frac{R_1 + R_2 + \dots + R_{K_\alpha}}{K_\alpha}
+Q_t(a) := \frac{R_1 + R_2 + \dots + R_{K_\alpha}}{K_\alpha} 
+\label{eq:valuefunction}
 \end{flalign}
-The value function is the average over rewards. 
-
-Considering now epsilon greedy action selection method: The rule in general is to select the next action as the current current highest value function. However, to model exploration we introduce a random element to deviate from that greedy strategy. Following that the next action
+where $R$ denotes rewards. Hence the value function is the average over the rewards for a given state. 
+The main task of the agent is to balance \textit{exploration} and \textit{exploitation} of the environment. There are two basic approaches to model this trade-off; An \textit{"Epsilon-Greedy"} action selection method and \textit{"Softmax"} selection method.\\
+Considering epsilon greedy action selection method: The rule is to select the next action with the highest value function. However, to model exploration we introduce a random element to deviate from that greedy strategy with a certain probability denote by $\epsilon$. In general we can define the next action selected by the epsilon greedy strategy as:
 \begin{flalign}
 a_{t+1} = \begin{cases} 
 \text{random action} & \text{, with probability } \epsilon \\
 \arg \max_i Q_t(i) & \text{, with probability } 1-\epsilon
-\end{cases}
+\end{cases} \nonumber
 \end{flalign}
-where $\epsilon \in [0,1]$ is a parameter controlling the random behaviour of the agent. 
-
-In the softmax action selection method compute for each action a probability (also called \textit{Boltzmann Distribution)}. The probability for action a is computed by:
+In the softmax action selection method each next action is sampled from with a certain probability coming \textit{Boltzmann Distribution)}. The probability for action a is computed by:
 \begin{flalign}
-P(a_{t}|X) = \frac{e^{\frac{Q_t(a)}{\tau}}}{\sum_{i}^{K} e^{\frac{Q_t(i)}{\tau}}}
+P(a_{t}|X) = \frac{e^{\frac{Q_t(a)}{\tau}}}{\sum_{i}^{K} e^{\frac{Q_t(i)}{\tau}}} \nonumber
 \end{flalign}
 In each iteration the next action of the agent is drawn with probability $p_a$: 
 \begin{flalign}
-a_{t+1} \sim p_a
+a_{t+1} \sim p_a \nonumber
 \end{flalign}
-
-After selecting an action the agent is updating its believe of the chosen action. Formally the update rule is defined
+After selecting an action the agent is updating its believe of the chosen action. One can show that equation \eqref{eq:valuefunction} can be expressed in the following way:
 \begin{flalign}
-Q(a)_{k+1} = Q(a)_k + \alpha \left[ R(a)_k -  Q(a)_k	 \right],
+Q(a)_{k+1} = Q(a)_k + \alpha \left[ R(a)_k -  Q(a)_k	 \right], \nonumber
 \end{flalign}
 where $\alpha$ is a is the  non negative \textit{learning rate} defining how much the current action is affecting the believes.
 
 \subsection{Unsupervised learning methods, data handling and similarity}
-
-We find two main challenges. First, our data have a categorical nature. Furthermore, the learning process also imposes a time series dependence on the data.\\
-A well studied approach clustering such data are \textit{hidden markov models}. For example a decent research on that can be found in \cite{Pamminger2007}, \cite{Pamminger2009} and \cite{Pamminger2010a}. However, we focus our attention only on partition based clustering algorithms. \\
+\label{algosim}
+As mentioned we find two main challenges. First, our data have a categorical nature. Furthermore, the learning process also imposes a time series dependence on the data.\\
+A well studied approach clustering such data are \textit{hidden markov models}. For example a decent research on that can be found in \cite{Pamminger2007}, \cite{Pamminger2009} and \cite{Pamminger2010a}. However, we focus our attention only on partition based clustering algorithms.\\
 Some of applied algorithms operate on different distance or similarity concepts. Given our data we  have to think carefully think about distance and similarity measures to respect the nature of our data and algorithms.\footnote{A formal definition of the distance and similarity can be found in the appendix} 
 In extension to only considering raw choices we might try to re-express our data to discriminate them according to different purposes. 
-The first approach is to map the series of choices to a real valued series. One way is to consider \textit{Shannon's Entropy}  introduced by \cite{Shannon1948} based on the empirical probability of the choices. Let $X$ be a discrete random variable with probability $p$, then the entropy is defined as \cite[page 32]{MacKay2005}:
+The first approach is to map the series of choices to a real valued series. One way is to consider \textit{Shannon's Entropy}  introduced by \cite{Shannon1948} based on the empirical probability of the choices. For a discrete random variable  $X$ with probability $p$ the entropy is defined as \cite[page 32]{MacKay2005}:
 \begin{flalign}
 H(X) := -\sum_{i=1}^{N} p_i \log_2 p_i
 \end{flalign}
-Entropy gives measure on how random a random variable behaves. Withing the entropy framework we consider to types of entropies. For each time step we compute the entropy using the choices done so far. We call this \textit{cumulative entropy}. Furthermore, we might want to observe more clearly how individuals adapt their behavior over time. Considering an experiment with 100 trials. We then compute the entropy for set of ten choices. We call this \textit{blockwise entropy}. Mapping choices to and entropy based data set is therefore aims to discriminate individuals by their level randomness in their behavior. 
+Entropy gives measure on how random a random variable behaves. Within the entropy framework we consider to types of entropies. For each time step we compute the entropy using choices done so far. We call this \textit{cumulative entropy}. Furthermore, we might want to observe more clearly how individuals adapt their behavior over time. Considering an experiment with 100 trials we then compute the entropy for set of ten choices. We call this \textit{blockwise entropy}. Mapping choices to and entropy based data set is therefore aims to discriminate individuals by their level randomness in their behavior. \\
+A second approach is based on the experimental setting. We know within the framework there are a set of choices which are disadvantageous for the participant. Following e.g. \cite{Yechiam2008} or \cite{Ahn2008}, we then compute block wise the ratio of disadvantageous choices. We call this \textit{disadvantageous choice}. 
 
-A second approach is based on the experimental setting. We know within out simulation and our simulation and real data frame work the set of choices which are disadvantageous for the participant. Following e.g. \cite{Yechiam2008} or \cite{Ahn2008}, we then compute block wise the ratio of disadvantageous choices. We call this \textit{disadvantageous choice}. 
-
-Within our analysis we consider a broad selection of several clustering techniques and similarity concepts. Table \ref{tab:cla} shows an overview of the algorithms and their corresponding distance/similarity requirement. A technical description for all of them is provided in the appendix. 
-
+Within our analysis we consider a broad selection of several clustering techniques and similarity concepts. Table \ref{tab:cla} shows an overview of the algorithms and their corresponding distance/similarity requirements. A technical description for all of them is provided in the appendix. 
 \begin{table}[!htb]
 	\centering
 	\begin{tabular}{|c| c| c |}
@@ -395,10 +390,7 @@ Within our analysis we consider a broad selection of several clustering techniqu
 	\caption{Overview clustering algorithms}
 	\label{tab:cla}
 \end{table}
-
-Accoding to our different data types and for our different algorithms we apply the following distance and similarity concepts.\footnote{Note that distance and similarity can be converted according to equation \eqref{eq:sim} in the appendix}
-
-
+According to our different data types and for our different algorithms we apply the following distance and similarity concepts.\footnote{Note that distance and similarity can be converted according to equation \eqref{eq:sim} in the appendix}
 \begin{table}[!htb]
 	\centering
 	\begin{tabular}{c| c}
@@ -417,20 +409,10 @@ Accoding to our different data types and for our different algorithms we apply t
 	\caption{Overview similarity and distance measures}
 	\label{tab:simue}
 \end{table}
-
 \pagebreak	
 \subsection{Simulation results}
 
-\begin{figure}[!htb]
-	\centering
-	\begin{tabular}{cc}
-		\input{Pictures/tikz-example.tex} &  \input{Pictures/tikz-example.tex} \\
-		(a) ACF  & (b) PACF  \\[4pt]
-	\end{tabular}
-	\caption{ACF and PACF of MCSI}
-\end{figure}
-
-The following table shows a snippet of our simmulation results. We have a broad range o similarity measures. Some of them are task specific meaning being designed for either categorical or time series data or both.\footnote{For example Levenstein distance (or edit distance) is a basic way to measure similarity between categorical sequences \cite[page 1]]{Richter} or \cite[page 2]{Gabadinho2009}, however some authors stating that it might perform poorly in their task \cite[page 3]{Ren2011} or a poor measure at all \cite[page 5]{Morzy}}
+The following table shows a snippet of our simulation results. We have a broad range o similarity measures. Some of them are task specific meaning being designed for either categorical or time series data or both.\footnote{For example Levenstein distance (or edit distance) is a basic way to measure similarity between categorical sequences \cite[page 1]]{Richter} or \cite[page 2]{Gabadinho2009}, however some authors stating that it might perform poorly in their task \cite[page 3]{Ren2011} or a poor measure at all \cite[page 5]{Morzy}}
 
 We also considered some specilised articles. \cite{Garcia2014} provide an algorithm to cluster categorical time series.
 
