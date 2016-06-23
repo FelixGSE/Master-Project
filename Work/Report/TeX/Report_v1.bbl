@@ -11,6 +11,12 @@ Bechara, A., Damasio, H., Tranel, D., and Damasio, A.~R. (1997).
 \newblock {Deciding Advantageously Before Knowing the Advantageous Strategy}.
 \newblock {\em Science}, 275:1293--1295.
 
+\bibitem[Bishop, 2006]{Bishop2006}
+Bishop, C.~M. (2006).
+\newblock {\em Pattern Recognition and Machine Learning (Information Science
+  and Statistics)}.
+\newblock Springer-Verlag New York, Inc., Secaucus, NJ, USA.
+
 \bibitem[Blair et~al., 2001]{Blair2001}
 Blair, R.~J., Colledge, E., and Mitchell, D. G.~V. (2001).
 \newblock {Somatic markers and response reversal: is there orbitofrontal cortex
@@ -47,6 +53,11 @@ Cavedini, P., Riboldi, G., Keller, R., D'Annucci, A., and Bellodi, L. (2002).
 \newblock {Frontal lobe dysfunction in pathological gambling patients}.
 \newblock {\em Biological Psychiatry}, 51(4):334--341.
 
+\bibitem[Everitt et~al., 2009]{Everitt2009}
+Everitt, B.~S., Landau, S., and Leese, M. (2009).
+\newblock {\em Cluster Analysis}.
+\newblock Wiley Publishing, 4th edition.
+
 \bibitem[Fratev et~al., 1979]{Fratev1979}
 Fratev, F., Polansky, O.~E., Mehlhorn, A., and Monev, V. (1979).
 \newblock {Application of distance and similarity measures. The comparison of
@@ -76,6 +87,12 @@ Gullo, M.~J. and Stieger, A.~A. (2011).
 \newblock {Anticipatory stress restores decision-making deficits in heavy
   drinkers by increasing sensitivity to losses}.
 \newblock {\em Drug and Alcohol Dependence}, 117(2-3):204--210.
+
+\bibitem[Hastie et~al., 2001]{hastie}
+Hastie, T., Tibshirani, R., and Friedman, J. (2001).
+\newblock {\em The Elements of Statistical Learning}.
+\newblock Springer Series in Statistics. Springer New York Inc., New York, NY,
+  USA.
 
 \bibitem[Hubert and Arabie, 1985]{Hubert1985}
 Hubert, L. and Arabie, P. (1985).
