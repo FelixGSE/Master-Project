@@ -34,6 +34,7 @@
 \usepackage{fix-cm}
 \usepackage{rotating}
 \usepackage{pdflscape}
+\usepackage{bbold}
 \usepackage[labelfont=bf]{caption}
 \captionsetup{labelfont=bf}
 \usepackage{tikz}
@@ -291,7 +292,7 @@ $d_i$ & Degree of node $i$ \\
 \section{Introduction and conceptual approach}
 
 Learning is a complex procedure. The learning procedure can affected due to social conditions... Due to their mental ability people should show different learning behavior. The decision making process is studied by monitoring peoples sequential choices in a controlled experiment environment.\\
-In \textit{supervised learning} data are predicted by training a classifier based on features and corresponding categories. In comparison to that in \textit{unsupervised learning} we don't know the ground truth. The objective is to discover natural clustering behavior in the data. \cite[page 9 et. seqq.]{Murphy2012}. A vast class of clustering algorithms based on different approaches are proposed in the literature. Roughly spoken they can. A detailed overview of the algorithms and corresponding distance and similarity concepts is provided in section \ref{algosim}.\\
+In \textit{supervised learning} data are predicted by training a classifier based on features and corresponding categories. In comparison to that in \textit{unsupervised learning} we don't know the ground truth. The objective is to discover natural clustering behavior in the data. \cite[page 9 et. seqq.]{Murphy2012} and group objects into subsets, such that objects in those subsets are more closely related to each other \cite[page 501]{hastie}. A vast class of clustering algorithms based on different approaches are proposed in the literature (e.g. hierarchical, and optimization based clustering). A detailed overview of the algorithms and corresponding distance and similarity concepts is provided in section \ref{algosim}.\\
 This paper investigates, whether such unsupervised learning techniques can be used in the context of human decision making process to identify latent grouping. This paper is operates in the intersection of machine learning and cognitive science. To our knowledge this particular setting has not been studied before.\\ 
 To approach this issue, we first set up a reinforcement learning based simulation framework to study theoretical boundaries of several clustering techniques and when they are applicable. Subsequently, we test our chosen methods on several  real world data sets. Corresponding to our simulation framework we first apply clustering algorithms on a real n-armed bandit experiment.\footnote{A detailed introduction is given in section \ref{reinf}} A widely used approach to monitor human decision making process is the \textit{Iowa gambling task}, where participants try maximize rewards by choosing from different deck with different reward structures.\footnote{There are existing several slightly different versions of test. \cite{Steingroever2015} provides a data collection for from several sources giving a broad overview of different variations of the test.} Within that framework we analyse  data from people with different criminal profiles. Furthermore, we use data from cocaine abusers.\\
 
@@ -368,48 +369,19 @@ Some of applied algorithms operate on different distance or similarity concepts.
 In extension to only considering raw choices we might try to re-express our data to discriminate them according to different purposes. 
 The first approach is to map the series of choices to a real valued series. One way is to consider \textit{Shannon's Entropy}  introduced by \cite{Shannon1948} based on the empirical probability of the choices. For a discrete random variable  $X$ with probability $p$ the entropy is defined as \cite[page 32]{MacKay2005}:
 \begin{flalign}
-H(X) := -\sum_{i=1}^{N} p_i \log_2 p_i
+H(X) := = -\sum_{i=1}^{N} p_i \log_2 p_i
 \end{flalign}
-Entropy gives measure on how random a random variable behaves. Within the entropy framework we consider to types of entropies. For each time step we compute the entropy using choices done so far. We call this \textit{cumulative entropy}. Furthermore, we might want to observe more clearly how individuals adapt their behavior over time. Considering an experiment with 100 trials we then compute the entropy for set of ten choices. We call this \textit{blockwise entropy}. Mapping choices to and entropy based data set is therefore aims to discriminate individuals by their level randomness in their behavior. \\
+Entropy gives measure on how random a random variable behaves.\footnote{In case we get a value for X such that $p_i = 0$, we set $H(X) = 0$  \cite[page 49]{Bishop2006}} Within the entropy framework we consider to types of entropies. For each time step we compute the entropy using choices done so far. We call this \textit{cumulative entropy}. Furthermore, we might want to observe more clearly how individuals adapt their behavior over time. Considering an experiment with 100 trials we then compute the entropy for set of ten choices. We call this \textit{blockwise entropy}. Mapping choices to and entropy based data set is therefore aims to discriminate individuals by their level randomness in their behavior. \\
 A second approach is based on the experimental setting. We know within the framework there are a set of choices which are disadvantageous for the participant. Following e.g. \cite{Yechiam2008} or \cite{Ahn2008}, we then compute block wise the ratio of disadvantageous choices. We call this \textit{disadvantageous choice}. 
 
-Within our analysis we consider a broad selection of several clustering techniques and similarity concepts. Table \ref{tab:cla} shows an overview of the algorithms and their corresponding distance/similarity requirements. A technical description for all of them is provided in the appendix. 
-\begin{table}[!htb]
-	\centering
-	\begin{tabular}{|c| c| c |}
-		\toprule 
-		\textbf{Algorithm} & Input & Datatype  \\
-		\hline
-		Spectral Clustering & Similarity  & -  \\
-		Affinity Propagation & Similarity  & -  \\
-		K-Means Clustering & $L_2$ Distance  & -  \\
-		Ward Clustering & Data Matrix & -  \\
-		PCA + 	Ward Clustering   & Data Matrix & -  \\
-		\bottomrule
-	\end{tabular}
-	\caption{Overview clustering algorithms}
-	\label{tab:cla}
-\end{table}
+Within our analysis we consider a broad selection of several clustering techniques and similarity concepts. Figure \ref{fig:cla} shows an overview of the algorithms and their corresponding distance/similarity requirements. A technical description for all of them is provided in the appendix. 
+\begin{figure}[!htb]
+	\includegraphics[width=\textwidth]{Pictures/DataClustering.jpeg}
+	\caption{Input data, algorithms and proximity measures}
+	\label{fig:cla}
+\end{figure}
 According to our different data types and for our different algorithms we apply the following distance and similarity concepts.\footnote{Note that distance and similarity can be converted according to equation \eqref{eq:sim} in the appendix}
-\begin{table}[!htb]
-	\centering
-	\begin{tabular}{c| c}
-		\toprule 
-		\hline
-		\textbf{Similarity/Distance} & \textbf{Data type} \\
-		\hline
-		Cosine Similarity & Categorical \\
-		Levenstein Distance & Categorical \\
-		Lin Similarity & Categorical \\
-		Edit Distance on Real Sequence  & Time series \\
-		Dynamic Time Warp & Time series \\
-		RBF Kernel & Real Data\\
-		\bottomrule
-	\end{tabular}
-	\caption{Overview similarity and distance measures}
-	\label{tab:simue}
-\end{table}
-\pagebreak	
+
 \subsection{Simulation results}
 
 The following table shows a snippet of our simulation results. We have a broad range o similarity measures. Some of them are task specific meaning being designed for either categorical or time series data or both.\footnote{For example Levenstein distance (or edit distance) is a basic way to measure similarity between categorical sequences \cite[page 1]]{Richter} or \cite[page 2]{Gabadinho2009}, however some authors stating that it might perform poorly in their task \cite[page 3]{Ren2011} or a poor measure at all \cite[page 5]{Morzy}}
@@ -441,15 +413,13 @@ We also considered some specilised articles. \cite{Garcia2014} provide an algori
 
 \section{Data Analysis}
 
-Our simulation result suggested that we can cluster the decision behavior under some give constraints. We apply our approach to different real data sets. In total we are considering five different data sets. As mentioned in the introduction the Iowa gambling task is popular way to monitor decision and learning process. We were provided with data from various sources and with various types of bad behavior (namely people with criminal background, mental illness, drug habits). The first four data sets we approach are based on that test setting. The last data set is gathered in a multi arm bandit context.\\
-In the simulation setting we initially define participants with a certain set of parameters. There exists techniques to estimate to those parameters from actual data. 
+Our simulation result suggested that we can cluster the decision behavior under some give constraints. We apply our approach to different real data sets. In total we are considering three different data sets. As mentioned in the introduction the Iowa gambling task is popular way to monitor decision and learning process of individuals. s
+In the simulation setting we initially define participants with a certain set of parameters. There exist techniques to estimate those parameters from actual data. 
 
 \subsection{Recover cognitive parameters}
 
 
 \subsection{Prison data and approach}
-
-SHUT UP FELIX
 
 With acknowledgment to [HERE WE ADD THE GUY] we were provided with experimental data from \cite{Yechiam2008}. We try to apply our methods to cluster different groups in the data. The participants had to perform the Iowa gambling task (detailed description see later on). \cite{Steingroever2015} assembled a collection of data of healthy individuals performing the IGT test from various sources. We extended the data set we got with a set of healthy people, which we hope will behave significantly different than the individuals with criminal profile.
 
@@ -614,7 +584,7 @@ A distance function assign for pairs a points a non negative real number as dist
 	\item $d(\boldsymbol{x_i},\boldsymbol{x_j}) \le d(\boldsymbol{x_i},\boldsymbol{x_j})+ d(\boldsymbol{x_j},\boldsymbol{x_i}) $
 \end{enumerate}
 
-A distance can be seen as a measure for dissimilarity of two points. Besides distance some algorithms operate on a \textit{similarity} matrix. Formally a similarity is a function  $ S : \mathcal{X} \times \mathcal{X} \mapsto [0,1] $. Also for similarity we can define the following properties \cite[page 3]{Fratev1979}:
+A distance can be seen as a measure for dissimilarity of two points \cite[page 35]{Everitt2009}. Besides distance some algorithms operate on a \textit{similarity} matrix. Formally a similarity is a function  $ S : \mathcal{X} \times \mathcal{X} \mapsto [0,1] $. Also for similarity we can define the following properties \cite[page 3]{Fratev1979}:
 
 \begin{enumerate}
 	\setlength{\itemsep}{-5pt}
@@ -644,9 +614,9 @@ d_E (\boldsymbol{x},\boldsymbol{y}) :=  \sqrt{\left( \sum_{i=1}^{N} \left( x_i -
 
 Reffering to equation \ref{eq:ets} we define a simple measure for the categorical aspect of the data. Note that [SOURCE] defines the simplest measure for categorical data. However, since the probability that two people behave exactly the same in our context is arguably zero we modify this concept slightly. So we relax that and define the overlap similarity just as the count of overlapping instances. This serves as a benchmark similarity for categorical data.
 
-%\begin{flalign}
-%d_O (\boldsymbol{x},\boldsymbol{y}) :=  \sum_{i=1}^{N} \mathds{1}_{x_i = y_i}
-%\end{flalign}
+\begin{flalign}
+d_O (\boldsymbol{x},\boldsymbol{y}) :=  \sum_{i=1}^{N} \mathbb{1}_{(x_i = y_i)}
+\end{flalign}
 
 In [Boriah 2008] we find a rich class of further categorical measures. To keep it concise we considered two of them. The first one is \textit{Eskin} similarity measures.
 

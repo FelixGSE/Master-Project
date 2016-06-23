@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.28)  22 JUN 2016 19:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.28)  23 JUN 2016 11:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -969,6 +969,10 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
 )
+(/usr/local/texlive/2015/texmf-dist/tex/latex/bbold/bbold.sty
+Package: bbold 1994/04/06 Bbold symbol package
+LaTeX Font Info:    Redeclaring math alphabet \mathbb on input line 42.
+)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
 (/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
@@ -1259,12 +1263,12 @@ s/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.0 (rcs-revision 1.2)
 )))
 (/usr/local/texlive/2015/texmf-dist/tex/latex/breakcites/breakcites.sty)
-Package hyperref Info: Option `unicode' set `false' on input line 68.
-Package hyperref Info: Option `pdftoolbar' set `true' on input line 68.
-Package hyperref Info: Option `pdfmenubar' set `true' on input line 68.
-Package hyperref Info: Option `pdffitwindow' set `false' on input line 68.
-Package hyperref Info: Option `pdfnewwindow' set `true' on input line 68.
-Package hyperref Info: Option `colorlinks' set `true' on input line 68.
+Package hyperref Info: Option `unicode' set `false' on input line 69.
+Package hyperref Info: Option `pdftoolbar' set `true' on input line 69.
+Package hyperref Info: Option `pdfmenubar' set `true' on input line 69.
+Package hyperref Info: Option `pdffitwindow' set `false' on input line 69.
+Package hyperref Info: Option `pdfnewwindow' set `true' on input line 69.
+Package hyperref Info: Option `colorlinks' set `true' on input line 69.
 
 (./Report_v1.aux (./tikz-example.tex.aux)
 
@@ -1276,22 +1280,22 @@ LaTeX Warning: Label `eq:ri' multiply defined.
 )
 \openout1 = `Report_v1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
  (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count166
@@ -1362,7 +1366,7 @@ Package caption Info: listings package is loaded.
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box50
-Package hyperref Info: Link coloring ON on input line 74.
+Package hyperref Info: Link coloring ON on input line 75.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -1371,9 +1375,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count172
 )
-LaTeX Info: Redefining \ref on input line 74.
-LaTeX Info: Redefining \pageref on input line 74.
-LaTeX Info: Redefining \nameref on input line 74.
+LaTeX Info: Redefining \ref on input line 75.
+LaTeX Info: Redefining \pageref on input line 75.
+LaTeX Info: Redefining \nameref on input line 75.
 
 (./Report_v1.out) (./Report_v1.out)
 \@outlinefile=\write5
@@ -1384,14 +1388,14 @@ LaTeX Info: Redefining \nameref on input line 74.
 <Pictures/logo01.jpg, id=123, 1284.8pt x 232.87pt>
 File: Pictures/logo01.jpg Graphic file (type jpg)
  <use Pictures/logo01.jpg>
-Package pdftex.def Info: Pictures/logo01.jpg used on input line 107.
+Package pdftex.def Info: Pictures/logo01.jpg used on input line 108.
 (pdftex.def)             Requested size: 443.863pt x 80.45038pt.
-LaTeX Font Info:    Try loading font information for U+msa on input line 120.
+LaTeX Font Info:    Try loading font information for U+msa on input line 121.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 120.
+LaTeX Font Info:    Try loading font information for U+msb on input line 121.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1406,7 +1410,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.I}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.182 
+l.183 
        [1] (./Report_v1.lof)
 \tf@lof=\write7
 \openout7 = `Report_v1.lof'.
@@ -1427,7 +1431,7 @@ Class scrartcl Warning: \float@listhead detected!
 (scrartcl)              Loading of package `scrhack' may help to
 (scrartcl)              avoid this warning, if you are using a
 (scrartcl)              a package that still implements the
-(scrartcl)              deprecated \float@listhead interface  on input line 205
+(scrartcl)              deprecated \float@listhead interface  on input line 206
 .
 
 (./Report_v1.lol)
@@ -1435,95 +1439,104 @@ Class scrartcl Warning: \float@listhead detected!
 \openout9 = `Report_v1.lol'.
 
  [4]
-Overfull \hbox (6.92831pt too wide) in paragraph at lines 216--236
+LaTeX Font Info:    Try loading font information for U+bbold on input line 230.
+
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/bbold/Ubbold.fd)
+Overfull \hbox (6.92831pt too wide) in paragraph at lines 217--237
 [][] 
  []
 
 [5]
-Overfull \hbox (6.92831pt too wide) in paragraph at lines 246--251
+Overfull \hbox (6.92831pt too wide) in paragraph at lines 247--252
 [][] 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 293--297
+Underfull \hbox (badness 10000) in paragraph at lines 294--298
 
  []
 
-[1] [2] <Pictures/flow01.png, id=271, 833.1125pt x 416.55624pt>
+[1] [2] <Pictures/flow01.png, id=269, 833.1125pt x 416.55624pt>
 File: Pictures/flow01.png Graphic file (type png)
 
 <use Pictures/flow01.png>
-Package pdftex.def Info: Pictures/flow01.png used on input line 327.
+Package pdftex.def Info: Pictures/flow01.png used on input line 328.
 (pdftex.def)             Requested size: 443.863pt x 221.93057pt.
- [3] [4 <./Pictures/flow01.png>] [5] [6]
-(./Pictures/tikz-example.tex) (./Pictures/tikz-example.tex)
-Overfull \hbox (2148.70328pt too wide) in paragraph at lines 423--427
- [][] 
- []
+ [3] [4 <./Pictures/flow01.png>] [5]
+<Pictures/DataClustering.jpeg, id=311, 1027.84pt x 770.88pt>
+File: Pictures/DataClustering.jpeg Graphic file (type jpg)
 
+<use Pictures/DataClustering.jpeg>
+Package pdftex.def Info: Pictures/DataClustering.jpeg used on input line 379.
+(pdftex.def)             Requested size: 443.863pt x 332.89522pt.
+ [6 <./Pictures/DataClustering.jpeg>]
 
-LaTeX Warning: Citation `]' on page 7 undefined on input line 430.
+LaTeX Warning: Citation `]' on page 7 undefined on input line 387.
 
-[7] [8]
+[7]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[9]
+[8]
 \openout2 = `tikz-example.tex.aux'.
 
 
 No file tikz-example.tex.tex.
 
-Overfull \hbox (10.53674pt too wide) in paragraph at lines 478--495
+Overfull \hbox (10.53674pt too wide) in paragraph at lines 433--450
  [][] 
  []
 
 (./Pictures/avgent.tex) (./Pictures/disad.tex) (./Pictures/entbl.tex)
 (./Pictures/fullavg.tex)
-Overfull \hbox (46.55515pt too wide) in paragraph at lines 506--512
+Overfull \hbox (46.55515pt too wide) in paragraph at lines 461--467
 [][] 
  []
 
-[10
+[9
 
 
-] [11] [12]
+] [10] [11]
 
-LaTeX Warning: Citation `stout2004' on page 13 undefined on input line 556.
+LaTeX Warning: Citation `stout2004' on page 12 undefined on input line 511.
 
-[13] [14] (./Report_v1.bbl [15]
-Underfull \hbox (badness 10000) in paragraph at lines 86--88
+
+LaTeX Warning: Reference `tab:cla' on page 12 undefined on input line 511.
+
+[12] [13] (./Report_v1.bbl [14]
+Underfull \hbox (badness 10000) in paragraph at lines 103--105
 []\OT1/cmr/m/n/12 Huntington's-Disease-Association (2016).
  []
 
 
-Underfull \hbox (badness 1371) in paragraph at lines 108--112
+Underfull \hbox (badness 1371) in paragraph at lines 125--129
 []\OT1/cmr/m/n/12 Martino, D. J., Bu-cay, D., But-man, J. T., and Al-le-gri,
  []
 
-[16]
-Underfull \hbox (badness 10000) in paragraph at lines 135--138
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 152--155
 []\OT1/cmr/m/n/12 Pamminger, C. and Fruehwirth-
  []
 
-[17]) [18]
+[16]) [17]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 648.
+(hyperref)                than one, level fixed on input line 603.
 
 [1] [2] [3] [4]
-Overfull \hbox (63.12578pt too wide) in paragraph at lines 756--756
+Overfull \hbox (62.30624pt too wide) in paragraph at lines 711--711
 [] 
  []
 
 [5] [6] [7] [8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 823.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 823.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 778.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 778.
  (./Report_v1.aux (./tikz-example.tex.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 823.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 823.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 778.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 778.
 Package rerunfilecheck Info: File `Report_v1.out' has not changed.
-(rerunfilecheck)             Checksum: 44E7680B131087639C37863C05CAA3E6;2051.
+(rerunfilecheck)             Checksum: 7B887A7212D73A41AA3456B15EA1E7F6;2048.
 
 
 LaTeX Warning: There were undefined references.
@@ -1531,39 +1544,40 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 823.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 778.
  ) 
 Here is how much of TeX's memory you used:
- 28804 strings out of 493089
- 521762 string characters out of 6134842
- 1312001 words of memory out of 5000000
- 31647 multiletter control sequences out of 15000+600000
- 17351 words of font info for 65 fonts, out of 8000000 for 9000
+ 25183 strings out of 493089
+ 450556 string characters out of 6134842
+ 719930 words of memory out of 5000000
+ 28013 multiletter control sequences out of 15000+600000
+ 18652 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,19n,61p,1029b,825s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+ 64i,19n,61p,1029b,827s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pf
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
 usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
 sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
 r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr
 /local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Report_v1.pdf (33 pages, 523572 bytes).
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on Report_v1.pdf (32 pages, 644741 bytes).
 PDF statistics:
- 598 PDF objects out of 1000 (max. 8388607)
- 535 compressed objects within 6 object streams
- 158 named destinations out of 1000 (max. 500000)
- 255 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 602 PDF objects out of 1000 (max. 8388607)
+ 538 compressed objects within 6 object streams
+ 160 named destinations out of 1000 (max. 500000)
+ 260 words of extra memory for PDF output out of 10000 (max. 10000000)
 
