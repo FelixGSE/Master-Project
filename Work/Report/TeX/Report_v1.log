@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  22 JUN 2016 15:52
-=======
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.28)  22 JUN 2016 15:38
->>>>>>> 99a21cba29708478957c449c6f83ab8bf7442598
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  22 JUN 2016 20:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1540,17 +1536,17 @@ Overfull \hbox (6.92831pt too wide) in paragraph at lines 245--250
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 292--296
+Underfull \hbox (badness 10000) in paragraph at lines 294--298
 
  []
 
 [1]
-Overfull \hbox (11.89754pt too wide) in paragraph at lines 309--310
+Overfull \hbox (11.89754pt too wide) in paragraph at lines 311--312
 \OT1/cmr/m/n/12 schizophre-nia [[]] patho-log-i-cal gam-bling dis-or-der [[]],
  []
 
 
-Overfull \hbox (19.16553pt too wide) in paragraph at lines 309--310
+Overfull \hbox (19.16553pt too wide) in paragraph at lines 311--312
 \OT1/cmr/m/n/12 attention-deficit-hyperactivity dis-or-der [[]].
  []
 
@@ -1558,26 +1554,26 @@ Overfull \hbox (19.16553pt too wide) in paragraph at lines 309--310
 File: Pictures/flow01.png Graphic file (type png)
 
 <use Pictures/flow01.png>
-Package pdftex.def Info: Pictures/flow01.png used on input line 325.
+Package pdftex.def Info: Pictures/flow01.png used on input line 327.
 (pdftex.def)             Requested size: 443.863pt x 221.93057pt.
 
-Overfull \hbox (46.29695pt too wide) in paragraph at lines 332--335
+Overfull \hbox (46.29695pt too wide) in paragraph at lines 334--337
 []\OT1/cmr/m/n/12 In the fol-low-ing we pro-vide some ba-sics of \OT1/cmr/m/it/
 12 Re-in-force-ment Learn-ing \OT1/cmr/m/n/12 (RL) [[],
  []
 
 [3 <./Pictures/flow01.png>] [4]
-Overfull \hbox (83.08015pt too wide) in paragraph at lines 366--371
+Overfull \hbox (83.08015pt too wide) in paragraph at lines 368--373
 \OT1/cmr/m/n/12 de-cent re-search on that can be found in [[]], [[]]
  []
 
 [5] [6] (./Pictures/tikz-example.tex) (./Pictures/tikz-example.tex)
-Overfull \hbox (2148.70328pt too wide) in paragraph at lines 424--428
+Overfull \hbox (2148.70328pt too wide) in paragraph at lines 426--430
  [][] 
  []
 
 
-LaTeX Warning: Citation `]' on page 7 undefined on input line 431.
+LaTeX Warning: Citation `]' on page 7 undefined on input line 433.
 
 [7] [8]
 
@@ -1604,7 +1600,7 @@ Overfull \hbox (46.55515pt too wide) in paragraph at lines 507--513
 
 ] [11] [12]
 
-LaTeX Warning: Citation `stout2004' on page 13 undefined on input line 557.
+LaTeX Warning: Citation `stout2004' on page 13 undefined on input line 560.
 
 [13] [14] (./Report_v1.bbl [15]
 Underfull \hbox (badness 10000) in paragraph at lines 86--88
@@ -1624,34 +1620,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 135--138
 [17]) [18]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 649.
+(hyperref)                than one, level fixed on input line 654.
 
 [1] [2] [3] [4]
-Overfull \hbox (63.12578pt too wide) in paragraph at lines 757--757
+Overfull \hbox (63.12578pt too wide) in paragraph at lines 762--762
 [] 
  []
 
 [5] [6] [7] [8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 824.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 824.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 829.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 829.
  (./Report_v1.aux (./tikz-example.tex.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 824.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 824.
-Package rerunfilecheck Info: File `Report_v1.out' has not changed.
-(rerunfilecheck)             Checksum: 44E7680B131087639C37863C05CAA3E6;2051.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 829.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 829.
 
+
+Package rerunfilecheck Warning: File `Report_v1.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Report_v1.out':
+(rerunfilecheck)             Before: 44E7680B131087639C37863C05CAA3E6;2051
+(rerunfilecheck)             After:  5E7A6428FF67F1BE682F03407AD06E24;2134.
 
 LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 824.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 829.
  ) 
 Here is how much of TeX's memory you used:
- 24190 strings out of 493042
- 429890 string characters out of 6134667
- 1317159 words of memory out of 5000000
+ 24191 strings out of 493042
+ 429904 string characters out of 6134667
+ 1317158 words of memory out of 5000000
  27087 multiletter control sequences out of 15000+600000
  17351 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1675,14 +1677,10 @@ ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
 15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2015/
 texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-<<<<<<< HEAD
-Output written on Report_v1.pdf (33 pages, 519913 bytes).
-=======
-Output written on Report_v1.pdf (33 pages, 519836 bytes).
->>>>>>> 99a21cba29708478957c449c6f83ab8bf7442598
+Output written on Report_v1.pdf (33 pages, 520557 bytes).
 PDF statistics:
- 579 PDF objects out of 1000 (max. 8388607)
- 516 compressed objects within 6 object streams
- 158 named destinations out of 1000 (max. 500000)
+ 580 PDF objects out of 1000 (max. 8388607)
+ 517 compressed objects within 6 object streams
+ 159 named destinations out of 1000 (max. 500000)
  255 words of extra memory for PDF output out of 10000 (max. 10000000)
 
