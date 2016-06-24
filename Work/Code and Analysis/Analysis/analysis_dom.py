@@ -46,7 +46,7 @@ aux=auxilliary()
 #---------------------------------------------------------------------------------------------------
 
 # Mean of the bandits 
-p01 = aux.rep([0,1,2],6)
+p01 = aux.rep([0,2,4],6)
 # Standard Deviation of the bandits
 p02 = aux.rep([1,1,1],6)
 # Set of number of trials 
@@ -72,10 +72,15 @@ tau = [ [0.1,0.3], [0.1,0.5], [0.1,0.7],
 		[0.1,1], [0.1,1.5], [0.1,2] ] 	
 
 #tau = [ [0.1,0.7,1.8] ]
-tau=aux.rep([0.1,0.1],6)
+tau=aux.rep([1.5,1.5],6)
 
 p07 = [[0.1,0.3], [0.1,0.5], [0.1,0.7],
 	   [0.1,0.9], [0.5,0.9], [0.7,0.9]]
+
+
+p07 = [[0.1,1], [0.05,1], [0.01,1],
+	   [0.001,1], [0.0001,1], [0.00001,1]]
+
 
 #---------------------------------------------------------------------------------------------------
 # Analysis 
@@ -96,7 +101,7 @@ prediction_accuracies.prediction( mu_set = p01,
 
 print prediction_accuracies.dframe.round(5)
 
-print prediction_accuracies.dframe.round(5).to_csv("../Results/Simulation_new_2/data_mean1_m_t_01_1.csv")
+print prediction_accuracies.dframe.round(5).to_csv("../Results/Simulation_new_2/data_mean2_a_xtrm_t_15_1.csv")
 
 ####################################################################################################
 
