@@ -447,11 +447,11 @@ In particular we have data of 96 individuals with different criminal profile. Ta
 	Other & $2$ & $35.00$ (9.90)& $11.50$ (0.00)& $9.20$ (4.67)& $95.00$ (5.66)\\       
 		\bottomrule 
 	\end{tabular} 
-		\caption{Summary prision data (means with standard deviation in parenthesis)} 
+		\caption{Summary prison data (means with standard deviation in parenthesis)} 
 		\label{tab:tabps} 
 \end{table} 
 
-Propositi had to perform the \textit{Iowa gambling tast} (IGT), where they have to pick sequentially a card from four different decks. Two decks have distributions with negative expectations while two have positive. However, they different according to their variance. \\
+Propositi had to perform the \textit{Iowa gambling task} (IGT), where they have to pick sequentially a card from four different decks. Two decks have distributions with negative expectations while two have positive. However, each deck has its own variance and a set of profits. \\
 Figure \ref{fig:ent} (a) shows the average cumulative entropy averaged across groups. We observe a random behavior independent from group affiliation. However, normal people show the least random behavior. Furthermore, Figure \ref{fig:ent} (b) shows the average people of negative choices people chose over steps of ten periods averaged across groups.     
 
 \setlength{\tabcolsep}{-0.2cm}
@@ -468,10 +468,13 @@ Figure \ref{fig:ent} (a) shows the average cumulative entropy averaged across gr
 	\label{fig:ent}
 \end{figure}
 
-\subsubsection{Prison results}
+Yechiam et al. found three clusters by using the attention to recent outcomes(ARO) and attention to gains(AG) parameters from the Expectancy Valance model. The most distinct group were the Robbery convicts with the only negative attention to gains mean at -0.36 and the highest attention to recent outcomes mean 0.57. The second cluster is made of assault and murder convicts with ARO of 0.26 and AG of 0.1. The third cluster is formed of all the remaining prisoner groups with ARO means between 0 and -0.1 and AG between 0.1 and 0.2.
+
+\subsubsection{Prison data results}
 
 Following the last section we provide a summary of our results. 
 
+Following the clusters given by the EV model, we tried pairwise clustering between robbers and other prisoner groups and assault offenders and other prisoner groups.
 
 \subsection{Multi-arm Bandit Data}
 
@@ -526,6 +529,8 @@ We have data from several individuals of cocaine abusers. There are 12 individua
 	\caption{Demographic summary of cocaine abusers (means with standard deviations in parenthesis)}
 	\label{tab:cocs}
 \end{table}
+
+\subsection{Cocaine Abusers data results}
 
 \section{Discussion of results and possible extensions }
 
@@ -637,6 +642,8 @@ d_{lin} (\boldsymbol{x},\boldsymbol{y}) := \begin{cases}
 \end{cases}
 \label{eq:esk}
 \end{flalign}
+
+
 
 
 \subsection*{Clustering Evaluation}

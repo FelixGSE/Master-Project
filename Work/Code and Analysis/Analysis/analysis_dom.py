@@ -46,7 +46,7 @@ aux=auxilliary()
 #---------------------------------------------------------------------------------------------------
 
 # Mean of the bandits 
-p01 = aux.rep([0,1,2],6)
+p01 = aux.rep([0,2,4],6)
 # Standard Deviation of the bandits
 p02 = aux.rep([1,1,1],6)
 # Set of number of trials 
@@ -72,10 +72,15 @@ tau = [ [0.1,0.3], [0.1,0.5], [0.1,0.7],
 		[0.1,1], [0.1,1.5], [0.1,2] ] 	
 
 #tau = [ [0.1,0.7,1.8] ]
-tau=aux.rep([0.1,0.1],6)
+tau=aux.rep([1.5,1.5],6)
 
 p07 = [[0.1,0.3], [0.1,0.5], [0.1,0.7],
 	   [0.1,0.9], [0.5,0.9], [0.7,0.9]]
+
+
+p07 = [[0.1,1], [0.05,1], [0.01,1],
+	   [0.001,1], [0.0001,1], [0.00001,1]]
+
 
 #---------------------------------------------------------------------------------------------------
 # Analysis 
@@ -96,7 +101,7 @@ prediction_accuracies.prediction( mu_set = p01,
 
 print prediction_accuracies.dframe.round(5)
 
-print prediction_accuracies.dframe.round(5).to_csv("../Results/Simulation_new_2/data_mean1_m_t_01_1.csv")
+print prediction_accuracies.dframe.round(5).to_csv("../Results/Simulation_new_2/data_mean2_a_xtrm_t_15_1.csv")
 
 ####################################################################################################
 
@@ -536,7 +541,7 @@ miner.prediction(choice_set = coc_data , entropy_set = ent , bad_set = bad,label
 miner.dframe.to_csv("cocaine1.csv")
 
 
-############################## prison vs prison unbalanced
+############################## prison vs prison unbalanced, murder
 
 c61 = aux.subset_data(choices,labels,[6,1])
 c62 = aux.subset_data(choices,labels,[6,2])
@@ -602,7 +607,7 @@ miner.dframe.to_csv("c69_b_cum_1.csv")
 
 
 
-############################## prison vs prison unbalanced
+############################## prison vs prison balanced, murder
 
 c1 = aux.subset_data(choices,labels,[1])
 c2 = aux.subset_data(choices,labels,[2])
@@ -610,7 +615,6 @@ c3 = aux.subset_data(choices,labels,[3])
 c4 = aux.subset_data(choices,labels,[4])
 c6 = aux.subset_data(choices,labels,[6])
 c9 = aux.subset_data(choices,labels,[9])
-
 
 
 c61 = aux.subset_data(choices,labels,[6],c1)
@@ -676,6 +680,79 @@ miner.dframe.to_csv("c69_b_cum_bal_1.csv")
 
 
 
+############################## prison vs prison balanced, robbery
+
+c1 = aux.subset_data(choices,labels,[1])
+c2 = aux.subset_data(choices,labels,[2])
+c3 = aux.subset_data(choices,labels,[3])
+c4 = aux.subset_data(choices,labels,[4])
+c6 = aux.subset_data(choices,labels,[6])
+c9 = aux.subset_data(choices,labels,[9])
+
+
+c21 = aux.subset_data(choices,labels,[2],c1)
+c23 = aux.subset_data(choices,labels,[2],c3)
+c24 = aux.subset_data(choices,labels,[2],c4)
+c26 = aux.subset_data(choices,labels,[2],c6)
+c29 = aux.subset_data(choices,labels,[2],c9)
+
+e21 = aux.entropy(c21)
+e23 = aux.entropy(c23)
+e24 = aux.entropy(c24)
+e26 = aux.entropy(c26)
+e29 = aux.entropy(c29)
+
+eb21 = aux.entropy_block(c21)
+eb23 = aux.entropy_block(c23)
+eb24 = aux.entropy_block(c24)
+eb26 = aux.entropy_block(c26)
+eb29 = aux.entropy_block(c29)
+
+l21 = aux.labels(labels,[2],healthy=True)
+l23 = aux.labels(labels,[2],healthy=True)
+l24 = aux.labels(labels,[2],healthy=True)
+l26 = aux.labels(labels,[2],healthy=True)
+l29 = aux.labels(labels,[2],healthy=True)
+
+b21 = aux.avg_bad(c21)
+b23 = aux.avg_bad(c23)
+b24 = aux.avg_bad(c24)
+b26 = aux.avg_bad(c26)
+b29 = aux.avg_bad(c29)
+
+
+# Run computation 02 vs 01
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/02_vs_rest/02_01/')
+miner = data_clustering()
+miner.prediction(choice_set = c21 , entropy_set = e21 , bad_set = b21,labelset = l21,ent_block=eb21, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c21_b_cum_bal_1.csv")
+
+# Run computation 02 vs 03
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/02_vs_rest/02_03/')
+miner = data_clustering()
+miner.prediction(choice_set = c23 , entropy_set = e23 , bad_set = b23,labelset = l23,ent_block=eb23, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c23_b_cum_bal_1.csv")
+
+# Run computation 02 vs 04
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/02_vs_rest/02_04/')
+miner = data_clustering()
+miner.prediction(choice_set = c24 , entropy_set = e24 , bad_set = b24,labelset = l24,ent_block=eb24, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c24_b_cum_bal_1.csv")
+
+# Run computation 02 vs 06
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/02_vs_rest/02_06/')
+miner = data_clustering()
+miner.prediction(choice_set = c26 , entropy_set = e26 , bad_set = b26,labelset = l26,ent_block=eb26, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c26_b_cum_bal_1.csv")
+
+# Run computation 02 vs 09
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/02_vs_rest/02_09/')
+miner = data_clustering()
+miner.prediction(choice_set = c29 , entropy_set = e29 , bad_set = b29,labelset = l29,ent_block=eb29, cluster_range = range(2,3), save = False)
+miner.dframe.to_csv("c29_b_cum_bal_1.csv")
+
+
+
 
 
 
@@ -684,7 +761,7 @@ miner.dframe.to_csv("c69_b_cum_bal_1.csv")
 
 frame_list=[]
 
-for i in range(50):
+for i in range(20):
 
 	print "\n"
 	print "#  #  #  #  #  #  #  #  #  #  #  #  "
@@ -693,7 +770,7 @@ for i in range(50):
 
 
 	# Mean of the bandits 
-	p01 = aux.rep([0,2,4],6)
+	p01 = aux.rep([0,1,2],6)
 	# Standard Deviation of the bandits
 	p02 = aux.rep([1,1,1],6)
 	# Set of number of trials 
@@ -704,19 +781,20 @@ for i in range(50):
 	# Set of decision functions
 	p06 = aux.rep("softmax",6)
 
+	"""
 	# Set of alphas
-	p07 = aux.rep([0.5,0.5], 6 )
+	p07 = aux.rep([1,1], 6 )
 
 	# Set of Taus
 	tau = [ [0.1,0.3], [0.1,0.5], [0.1,0.7],
 			[0.1,1], [0.1,1.5], [0.1,2] ] 	
-
 	"""
-	tau=aux.rep([0.1,0.1],6)
+	
+	tau=aux.rep([1,1],6)
 
 	p07 = [[0.1,0.3], [0.1,0.5], [0.1,0.7],
 		   [0.1,0.9], [0.5,0.9], [0.7,0.9]]
-	"""
+	
 
 	prediction_accuracies = miner()
 	prediction_accuracies.prediction( mu_set = p01, 
@@ -737,6 +815,6 @@ for i in range(50):
 cols = ["mut inf scr","adj mis","norm mis","adj rand s","complet","homogen","vmeas"]
 avg_frame = aux.summary_df(frame_list,cols)
 
-avg_frame.round(5).to_csv("../Results/Simulation_repeated/data_mean2_a05_t_50_1.csv")
+avg_frame.round(5).to_csv("../Results/Simulation_repeated/data_mean1_a_t_10_50_1.csv")
 
 print avg_frame
