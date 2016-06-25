@@ -1,0 +1,116 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Report_v1.aux
+A level-1 auxiliary file: tikz-example.tex.aux
+Case mismatch error between cite keys stout2004 and Stout2004
+---line 95 of file Report_v1.aux
+ : \citation{stout2004
+ :                    }
+I'm skipping whatever remains of this command
+The style file: apalike.bst
+Database file #1: unsupervised.bib
+Repeated entry---line 569 of file unsupervised.bib
+ : @article{Luxburg2007
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 600 of file unsupervised.bib
+ : @article{Gabadinho2009
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 611 of file unsupervised.bib
+ : @article{Ren2011
+ :                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 621 of file unsupervised.bib
+ : @article{Morzy
+ :               ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 638 of file unsupervised.bib
+ : @article{Wang2013
+ :                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 657 of file unsupervised.bib
+ : @article{Hubert1985
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 673 of file unsupervised.bib
+ : @article{Boriah2008
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 681 of file unsupervised.bib
+ : @article{Shlens2014
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 698 of file unsupervised.bib
+ : @article{Stout2004
+ :                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 860 of file unsupervised.bib
+ : @article{Steingroever2013
+ :                          ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 892 of file unsupervised.bib
+ : @article{Ahn2008
+ :                 ,
+I'm skipping whatever remains of this entry
+Warning--entry type for "hunt" isn't style-file defined
+--line 933 of file unsupervised.bib
+Warning--entry type for "parc" isn't style-file defined
+--line 941 of file unsupervised.bib
+Warning--I didn't find a database entry for "]"
+Warning--can't use both volume and number fields in Garcia2014
+Warning--empty publisher in Garcia2014
+Warning--empty journal in Luxburg2007
+Warning--there's a number but no volume in Luxburg2007
+Warning--empty publisher in MacKay2005
+Warning--empty year in Morzy
+Warning--empty journal in Morzy
+Warning--empty journal in NiritAgay2010
+Warning--there's a number but no volume in NiritAgay2010
+Warning--empty journal in Pamminger2007
+Warning--empty journal in Pamminger2009
+Warning--empty journal in Ren2011
+Warning--empty journal in Stout2001
+Warning--empty journal in Sutton2012
+You've used 44 entries,
+            1935 wiz_defined-function locations,
+            759 strings with 12109 characters,
+and the built_in function-call counts, 17906 in all, are:
+= -- 1722
+> -- 842
+< -- 27
++ -- 290
+- -- 288
+* -- 1590
+:= -- 3158
+add.period$ -- 126
+call.type$ -- 44
+change.case$ -- 358
+chr.to.int$ -- 44
+cite$ -- 58
+duplicate$ -- 622
+empty$ -- 1171
+format.name$ -- 354
+if$ -- 3413
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 49
+newline$ -- 216
+num.names$ -- 132
+pop$ -- 326
+preamble$ -- 1
+purify$ -- 364
+quote$ -- 0
+skip$ -- 476
+stack$ -- 0
+substring$ -- 1215
+swap$ -- 59
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 250
+warning$ -- 14
+while$ -- 145
+width$ -- 0
+write$ -- 545
+(There were 12 error messages)

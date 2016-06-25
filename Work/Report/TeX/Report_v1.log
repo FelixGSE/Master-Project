@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  22 JUN 2016 20:46
-=======
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.28)  23 JUN 2016 11:05
->>>>>>> d1977359a6537159db2347572de11f60dab806be
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.28)  25 JUN 2016 11:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1389,7 +1385,7 @@ LaTeX Info: Redefining \nameref on input line 75.
 
 \c@lstlisting=\count173
  ABD: EveryShipout initializing macros
-<Pictures/logo01.jpg, id=123, 1284.8pt x 232.87pt>
+<Pictures/logo01.jpg, id=127, 1284.8pt x 232.87pt>
 File: Pictures/logo01.jpg Graphic file (type jpg)
  <use Pictures/logo01.jpg>
 Package pdftex.def Info: Pictures/logo01.jpg used on input line 108.
@@ -1458,58 +1454,19 @@ Overfull \hbox (6.92831pt too wide) in paragraph at lines 247--252
 
 [6]
 Underfull \hbox (badness 10000) in paragraph at lines 294--298
-<<<<<<< HEAD
 
  []
 
-[1]
-Overfull \hbox (11.89754pt too wide) in paragraph at lines 311--312
-\OT1/cmr/m/n/12 schizophre-nia [[]] patho-log-i-cal gam-bling dis-or-der [[]],
- []
-
-
-Overfull \hbox (19.16553pt too wide) in paragraph at lines 311--312
-\OT1/cmr/m/n/12 attention-deficit-hyperactivity dis-or-der [[]].
-=======
-
->>>>>>> d1977359a6537159db2347572de11f60dab806be
- []
-
-[1] [2] <Pictures/flow01.png, id=269, 833.1125pt x 416.55624pt>
+[1] [2] <Pictures/flow01.png, id=274, 833.1125pt x 416.55624pt>
 File: Pictures/flow01.png Graphic file (type png)
 
 <use Pictures/flow01.png>
-<<<<<<< HEAD
-Package pdftex.def Info: Pictures/flow01.png used on input line 327.
-=======
 Package pdftex.def Info: Pictures/flow01.png used on input line 328.
->>>>>>> d1977359a6537159db2347572de11f60dab806be
 (pdftex.def)             Requested size: 443.863pt x 221.93057pt.
  [3] [4 <./Pictures/flow01.png>] [5]
-<Pictures/DataClustering.jpeg, id=311, 1027.84pt x 770.88pt>
+<Pictures/DataClustering.jpeg, id=316, 1027.84pt x 770.88pt>
 File: Pictures/DataClustering.jpeg Graphic file (type jpg)
 
-<<<<<<< HEAD
-Overfull \hbox (46.29695pt too wide) in paragraph at lines 334--337
-[]\OT1/cmr/m/n/12 In the fol-low-ing we pro-vide some ba-sics of \OT1/cmr/m/it/
-12 Re-in-force-ment Learn-ing \OT1/cmr/m/n/12 (RL) [[],
- []
-
-[3 <./Pictures/flow01.png>] [4]
-Overfull \hbox (83.08015pt too wide) in paragraph at lines 368--373
-\OT1/cmr/m/n/12 de-cent re-search on that can be found in [[]], [[]]
- []
-
-[5] [6] (./Pictures/tikz-example.tex) (./Pictures/tikz-example.tex)
-Overfull \hbox (2148.70328pt too wide) in paragraph at lines 426--430
- [][] 
- []
-
-
-LaTeX Warning: Citation `]' on page 7 undefined on input line 433.
-
-[7] [8]
-=======
 <use Pictures/DataClustering.jpeg>
 Package pdftex.def Info: Pictures/DataClustering.jpeg used on input line 379.
 (pdftex.def)             Requested size: 443.863pt x 332.89522pt.
@@ -1517,10 +1474,10 @@ Package pdftex.def Info: Pictures/DataClustering.jpeg used on input line 379.
 
 LaTeX Warning: Citation `]' on page 7 undefined on input line 387.
 
-[7]
->>>>>>> d1977359a6537159db2347572de11f60dab806be
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+[7] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd)
+Underfull \hbox (badness 10000) in alignment at lines 428--428
+[][][][][][][][][][][] 
+ []
 
 [8]
 \openout2 = `tikz-example.tex.aux'.
@@ -1528,13 +1485,13 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 No file tikz-example.tex.tex.
 
-Overfull \hbox (10.53674pt too wide) in paragraph at lines 433--450
+Overfull \hbox (10.53674pt too wide) in paragraph at lines 461--478
  [][] 
  []
 
 (./Pictures/avgent.tex) (./Pictures/disad.tex) (./Pictures/entbl.tex)
 (./Pictures/fullavg.tex)
-Overfull \hbox (46.55515pt too wide) in paragraph at lines 461--467
+Overfull \hbox (46.55515pt too wide) in paragraph at lines 489--495
 [][] 
  []
 
@@ -1543,14 +1500,10 @@ Overfull \hbox (46.55515pt too wide) in paragraph at lines 461--467
 
 ] [10] [11]
 
-LaTeX Warning: Citation `stout2004' on page 12 undefined on input line 511.
+LaTeX Warning: Citation `stout2004' on page 12 undefined on input line 542.
 
 
-<<<<<<< HEAD
-LaTeX Warning: Citation `stout2004' on page 13 undefined on input line 560.
-=======
-LaTeX Warning: Reference `tab:cla' on page 12 undefined on input line 511.
->>>>>>> d1977359a6537159db2347572de11f60dab806be
+LaTeX Warning: Reference `tab:cla' on page 12 undefined on input line 542.
 
 [12] [13] (./Report_v1.bbl [14]
 Underfull \hbox (badness 10000) in paragraph at lines 103--105
@@ -1570,70 +1523,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 152--155
 [16]) [17]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-<<<<<<< HEAD
-(hyperref)                than one, level fixed on input line 654.
+(hyperref)                than one, level fixed on input line 636.
 
 [1] [2] [3] [4]
-Overfull \hbox (63.12578pt too wide) in paragraph at lines 762--762
-=======
-(hyperref)                than one, level fixed on input line 603.
-
-[1] [2] [3] [4]
-Overfull \hbox (62.30624pt too wide) in paragraph at lines 711--711
->>>>>>> d1977359a6537159db2347572de11f60dab806be
+Overfull \hbox (62.30624pt too wide) in paragraph at lines 746--746
 [] 
  []
 
 [5] [6] [7] [8]
-<<<<<<< HEAD
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 829.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 829.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 813.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 813.
  (./Report_v1.aux (./tikz-example.tex.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 829.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 829.
-=======
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 778.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 778.
- (./Report_v1.aux (./tikz-example.tex.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 778.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 778.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 813.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 813.
 Package rerunfilecheck Info: File `Report_v1.out' has not changed.
-(rerunfilecheck)             Checksum: 7B887A7212D73A41AA3456B15EA1E7F6;2048.
->>>>>>> d1977359a6537159db2347572de11f60dab806be
+(rerunfilecheck)             Checksum: A12478EA3BD15FB8DE7D8882CE58D760;2131.
 
-
-Package rerunfilecheck Warning: File `Report_v1.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Report_v1.out':
-(rerunfilecheck)             Before: 44E7680B131087639C37863C05CAA3E6;2051
-(rerunfilecheck)             After:  5E7A6428FF67F1BE682F03407AD06E24;2134.
 
 LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-<<<<<<< HEAD
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 829.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 813.
  ) 
 Here is how much of TeX's memory you used:
- 24191 strings out of 493042
- 429904 string characters out of 6134667
- 1317158 words of memory out of 5000000
- 27087 multiletter control sequences out of 15000+600000
- 17351 words of font info for 65 fonts, out of 8000000 for 9000
-=======
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 778.
- ) 
-Here is how much of TeX's memory you used:
- 25183 strings out of 493089
- 450556 string characters out of 6134842
- 719930 words of memory out of 5000000
- 28013 multiletter control sequences out of 15000+600000
+ 25206 strings out of 493089
+ 450951 string characters out of 6134842
+ 729081 words of memory out of 5000000
+ 28032 multiletter control sequences out of 15000+600000
  18652 words of font info for 72 fonts, out of 8000000 for 9000
->>>>>>> d1977359a6537159db2347572de11f60dab806be
  1141 hyphenation exceptions out of 8191
  64i,19n,61p,1029b,827s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pf
@@ -1644,26 +1563,6 @@ usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
 sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
 r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr
 /local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/l
-<<<<<<< HEAD
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Report_v1.pdf (33 pages, 520557 bytes).
-PDF statistics:
- 580 PDF objects out of 1000 (max. 8388607)
- 517 compressed objects within 6 object streams
- 159 named destinations out of 1000 (max. 500000)
- 255 words of extra memory for PDF output out of 10000 (max. 10000000)
-=======
 ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loc
 al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local
 /texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local
@@ -1676,11 +1575,10 @@ e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2
 5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Report_v1.pdf (32 pages, 644741 bytes).
+Output written on Report_v1.pdf (32 pages, 648126 bytes).
 PDF statistics:
- 602 PDF objects out of 1000 (max. 8388607)
- 538 compressed objects within 6 object streams
- 160 named destinations out of 1000 (max. 500000)
- 260 words of extra memory for PDF output out of 10000 (max. 10000000)
->>>>>>> d1977359a6537159db2347572de11f60dab806be
+ 607 PDF objects out of 1000 (max. 8388607)
+ 543 compressed objects within 6 object streams
+ 161 named destinations out of 1000 (max. 500000)
+ 268 words of extra memory for PDF output out of 10000 (max. 10000000)
 

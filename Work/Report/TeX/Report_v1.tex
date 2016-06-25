@@ -390,17 +390,45 @@ We also considered some specilised articles. \cite{Garcia2014} provide an algori
 
 \pagebreak
 
-\begin{sidewaystable}[!h]
-	\centering
-	\begin{tabular}{| l || c | c | c | c | c | c | c | c | c | c || c  |  c | c | c | c | c | }
-		\toprule \toprule
-		\textbf{Specification} &$\boldsymbol{\mu}$ & $\boldsymbol{\sigma}$ & \textbf{CL Size} & \textbf{SD} & \textbf{Decision} & $\boldsymbol{\alpha}$  &  $\boldsymbol{\tau}$  & \textbf{N} & \textbf{ALG} & \textbf{TRNS} &  \textbf{MI} & \textbf{NMI} &  \textbf{AMI} &  \textbf{CS} &  \textbf{HS } & \textbf{VMS}     \\
-		\hline
-		1 & -  & -& -& -& -& -& -& -& -& -& -& -& - & - \\
-		\bottomrule
-	\end{tabular}
-	\caption{Overview Outcome }
-\end{sidewaystable}
+\begin{table}[!htbp] \centering 
+	\label{} 
+	\scriptsize
+	\begin{tabularx}{\textwidth}{ ccccccccccc} 
+		\\\hline 
+		\hline \\
+		Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\ 
+		\hline \\[-1.8ex] 
+		\{0.1, 0.3\} & Spectral & DTW &  &  &  & x &  & 0.136 (0.134) & 0.094 (0.146) & 0.135 (0.134) \\ 
+		& Spectral & EDR &  &  & x &  &  & 0.134 (0.135) & 0.097 (0.130) & 0.134 (0.135) \\ 
+		& Spectral & Levensthein & x &  &  &  &  & 0.093 (0.134) & 0.050 (0.128) & 0.092 (0.134) \\ 
+		& Spectral & Cosine &  & x &  &  &  & 0.113 (0.134) & 0.082 (0.150) & 0.113 (0.134) \\ 
+		& K-Means & Euclidian &  &  &  &  & x & 0.093 (0.135) & 0.050 (0.130) & 0.092 (0.135) \\ 
+		\{0.1, 0.5\} & Spectral & RBF &  &  &  & x &  & 0.331 (0.185) & 0.328 (0.208) & 0.331 (0.186) \\ 
+		& Spectral & RBF &  &  & x &  &  & 0.322 (0.197) & 0.301 (0.221) & 0.321 (0.197) \\ 
+		& Spectral & EDR &  &  & x &  &  & 0.315 (0.189) & 0.328 (0.206) & 0.315 (0.189) \\ 
+		& K-Means & Euclidian &  &  & x &  &  & 0.313 (0.187) & 0.261 (0.213) & 0.312 (0.187) \\ 
+		& Spectral & EDR &  & x &  &  &  & 0.226 (0.127) & 0.131 (0.113) & 0.223 (0.127) \\ 
+		& Spectral & Levensthein & x &  &  &  &  & 0.219 (0.144) & 0.126 (0.121) & 0.217 (0.144) \\ 
+		& K-Means & Euclidian &  &  &  &  & x & 0.208 (0.143) & 0.124 (0.122) & 0.207 (0.143) \\ 
+		\{0.1, 0.7\} & Spectral & RBF &  &  &  & x &  & 0.642 (0.200) & 0.653 (0.206) & 0.641 (0.200) \\ 
+		& Spectral & DTW &  &  & x &  &  & 0.580 (0.209) & 0.611 (0.205) & 0.580 (0.201) \\ 
+		& K-Means & Euclidian &  &  & x &  &  & 0.533 (0.248) & 0.539 (0.275) & 0.533 (0.249) \\ 
+		& K-Means & Euclidian &  &  &  &  & x & 0.382 (0.181) & 0.309 (0.237) & 0.381 (0.180) \\ 
+		& Spectral & Levensthein & x &  &  &  &  & 0.350 (0.114) & 0.241 (0.163) & 0.347 (0.116) \\ 
+		& Spectral & Euclidian &  & x &  &  &  & 0.306 (0.155) & 0.198 (0.179) & 0.303 (0.156) \\ 
+		\{0.1, 1\} & Spectral & DTW &  &  &  & x &  & 0.938 (0.131) & 0.942 (0.126) & 0.938 (0.131) \\ 
+		& Spectral & Euclidian &  &  &  & x &  & 0.811 (0.136) & 0.833 (0.129) & 0.811 (0.136) \\ 
+		& Ward  & Euclidian &  &  &  & x &  & 0.797 (0.205) & 0.796 (0.218) & 0.797 (0.205) \\ 
+		& Spectral & DTW &  &  & x &  &  & 0.765 (0.197) & 0.791 (0.184) & 0.765 (0.197) \\ 
+		& K-Means & Euclidian &  &  & x &  &  & 0.757 (0.180) & 0.774 (0.185) & 0.757 (0.180) \\ 
+		& K-Means & Euclidian &  &  &  &  & x & 0.796 (0.218) & 0.687 (0.265) & 0.696 (0.219) \\ 
+		& Spectral & Overlap & x &  &  &  &  & 0.600 (0.299) & 0.571 (0.353) & 0.598 (0.302) \\ 
+		& Spectral & Euclidian &  & x &  &  &  & 0.335 (0.091) & 0.220 (0.138) & 0.332 (0.093) \\ 
+		\hline \\
+	\end{tabularx} 
+	\caption{} 
+\end{table} 
+
 
 
 
