@@ -291,8 +291,12 @@ $d_i$ & Degree of node $i$ \\
 
 \section{Introduction and conceptual approach}
 
-Learning is a complex procedure. The learning procedure can affected due to social conditions... Due to their mental ability people should show different learning behavior. The decision making process is studied by monitoring peoples sequential choices in a controlled experiment environment.\\
-In \textit{supervised learning} data are predicted by training a classifier based on features and corresponding categories. In comparison to that in \textit{unsupervised learning} we don't know the ground truth. The objective is to discover natural clustering behavior in the data. \cite[page 9 et. seqq.]{Murphy2012} and group objects into subsets, such that objects in those subsets are more closely related to each other \cite[page 501]{hastie}. A vast class of clustering algorithms based on different approaches are proposed in the literature (e.g. hierarchical, and optimization based clustering). A detailed overview of the algorithms and corresponding distance and similarity concepts is provided in section \ref{algosim}.\\
+Decision-making is a cognitive process of selecting an option from a set of possible alternatives based on certain criteria.\cite{Wang2007}
+
+When analysing decision-making as a continuous process of interaction with the environment, learning becomes an important aspect.
+
+Learning is a complex procedure. The learning procedure can affected due to social conditions... Due to their mental ability people should show different learning behaviour. The decision making process is studied by monitoring peoples sequential choices in a controlled experiment environment.\\
+In \textit{supervised learning} data are predicted by training a classifier based on features and corresponding categories. In comparison to that in \textit{unsupervised learning} we don't know the ground truth. The objective is to discover natural clustering behaviour in the data. \cite[page 9 et. seqq.]{Murphy2012} and group objects into subsets, such that objects in those subsets are more closely related to each other \cite[page 501]{hastie}. A vast class of clustering algorithms based on different approaches are proposed in the literature (e.g. hierarchical, and optimization based clustering). A detailed overview of the algorithms and corresponding distance and similarity concepts is provided in section \ref{algosim}.\\
 This paper investigates, whether such unsupervised learning techniques can be used in the context of human decision making process to identify latent grouping. This paper is operates in the intersection of machine learning and cognitive science. To our knowledge this particular setting has not been studied before.\\ 
 To approach this issue, we first set up a reinforcement learning based simulation framework to study theoretical boundaries of several clustering techniques and when they are applicable. Subsequently, we test our chosen methods on several  real world data sets. Corresponding to our simulation framework we first apply clustering algorithms on a real n-armed bandit experiment.\footnote{A detailed introduction is given in section \ref{reinf}} A widely used approach to monitor human decision making process is the \textit{Iowa gambling task}, where participants try maximize rewards by choosing from different deck with different reward structures.\footnote{There are existing several slightly different versions of test. \cite{Steingroever2015} provides a data collection for from several sources giving a broad overview of different variations of the test.} Within that framework we analyse  data from people with different criminal profiles. Furthermore, we use data from cocaine abusers.\\
 
@@ -308,7 +312,7 @@ A mathematical formulation of the applied algorithms, applied algorithms, simila
 
 \section{Relevant Literature}
 
-There exists a rich literature in cognitive science on identifying different behavioral groups. As mentioned in the introduction a commonly applied tool is the Iowa Gambling Task experiment. It has been shown that individuals with pre-frontal brain damage and decision-making defects continue to choose disadvantageously even after they learned the optimal strategy \cite{Bechara1997}.\\
+There exists a rich literature in cognitive science on identifying different behavioural groups. As mentioned in the introduction a commonly applied tool is the Iowa Gambling Task experiment. It has been shown that individuals with pre-frontal brain damage and decision-making defects continue to choose disadvantageously even after they learned the optimal strategy \cite{Bechara1997}.\\
 A broad overview on various results in the field can be found in \cite{Steingroever2013}. Several studies identify especially specific drug-user groups, e.g. cocaine addicts \cite{Stout2004}, chronic cannabis users \cite{Fridberg2010}, heavy alcohol users(heavy drinkers) \cite{Gullo2011}. Furthermore, extensive set of research is focused around particular mental disabilities, e.g. Asperger's disorder \cite{Johnson2006}, psychopathic tendencies \cite{Blair2001}, bipolar disorder \cite{Brambilla2012}, schizophrenia \cite{Martino2007} pathological gambling disorder \cite{Cavedini2002}, attention-deficit-hyperactivity disorder \cite{NiritAgay2010}. Most popular reinforcement learning models for identifying behavioural differences between different disorders are Expectancy Valence model \cite{Busemeyer2002} and Prospect Valence Learning model \cite{Ahn2008}.
 
 \pagebreak
@@ -371,7 +375,7 @@ The first approach is to map the series of choices to a real valued series. One 
 \begin{flalign}
 H(X) := = -\sum_{i=1}^{N} p_i \log_2 p_i
 \end{flalign}
-Entropy gives measure on how random a random variable behaves.\footnote{In case we get a value for X such that $p_i = 0$, we set $H(X) = 0$  \cite[page 49]{Bishop2006}} Within the entropy framework we consider to types of entropies. For each time step we compute the entropy using choices done so far. We call this \textit{cumulative entropy}. Furthermore, we might want to observe more clearly how individuals adapt their behavior over time. Considering an experiment with 100 trials we then compute the entropy for set of ten choices. We call this \textit{blockwise entropy}. Mapping choices to and entropy based data set is therefore aims to discriminate individuals by their level randomness in their behavior. \\
+Entropy gives measure on how random a random variable behaves.\footnote{In case we get a value for X such that $p_i = 0$, we set $H(X) = 0$  \cite[page 49]{Bishop2006}} Within the entropy framework we consider to types of entropies. For each time step we compute the entropy using choices done so far. We call this \textit{cumulative entropy}. Furthermore, we might want to observe more clearly how individuals adapt their behaviour over time. Considering an experiment with 100 trials we then compute the entropy for set of ten choices. We call this \textit{blockwise entropy}. Mapping choices to and entropy based data set is therefore aims to discriminate individuals by their level randomness in their behaviour. \\
 A second approach is based on the experimental setting. We know within the framework there are a set of choices which are disadvantageous for the participant. Following e.g. \cite{Yechiam2008} or \cite{Ahn2008}, we then compute block wise the ratio of disadvantageous choices. We call this \textit{disadvantageous choice}. 
 
 Within our analysis we consider a broad selection of several clustering techniques and similarity concepts. Figure \ref{fig:cla} shows an overview of the algorithms and their corresponding distance/similarity requirements. A technical description for all of them is provided in the appendix. 
@@ -441,7 +445,7 @@ We also considered some specilised articles. \cite{Garcia2014} provide an algori
 
 \section{Data Analysis}
 
-Our simulation result suggested that we can cluster the decision behavior under some give constraints. We apply our approach to different real data sets. In total we are considering three different data sets. As mentioned in the introduction the Iowa gambling task is popular way to monitor decision and learning process of individuals. s
+Our simulation result suggested that we can cluster the decision behaviour under some give constraints. We apply our approach to different real data sets. In total we are considering three different data sets. As mentioned in the introduction the Iowa gambling task is popular way to monitor decision and learning process of individuals. s
 In the simulation setting we initially define participants with a certain set of parameters. There exist techniques to estimate those parameters from actual data. 
 
 \subsection{Recover cognitive parameters}
@@ -480,7 +484,7 @@ In particular we have data of 96 individuals with different criminal profile. Ta
 \end{table} 
 
 Propositi had to perform the \textit{Iowa gambling task} (IGT), where they have to pick sequentially a card from four different decks. Two decks have distributions with negative expectations while two have positive. However, each deck has its own variance and a set of profits. \\
-Figure \ref{fig:ent} (a) shows the average cumulative entropy averaged across groups. We observe a random behavior independent from group affiliation. However, normal people show the least random behavior. Furthermore, Figure \ref{fig:ent} (b) shows the average people of negative choices people chose over steps of ten periods averaged across groups.     
+Figure \ref{fig:ent} (a) shows the average cumulative entropy averaged across groups. We observe a random behaviour independent from group affiliation. However, normal people show the least random behaviour. Furthermore, Figure \ref{fig:ent} (b) shows the average people of negative choices people chose over steps of ten periods averaged across groups.     
 
 \setlength{\tabcolsep}{-0.2cm}
 \renewcommand{\arraystretch}{-0.6}
@@ -492,7 +496,7 @@ Figure \ref{fig:ent} (a) shows the average cumulative entropy averaged across gr
 	\input{Pictures/entbl.tex} & \input{Pictures/fullavg.tex} \\
 	(c) Average Entropy across groups & (d) Blockwise picks from disadvantageous deck 
 	\end{tabular}
-	\caption{Average py and disadvantageous behavior}
+	\caption{Average py and disadvantageous behaviour}
 	\label{fig:ent}
 \end{figure}
 
@@ -508,11 +512,11 @@ Following the clusters given by the EV model, we tried pairwise clustering betwe
 
 The second data set we are considering are related to \cite{Stojic2015}. In this setting we consider a 20-arm bandits situation. The data were gathered online were users were compensated with small amount of money. Four different distributional settings were given to different people. In total the data sets consists of 429 participants divided in 199 female and 229 male participants.\footnote{One did not wish to answer} The average age 33.04 with standard deviation 11.75. Furthermore, the participants overall have a stronger higher education background where 261 participants have college degree and and 39 with graduate degree and Phd. 127 have a high school degree and 2 declined to answer.
 
-We tried to identify different clusterings according to demographics within those four sub experiments. Our results show not a significantly different behavior. 
+We tried to identify different clusterings according to demographics within those four sub experiments. Our results show not a significantly different behaviour. 
 
 \subsection{Huntington Data}
 
-\cite{Stout2001} conducted research on behavior of patients with Huntington disease (HD) and Parkinson disease (PD).\footnote{The Huntington Disease is an illness of the central nervous system. The are are a wide range of associated symptoms including physical symptoms like uncontrollable muscular movements and clumsiness and psychological symptoms like minored concentration, short term memory lapses etc . Moreover a related possible symptom is Parkinson disease \cite{hunt}. Parkinson is chronic and progressive movement  disorder. Also Parkinson goes along with physical, such as tremors and rigidity and psychological symptoms, such as memory problems, minored speed of thinking fear and anxiety (among others) \cite{parc}} 
+\cite{Stout2001} conducted research on behaviour of patients with Huntington disease (HD) and Parkinson disease (PD).\footnote{The Huntington Disease is an illness of the central nervous system. The are are a wide range of associated symptoms including physical symptoms like uncontrollable muscular movements and clumsiness and psychological symptoms like minored concentration, short term memory lapses etc . Moreover a related possible symptom is Parkinson disease \cite{hunt}. Parkinson is chronic and progressive movement  disorder. Also Parkinson goes along with physical, such as tremors and rigidity and psychological symptoms, such as memory problems, minored speed of thinking fear and anxiety (among others) \cite{parc}} 
 In the study there were considered 14 participants with HD and 22 participants with PD. They participants are required to don't have ongoing drug problems (including alcohol), free of other major diseases (physical or psychological nature). A group of 33 people serves as a control group. This group can further distinguished in younger (YHC) and older control participants (OHC). Table \ref{tab:hus} gives a basic summary of the demographic of the participants.
 
 \setlength{\tabcolsep}{10pt}
@@ -562,7 +566,7 @@ We have data from several individuals of cocaine abusers. There are 12 individua
 
 \section{Discussion of results and possible extensions }
 
-Our analysis so far showed that people are not separate themselves. In general we assume that healthy participants and those with assumed decision making deficits show significantly different behavior. However, we observe that their behavior seem to be quite similar given our data and applied mappings. Furthermore , in most of the applied unsupervised techniques we as analysts have to to set the number of clusters we assume to be in the data (so in our case two for control group and patients with habits). We apply another algorithm called affinity propagation, which identifies the number of clusters itself (algorithm formulation see appendix). In general we find that the algorithm is assign , which suggest that there more natural clusters in the data than the  one we assume due to their status labeled as healthy and ill.
+Our analysis so far showed that people are not separate themselves. In general we assume that healthy participants and those with assumed decision making deficits show significantly different behaviour. However, we observe that their behaviour seem to be quite similar given our data and applied mappings. Furthermore , in most of the applied unsupervised techniques we as analysts have to to set the number of clusters we assume to be in the data (so in our case two for control group and patients with habits). We apply another algorithm called affinity propagation, which identifies the number of clusters itself (algorithm formulation see appendix). In general we find that the algorithm is assign , which suggest that there more natural clusters in the data than the  one we assume due to their status labeled as healthy and ill.
 
 %---------------------------------------------------------------------------------------------------------
 % 5. Data
