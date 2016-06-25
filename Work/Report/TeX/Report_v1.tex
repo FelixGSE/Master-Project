@@ -248,6 +248,17 @@ $d_i$ & Degree of node $i$ \\
 \textbf{Abbreviations} & \textbf{Description} 										\\
 \midrule
 \vspace{0.3cm} & \vspace{0.3cm} 														\\ 
+IGT & Iowa gambling Task \\
+RL & Reinforcement learning \\
+CH & Choices \\
+BBC & Blockwise bad choices \\
+ENT & Cumulative entropy \\
+BENT & Blockwise entropy \\
+CC & Concatenated \\
+NMI & Normalized mutual information score \\
+ARI & Adjusted rand index \\
+VM & V-Measure score
+
 \end{tabular}
 
 \newpage
@@ -394,8 +405,7 @@ We also considered some specilised articles. \cite{Garcia2014} provide an algori
 	\label{} 
 	\scriptsize
 	\begin{tabularx}{\textwidth}{ ccccccccccc} 
-		\\\hline 
-		\hline \\
+		\\\toprule
 		Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\ 
 		\hline \\[-1.8ex] 
 		\{0.1, 0.3\} & Spectral & DTW &  &  &  & x &  & 0.136 (0.134) & 0.094 (0.146) & 0.135 (0.134) \\ 
@@ -426,8 +436,9 @@ We also considered some specilised articles. \cite{Garcia2014} provide an algori
 		& Spectral & Euclidian &  & x &  &  &  & 0.335 (0.091) & 0.220 (0.138) & 0.332 (0.093) \\ 
 		\hline \\
 	\end{tabularx} 
-	\caption{} 
+	\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma =  \{1,1,1\}$, $\alpha = 0.1$)} 
 \end{table} 
+
 
 
 
@@ -802,6 +813,259 @@ d_i &:= \sum_{j=1}^{n} w_{ij} = \sum_{i=1}^{n} w_{ij}
 \section{Affinity Propagation}
 
 \cite{Brusco2008}
+
+\pagebreak
+\section{Simulation Data}
+
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Sat, Jun 25, 2016 - 11:19:09
+\begin{table}[!htbp] \centering 
+	\label{} 
+	\scriptsize
+		\begin{tabularx}{\textwidth}{ lllcccccccc} \\
+			\toprule
+			Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\ 
+			\hline \\[-1.8ex] 
+		\{0.1, 0.3\} & Spectral & DTW &  &  &  & x &  & 0.136 (0.134) & 0.094 (0.146) & 0.135 (0.134) \\ 
+		& Spectral & EDR &  &  & x &  &  & 0.134 (0.135) & 0.097 (0.130) & 0.134 (0.135) \\ 
+		& Spectral & Levensthein & x &  &  &  &  & 0.093 (0.134) & 0.050 (0.128) & 0.092 (0.134) \\ 
+		& Spectral & Cosine &  & x &  &  &  & 0.113 (0.134) & 0.082 (0.150) & 0.113 (0.134) \\ 
+		& K-Means & Euclidian &  &  &  &  & x & 0.093 (0.135) & 0.050 (0.130) & 0.092 (0.135) \\ 
+		\{0.1, 0.5\} & Spectral & RBF &  &  &  & x &  & 0.331 (0.185) & 0.328 (0.208) & 0.331 (0.186) \\ 
+		& Spectral & RBF &  &  & x &  &  & 0.322 (0.197) & 0.301 (0.221) & 0.321 (0.197) \\ 
+		& Spectral & EDR &  &  & x &  &  & 0.315 (0.189) & 0.328 (0.206) & 0.315 (0.189) \\ 
+		& K-Means & Euclidian &  &  & x &  &  & 0.313 (0.187) & 0.261 (0.213) & 0.312 (0.187) \\ 
+		& Spectral & EDR &  & x &  &  &  & 0.226 (0.127) & 0.131 (0.113) & 0.223 (0.127) \\ 
+		& Spectral & Levensthein & x &  &  &  &  & 0.219 (0.144) & 0.126 (0.121) & 0.217 (0.144) \\ 
+		& K-Means & Euclidian &  &  &  &  & x & 0.208 (0.143) & 0.124 (0.122) & 0.207 (0.143) \\ 
+		\{0.1, 0.7\} & Spectral & RBF &  &  &  & x &  & 0.642 (0.200) & 0.653 (0.206) & 0.641 (0.200) \\ 
+		& Spectral & DTW &  &  & x &  &  & 0.580 (0.209) & 0.611 (0.205) & 0.580 (0.201) \\ 
+		& K-Means & Euclidian &  &  & x &  &  & 0.533 (0.248) & 0.539 (0.275) & 0.533 (0.249) \\ 
+		& K-Means & Euclidian &  &  &  &  & x & 0.382 (0.181) & 0.309 (0.237) & 0.381 (0.180) \\ 
+		& Spectral & Levensthein & x &  &  &  &  & 0.350 (0.114) & 0.241 (0.163) & 0.347 (0.116) \\ 
+		& Spectral & Euclidian &  & x &  &  &  & 0.306 (0.155) & 0.198 (0.179) & 0.303 (0.156) \\ 
+		\{0.1, 1\} & Spectral & DTW &  &  &  & x &  & 0.938 (0.131) & 0.942 (0.126) & 0.938 (0.131) \\ 
+		& Spectral & Euclidian &  &  &  & x &  & 0.811 (0.136) & 0.833 (0.129) & 0.811 (0.136) \\ 
+		& Ward  & Euclidian &  &  &  & x &  & 0.797 (0.205) & 0.796 (0.218) & 0.797 (0.205) \\ 
+		& Spectral & DTW &  &  & x &  &  & 0.765 (0.197) & 0.791 (0.184) & 0.765 (0.197) \\ 
+		& K-Means & Euclidian &  &  & x &  &  & 0.757 (0.180) & 0.774 (0.185) & 0.757 (0.180) \\ 
+		& K-Means & Euclidian &  &  &  &  & x & 0.796 (0.218) & 0.687 (0.265) & 0.696 (0.219) \\ 
+		& Spectral & Overlap & x &  &  &  &  & 0.600 (0.299) & 0.571 (0.353) & 0.598 (0.302) \\ 
+		& Spectral & Euclidian &  & x &  &  &  & 0.335 (0.091) & 0.220 (0.138) & 0.332 (0.093) \\ 
+		\hline \\[-1.8ex] 
+		\end{tabularx} 
+			\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma =  \{1,1,1\}$, $\alpha = 0.5$)} 
+			
+		\end{table}
+	
+
+
+\begin{table}[!htbp] \centering 
+	\label{} 
+	\scriptsize
+		\begin{tabularx}{\textwidth}{ lllcccccccc} \\
+		\\[-1.8ex]	\toprule
+	 \\[-1.8ex] 
+		Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\ 
+		\hline \\[-1.8ex] 
+		\{0.1, 0.3\} & Spectral  & Overlap & x &  &  &  &  & 0.103 (0.019) & 0.002 (0.007) & 0.087 (0.020) \\ 
+		& Spectral  & EDR &  & x &  &  &  & 0.096 (0.061) & 0.016 (0.049) & 0.088 (0.059) \\ 
+		& Spectral  & EDR &  &  &  & x &  & 0.068 (0.080) & 0.008 (0.085) & 0.063 (0.078) \\ 
+		& Spectral  & Cosine &  &  & x &  &  & 0.043 (0.067) & - & 0.043 (0.067) \\ 
+		& K-Means & Euclidian  &  &  &  &  & x & 0.036 (0.041) &  -  & 0.036 (0.041) \\ 
+		\{0.1, 0.5\} & Average & Euclidian  &  & x &  &  &  & 0.133 (0.115) & 0.040 (0.077) & 0.127 (0.115) \\ 
+		& K-Means & Euclidian  & x &  &  &  &  & 0.112 (0.124) & 0.035 (0.085) & 0.110 (0.122) \\ 
+		& Spectral  & Euclidian  &  &  &  & x &  & 0.103 (0.096) & 0.060 (0.092) & 0.103 (0.095) \\ 
+		& Spectral  & Cosine &  &  & x &  &  & 0.080 (0.088) & 0.038 (0.092) & 0.080 (0.088) \\ 
+		& K-Means & Euclidian  &  &  &  &  & x & 0.079 (0.097) & 0.034 (0.088) & 0.079 (0.096) \\ 
+		\{0.1, 0.7\} & Spectral  & DTW &  &  &  & x &  & 0.361 (0.200) & 0.352 (0.211) & 0.361 (0.200) \\ 
+		& Spectral  & EDR &  &  &  & x &  & 0.223 (0.083) & 0.087 (0.080) & 0.217 (0.086) \\ 
+		& Ward & Euclidian  &  &  &  & x &  & 0.195 (0.143) & 0.103 (0.135) & 0.192 (0.143) \\ 
+		& K-Means & Euclidian  &  & x &  &  &  & 0.167 (0.123) & 0.064 (0.114) & 0.161 (0.123) \\ 
+		& K-Means & Euclidian  & x &  &  &  &  & 0.157 (0.127) & 0.060 (0.116) & 0.151 (0.127) \\ 
+		& Spectral  & DTW &  &  & x &  &  & 0.105 (0.140) & 0.087 (0.179) & 0.105 (0.140) \\ 
+		& K-Means & Euclidian  &  &  &  &  & x & 0.102 (0.183) & 0.063 (0.201) & 0.101 (0.183) \\ 
+		\{0.1, 1.0\} & Spectral  & DTW &  &  &  & x &  & 0.792 (0.174) & 0.808 (0.170) & 0.792 (0.174) \\ 
+		& Spectral  & RBF &  &  &  & x &  & 0.692 (0.164) & 0.692 (0.184) & 0.692 (0.164) \\ 
+		& K-Means & Euclidian  &  &  &  & x &  & 0.606 (0.188) & 0.578 (0.233) & 0.606 (0.189) \\ 
+		& Spectral  & EDR &  & x &  &  &  & 0.280 (0.198) & 0.201 (0.215) & 0.278 (0.198) \\ 
+		& Spectral  & Levensthein & x &  &  &  &  & 0.276 (0.101) & 0.154 (0.113) & 0.272 (0.111) \\ 
+		& Spectral  & EDR &  &  & x &  &  & 0.236 (0.196) & 0.171 (0.184) & 0.235 (0.195) \\ 
+		\hline \\[-1.8ex] 
+	\end{tabularx} 
+	\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma =  \{1,1,1\}$, $\alpha = 1$)} 
+\end{table} 
+
+
+
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Sat, Jun 25, 2016 - 12:04:36
+\begin{table}[!htbp] \centering 
+	\label{} 
+	\scriptsize
+	\begin{tabularx}{\textwidth}{ lllcccccccc} \\
+		\\[-1.8ex]	\toprule
+		\\[-1.8ex] 
+		Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\ 
+		\hline \\[-1.8ex] 
+		\{0.1, 0.3\} & Spectral & RBF &  &  &  & x &  & 0.290 (0.173) & 0.279 (0.205) & 0.279 (0.173) \\ 
+		& Spectral & EDR &  &  & x &  &  & 0.284 (0.253) & 0.279 (0.274) & 0.284 (0.253) \\ 
+		& Spectral & Levensthein & x &  &  &  &  & 0.275 (0.147) & 0.195 (0.156) & 0.272 (0.148) \\ 
+		& K-Means & Euclidean &  &  &  &  & x & 0.260 (0.126) & 0.200 (0.150) & 0.258 (0.127) \\ 
+		& Spectral & Euclidean &  & x &  &  &  & 0.215 (0.144) & 0.126 (0.159) & 0.211 (0.144) \\ 
+		\{0.1, 0.5\} & Spectral & DTW &  &  &  & x &  & 0.824 (0.166) & 0.837 (0.170) & 0.824 (0.166) \\ 
+		& Spectral & DTW &  &  & x &  &  & 0.636 (0.213) & 0.661 (0.205) & 0.636 (0.213) \\ 
+		& K-Means & Euclidean &  &  &  &  & x & 0.532 (0.182) & 0.543 (0.206) & 0.531 (0.182) \\ 
+		& Spectral & Levensthein & x &  &  &  &  & 0.411 (0.125) & 0.333 (0.160) & 0.410 (0.127) \\ 
+		& Spectral & Euclidean &  & x &  &  &  & 0.242 (0.163) & 0.132 (0.187) & 0.238 (0.165) \\ 
+		\{0.1, 0.7\} & Spectral & DTW &  &  &  & x &  & 1.00 (0.000) & 1.00 (0.000) & 1.00 (0.000) \\ 
+		& Spectral & DTW &  &  & x &  &  & 0.726 (0.228) & 0.750 (0.214) & 0.726 (0.228) \\ 
+		& K-Means & Euclidean &  &  &  &  & x & 0.721 (0.211) & 0.741 (0.207) & 0.721 (0.211) \\ 
+		& Spectral & Levensthein & x &  &  &  &  & 0.333 (0.147) & 0.222 (0.195) & 0.329 (0.150) \\ 
+		\hline \\[-1.8ex] 
+	\end{tabularx} 
+	\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,1,2\}$, $\sigma =  \{1,1,1\}$, $\alpha = 0.1$)} 
+\end{table} 
+
+
+\begin{table}[!htbp] \centering 
+	\label{} 
+	\scriptsize
+	\begin{tabularx}{\textwidth}{ lllcccccccc} \\
+		\\[-1.8ex]	\toprule
+		\\[-1.8ex] 
+		Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\ 
+		\hline \\[-1.8ex] 
+\{0.1, 0.3\} & Average & Euclidian &  & x &  &  &  & 0.101 (0.051) & 0.005 (0.023) & 0.088 (0.050) \\ 
+& Average & Euclidian &  &  &  & x &  & 0.093 (0.060) & 0.006 (0.024) & 0.084 (0.057) \\ 
+& Spectral & Overlap & x &  &  &  &  & 0.091 (0.073) & 0.007 (0.029) & 0.084 (0.070) \\ 
+& Spectral & EDR &  &  & x &  &  & 0.071 (0.077) & 0.025 (0.072) & 0.070 (0.076) \\ 
+& K-Means & Euclidian &  &  &  &  & x & 0.057 (0.064) & 0.014 (0.069) & 0.057 (0.064) \\ 
+\{0.1, 0.5\} & Spectral & RBF &  &  &  & x &  & 0.256 (0.190) & 0.221 (0.195) & 0.255 (0.190) \\ 
+& Spectral & Overlap & x &  &  &  &  & 0.092 (0.079) & 0.008 (0.041) & 0.087 (0.075) \\ 
+& Ward & Euclidian &  & x &  &  &  & 0.092 (0.085) & 0.007 (0.040) & 0.088 (0.082) \\ 
+& K-Means & Euclidian &  &  & x &  &  & 0.080 (0.100) & 0.043 (0.122) & 0.079 (0.100) \\ 
+& K-Means & Euclidian &  &  &  &  & x & 0.062 (0.093) & 0.026 (0.116) & 0.062 (0.093) \\ 
+\{0.1, 0.7\} & Spectral & DTW &  &  &  & x &  & 0.618 (0.192) & 0.627 (0.201) & 0.617 (0.192) \\ 
+& Spectral & Levensthein & x &  &  &  &  & 0.252 (0.137) & 0.163 (0.147) & 0.249 (0.137) \\ 
+& Spectral & RBF &  &  & x &  &  & 0.215 (0.158) & 0.207 (0.188) & 0.215 (0.157) \\ 
+& Spectral & DTW &  & x &  &  &  & 0.205 (0.218) & 0.192 (0.247) & 0.205 (0.218) \\ 
+& K-Means & Euclidian &  &  &  &  & x & 0.185 (0.205) & 0.165 (0.225) & 0.185 (0.205) \\ 
+\{0.1, 1.0\} & Spectral & RBF &  &  &  & x &  & 0.952 (0.098) & 0.960 (0.082) & 0.952 (0.098) \\ 
+& Spectral & DTW &  & x &  &  &  & 0.489 (0.269) & 0.491 (0.290) & 0.488 (0.269) \\ 
+& K-Means & Euclidian &  &  &  &  & x & 0.453 (0.214) & 0.427 (0.252) & 0.452 (0.215) \\ 
+& Spectral & DTW &  &  & x &  &  & 0.406 (0.203) & 0.403 (0.226) & 0.406 (0.203) \\ 
+		\hline \\[-1.8ex] 
+	\end{tabularx} 
+		\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,1,2\}$, $\sigma =  \{1,1,1\}$, $\alpha = 1$)} 
+\end{table} 
+
+\begin{table}[!htbp] \centering 
+	\label{} 
+	\scriptsize
+	\begin{tabularx}{\textwidth}{ lllcccccccc} \\
+		\\[-1.8ex]	\toprule
+		\\[-1.8ex] 
+Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\ 
+\hline \\[-1.8ex] 
+\{0.1,0.3\} & Spectral & Cosine &  &  & x &  &  & 0.088 (0.116) & 0.038 (0.105) & 0.088 (0.115) \\ 
+& Spectral & Cosine & x &  &  &  &  & 0.087 (0.099) & 0.019 (0.075) & 0.084 (0.097) \\ 
+& Average & Euclidian &  &  &  & x &  & 0.083 (0.107) & 0.026 (0.095) & 0.080 (0.106) \\ 
+& Spectral & Cosine &  & x &  &  &  & 0.039 (0.055) & 0.000 (0.068) & 0.039 (0.055) \\ 
+& K-Means & Euclidian &  &  &  &  & x & 0.037 (0.057) & -0 & 0.037 (0.056) \\ 
+\{0.1,0.5\} & Spectral & EDR &  &  &  & x &  & 0.088 (0.087) & 0.027 (0.078) & 0.083 (0.086) \\ 
+& Spectral & Overlap & x &  &  &  &  & 0.066 (0.051) & 0.026 (0.062) & 0.065 (0.050) \\ 
+& Spectral & Cosine &  &  & x &  &  & 0.047 (0.064) & 0.002 (0.067) & 0.047 (0.063) \\ 
+& Spectral & DTW &  & x &  &  &  & 0.030 (0.045) & -0 & 0.030 (0.045) \\ 
+& K-Means & Euclidian &  &  &  &  & x & 0.029 (0.045) & -0 & 0.029 (0.045) \\ 
+\{0.1,0.7\} & Average & Euclidian &  &  &  & x &  & 0.087 (0.038) & 0.007 (0.039) & 0.076 (0.034) \\ 
+& Spectral & Cosine & x &  &  &  &  & 0.081 (0.076) & 0.013 (0.044) & 0.078 (0.072) \\ 
+& K-Means & Euclidian &  &  & x &  &  & 0.070 (0.074) & 0.014 (0.061) & 0.068 (0.072) \\ 
+& Spectral & EDR &  & x &  &  &  & 0.048 (0.054) & 0.003 (0.063) & 0.047(0.053) \\ 
+& K-Means & Euclidian &  &  &  &  & x & 0.041 (0.071) & -0 & 0.041 (0.071) \\ 
+\{0.1,0.9\} & Spectral & Cosine & x &  &  &  &  & 0.180 (0.110) & 0.069 (0.081) & 0.175 (0.109) \\ 
+& Spectral & EDR &  & x &  &  &  & 0.161 (0.125) & 0.097 (0.129) & 0.159 (0.124) \\ 
+& K-Means & Euclidian &  &  & x &  &  & 0.142 (0.127) & 0.049 (0.097) & 0.139 (0.126) \\ 
+& Average & Euclidian &  &  &  & x &  & 0.115 (0.034) & 0.008 (0.016) & 0.100 (0.037) \\ 
+& K-Means & Euclidian &  &  &  &  & x & 0.058 (0.108) & 0.016 (0.115) & 0.058 (0.108) \\ 
+\{0.5, 0.9\} & Spectral & Cosine & x &  &  &  &  & 0.169 (0.125) & 0.075 (0.097) & 0.164 (0.126) \\ 
+& Spectral & EDR &  &  & x &  &  & 0.158 (0.184) & 0.111 (0.188) & 0.157 (0.184) \\ 
+& Spectral & EDR &  & x &  &  &  & 0.150 (0.138) & 0.103 (0.149) & 0.148 (0.137) \\ 
+& Average & Euclidian &  &  &  & x &  & 0.104 (0.040) & 0.003 (0.014) & 0.091 (0.038) \\ 
+\hline \\[-1.8ex] 
+	\end{tabularx} 
+	\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma =  \{1,1,1\}$, $\tau = 0.1$)} 
+\end{table} 
+
+\begin{table}[!htbp] \centering 
+	\label{} 
+	\scriptsize
+	\begin{tabularx}{\textwidth}{ lllcccccccc} \\
+		\\[-1.8ex]	\toprule
+		\\[-1.8ex] 
+		Alpha & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\ 
+		\hline \\[-1.8ex] 
+	\{0.1,0.3\} & Spectral & Cosine &  &  &  & x &  & 0.131 (0.114) & 0.100 (0.133) & 0.131 (0.113) \\ 
+	& K-Means & Euclidian & x &  &  &  &  & 0.130 (0.199) & 0.075 (0.212) & 0.127 (0.199) \\ 
+	& Spectral & Cosine &  & x &  &  &  & 0.119 (0.104) & 0.068 (0.094) & 0.118 (0.103) \\ 
+	& K-Means & Euclidian &  &  &  &  & x & 0.113 (0.156) & 0.089 (0.181) & 0.113 (0.156) \\ 
+	& Spectral & RBF &  &  & x &  &  & 0.101 (0.140) & 0.073 (0.162) & 0.101 (0.140) \\ 
+	\{0.1,0.5\} & Spectral & Cosine &  &  & x &  &  & 0.199 (0.131) & 0.141 (0.129) & 0.198 (0.131) \\ 
+	& Spectral & Cosine &  & x &  &  &  & 0.191 (0.157) & 0.128 (0.148) & 0.190 (0.157) \\ 
+	& Spectral & Euclidian &  &  &  & x &  & 0.168 (0.183) & 0.134 (0.186) & 0.168 (0.182) \\ 
+	& K-Means & Euclidian &  &  &  &  & x & 0.122 (0.121) & 0.085 (0.122) & 0.121 (0.121) \\ 
+	& Spectral & Cosine & x &  &  &  &  & 0.063 (0.081) & 0.033 (0.109) & 0.063 (0.081) \\ 
+	\{0.1,0.7\} & Spectral & Cosine &  & x &  &  &  & 0.277 (0.229) & 0.222 (0.240) & 0.276 (0.229) \\ 
+	& Spectral & Cosine &  &  &  & x &  & 0.278 (0.272) & 0.183 (0.254) & 0.271 (0.183) \\ 
+	& K-Means & Euclidian &  &  & x &  &  & 0.227 (0.178) & 0.186 (0.176) & 0.227 (0.177) \\ 
+	& Spectral & Cosine & x &  &  &  &  & 0.190 (0.114) & 0.152 (0.116) & 0.189 (0.114) \\ 
+	& K-Means & Euclidian &  &  &  &  & x & 0.178 (0.150) & 0.147 (0.147) & 0.177 (0.149) \\ 
+	\{0.1,0.9\} & Spectral & DTW &  &  &  & x &  & 0.300 (0.232) & 0.273 (0.254) & 0.299 (0.232) \\ 
+	& Spectral & Cosine &  & x &  &  &  & 0.211 (0.158) & 0.159 (0.160) & 0.210 (0.158) \\ 
+	& Spectral & Cosine &  &  & x &  &  & 0.191 (0.117) & 0.137 (0.127) & 0.189 (0.118) \\ 
+	& Spectral & Cosine & x &  &  &  &  & 0.164 (0.110) & 0.115 (0.109) & 0.162 (0.109) \\ 
+	& K-Means & Euclidian &  &  &  &  & x & 0.138 (0.153 & 0.091 (0.176) & 0.137 (0.153) \\
+	\hline \\[-1.8ex] 
+	\end{tabularx} 
+	\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma =  \{1,1,1\}$, $\tau = 0.5$)} 
+\end{table} 
+
+\begin{table}[!htbp] \centering 
+	\label{} 
+	\scriptsize
+	\begin{tabularx}{\textwidth}{ lllcccccccc} \\
+		\\[-1.8ex]	\toprule
+		\\[-1.8ex] 
+		Alpha & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\ 
+		\hline \\[-1.8ex] 
+\{0.1, 0.3\} & Spectral  & Overlap & x &  &  &  &  & 0.103 (0.019) & 0.002 (0.007) & 0.087 (0.020) \\ 
+& Spectral  & EDR &  & x &  &  &  & 0.096 (0.061) & 0.016 (0.049) & 0.088 (0.059) \\ 
+& Spectral  & EDR &  &  &  & x &  & 0.068 (0.080) & 0.008 (0.085) & 0.063 (0.078) \\ 
+& Spectral  & Cosine &  &  & x &  &  & 0.043 (0.067) & -0 & 0.043 (0.067) \\ 
+& K-Means & Euclidian  &  &  &  &  & x & 0.036 (0.041) &  -  & 0.036 (0.041) \\ 
+\{0.1, 0.5\} & Average & Euclidian  &  & x &  &  &  & 0.133 (0.115) & 0.040 (0.077) & 0.127 (0.115) \\ 
+& K-Means & Euclidian  & x &  &  &  &  & 0.112 (0.124) & 0.035 (0.085) & 0.110 (0.122) \\ 
+& Spectral  & Euclidian  &  &  &  & x &  & 0.103 (0.096) & 0.060 (0.092) & 0.103 (0.095) \\ 
+& Spectral  & Cosine &  &  & x &  &  & 0.080 (0.088) & 0.038 (0.092) & 0.080 (0.088) \\ 
+& K-Means & Euclidian  &  &  &  &  & x & 0.079 (0.097) & 0.034 (0.088) & 0.079 (0.096) \\ 
+\{0.1, 0.7\} & Spectral  & DTW &  &  &  & x &  & 0.361 (0.200) & 0.352 (0.211) & 0.361 (0.200) \\ 
+& Spectral  & EDR &  &  &  & x &  & 0.223 (0.083) & 0.087 (0.080) & 0.217 (0.086) \\ 
+& Ward & Euclidian  &  &  &  & x &  & 0.195 (0.143) & 0.103 (0.135) & 0.192 (0.143) \\ 
+& K-Means & Euclidian  &  & x &  &  &  & 0.167 (0.123) & 0.064 (0.114) & 0.161 (0.123) \\ 
+& K-Means & Euclidian  & x &  &  &  &  & 0.157 (0.127) & 0.060 (0.116) & 0.151 (0.127) \\ 
+& Spectral  & DTW &  &  & x &  &  & 0.105 (0.140) & 0.087 (0.179) & 0.105 (0.140) \\ 
+& K-Means & Euclidian  &  &  &  &  & x & 0.102 (0.183) & 0.063 (0.201) & 0.101 (0.183) \\ 
+\{0.1, 1.0\} & Spectral  & DTW &  &  &  & x &  & 0.792 (0.174) & 0.808 (0.170) & 0.792 (0.174) \\ 
+& Spectral  & RBF &  &  &  & x &  & 0.692 (0.164) & 0.692 (0.184) & 0.692 (0.164) \\ 
+& K-Means & Euclidian  &  &  &  & x &  & 0.606 (0.188) & 0.578 (0.233) & 0.606 (0.189) \\ 
+& Spectral  & EDR &  & x &  &  &  & 0.280 (0.198) & 0.201 (0.215) & 0.278 (0.198) \\ 
+& Spectral  & Levensthein & x &  &  &  &  & 0.276 (0.101) & 0.154 (0.113) & 0.272 (0.111) \\ 
+& Spectral  & EDR &  &  & x &  &  & 0.236 (0.196) & 0.171 (0.184) & 0.235 (0.195) \\ 
+& K-Means & Euclidian  &  &  &  &  & x & 0.099 (0.105) & 0.052 (0.097) & 0.098 (0.104) \\ 
+\hline \\[-1.8ex] 
+	\end{tabularx} 
+	\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma =  \{1,1,1\}$, $\tau = 1.0$)} 
+\end{table} 
 
 \end{appendix}
 
