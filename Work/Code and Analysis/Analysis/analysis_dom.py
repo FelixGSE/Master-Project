@@ -538,7 +538,7 @@ miner = data_clustering()
 miner.prediction(choice_set = coc_data , entropy_set = ent , bad_set = bad,labelset = label,ent_block=ent_b, cluster_range = range(2,3), save = True)
 
 
-miner.dframe.to_csv("cocaine1.csv")
+miner.dframe.to_csv("cocaine2.csv")
 
 
 ############################## prison vs prison unbalanced, murder
