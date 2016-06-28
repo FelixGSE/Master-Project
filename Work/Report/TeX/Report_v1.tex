@@ -39,6 +39,9 @@
 \captionsetup{labelfont=bf}
 \usepackage{tikz}
 \usepackage{breakcites}
+\usepackage{float}
+\usepackage{tcolorbox}
+ \usepackage[flushleft]{threeparttable}
 % ----------------------------------------------------------------------------------------------------------
 % Packages
 % ----------------------------------------------------------------------------------------------------------
@@ -248,8 +251,10 @@ $d_i$ & Degree of node $i$ \\
 \textbf{Abbreviations} & \textbf{Description} 										\\
 \midrule
 \vspace{0.3cm} & \vspace{0.3cm} 														\\ 
-IGT & Iowa gambling Task \\
+IGT & Iowa gambling task \\
 RL & Reinforcement learning \\
+DTW & Dynamic time warp \\
+EDR & Edit distance on real sequences \\
 CH & Choices \\
 BBC & Blockwise bad choices \\
 ENT & Cumulative entropy \\
@@ -257,8 +262,7 @@ BENT & Blockwise entropy \\
 CC & Concatenated \\
 NMI & Normalized mutual information score \\
 ARI & Adjusted rand index \\
-VM & V-Measure score
-
+VM & V-Measure score 
 \end{tabular}
 
 \newpage
@@ -308,7 +312,7 @@ One of the popular experiments for analysing decision behaviour is the Iowa Gamb
 
 In \textit{supervised learning} data are predicted by training a classifier based on examples. The identity of observations in the training sample is known. This is used to connect patterns in the data with corresponding labels of observations. In contrast to that in \textit{unsupervised learning} we don't know the ground truth. The objective is to discover natural clustering behaviour in the data itself and group objects into subsets, such that objects in those subsets are more closely related to each other \cite[page 9 et. seqq.]{Murphy2012} and \cite[page 501 et. seqq.]{hastie}. A vast class of clustering algorithms based on different approaches are proposed in the literature (e.g. hierarchical and optimization based clustering). This paper investigates, whether such unsupervised learning techniques can be used in the context of human decision making process to identify latent grouping. The decision making process is studied by monitoring peoples sequential choices in a controlled experiment environments over time. Thus, this paper operates in the intersection of machine learning and cognitive science. To our knowledge this particular setting has not been studied before.\\
 We approach our research in the following way. We first set up a reinforcement learning based simulation framework to study theoretical boundaries of several clustering techniques and when they are applicable.
- Subsequently, we test our chosen methods on several  real experimental data sets. Corresponding to our simulation framework we first apply clustering algorithms to data from controlled n-armed bandit experiment.\footnote{A detailed introduction is given in section \ref{reinf}} A widely used approach to study human decision making process is the \textit{Iowa gambling task}, where participants try maximize rewards by choosing cards from different decks with different reward structures.\footnote{There are existing several slightly different versions of test. \cite{Steingroever2015} provides a data collection for from several sources giving a broad overview of different variations of the test.} Within this framework we analyse two different data sets. First we study decision making behaviour from people with different criminal profiles. Furthermore, we use another data set from cocaine abusers.\\
+ Subsequently, we test our chosen methods on several  real experimental data sets. Corresponding to our simulation framework we first apply clustering algorithms to data from controlled n-armed bandit experiment.\footnote{A detailed introduction is given in section \ref{reinf}} A widely used approach to study human decision making process is the \textit{Iowa gambling task}, where participants try maximize rewards by choosing cards from different decks with different reward structures.\footnote{There are existing several slightly different versions of test. \cite{Steingroever2015} provides a data collection for from several sources giving a broad overview of different variations of the test.} Two decks have distributions with negative expectations while two have positive. However, each deck has its own variance and a set of profits.  Within this framework we analyse two different data sets. First we study decision making behaviour from people with different criminal profiles. Furthermore, we use another data set from cocaine abusers.\\
 
 
 The report has the following structure. In section two we provide a short overview on related literature in the field. Section three is dedicated to the theoretical foundation and the simulation. We first provide knowledge of reinforcement and line out our experiment design in more detail. This section also includes an overview of applied algorithms, similarity and distance concepts. A mathematical formulation of the applied algorithms, similarity measures and cluster evaluation techniques can be found in the appendix.\footnote{Since our data are fairly small we will not discuss complexity of the algorithms.} Finally, we study their simulation performance and try to identify parameter settings, where they are applicable.\\ 
@@ -323,7 +327,6 @@ The rest of paper is address clustering our experimental data. We keep the scope
 There exists a rich literature in cognitive science on identifying different behavioural groups. As mentioned in the introduction a commonly applied tool by a lot of studies is the Iowa Gambling Task experiment. Within that framework it has been shown that individuals with pre-frontal brain damage and decision-making defects continue to choose disadvantageously even after they learned the optimal strategy \cite{Bechara1997}.\\
 A broad overview on other various results in the field can be found in \cite{Steingroever2013}. Several studies identify especially specific drug-user groups, e.g. cocaine addicts \cite{Stout2004}, chronic cannabis users \cite{Fridberg2010}, heavy alcohol users(heavy drinkers) \cite{Gullo2011}. Furthermore, extensive set of research is focused around particular mental disabilities, e.g. Asperger's disorder \cite{Johnson2006}, psychopathic tendencies \cite{Blair2001}, bipolar disorder \cite{Brambilla2012}, schizophrenia \cite{Martino2007} pathological gambling disorder \cite{Cavedini2002}, attention-deficit-hyperactivity disorder \cite{NiritAgay2010}. Most popular reinforcement learning models for identifying behavioural differences between different disorders are Expectancy Valence model \cite{Busemeyer2002} and Prospect Valence Learning model \cite{Ahn2008}.
 
-\pagebreak
 %---------------------------------------------------------------------------------------------------------
 % 3. Simmulation
 %---------------------------------------------------------------------------------------------------------
@@ -334,9 +337,9 @@ This section is dedicated to a detailed outline of our analysis approach and the
 
 \subsection{Experiment design and problem formulation}
 
-Figure \ref{fig:flow} depicts our simulation design.\footnote{ We implemented related coding for this project mainly in python. The code can be found on our  \href{https://github.com/FelixGSE/Master-Project}{github} repository.} The objective is to obtain a set of sequential choices for a given parameter setting of the artificial agent. We first generate a set of rewards by sampling from $n-$vectors from a normal distribution ("\textit{multi arm bandit}"). The agent processes those rewards by sequentially choosing from those $n-$vectors.  We repeat this procedure for several parameter settings for the agents and keep track of those choices which will define our data set.
+Figure \ref{fig:flow} depicts our simulation experiment design.\footnote{We implemented related coding for this project mainly in python. The code can be found on our  \href{https://github.com/FelixGSE/Master-Project}{github} repository.} The objective is to obtain a set of sequential choices for a given parameter setting of an artificial agent. We first generate a set of rewards by sampling $n-$vectors from a normal distribution ("\textit{multi arm bandits}"). The agent processes those rewards by sequentially choosing from those options. We repeat this procedure for several parameter settings for the agents and keep track of those choices which will define our data set.
 
- \begin{figure}[!htb]
+ \begin{figure}[H]
 	\includegraphics[width=\textwidth]{Pictures/flow01.png}
 	\caption{Flowchart experiment design}
 	\label{fig:flow}
@@ -344,108 +347,63 @@ Figure \ref{fig:flow} depicts our simulation design.\footnote{ We implemented re
 
 \subsection{Reinforcement Learning background and multi arm bandits}
 \label{reinf}
-In the following we provide some basic background of \textit{Reinforcement Learning} (RL). The following definitions coming from \cite[chapter 1 and 2]{Sutton2012}. RL is a branch of \textit{machine learning} try model how an artificial agents interact with its environment and learns from the process over time. \\
-In our particular setting the agent is confronted with the task of choosing sequentially from a set of possible choices. The doesn't have any knowledge about the system a priori. Therefore, it has to learn the nature of the system by sequentially interacting with its environment and keeping tack of the obtained information. Because of the lack of examples it has to explore different possible actions to identify the best action. Hence, it is useful to deviate from time to time from the current optimal strategy. It is necessary for the agent to keep track and updates the value of a each state it discovered so far. This is done by defining a value function for each state or action $a$. Denote the value function of an action $a$ as $Q_t(a)$ and define it as:
+Our simulation requires an artificial agent to produce desired data. The agent is relying \textit{Reinforcement Learning} (RL). Thus, we provide some necessary concepts of that field. The following definitions coming from \cite[chapter 1 and 2]{Sutton2012}. RL is a branch of \textit{machine learning} trying model the interaction of an artificial agents with its environment and the corresponding learning process. \\
+In our particular setting the agent is confronted with the task of choosing sequentially from a set of possible choices. The agent doesn't have any knowledge about the system a priori. Therefore, it has to learn the nature of the system by continuously interacting with its environment while keeping track of the obtained information for each particular choice. Due to the lack of examples it has to explore different possible actions to identify the best action. Hence, it is useful to deviate from the current optimal strategy from time to time.\\ 
+Each action in each step is associated with a given value based on the experience of the agent. This is modeled by defining a value function value function each action $a$. Denote the value function of an action $a$ as $Q_t(a)$ and define it as:
 \begin{flalign}
 Q_t(a) := \frac{R_1 + R_2 + \dots + R_{K_\alpha}}{K_\alpha} 
 \label{eq:valuefunction}
 \end{flalign}
-where $R$ denotes rewards. Hence the value function is the average over the rewards for a given state. 
-The main task of the agent is to balance \textit{exploration} and \textit{exploitation} of the environment. There are two basic approaches to model this trade-off; An \textit{"Epsilon-Greedy"} action selection method and \textit{"Softmax"} selection method.\\
-Considering epsilon greedy action selection method: The rule is to select the next action with the highest value function. However, to model exploration we introduce a random element to deviate from that greedy strategy with a certain probability denote by $\epsilon$. In general we can define the next action selected by the epsilon greedy strategy as:
+where $R$ denotes rewards. Hence the value function is defined average over the rewards for a given state [COMMENT - REFORMULATE THIS]. As mentioned it is necessary for the agent to explore its environment while simultaneously try to optimize its utility. Thus, a crucial task of the agent is to balance \textit{exploration} and \textit{exploitation} of the environment. There are two basic approaches to model this trade-off; An \textit{"Epsilon-Greedy"} action selection method and \textit{"Softmax"} selection method.\\
+Within an epsilon greedy action selection strategy the next action is chosen based on the highest value function. However, to model exploration an random element is introduced to deviate from that greedy strategy with a certain probability (denoted by $\epsilon$). In general we can define the next action selected by the epsilon greedy strategy as:
 \begin{flalign}
 a_{t+1} = \begin{cases} 
 \text{random action} & \text{, with probability } \epsilon \\
 \arg \max_i Q_t(i) & \text{, with probability } 1-\epsilon
 \end{cases} \nonumber
 \end{flalign}
-In the softmax action selection method each next action is sampled from with a certain probability coming \textit{Boltzmann Distribution)}. The probability for action a is computed by:
+In the softmax action selection method each next action is sampled with a certain probability coming from a  \textit{Boltzmann Distribution)}. The probability for action a is computed by:
 \begin{flalign}
-P(a_{t}|X) = \frac{e^{\frac{Q_t(a)}{\tau}}}{\sum_{i}^{K} e^{\frac{Q_t(i)}{\tau}}} \nonumber
+P(a_{t}) = \frac{e^{\frac{Q_t(a)}{\tau}}}{\sum_{i}^{K} e^{\frac{Q_t(i)}{\tau}}}
+\label{eq:softmax}
 \end{flalign}
-In each iteration the next action of the agent is drawn with probability $p_a$: 
+By computing this probability for each action the next action is sampled using those probabilities. The softmax is essentially depending on the parameter $\tau$ functions. It is controlling the how deterministic or random the agent is behaving. For increasing $\tau$ the numerator goes to one and the next action is therefore picked uniformly. For low values in $\tau$, actions with low value functions result in lower probabilities and hence in a greedy strategy. The parameter is also sometimes called \textit{temparature}.\footnote{Sometimes another variation to use the inverse of tau. Obviously that would flip those intuitions.} Finally the next action gets sample from a distribution with the probabilities obtained by equation \eqref{eq:softmax}.
 \begin{flalign}
 a_{t+1} \sim p_a \nonumber
 \end{flalign}
-After selecting an action the agent is updating its believe of the chosen action. One can show that equation \eqref{eq:valuefunction} can be expressed in the following way:
+After selecting an action the agent has to update its believe of the chosen action. One can show that equation \eqref{eq:valuefunction} can be expressed in the following way: [THIS HAS TO BE CHANGED - MISLEADING]
 \begin{flalign}
-Q(a)_{k+1} = Q(a)_k + \alpha \left[ R(a)_k -  Q(a)_k	 \right], \nonumber
+Q(a)_{k+1} = Q(a)_k + \alpha \left[ R(a)_k -  Q(a)_k	 \right], 
+\label{eq:update}
 \end{flalign}
-where $\alpha$ is a is the  non negative \textit{learning rate} defining how much the current action is affecting the believes.
+where $\alpha$ is a is the non negative \textit{learning rate} defining how much the current action is affecting the believes. A challange might be how to initialize the value function. However, for convenience we set them to zero for all bandits. Those are the basic necessary ingredients to model artificial decision process. In the following we elaborate on further data processing.
 
-\subsection{Unsupervised learning methods, data handling and similarity}
+\subsection{Data handling, unsupervised learning methods and similarities}
 \label{algosim}
-As mentioned we find two main challenges. First, our data have a categorical nature. Furthermore, the learning process also imposes a time series dependence on the data.\\
-A well studied approach clustering such data are \textit{hidden markov models}. For example a decent research on that can be found in \cite{Pamminger2007}, \cite{Pamminger2009} and \cite{Pamminger2010a}. However, we focus our attention only on partition based clustering algorithms.\\
-Some of applied algorithms operate on different distance or similarity concepts. Given our data we  have to think carefully think about distance and similarity measures to respect the nature of our data and algorithms.\footnote{A formal definition of the distance and similarity can be found in the appendix} 
-In extension to only considering raw choices we might try to re-express our data to discriminate them according to different purposes. 
-The first approach is to map the series of choices to a real valued series. One way is to consider \textit{Shannon's Entropy}  introduced by \cite{Shannon1948} based on the empirical probability of the choices. For a discrete random variable  $X$ with probability $p$ the entropy is defined as \cite[page 32]{MacKay2005}:
+As mentioned we find two main challenges concerning the data. First, our data have a categorical nature. Furthermore, the learning process and corresponding behavioural changes also imposes changing dependence over time.\\
+A well studied approach clustering such data types are \textit{hidden markov models}. For example, a decent study on that can be found in \cite{Pamminger2007}, \cite{Pamminger2009} and \cite{Pamminger2010a}. However, we focus our attention only on partition based clustering algorithms.\\
+Some of the applied algorithms operate on distinct distance or similarity concepts. Given our data we  have to think carefully think about distance and similarity measures to respect the nature of our data and algorithms.\footnote{A formal definition of the distance and similarity can be found in the appendix} 
+Furthermore, besides considering only raw choices we might try to re-express our data to discriminate them in different ways. 
+One way is to apply \textit{Shannon's Entropy}  introduced by \cite{Shannon1948}. It is computed by using the empirical probability for each choices. For a discrete random variable  $X$ with probability $p$ the entropy is defined as \cite[page 32]{MacKay2005}:
 \begin{flalign}
-H(X) := = -\sum_{i=1}^{N} p_i \log_2 p_i
+H(X) := -\sum_{i=1}^{N} p_i \log_2 p_i
 \end{flalign}
-Entropy gives measure on how random a random variable behaves.\footnote{In case we get a value for X such that $p_i = 0$, we set $H(X) = 0$  \cite[page 49]{Bishop2006}} Within the entropy framework we consider to types of entropies. For each time step we compute the entropy using choices done so far. We call this \textit{cumulative entropy}. Furthermore, we might want to observe more clearly how individuals adapt their behaviour over time. Considering an experiment with 100 trials we then compute the entropy for set of ten choices. We call this \textit{blockwise entropy}. Mapping choices to and entropy based data set is therefore aims to discriminate individuals by their level randomness in their behaviour. \\
-A second approach is based on the experimental setting. We know within the framework there are a set of choices which are disadvantageous for the participant. Following e.g. \cite{Yechiam2008} or \cite{Ahn2008}, we then compute block wise the ratio of disadvantageous choices. We call this \textit{disadvantageous choice}. 
+Entropy gives measure on how random a random variable behaves.\footnote{In case we get a value for X such that $p_i = 0$, we set $H(X) = 0$  \cite[page 49]{Bishop2006}} Within the entropy framework we consider to types of entropies. For each time step we compute the entropy using choices done so far. We call this \textit{cumulative entropy}. Furthermore, we might want to observe more clearly how individuals adapt their behaviour over time. Considering an experiment with 100 trials we then compute the entropy for set of e.g. ten choices. We call this \textit{blockwise entropy}. Mapping choices to an entropy data set aims on discriminating individuals by their level randomness in their behaviour. \\
+A second approach is based on the experimental setting. We know that within framework there are a set of choices, which are disadvantageous for the participant. Following e.g. \cite{Yechiam2008} or \cite{Ahn2008}, we then compute block wise the ratio of disadvantageous choices. We call this \textit{blockwise disadvantageous choice}. 
 
 Within our analysis we consider a broad selection of several clustering techniques and similarity concepts. Figure \ref{fig:cla} shows an overview of the algorithms and their corresponding distance/similarity requirements. A technical description for all of them is provided in the appendix. 
-\begin{figure}[!htb]
+\begin{figure}[H]
 	\includegraphics[width=\textwidth]{Pictures/DataClustering.jpeg}
 	\caption{Input data, algorithms and proximity measures}
 	\label{fig:cla}
 \end{figure}
-According to our different data types and for our different algorithms we apply the following distance and similarity concepts.\footnote{Note that distance and similarity can be converted according to equation \eqref{eq:sim} in the appendix}
 
-\subsection{Simulation results}
+\subsection{Simulation setup and results}
 
-The following table shows a snippet of our simulation results. We have a broad range o similarity measures. Some of them are task specific meaning being designed for either categorical or time series data or both.\footnote{For example Levenstein distance (or edit distance) is a basic way to measure similarity between categorical sequences \cite[page 1]]{Richter} or \cite[page 2]{Gabadinho2009}, however some authors stating that it might perform poorly in their task \cite[page 3]{Ren2011} or a poor measure at all \cite[page 5]{Morzy}}
-
-We also considered some specilised articles. \cite{Garcia2014} provide an algorithm to cluster categorical time series.
-
-\pagebreak
-
-\begin{table}[!htbp] \centering 
-	\label{} 
-	\scriptsize
-	\begin{tabularx}{\textwidth}{ ccccccccccc} 
-		\\\toprule
-		Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\ 
-		\hline \\[-1.8ex] 
-		\{0.1, 0.3\} & Spectral & DTW &  &  &  & x &  & 0.136 (0.134) & 0.094 (0.146) & 0.135 (0.134) \\ 
-		& Spectral & EDR &  &  & x &  &  & 0.134 (0.135) & 0.097 (0.130) & 0.134 (0.135) \\ 
-		& Spectral & Levensthein & x &  &  &  &  & 0.093 (0.134) & 0.050 (0.128) & 0.092 (0.134) \\ 
-		& Spectral & Cosine &  & x &  &  &  & 0.113 (0.134) & 0.082 (0.150) & 0.113 (0.134) \\ 
-		& K-Means & Euclidian &  &  &  &  & x & 0.093 (0.135) & 0.050 (0.130) & 0.092 (0.135) \\ 
-		\{0.1, 0.5\} & Spectral & RBF &  &  &  & x &  & 0.331 (0.185) & 0.328 (0.208) & 0.331 (0.186) \\ 
-		& Spectral & RBF &  &  & x &  &  & 0.322 (0.197) & 0.301 (0.221) & 0.321 (0.197) \\ 
-		& Spectral & EDR &  &  & x &  &  & 0.315 (0.189) & 0.328 (0.206) & 0.315 (0.189) \\ 
-		& K-Means & Euclidian &  &  & x &  &  & 0.313 (0.187) & 0.261 (0.213) & 0.312 (0.187) \\ 
-		& Spectral & EDR &  & x &  &  &  & 0.226 (0.127) & 0.131 (0.113) & 0.223 (0.127) \\ 
-		& Spectral & Levensthein & x &  &  &  &  & 0.219 (0.144) & 0.126 (0.121) & 0.217 (0.144) \\ 
-		& K-Means & Euclidian &  &  &  &  & x & 0.208 (0.143) & 0.124 (0.122) & 0.207 (0.143) \\ 
-		\{0.1, 0.7\} & Spectral & RBF &  &  &  & x &  & 0.642 (0.200) & 0.653 (0.206) & 0.641 (0.200) \\ 
-		& Spectral & DTW &  &  & x &  &  & 0.580 (0.209) & 0.611 (0.205) & 0.580 (0.201) \\ 
-		& K-Means & Euclidian &  &  & x &  &  & 0.533 (0.248) & 0.539 (0.275) & 0.533 (0.249) \\ 
-		& K-Means & Euclidian &  &  &  &  & x & 0.382 (0.181) & 0.309 (0.237) & 0.381 (0.180) \\ 
-		& Spectral & Levensthein & x &  &  &  &  & 0.350 (0.114) & 0.241 (0.163) & 0.347 (0.116) \\ 
-		& Spectral & Euclidian &  & x &  &  &  & 0.306 (0.155) & 0.198 (0.179) & 0.303 (0.156) \\ 
-		\{0.1, 1\} & Spectral & DTW &  &  &  & x &  & 0.938 (0.131) & 0.942 (0.126) & 0.938 (0.131) \\ 
-		& Spectral & Euclidian &  &  &  & x &  & 0.811 (0.136) & 0.833 (0.129) & 0.811 (0.136) \\ 
-		& Ward  & Euclidian &  &  &  & x &  & 0.797 (0.205) & 0.796 (0.218) & 0.797 (0.205) \\ 
-		& Spectral & DTW &  &  & x &  &  & 0.765 (0.197) & 0.791 (0.184) & 0.765 (0.197) \\ 
-		& K-Means & Euclidian &  &  & x &  &  & 0.757 (0.180) & 0.774 (0.185) & 0.757 (0.180) \\ 
-		& K-Means & Euclidian &  &  &  &  & x & 0.796 (0.218) & 0.687 (0.265) & 0.696 (0.219) \\ 
-		& Spectral & Overlap & x &  &  &  &  & 0.600 (0.299) & 0.571 (0.353) & 0.598 (0.302) \\ 
-		& Spectral & Euclidian &  & x &  &  &  & 0.335 (0.091) & 0.220 (0.138) & 0.332 (0.093) \\ 
-		\hline \\
-	\end{tabularx} 
-	\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma =  \{1,1,1\}$, $\alpha = 0.1$)} 
-\end{table} 
-
-
-
-
-
-\include{tikz-example.tex}
-
+We observed that that the clustering results of our simulation are fluctuating. Hence, to report stable results, the following numbers are computed as an average for each settings over 20 simulations. We also report the corresponding standard deviations to give an impression on the sensitivity of the clustering.\\
+Our implementation is quite flexible. We can control both all parameters for each individual agent and their reward sets. We can control the number of trials for each agent and produce customized and multiple asymmetric cluster sizes. Furthermore, we can set prior values for each agent and each value function for the bandits. However, within our experiment we kept the settings simple. First we fix means and standard deviations for the bandits. Then first fix a value for alpha and run the simulations for different differences in tau. We repeat this procedure for fixed values of tau and vary alpha. Finally, we repeat this procedure with a different setting in the bandit means.\\
+We are confronted with an enormous grid search over different parameters. Computing distances is very costly. As mentioned we have to run our simulations multiple times to get an impression of the variability. To keep the computation time to a reasonable we let them perform 100 trials and set the number to 10 for each parameter setting. We ended up using solely the softmax function. The main reason for that decision is that we estimate those parameters later on for the experimental data.\\ 
+The following table shows a snippet of our simulation results. As described in the last section we have a broad range o similarity measures and algorithms. Therefore, we selected results in such a way, that we give an impression when clustering is working well. Naturally we also found a lot of settings where clustering was not successful. A detailed overview on the numbers are given by tables \ref{tab:apstab1} to \ref{tab:apstab8} in the appendix.\footnote{To give an intuition about the numbers one can informally note that numbers below 0.200 - 0.300 do not show any really good clustering patterns.}
 
 %---------------------------------------------------------------------------------------------------------
 % 4. Data
@@ -453,24 +411,25 @@ We also considered some specilised articles. \cite{Garcia2014} provide an algori
 
 \section{Data Analysis}
 
-Our simulation result suggested that we can cluster the decision behaviour under some give constraints. We apply our approach to different real data sets. In total we are considering three different data sets. As mentioned in the introduction the Iowa gambling task is popular way to monitor decision and learning process of individuals. s
+Our simulation results suggested that we can cluster the decision behaviour under some given constraints. In the following we apply our methods to three different real experiment data. The first data comes  As mentioned in the introduction the Iowa gambling task is popular way to monitor decision and learning process of individuals. s
 In the simulation setting we initially define participants with a certain set of parameters. There exist techniques to estimate those parameters from actual data. 
 
-\subsection{Recover cognitive parameters}
+\subsection{Multi-arm bandit experiment data}
 
+The first data set is related to \cite{Stojic2015}. The data are gathered in a 20-arm bandits online experiment, in which users were compensated with small amount of money in exchange. Four different distributional settings were given to different people. In total the data sets consists of 429 participants divided in 199 female and 229 male participants.\footnote{One did not wish to answer} The average age 33.04 with standard deviation 11.75. Furthermore, the participants overall have a stronger higher education background. 261 participants have college degree, 39 a graduate degree and PhD respectively. 127 have a high school degree and 2 declined to answer.\\
+We tried to identify different clusterings according to those demographics within those four sub experiments. Our results doesn't show worth mentioning clustering across demographics.\\
+We try to discover clustering in the data. Within our simulation we set parameters, which classify individual subjects. Using the experimental data we come from the other way. The reinforcement learning model is quite closely related to the expectancy valence model from cognitive science. Referring to equation \eqref{eq:softmax} and equation \eqref{eq:update} we can try to recover the parameters by optimising those function based on the observed choices. 
 
-\subsection{Prison data and approach}
+\subsection{Prison data}
 
-With acknowledgment to [HERE WE ADD THE GUY] we were provided with experimental data from \cite{Yechiam2008}. We try to apply our methods to cluster different groups in the data. The participants had to perform the Iowa gambling task (detailed description see later on). \cite{Steingroever2015} assembled a collection of data of healthy individuals performing the IGT test from various sources. We extended the data set we got with a set of healthy people, which we hope will behave significantly different than the individuals with criminal profile.
+We were provided with experimental data from \cite{Yechiam2008}. Again we try to apply our methods to cluster different groups in the data. The participants had to perform a modified version of the Iowa gambling task, where reward structure of the decks are changing over time.\\
+In particular we have data of 96 individuals with different criminal profile. Within this data we don't have a control group. Given that participants performed a different version of the test we could add a control data from publicly available data sets (see \cite{Steingroever2015}).\\
+Table \ref{tab:tabps} gives a broad summary of some demographics of the participants. The samples for each groups are not balanced. 
 
-\subsubsection{Data summary and experimental design}
-
-In particular we have data of 96 individuals with different criminal profile. Table \ref{tab:tabps} gives a broad summary of some demographics. 
-
-\begin{table}[!htbp]
+\begin{table}[H]
 	\scriptsize
 	 \centering 
-	\begin{tabular}{ l|ccccc} 
+	\resizebox{\textwidth}{!}{\begin{tabular}{ l|ccccc} 
 		\toprule 
 		Crime & \textbf{Count} & \textbf{Age} & \textbf{TABE Score} & \textbf{Education} & \textbf{Beta IQ} \\ 
 		\hline
@@ -486,17 +445,16 @@ In particular we have data of 96 individuals with different criminal profile. Ta
 	Probabiton & $1$ & $38.00$ (NA)& $12.00$ (NA)& $6.30$ (NA)& $92.00$ (NA)\\ 
 	Other & $2$ & $35.00$ (9.90)& $11.50$ (0.00)& $9.20$ (4.67)& $95.00$ (5.66)\\       
 		\bottomrule 
-	\end{tabular} 
+	\end{tabular} }
 		\caption{Summary prison data (means with standard deviation in parenthesis)} 
 		\label{tab:tabps} 
 \end{table} 
 
-Propositi had to perform the \textit{Iowa gambling task} (IGT), where they have to pick sequentially a card from four different decks. Two decks have distributions with negative expectations while two have positive. However, each deck has its own variance and a set of profits. \\
 Figure \ref{fig:ent} (a) shows the average cumulative entropy averaged across groups. We observe a random behaviour independent from group affiliation. However, normal people show the least random behaviour. Furthermore, Figure \ref{fig:ent} (b) shows the average people of negative choices people chose over steps of ten periods averaged across groups.     
 
 \setlength{\tabcolsep}{-0.2cm}
 \renewcommand{\arraystretch}{-0.6}
-\begin{figure}[!htbp]
+\begin{figure}[H]
 	\small
 	\begin{tabular}{cc}
 	\input{Pictures/avgent.tex} & \input{Pictures/disad.tex} \\
@@ -509,18 +467,7 @@ Figure \ref{fig:ent} (a) shows the average cumulative entropy averaged across gr
 \end{figure}
 
 Yechiam et al. found three clusters by using the attention to recent outcomes(ARO) and attention to gains(AG) parameters from the Expectancy Valance model. The most distinct group were the Robbery convicts with the only negative attention to gains mean at -0.36 and the highest attention to recent outcomes mean 0.57. The second cluster is made of assault and murder convicts with ARO of 0.26 and AG of 0.1. The third cluster is formed of all the remaining prisoner groups with ARO means between 0 and -0.1 and AG between 0.1 and 0.2.
-
-\subsubsection{Prison data results}
-
-Following the last section we provide a summary of our results. 
-
-Following the clusters given by the EV model, we tried pairwise clustering between robbers and other prisoner groups and assault offenders and other prisoner groups.
-
-\subsection{Multi-arm Bandit Data}
-
-The second data set we are considering are related to \cite{Stojic2015}. In this setting we consider a 20-arm bandits situation. The data were gathered online were users were compensated with small amount of money. Four different distributional settings were given to different people. In total the data sets consists of 429 participants divided in 199 female and 229 male participants.\footnote{One did not wish to answer} The average age 33.04 with standard deviation 11.75. Furthermore, the participants overall have a stronger higher education background where 261 participants have college degree and and 39 with graduate degree and Phd. 127 have a high school degree and 2 declined to answer.
-
-We tried to identify different clusterings according to demographics within those four sub experiments. Our results show not a significantly different behaviour. 
+Based on those findings and what we observed in figure \ref{fig:ent} we decided to cluster convicted assault-murder and robbery individuals against the other criminal groups. The following table depicts the resulting clustering performance.
 
 \subsection{Huntington Data}
 
@@ -529,7 +476,7 @@ In the study there were considered 14 participants with HD and 22 participants w
 
 \setlength{\tabcolsep}{10pt}
 \renewcommand{\arraystretch}{1}
-\begin{table}[!htbp]
+\begin{table}[H]
 	\centering 
 	\scriptsize
 	\begin{tabularx}{\textwidth}{lccccc}
@@ -548,14 +495,13 @@ In the study there were considered 14 participants with HD and 22 participants w
 	\textbf{Source:} Summary of \cite[page 3]{Stout2001} 
 \end{table}
 
-
 \subsection{Cocaine Abusers data}
 
-We have data from several individuals of cocaine abusers. There are 12 individuals performing the IGT. The control group consist out of 14 participants. Candidates among the drug abusers were selected as active users with additional drug abusing past and without any known additional mental illness \cite{stout2004}. Table \ref{tab:cla} gives a summary of demographic profile.
+Finally we study data from several cocaine abusers. There are 12 individuals performing the IGT. The control group consist out of 14 participants. Candidates among the drug abusers were selected as active users with additional drug abusing past, but without any known additional mental illness \cite{stout2004}. Table \ref{tab:cocs} gives a summary of demographic profile.
 
 \setlength{\tabcolsep}{12pt}
 \renewcommand{\arraystretch}{1}
-\begin{table}[!htbp]
+\begin{table}[H]
 	\centering 
 	\begin{tabular}{lcc}
 		\toprule
@@ -570,7 +516,43 @@ We have data from several individuals of cocaine abusers. There are 12 individua
 	\label{tab:cocs}
 \end{table}
 
-\subsection{Cocaine Abusers data results}
+We cluster cocaine abusers against the control group. The following table depicts results of the clustering. Again we averaged over 20 simulations to report average clustering performance. However as depicted the data set is friarly small and results are quite stable. Again our best clustering is achieved using block wise entropy, besides the listed K-Means algorithm, spectral clustering with both cosine similarity and with and rbf kernel achieved the same results. However, the results for this data set are in general are rather low and a real good clustering performance can not be found indicated by the average over all applied methods. 
+
+\begin{threeparttable}[H] 
+	\centering
+	\label{} 
+	\scriptsize
+		\resizebox{\textwidth}{!}{\begin{tabular}{ llccc cccccc} 
+		\toprule
+		Method & Similarity & C\tnote{0} & CBC\tnote{1} & BBC\tnote{2} & E\tnote{3} & EB\tnote{4} & CC\tnote{5} & NMI\tnote{6} & ARI\tnote{6} & VM\tnote{7} \\ 
+		\hline 
+		K-Means \tnote{*} & Euclidian &  &  &  &  & x &  & 0.270 (0.000) & 0.262 (0.000) & 0.270 (0.000) \\ 
+		Ward & Euclidian &  & x &  &  &  &  & 0.270 (0.000) & 0.262 (0.000) & 0.270 (0.000) \\ 
+		K-Means & Euclidian &  &  &  &  &  & x & 0.209 (0.030) & 0.171 (0.043) & 0.208 (0.030) \\ 
+		Spectral & Levenstein & x &  &  &  &  &  & 0.178 (0.000) & 0.181 (0.000) & 0.178 (0.000) \\ 
+		Spectral & Cosine &  &  & x &  &  &  & 0.171 (0.000) & 0.117 (0.000) & 0.171 (0.000) \\ 
+		Spectral & DTW &  &  &  & x &  &  & 0.042 (0,000) & 0.014 (0.000) & 0.042 (0.000) \\ 
+		\hline
+		\textbf{Average}\tnote{$\dagger$}  & - & - & - & - & - & - & - & 0.139 (0.002) & 0.104 (0.003) & 0.138 (0.002) \\ 
+		\hline 
+	\end{tabular} }
+	\begin{tcolorbox}[arc=0mm,title=Notes,boxrule=0.2mm,colbacktitle=white,coltitle=black,colback=white,top=0mm,bottom=0.1mm]
+	\begin{tablenotes}
+	       	\item[0] Clustering based on choices participant did 
+	       	\item[1] Clustering based on cumulative disadvantageous choice of participants
+	        \item[2] Clustering based on block wise disadvantageous choice. Block size = 10
+	        \item[3] Clustering based on cumulative entropy
+	        \item[4] Clustering based on block wise entropy. Block size = 10
+	        \item[5] Clustering based on entropy and choices concatenated for each participant
+	        \item[6] Normalised mutual infrormation score (description see appendix \ref{sec:ce})
+	        \item[7] Adjusted rand index (description see appendix \ref{sec:ce})
+	        \item[8] V-Measure (description see appendix \ref{sec:ce})
+	        \item[*] Spectral Clustering on block wise entropy with RBF kernel and cosine similarity produced the same results
+	        \item[$\dagger$] Average over all algorithms including the ones displayed in the table
+	\end{tablenotes}
+	\end{tcolorbox}
+	\caption{Clustering results for cocaine abusers vs. control group} 
+ \end{threeparttable} 
 
 \section{Discussion of results and possible extensions }
 
@@ -581,6 +563,12 @@ Our analysis so far showed that people are not separate themselves. In general w
 %---------------------------------------------------------------------------------------------------------
 
 \section{Conclusion}
+
+
+\section{Acknowledgment}
+
+
+
 
 \pagebreak
 % ----------------------------------------------------------------------------------------------------------
@@ -659,6 +647,9 @@ d_E (\boldsymbol{x},\boldsymbol{y}) :=  \sqrt{\left( \sum_{i=1}^{N} \left( x_i -
 
 Reffering to equation \ref{eq:ets} we define a simple measure for the categorical aspect of the data. Note that [SOURCE] defines the simplest measure for categorical data. However, since the probability that two people behave exactly the same in our context is arguably zero we modify this concept slightly. So we relax that and define the overlap similarity just as the count of overlapping instances. This serves as a benchmark similarity for categorical data.
 
+\footnote{For example Levenstein distance (or edit distance) is a basic way to measure similarity between categorical sequences \cite[page 1]]{Richter} or \cite[page 2]{Gabadinho2009}, however some authors stating that it might perform poorly in their task \cite[page 3]{Ren2011} or a poor measure at all \cite[page 5]{Morzy}}
+
+
 \begin{flalign}
 d_O (\boldsymbol{x},\boldsymbol{y}) :=  \sum_{i=1}^{N} \mathbb{1}_{(x_i = y_i)}
 \end{flalign}
@@ -687,7 +678,7 @@ d_{lin} (\boldsymbol{x},\boldsymbol{y}) := \begin{cases}
 
 
 \subsection*{Clustering Evaluation}
-
+\label{sec:ce}
 In this section we formally derive and explain the applied clustering metrics. Evaluating clustering performance has some issues. The algorithm is producing labels. Nevertheless we generated the "true" labels the might not be comparable. A simple example we might consider the following situation. Let y denote the labels of data the data and $y'$ the corresponding prediction such that  $y,y' \in \{0,1\}$. In a small example let our data points be like $y=(1,1,0,0)$ and the corresponding prediction $y'=(0,0,1,1)$. Obviously the clustering worked perfectly, however comparing "labels" would produce an accuracy of zero. 
 
 There a several clustering metrics, which respect such a situation. We consider a bunch of information based metrics. Most of the measures use some sort of entropy. The following concepts can be found in \cite{Rosenberg2007} and  \cite{Vinh2010} and as additional reading \cite{Hubert1985}. 
@@ -818,9 +809,46 @@ d_i &:= \sum_{j=1}^{n} w_{ij} = \sum_{i=1}^{n} w_{ij}
 \pagebreak
 \section{Simulation Data}
 
-% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Sat, Jun 25, 2016 - 11:19:09
-\begin{table}[!htbp] \centering 
+\begin{table}[H] \centering 
+	\label{} 
+	\scriptsize
+	\begin{tabularx}{\textwidth}{ ccccccccccc} 
+		\\\toprule
+		Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\ 
+		\hline \\[-1.8ex] 
+		\{0.1, 0.3\} & Spectral & DTW &  &  &  & x &  & 0.136 (0.134) & 0.094 (0.146) & 0.135 (0.134) \\ 
+		& Spectral & EDR &  &  & x &  &  & 0.134 (0.135) & 0.097 (0.130) & 0.134 (0.135) \\ 
+		& Spectral & Levensthein & x &  &  &  &  & 0.093 (0.134) & 0.050 (0.128) & 0.092 (0.134) \\ 
+		& Spectral & Cosine &  & x &  &  &  & 0.113 (0.134) & 0.082 (0.150) & 0.113 (0.134) \\ 
+		& K-Means & Euclidian &  &  &  &  & x & 0.093 (0.135) & 0.050 (0.130) & 0.092 (0.135) \\ 
+		\{0.1, 0.5\} & Spectral & RBF &  &  &  & x &  & 0.331 (0.185) & 0.328 (0.208) & 0.331 (0.186) \\ 
+		& Spectral & RBF &  &  & x &  &  & 0.322 (0.197) & 0.301 (0.221) & 0.321 (0.197) \\ 
+		& Spectral & EDR &  &  & x &  &  & 0.315 (0.189) & 0.328 (0.206) & 0.315 (0.189) \\ 
+		& K-Means & Euclidian &  &  & x &  &  & 0.313 (0.187) & 0.261 (0.213) & 0.312 (0.187) \\ 
+		& Spectral & EDR &  & x &  &  &  & 0.226 (0.127) & 0.131 (0.113) & 0.223 (0.127) \\ 
+		& Spectral & Levensthein & x &  &  &  &  & 0.219 (0.144) & 0.126 (0.121) & 0.217 (0.144) \\ 
+		& K-Means & Euclidian &  &  &  &  & x & 0.208 (0.143) & 0.124 (0.122) & 0.207 (0.143) \\ 
+		\{0.1, 0.7\} & Spectral & RBF &  &  &  & x &  & 0.642 (0.200) & 0.653 (0.206) & 0.641 (0.200) \\ 
+		& Spectral & DTW &  &  & x &  &  & 0.580 (0.209) & 0.611 (0.205) & 0.580 (0.201) \\ 
+		& K-Means & Euclidian &  &  & x &  &  & 0.533 (0.248) & 0.539 (0.275) & 0.533 (0.249) \\ 
+		& K-Means & Euclidian &  &  &  &  & x & 0.382 (0.181) & 0.309 (0.237) & 0.381 (0.180) \\ 
+		& Spectral & Levensthein & x &  &  &  &  & 0.350 (0.114) & 0.241 (0.163) & 0.347 (0.116) \\ 
+		& Spectral & Euclidian &  & x &  &  &  & 0.306 (0.155) & 0.198 (0.179) & 0.303 (0.156) \\ 
+		\{0.1, 1\} & Spectral & DTW &  &  &  & x &  & 0.938 (0.131) & 0.942 (0.126) & 0.938 (0.131) \\ 
+		& Spectral & Euclidian &  &  &  & x &  & 0.811 (0.136) & 0.833 (0.129) & 0.811 (0.136) \\ 
+		& Ward  & Euclidian &  &  &  & x &  & 0.797 (0.205) & 0.796 (0.218) & 0.797 (0.205) \\ 
+		& Spectral & DTW &  &  & x &  &  & 0.765 (0.197) & 0.791 (0.184) & 0.765 (0.197) \\ 
+		& K-Means & Euclidian &  &  & x &  &  & 0.757 (0.180) & 0.774 (0.185) & 0.757 (0.180) \\ 
+		& K-Means & Euclidian &  &  &  &  & x & 0.796 (0.218) & 0.687 (0.265) & 0.696 (0.219) \\ 
+		& Spectral & Overlap & x &  &  &  &  & 0.600 (0.299) & 0.571 (0.353) & 0.598 (0.302) \\ 
+		& Spectral & Euclidian &  & x &  &  &  & 0.335 (0.091) & 0.220 (0.138) & 0.332 (0.093) \\ 
+		\hline \\
+	\end{tabularx} 
+	\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma =  \{1,1,1\}$, $\alpha = 0.1$)} 
+	\label{tab:apstab1}
+\end{table} 
+
+\begin{table}[H] \centering 
 	\label{} 
 	\scriptsize
 		\begin{tabularx}{\textwidth}{ lllcccccccc} \\
@@ -856,12 +884,10 @@ d_i &:= \sum_{j=1}^{n} w_{ij} = \sum_{i=1}^{n} w_{ij}
 		\hline \\[-1.8ex] 
 		\end{tabularx} 
 			\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma =  \{1,1,1\}$, $\alpha = 0.5$)} 
-			
+			\label{tab:apstab2}	
 		\end{table}
 	
-
-
-\begin{table}[!htbp] \centering 
+\begin{table}[H] \centering 
 	\label{} 
 	\scriptsize
 		\begin{tabularx}{\textwidth}{ lllcccccccc} \\
@@ -895,13 +921,14 @@ d_i &:= \sum_{j=1}^{n} w_{ij} = \sum_{i=1}^{n} w_{ij}
 		\hline \\[-1.8ex] 
 	\end{tabularx} 
 	\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma =  \{1,1,1\}$, $\alpha = 1$)} 
+		\label{tab:apstab3}
 \end{table} 
 
 
 
 % Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
 % Date and time: Sat, Jun 25, 2016 - 12:04:36
-\begin{table}[!htbp] \centering 
+\begin{table}[H] \centering 
 	\label{} 
 	\scriptsize
 	\begin{tabularx}{\textwidth}{ lllcccccccc} \\
@@ -926,10 +953,11 @@ d_i &:= \sum_{j=1}^{n} w_{ij} = \sum_{i=1}^{n} w_{ij}
 		\hline \\[-1.8ex] 
 	\end{tabularx} 
 	\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,1,2\}$, $\sigma =  \{1,1,1\}$, $\alpha = 0.1$)} 
+		\label{tab:apstab4}
 \end{table} 
 
 
-\begin{table}[!htbp] \centering 
+\begin{table}[H] \centering 
 	\label{} 
 	\scriptsize
 	\begin{tabularx}{\textwidth}{ lllcccccccc} \\
@@ -959,9 +987,10 @@ d_i &:= \sum_{j=1}^{n} w_{ij} = \sum_{i=1}^{n} w_{ij}
 		\hline \\[-1.8ex] 
 	\end{tabularx} 
 		\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,1,2\}$, $\sigma =  \{1,1,1\}$, $\alpha = 1$)} 
+			\label{tab:apstab5}
 \end{table} 
 
-\begin{table}[!htbp] \centering 
+\begin{table}[H] \centering 
 	\label{} 
 	\scriptsize
 	\begin{tabularx}{\textwidth}{ lllcccccccc} \\
@@ -996,9 +1025,10 @@ Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\
 \hline \\[-1.8ex] 
 	\end{tabularx} 
 	\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma =  \{1,1,1\}$, $\tau = 0.1$)} 
+		\label{tab:apstab6}
 \end{table} 
 
-\begin{table}[!htbp] \centering 
+\begin{table}[H] \centering 
 	\label{} 
 	\scriptsize
 	\begin{tabularx}{\textwidth}{ lllcccccccc} \\
@@ -1029,9 +1059,10 @@ Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\
 	\hline \\[-1.8ex] 
 	\end{tabularx} 
 	\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma =  \{1,1,1\}$, $\tau = 0.5$)} 
+		\label{tab:apstab7}
 \end{table} 
 
-\begin{table}[!htbp] \centering 
+\begin{table}[H] \centering 
 	\label{} 
 	\scriptsize
 	\begin{tabularx}{\textwidth}{ lllcccccccc} \\
@@ -1066,6 +1097,7 @@ Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\
 \hline \\[-1.8ex] 
 	\end{tabularx} 
 	\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma =  \{1,1,1\}$, $\tau = 1.0$)} 
+		\label{tab:apstab8}
 \end{table} 
 
 \end{appendix}
