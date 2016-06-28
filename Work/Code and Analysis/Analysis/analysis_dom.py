@@ -499,9 +499,9 @@ os.chdir('/home/fizlaz/bgse/Master_Thesis/hrvoje_new/s_Stout_etal_2004_cocaine/'
 files=[]
 for i in range(2,33):
   if i < 10:
-    files.append('g0'+str(i)+'.txt')
+	files.append('g0'+str(i)+'.txt')
   else:
-    files.append('g'+str(i)+'.txt')
+	files.append('g'+str(i)+'.txt')
 
 cocaine_data = []
 for sub in files:
@@ -864,7 +864,45 @@ print avg_frame
 
 os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Simulation_repeated/')
 
-file = "data_mean1_a_10_t_50_1.csv"
+file = "data_mean2_a_t_10_50_1.csv"
 
 aux.block_means(file)
 
+
+
+
+
+
+
+#############################looping
+
+frame_list=[]
+
+for i in range(20):
+	
+	print "\n"
+	print "#  #  #  #  #  #  #  #  #  #  #  #  "
+	print "Started with iteration \t " + str(i)
+	print "#  #  #  #  #  #  #  #  #  #  #  #  "
+	
+	# Run computation 06 vs 01
+	miner = data_clustering()
+	miner.prediction(choice_set = c61 , entropy_set = e61 , bad_set = b61,labelset = l61,ent_block=eb61, cluster_range = range(2,3), save = False)
+	
+	frame_list.append(miner.dframe)
+
+
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06_vs_rest/06_01/')
+
+cols = ['mut inf scr', 'adj mis','norm mis', 'adj rand s', 'complet', 'homogen', 'vmeas']
+
+sub01 = frame_list[0].ix[:,:2]
+sub02 = aux.statistics_df(frame_list,cols)
+avg_frame = pd.concat([sub01,sub02],axis=1)
+avg_frame.to_csv("06vs01_average.csv")
+
+
+miner1=data_clustering_looping()
+miner1.prediction(choice_set = c61 , entropy_set = e61 , bad_set = b61,labelset = l61,ent_block=eb61, cluster_range = range(2,3), save = False)
+
+avg_frame1 = miner1.dframe
