@@ -1,0 +1,25 @@
+1,aff prop
+2,pca
+8,aff_cos_cat
+10,aff_cos_ent
+12,spect_esk_sim
+13,aff_esk_sim
+14,spect_lin_sim
+15,aff_lin_sim
+16,comp_hr_esk_dis
+17,avg_hr_esk_dis
+18,comp_hr_lin_din
+19,avg_hr_lin_dis
+21,aff_edr
+23,affinity bad warp
+24,PCA bad euclid
+26,affinity bad eucsim
+28,affinity bad cosine
+30,affinity bad rbf
+32,affinity bad edr
+38,affinity eblock warp
+39,PCA eblock euclid
+41,affinity eblock eucsim
+43,affinity eblock cosine
+45,affinity eblock rbf
+47,affinity eblock edr

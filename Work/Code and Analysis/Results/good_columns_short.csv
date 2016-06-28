@@ -1,0 +1,28 @@
+0,spectral warp
+3,spectral overlap
+4,km_choice
+5,km_ent
+6,km_con
+7,spect_cos_cat
+9,spect_cos_ent
+11,spect_rbf
+20,spect_edr
+22,spectral bad warp
+25,spectral bad eucsim
+27,spectral bad cosine
+29,spectral bad rbf
+31,spectral bad edr
+33,kmeans badset
+34,complete badset
+35,average badset
+36,ward badset
+37,spectral eblock warp
+40,spectral eblock eucsim
+42,spectral eblock cosine
+44,spectral eblock rbf
+46,spectral eblock edr
+48,kmeans eblockset
+49,complete eblockset
+50,average eblockset
+51,ward eblockset
+52,levenstein

@@ -204,5 +204,40 @@ class auxilliary:
 				rank_frame.ix[:,i-9][step*p_len:(step+1)*p_len]=dframe.ix[:,i][step*p_len:(step+1)*p_len].rank(method="min",ascending=False)
 		return rank_frame
 
+	
+	def block_means(self, file, sim=True):
+
+		print "\n"
+		print "#  #  #  #  #  #  #  #  #  #  #  #  "
+		print "NEW FILE"
+		print "#  #  #  #  #  #  #  #  #  #  #  #  "
+
+
+		if sim:
+			columns = ["NMI-M","ARI-M","VM-M"]
+			size = 53
+			rws = [0, 3, 4, 5, 6, 7, 9, 11, 20, 22, 25, 27, 29, 31, 33, 34, 35, 36, 37,\
+			40, 42, 44, 46, 48, 49, 50, 51, 52]
+		else:
+			columns = ["norm mis","adj rand s","vmeas"]
+			size = 68
+			rws = [0, 3, 4, 5, 6, 7, 9, 11, 20, 22, 25, 27, 29, 31, 33, 34, 35, 36, 37,\
+			40, 42, 44, 46, 48, 49, 50, 51, 52, 55, 57, 59, 61, 63, 64, 65, 66, 67]
+		
+		frameload = pd.read_csv(file)
+		frame = frameload[columns]
+		
+		if sim:
+			print frameload.ix[0,["mu"]]
+
+		for block in range((len(frame)/size)):
+			subframe = frame.ix[block*size:(block+1)*size,:]
+			subframe = subframe.iloc[rws,:]
+			if sim:
+				print frameload.ix[block*size,["alpha","tau"]]
+			print "MEAN"
+			print subframe.mean().round(3)
+			print "SD"
+			print subframe.std().round(3)
 
 

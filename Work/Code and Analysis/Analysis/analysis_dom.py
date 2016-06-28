@@ -377,12 +377,12 @@ choices_avg = aux.avg(hrv_choices)
 entropy_avg = aux.avg(entropy)
 choice_bad = aux.avg_bad(hrv_choices)
 
-label = range(104,205)
+label = range(390,429)
 
 
-c#00 = aux.subset_data(hrv_choices,label,[0,1])
+#c00 = aux.subset_data(hrv_choices,label,[0,1])
 
-c00 = hrv_choices[104:205]
+c00 = hrv_choices[390:429]
 
 e00 = aux.entropy(c00)
 
@@ -398,15 +398,44 @@ b00 = aux.avg_bad(c00)
 
 
 # Run computation 06
-os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real_data_multiarm/exp2_1/')
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real_data_multiarm/exp1_2/')
 miner = data_clustering()
 miner.prediction(choice_set = c00 , entropy_set = e00 , bad_set = e00,labelset = l00,ent_block=eb00, cluster_range = range(2,4), save = True)
-miner.dframe.to_csv("c00_exp2_1.csv")
+miner.dframe.to_csv("c00_exp4_1.csv")
 
 
 print miner.dframe[["algorithm","predictions"]]
 
-miner.dframe[["algorithm","predictions"]].to_json("JSON_exp2_1.txt")
+miner.dframe[["algorithm","predictions"]].to_json("JSON_exp4_1.txt")
+
+
+
+print miner.dframe.iloc[0:68, 1:3]
+
+
+a = pd.read_json("JSON_exp4_1.txt")
+print a.iloc[0:68,:]
+
+print a.sort_index().iloc[:68,:]
+a.sort_index().iloc[0:68,:].to_json("JSON_exp4_1_CL2.txt")
+
+print a.sort_index().iloc[68:,:]
+a.sort_index().iloc[68:,:].to_json("JSON_exp4_1_CL3.txt")
+
+#####################
+b = pd.read_json("JSON_exp2_1.txt")
+
+print b.sort_index().iloc[:68,:]
+b.sort_index().iloc[:68,:].to_json("JSON_exp2_1_CL2.txt")
+
+print b.sort_index().iloc[68:,:]
+b.sort_index().iloc[68:,:].to_json("JSON_exp2_1_CL3.txt")
+
+#################
+c = pd.read_json("FELIX_JSON_2_3_CLUSTERS.txt")
+
+print c.sort_index().iloc[68:,:]
+c.sort_index().iloc[68:,:].to_json("JSON_exp1_2_CL3.txt")
 
 
 import matplotlib.pyplot as plt
@@ -827,3 +856,15 @@ avg_frame = aux.summary_df(frame_list,cols)
 avg_frame.round(5).to_csv("../Results/Simulation_repeated/data_mean1_a_10_t_50_1.csv")
 
 print avg_frame
+
+
+
+
+############## means
+
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Simulation_repeated/')
+
+file = "data_mean2_a10_t_50_1.csv"
+
+aux.block_means(file)
+
