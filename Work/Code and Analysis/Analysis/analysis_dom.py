@@ -864,7 +864,7 @@ print avg_frame
 
 os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Simulation_repeated/')
 
-file = "data_mean2_a10_t_50_1.csv"
+file = "data_mean1_a_10_t_50_1.csv"
 
 aux.block_means(file)
 
