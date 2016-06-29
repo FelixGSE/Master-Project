@@ -1,0 +1,26 @@
+Groups,Method,Similarity,Data,Choices,BBC ,BCUM,Entropy ,Entropy Block,Concat,Normal. MI,RI,V-Measure,Comment
+2vs1,,,,,,,,,,,,,"Below 0.05, not clusterable"
+,,,,,,,,,,,,,
+2vs3,,,,,,,,,,,,,"Below 0.13, not clusterable"
+,,,,,,,,,,,,,
+2vs4,Spectral,eucsim/rbf,Bad-Choices,,x,,,,,0.213 (0.0),0.007 (0.0),0.211 (0.0),euc and rbf the same
+,Levenstein,,Choice,x,,,,,,0.213 (0.0),0.007 (0.0),0.211 (0.0),
+,Spectral,EDR,Entropy,,,,x,,,0.132 (0.0),0.104 (0.0),0.131 (0.0),
+,Spectral,EDR,Bad-Cumulative,,,x,,,,0.054 (0.0),-,0.054 (0.0),
+,Spectral,eblock,Entropy-Block,,,,,x,,0.018 (0.0),-,0.017 (0.0),
+,K-Means,Euclidian,Concat,,,,,,x,0.005 (0.005),-,0.005 (0.005),
+,,,,,,,,,,0.042 (0.063),-,0.041 (0.063),
+2vs6,K-Means,,Bad-Choices,,x,,,,,0.3 (0.048),0.23 (0.062),0.291 (0.510),
+,K-Means,,Entropy,,,,x,,,0.165 (0.0),0.083 (0.0),0.145 (0.0),
+,Spectral,Cosine,Entropy-Block,,,,,x,,0.165 (0.0),0.083 (0.0),0.145 (0.0),other e-blocks same result
+,Ward,Euclidian,Bad-Cumulative,,,x,,,,0.072 (0.0),0.083 (0.0),0.071 (0.0),
+,K-Means,Euclidian,Concat,,,,,,x,0.027 (0.020),-,0.027 (0.020),
+,K-Means,,Choice,x,,,,,,0.023 (0.021),-,0.023 (0.021),
+,,,,,,,,,,0.112 (0.090),0.057 (0.082),0.106 (0.085),
+2vs9,Spectral,EDR,Entropy,,,,x,,,0.382 (0.0),0.235 (0.0),0.382 (0.0),
+,Spectral,EDR,Bad-Cumulative,,,x,,,,0.232 (0.0),0.226 (0.0),0.232 (0.0),
+,Spectral,Cosine,Entropy-Block,,,,,x,,0.197 (0.0),0.008 (0.0),0.191 (0.0),
+,Spectral,eucsim/rbf,Bad-Choices,,x,,,,,0.134 (0.0),0.075 (0.0),0.134 (0.0),euc and rbf the same
+,K-Means,Euclidian,Concat,,,,,,x,0.116 (0.0),-,0.105 (0.0),
+,K-Means,,Choice,x,,,,,,0.111 (0.022),-,0.100 (0.020),
+,,,,,,,,,,0.096 (0.074),-,0.093 (0.073),

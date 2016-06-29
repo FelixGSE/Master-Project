@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.28)  25 JUN 2016 11:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.28)  29 JUN 2016 16:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1263,52 +1263,188 @@ s/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.0 (rcs-revision 1.2)
 )))
 (/usr/local/texlive/2015/texmf-dist/tex/latex/breakcites/breakcites.sty)
-Package hyperref Info: Option `unicode' set `false' on input line 69.
-Package hyperref Info: Option `pdftoolbar' set `true' on input line 69.
-Package hyperref Info: Option `pdfmenubar' set `true' on input line 69.
-Package hyperref Info: Option `pdffitwindow' set `false' on input line 69.
-Package hyperref Info: Option `pdfnewwindow' set `true' on input line 69.
-Package hyperref Info: Option `colorlinks' set `true' on input line 69.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count166
+\float@exts=\toks44
+\float@box=\box49
+\@float@everytoks=\toks45
+\@floatcapt=\box50
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2015/05/07 version 3.60 text color boxes
 
-(./Report_v1.aux (./tikz-example.tex.aux)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks46
+\verbatim@line=\toks47
+\verbatim@in@stream=\read2
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
 
-LaTeX Warning: Label `eq:esk' multiply defined.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2015/05/04 v2.2 e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count167
+)
+\tcb@titlebox=\box51
+\tcb@upperbox=\box52
+\tcb@lowerbox=\box53
+\tcb@phantombox=\box54
+\c@tcbbreakpart=\count168
+\c@tcblayer=\count169
+\tcb@temp=\box55
+\tcb@temp=\box56
+\tcb@temp=\box57
+\tcb@temp=\box58
+\tcb@out=\write5
+\tcb@record@out=\write6
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/threeparttable/threeparttable.sty
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box59
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/tocbibind/tocbibind.sty
+Package: tocbibind 2010/10/13 v1.5k extra ToC listings
+Package tocbibind Info: The document has section divisions on input line 50.
+
+
+Package tocbibind Note: Using section or other style headings.
+
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2013/01/06 v5.00 algorithms environments
+\c@AlgoLine=\count170
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+********************************************************
+Package `algorithm2e' Release 5.0 -- january 06 2013 --
+- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
+- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
+subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
+- Author: Christophe Fiorio (cfiorio@um2.fr)
+********************************************************
+\skiptotal=\skip114
+\skiplinenumber=\skip115
+\skiprule=\skip116
+\skiphlne=\skip117
+\skiptext=\skip118
+\skiplength=\skip119
+\algomargin=\skip120
+\skipalgocfslide=\skip121
+\algowidth=\dimen219
+\inoutsize=\dimen220
+\inoutindent=\dimen221
+\interspacetitleruled=\dimen222
+\interspacealgoruled=\dimen223
+\interspacetitleboxruled=\dimen224
+\algocf@inoutbox=\box60
+\algocf@inputbox=\box61
+\AlCapSkip=\skip122
+\AlCapHSkip=\skip123
+\algoskipindent=\skip124
+\algocf@nlbox=\box62
+\algocf@hangingbox=\box63
+\algocf@untilbox=\box64
+\algocf@skipuntil=\skip125
+\algocf@capbox=\box65
+\algoheightruledefault=\skip126
+\algoheightrule=\skip127
+\algotitleheightruledefault=\skip128
+\algotitleheightrule=\skip129
+\c@algocfline=\count171
+\c@algocfproc=\count172
+\c@algocf=\count173
+\algocf@algoframe=\box66
+\algocf@algobox=\box67
+)
+Package hyperref Info: Option `unicode' set `false' on input line 76.
+Package hyperref Info: Option `pdftoolbar' set `true' on input line 76.
+Package hyperref Info: Option `pdfmenubar' set `true' on input line 76.
+Package hyperref Info: Option `pdffitwindow' set `false' on input line 76.
+Package hyperref Info: Option `pdfnewwindow' set `true' on input line 76.
+Package hyperref Info: Option `colorlinks' set `true' on input line 76.
+ (./Report_v1.aux
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `algo_disjdecomp' multiply defined.
+
+
+LaTeX Warning: Label `alg:agglc' multiply defined.
 
 
 LaTeX Warning: Label `eq:ri' multiply defined.
 
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
 )
 \openout1 = `Report_v1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
  (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count166
-\scratchdimen=\dimen219
-\scratchbox=\box49
-\nofMPsegments=\count167
-\nofMParguments=\count168
-\everyMPshowfont=\toks44
-\MPscratchCnt=\count169
-\MPscratchDim=\dimen220
-\MPnumerator=\count170
-\makeMPintoPDFobject=\count171
-\everyMPtoPDFconversion=\toks45
+\scratchcounter=\count174
+\scratchdimen=\dimen225
+\scratchbox=\box68
+\nofMPsegments=\count175
+\nofMParguments=\count176
+\everyMPshowfont=\toks48
+\MPscratchCnt=\count177
+\MPscratchDim=\dimen226
+\MPnumerator=\count178
+\makeMPintoPDFobject=\count179
+\everyMPtoPDFconversion=\toks49
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -1360,225 +1496,265 @@ e
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: float package is loaded.
 Package caption Info: floatflt package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: rotating package is loaded.
+Package caption Info: threeparttable package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box50
-Package hyperref Info: Link coloring ON on input line 75.
+\AtBeginShipoutBox=\box69
+Package hyperref Info: Link coloring ON on input line 82.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count172
+\c@section@level=\count180
 )
-LaTeX Info: Redefining \ref on input line 75.
-LaTeX Info: Redefining \pageref on input line 75.
-LaTeX Info: Redefining \nameref on input line 75.
+LaTeX Info: Redefining \ref on input line 82.
+LaTeX Info: Redefining \pageref on input line 82.
+LaTeX Info: Redefining \nameref on input line 82.
 
 (./Report_v1.out) (./Report_v1.out)
-\@outlinefile=\write5
-\openout5 = `Report_v1.out'.
+\@outlinefile=\write7
+\openout7 = `Report_v1.out'.
 
-\c@lstlisting=\count173
+\c@lstlisting=\count181
  ABD: EveryShipout initializing macros
-<Pictures/logo01.jpg, id=127, 1284.8pt x 232.87pt>
+<Pictures/logo01.jpg, id=146, 1284.8pt x 232.87pt>
 File: Pictures/logo01.jpg Graphic file (type jpg)
  <use Pictures/logo01.jpg>
-Package pdftex.def Info: Pictures/logo01.jpg used on input line 108.
+Package pdftex.def Info: Pictures/logo01.jpg used on input line 115.
 (pdftex.def)             Requested size: 443.863pt x 80.45038pt.
-LaTeX Font Info:    Try loading font information for U+msa on input line 121.
+LaTeX Font Info:    Try loading font information for U+msa on input line 128.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 121.
+LaTeX Font Info:    Try loading font information for U+msb on input line 128.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./Pictu
-res/logo01.jpg>] (./Report_v1.toc)
-\tf@toc=\write6
-\openout6 = `Report_v1.toc'.
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.I}) has 
-been already used, duplicate ignored
+res/logo01.jpg>] (./Report_v1.tocpdfTeX warning (ext4): destination with the sa
+me identifier (name{page.I}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.183 
-       [1] (./Report_v1.lof)
-\tf@lof=\write7
-\openout7 = `Report_v1.lof'.
+l.34 ....3}Spectral Clustering}{G}{subsection.B.3}
+                                                   [1])
+\tf@toc=\write8
+\openout8 = `Report_v1.toc'.
 
- [2] (./Report_v1.lot)
-\tf@lot=\write8
-\openout8 = `Report_v1.lot'.
+ [2] (./Report_v1.lof)
+\tf@lof=\write9
+\openout9 = `Report_v1.lof'.
 
- [3]
 
-Class scrartcl Warning: \float@listhead detected!
-(scrartcl)              Implementation of \float@listhead became
-(scrartcl)              deprecated in KOMA-Script v3.01 2008/11/14 and
-(scrartcl)              has been replaced by several more flexible
-(scrartcl)              features of package `tocbasic`.
-(scrartcl)              Maybe implementation of \float@listhead will
-(scrartcl)              be removed from KOMA-Script soon.
-(scrartcl)              Loading of package `scrhack' may help to
-(scrartcl)              avoid this warning, if you are using a
-(scrartcl)              a package that still implements the
-(scrartcl)              deprecated \float@listhead interface  on input line 206
-.
+[3] (./Report_v1.lot)
+\tf@lot=\write10
+\openout10 = `Report_v1.lot'.
 
-(./Report_v1.lol)
-\tf@lol=\write9
-\openout9 = `Report_v1.lol'.
+ [4] (./Report_v1.loa)
+\tf@loa=\write11
+\openout11 = `Report_v1.loa'.
 
- [4]
-LaTeX Font Info:    Try loading font information for U+bbold on input line 230.
+ [5]
+LaTeX Font Info:    Try loading font information for U+bbold on input line 245.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/bbold/Ubbold.fd)
-Overfull \hbox (6.92831pt too wide) in paragraph at lines 217--237
-[][] 
- []
-
-[5]
-Overfull \hbox (6.92831pt too wide) in paragraph at lines 247--252
+Overfull \hbox (6.92831pt too wide) in paragraph at lines 223--252
 [][] 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 294--298
-
- []
-
-[1] [2] <Pictures/flow01.png, id=274, 833.1125pt x 416.55624pt>
-File: Pictures/flow01.png Graphic file (type png)
-
-<use Pictures/flow01.png>
-Package pdftex.def Info: Pictures/flow01.png used on input line 328.
-(pdftex.def)             Requested size: 443.863pt x 221.93057pt.
- [3] [4 <./Pictures/flow01.png>] [5]
-<Pictures/DataClustering.jpeg, id=316, 1027.84pt x 770.88pt>
-File: Pictures/DataClustering.jpeg Graphic file (type jpg)
-
-<use Pictures/DataClustering.jpeg>
-Package pdftex.def Info: Pictures/DataClustering.jpeg used on input line 379.
-(pdftex.def)             Requested size: 443.863pt x 332.89522pt.
- [6 <./Pictures/DataClustering.jpeg>]
-
-LaTeX Warning: Citation `]' on page 7 undefined on input line 387.
-
-[7] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd)
-Underfull \hbox (badness 10000) in alignment at lines 428--428
-[][][][][][][][][][][] 
- []
-
-[8]
-\openout2 = `tikz-example.tex.aux'.
-
-
-No file tikz-example.tex.tex.
-
-Overfull \hbox (10.53674pt too wide) in paragraph at lines 461--478
- [][] 
- []
-
-(./Pictures/avgent.tex) (./Pictures/disad.tex) (./Pictures/entbl.tex)
-(./Pictures/fullavg.tex)
-Overfull \hbox (46.55515pt too wide) in paragraph at lines 489--495
+Overfull \hbox (6.92831pt too wide) in paragraph at lines 262--279
 [][] 
  []
 
-[9
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 321--322
 
-
-] [10] [11]
-
-LaTeX Warning: Citation `stout2004' on page 12 undefined on input line 542.
-
-
-LaTeX Warning: Reference `tab:cla' on page 12 undefined on input line 542.
-
-[12] [13] (./Report_v1.bbl [14]
-Underfull \hbox (badness 10000) in paragraph at lines 103--105
-[]\OT1/cmr/m/n/12 Huntington's-Disease-Association (2016).
  []
 
 
-Underfull \hbox (badness 1371) in paragraph at lines 125--129
+Underfull \hbox (badness 10000) in paragraph at lines 323--324
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 325--328
+
+ []
+
+[1] [2] <Pictures/flow01.png, id=342, 833.1125pt x 416.55624pt>
+File: Pictures/flow01.png Graphic file (type png)
+
+<use Pictures/flow01.png>
+Package pdftex.def Info: Pictures/flow01.png used on input line 355.
+(pdftex.def)             Requested size: 443.863pt x 221.93057pt.
+ [3] [4 <./Pictures/flow01.png>] [5]
+<Pictures/DataClustering.jpeg, id=389, 1027.84pt x 770.88pt>
+File: Pictures/DataClustering.jpeg Graphic file (type jpg)
+
+<use Pictures/DataClustering.jpeg>
+Package pdftex.def Info: Pictures/DataClustering.jpeg used on input line 400.
+(pdftex.def)             Requested size: 443.863pt x 332.89522pt.
+ [6] [7 <./Pictures/DataClustering.jpeg>]
+[8]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 490.
+
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 490.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 490.
+
+Overfull \vbox (49.77689pt too high) has occurred while \output is active []
+
+
+[9] (./Pictures/e1c2.tex) (./Pictures/e1c3.tex) (./Pictures/e2c2.tex)
+(./Pictures/e2c3.tex)
+Overfull \hbox (72.39482pt too wide) in paragraph at lines 520--527
+ []|  [] 
+ []
+
+[10] [11] (./Pictures/disad.tex) (./Pictures/cumbad.tex) (./Pictures/entbl.tex)
+(./Pictures/avgent.tex)
+Overfull \hbox (45.16154pt too wide) in paragraph at lines 570--577
+ []|  [] 
+ []
+
+[12] [13] [14] [15] (./Report_v1.bbl [16]
+Underfull \hbox (badness 1371) in paragraph at lines 116--120
 []\OT1/cmr/m/n/12 Martino, D. J., Bu-cay, D., But-man, J. T., and Al-le-gri,
  []
 
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 152--155
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 143--146
 []\OT1/cmr/m/n/12 Pamminger, C. and Fruehwirth-
  []
 
-[16]) [17]
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 636.
-
-[1] [2] [3] [4]
-Overfull \hbox (62.30624pt too wide) in paragraph at lines 746--746
+[18]) [19] [1] [2] [3] [4] [5] [6] [7] [8]pdfTeX warning (ext4): destination wi
+th the same identifier (name{page.I}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.965 \end{flalign}
+                    [9]
+Overfull \hbox (62.30624pt too wide) in paragraph at lines 982--982
 [] 
  []
 
-[5] [6] [7] [8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 813.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 813.
- (./Report_v1.aux (./tikz-example.tex.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 813.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 813.
+[10]
+Underfull \hbox (badness 10000) in alignment at lines 1043--1043
+[][][][][][][][][][][] 
+ []
+
+[11]
+Underfull \hbox (badness 10000) in alignment at lines 1082--1082
+[][][][][][][][][][][] 
+ []
+
+[12]
+Underfull \hbox (badness 10000) in alignment at lines 1119--1119
+[][][][][][][][][][][] 
+ []
+
+[13]
+Underfull \hbox (badness 10000) in alignment at lines 1151--1151
+[][][][][][][][][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in alignment at lines 1185--1185
+[][][][][][][][][][][] 
+ []
+
+[14]
+Underfull \hbox (badness 10000) in alignment at lines 1223--1223
+[][][][][][][][][][][] 
+ []
+
+[15]
+Underfull \hbox (badness 10000) in alignment at lines 1257--1257
+[][][][][][][][][][][] 
+ []
+
+[16]
+Underfull \hbox (badness 10000) in alignment at lines 1295--1295
+[][][][][][][][][][][] 
+ []
+
+[17]
+Overfull \hbox (7.07774pt too wide) in paragraph at lines 1306--1348
+ [][] 
+ []
+
+
+Overfull \hbox (10.32362pt too wide) in paragraph at lines 1354--1382
+ [][] 
+ []
+
+[18] [19]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1395.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1395.
+ (./Report_v1.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1395.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1395.
+
 Package rerunfilecheck Info: File `Report_v1.out' has not changed.
-(rerunfilecheck)             Checksum: A12478EA3BD15FB8DE7D8882CE58D760;2131.
-
-
-LaTeX Warning: There were undefined references.
+(rerunfilecheck)             Checksum: F45D8C201355F760BB3FE919091B3E8B;2437.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 813.
- ) 
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1395.
+ )
+(\end occurred inside a group at level 1)
+
+### simple group (level 1) entered at line 566 ({)
+### bottom level 
 Here is how much of TeX's memory you used:
- 25206 strings out of 493089
- 450951 string characters out of 6134842
- 729081 words of memory out of 5000000
- 28032 multiletter control sequences out of 15000+600000
- 18652 words of font info for 72 fonts, out of 8000000 for 9000
+ 30170 strings out of 493089
+ 545884 string characters out of 6134842
+ 929893 words of memory out of 5000000
+ 32907 multiletter control sequences out of 15000+600000
+ 20430 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,19n,61p,1029b,827s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pf
-b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texliv
-e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/201
-5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Report_v1.pdf (32 pages, 648126 bytes).
+ 64i,18n,77p,1229b,842s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/bbold-ty
+pe1/bbold10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmbsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmbx8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmbxti10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+mi6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.
+pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.
+pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pf
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/
+local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on Report_v1.pdf (46 pages, 739786 bytes).
 PDF statistics:
- 607 PDF objects out of 1000 (max. 8388607)
- 543 compressed objects within 6 object streams
- 161 named destinations out of 1000 (max. 500000)
- 268 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 777 PDF objects out of 1000 (max. 8388607)
+ 695 compressed objects within 7 object streams
+ 202 named destinations out of 1000 (max. 500000)
+ 316 words of extra memory for PDF output out of 10000 (max. 10000000)
 

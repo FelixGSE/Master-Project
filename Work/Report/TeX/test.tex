@@ -1,0 +1,17 @@
+\documentclass[]{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\begin{document}
+
+\begin{figure}
+	\small
+	\begin{tabular}{cc}
+		\input{top_left_figure.tex} & \input{top_right_figure.tex} \\
+		(a) Sub figure 1 & (b)  Sub figure 2 \\
+		\input{bottom_left_figure.tex} & \input{bottom_right_figure.tex} \\
+		(c)  Sub figure 3 & (d)  Sub figure 4
+	\end{tabular} 
+	\caption{My title}
+\end{figure}
+
+\end{document}

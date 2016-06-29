@@ -1,0 +1,8 @@
+Method,Similarity,Data,Choices,BBC ,Cumulative Bad Choice,Entropy ,Entropy Block,Concat,Normal. MI,RI,V-Measure,
+K-Means,Euclidian,Entropy Block,,,,,x,,0.270 (0.000),0.262 (0.000),0.270 (0.000),spectral eblock cosine spectral eblock rb
+Ward,Euclidian,Bad-Choice,,x,,,,,0.270 (0.000),0.262 (0.000),0.270 (0.000),
+K-Means,Euclidian,Concat,,,,,,x,0.209 (0.030),0.171 (0.043),0.208 (0.030),
+Spectral,Levenstein,Choices,x,,,,,,0.178 (0.000),0.181 (0.000),0.178 (0.000),
+Spectral,Cosine,Cum Bad Choice,,,x,,,,0.171 (0.000),0.117 (0.000),0.171 (0.000),
+Spectral,DTW,Entropy ,,,,x,,,"0.042 (0,000)",0.014 (0.000),0.042 (0.000),
+Average ,-,-,-,-,-,-,-,-,0.139 (0.002),0.104 (0.003),0.138 (0.002),

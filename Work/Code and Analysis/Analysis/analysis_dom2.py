@@ -704,21 +704,21 @@ for i in range(20):
 	# Set of decision functions
 	p06 = aux.rep("softmax",6)
 
-	"""
+	
 	# Set of alphas
 	p07 = aux.rep([0.5,0.5], 6 )
 
 	# Set of Taus
 	tau = [ [0.1,0.3], [0.1,0.5], [0.1,0.7],
 			[0.1,1], [0.1,1.5], [0.1,2] ] 	
+	
+	
 	"""
-	
-	
 	tau=aux.rep([2,2],6)
 
 	p07 = [[0.1,0.3], [0.1,0.5], [0.1,0.7],
 		   [0.1,0.9], [0.5,0.9], [0.7,0.9]]
-	
+	"""
 
 	prediction_accuracies = miner()
 	prediction_accuracies.prediction( mu_set = p01, 
@@ -739,6 +739,6 @@ for i in range(20):
 cols = ["mut inf scr","adj mis","norm mis","adj rand s","complet","homogen","vmeas"]
 avg_frame = aux.summary_df(frame_list,cols)
 
-avg_frame.to_csv("../Results/Simulation_repeated/data_mean1_a_t_20_50_1.csv")
+avg_frame.to_csv("../Results/Simulation_repeated/data_mean1_a_05_t_50_1.csv")
 
 print avg_frame
