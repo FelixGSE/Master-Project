@@ -17,20 +17,20 @@ source('Code and Analysis/R-Files/Auxlliary_Functions.R')
 
 ### Get Data 
 
-e00  <- read.csv('Code and Analysis/Results/Real data/00/e00.csv')
-e01  <- read.csv('Code and Analysis/Results/Real data/01/e01.csv')
-e02 <- read.csv('Code and Analysis/Results/Real data/02/e02.csv')
-e03 <- read.csv('Code and Analysis/Results/Real data/03/e03.csv')
-e04 <- read.csv('Code and Analysis/Results/Real data/04/e04.csv')
-e05 <- read.csv('Code and Analysis/Results/Real data/05/e05.csv')
-e06 <- read.csv('Code and Analysis/Results/Real data/06/e06.csv')
-e07 <- read.csv('Code and Analysis/Results/Real data/07/e07.csv')
+#e00  <- read.csv('Code and Analysis/Results/Real data/00/e00_SOLO.csv')
+e01  <- read.csv('Code and Analysis/Results/Real data/01/e01_SOLO.csv')
+e02 <- read.csv('Code and Analysis/Results/Real data/02/e02_SOLO.csv')
+e03 <- read.csv('Code and Analysis/Results/Real data/03/e03_SOLO.csv')
+e04 <- read.csv('Code and Analysis/Results/Real data/04/e04_SOLO.csv')
+#e05 <- read.csv('Code and Analysis/Results/Real data/05/e05_SOLO.csv')
+e06 <- read.csv('Code and Analysis/Results/Real data/06/e06_SOLO.csv')
+#e07 <- read.csv('Code and Analysis/Results/Real data/07/e07.csv')
 #b08 <- read.csv('Code and Analysis/Results/Real data/08/e08.csv')
-e09 <- read.csv('Code and Analysis/Results/Real data/09/e09.csv')
+e09 <- read.csv('Code and Analysis/Results/Real data/09/e09_SOLO.csv')
 #b10 <- read.csv('Code and Analysis/Results/Real data/10/e10.csv')
-e20 <- read.csv('Code and Analysis/Results/Real data/20/e20.csv')
-e21 <- read.csv('Code and Analysis/Results/Real data/21/e21.csv')
-e66 <- read.csv('Code and Analysis/Results/Real data/66/e66.csv')
+#e20 <- read.csv('Code and Analysis/Results/Real data/20/e20.csv')
+#e21 <- read.csv('Code and Analysis/Results/Real data/21/e21.csv')
+#e66 <- read.csv('Code and Analysis/Results/Real data/66/e66.csv')
 ### Reset wd to report 
 setwd('Report/TeX/Pictures/')
 
@@ -39,9 +39,9 @@ setwd('Report/TeX/Pictures/')
 ################################################################################
 
 # Compute Basic variables
-N <- 12
-M <- ncol(e00)
-variables   <- ls()[1:12]
+N <- 6
+M <- ncol(e01)
+variables   <- ls()[1:6]
 my.env      <- new.env()
 
 # Compute average over columns
@@ -55,28 +55,22 @@ for( i in 1:N ){
 
 # 1) Plot acrros groups
 x    <- 1:(M-1)
-cols <- brewer.pal(12, 'Set3')
+cols <- brewer.pal(11, 'Set3')
 
 tikz("avgent.tex", width = 3.5, height =3.5)
-  plot(x,col.average[2,],type="l",ylim=c(0,2), col = cols[1], 
-       xlab = "Steps", ylab= "Avergage entropy", lwd=1.5,
-       cex.lab=0.8,
-       cex.axis = 0.5,
+  plot(x,col.average[1,],type="l",ylim=c(0,2), col = cols[1], 
+       xlab = "Steps", ylab= "Avergage entropy",
+       lwd=2,
+       cex.lab=0.9,
+       cex.axis = 0.6,
+       pch = 1,
+       cex = 0.6,
        tck=-0.03,
        las=1,
-       mgp = c(2, 0.5, 0) )
-  for( i in 3:nrow(col.average)){
-    lines(x,col.average[i,],col = cols[i],lwd=1.5)
+       mgp = c(2, 0.5, 0) ) 
+  for( i in 2:nrow(col.average)){
+    lines(x,col.average[i,],col = cols[i],lwd=2,lty=i,cex=0.6)
   }
-  legend("bottomright",
-         c("Theft","Robbery","Sex", "Drug","OWI","Assault/Murder","Escape","Forgery","Other","Healthy"),
-         lty = 1,
-         col = cols[1:10],
-         cex = 0.4,
-         bty = "n",
-         ncol = 2,
-         y.intersp = 2
-  )
 dev.off()
 
 # 2) Full average

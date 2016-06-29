@@ -1,0 +1,21 @@
+Tau	Method	Similarity	Data	Choices	BBC 	Entropy 	Entropy Block	Concat	Normal. MI	RI	V-Measure	Comment
+{0.1, 0.3}	Average	Euclidian	Bad-Choice		x				0.101 (0.051)	0.005 (0.023)	0.088 (0.050)	
+	Average	Euclidian	Entropy-Block				x		0.093 (0.060)	0.006 (0.024)	0.084 (0.057)	
+	Spectral	Overlap	Choices	x					0.091 (0.073)	0.007 (0.029)	0.084 (0.070)	
+	Spectral	EDR	Entropy 			x			0.071 (0.077)	0.025 (0.072)	0.070 (0.076)	
+	K-Means	Euclidian	Concat					x	0.057 (0.064)	0.014 (0.069)	0.057 (0.064)	
+{0.1, 0.5}	Spectral	RBF	Entropy-Block				x		0.256 (0.190)	0.221 (0.195)	0.255 (0.190)	
+	Spectral	Overlap	Choices	x					0.092 (0.079)	0.008 (0.041)	0.087 (0.075)	
+	Ward	Euclidian	Bad-Choice		x				0.092 (0.085)	0.007 (0.040)	0.088 (0.082)	Spectral EDR
+	K-Means	Euclidian	Entropy 			x			0.080 (0.100)	0.043 (0.122)	0.079 (0.100)	
+	K-Means	Euclidian	Concat					x	0.062 (0.093)	0.026 (0.116)	0.062 (0.093)	
+{0.1, 0.7}	Spectral	DTW	Entropy-Block				x		0.618 (0.192)	0.627 (0.201)	0.617 (0.192)	
+	Spectral	Levensthein	Choices	x					0.252 (0.137)	0.163 (0.147)	0.249 (0.137)	
+	Spectral	RBF	Entropy 			x			0.215 (0.158)	0.207 (0.188)	0.215 (0.157)	
+	Spectral	DTW	Bad-Choice		x				0.205 (0.218)	0.192 (0.247)	0.205 (0.218)	
+	K-Means	Euclidian	Concat					x	0.185 (0.205)	0.165 (0.225)	0.185 (0.205)	
+{0.1, 1.0}	Spectral	RBF	Entropy-Block				x		0.952 (0.098)	0.960 (0.082)	0.952 (0.098)	K-Means
+	Spectral	DTW	Bad-Choice		x				0.489 (0.269)	0.491 (0.290)	0.488 (0.269)	
+	K-Means	Euclidian	Concat					x	0.453 (0.214)	0.427 (0.252)	0.452 (0.215)	
+	Spectral	DTW	Entropy 			x			0.406 (0.203)	0.403 (0.226)	0.406 (0.203)	
+	Spectral	Levensthein	Choices	x					0.324 (0.145)	0.217 (0.186)	0.320 (0.148)	

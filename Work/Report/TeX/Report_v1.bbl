@@ -77,11 +77,6 @@ Gabadinho, A., Ritschard, G., Studer, M., and Nicolas, S.~M. (2009).
   representative sequences}.
 \newblock {\em Methods}, pages 6--8.
 
-\bibitem[Garcia-Magarinos and Vilar, 2014]{Garcia2014}
-Garcia-Magarinos, M. and Vilar, J.~A. (2014).
-\newblock {\em {A framework for dissimilarity-based partitioning clustering of
-  categorical time series}}, volume~29.
-
 \bibitem[Gullo and Stieger, 2011]{Gullo2011}
 Gullo, M.~J. and Stieger, A.~A. (2011).
 \newblock {Anticipatory stress restores decision-making deficits in heavy
@@ -98,10 +93,6 @@ Hastie, T., Tibshirani, R., and Friedman, J. (2001).
 Hubert, L. and Arabie, P. (1985).
 \newblock {Comparing partitions}.
 \newblock {\em Journal of Classification}, 2(1):193--218.
-
-\bibitem[Huntington’s-Disease-Association, 2016]{hunt}
-Huntington’s-Disease-Association (2016).
-\newblock About huntington’s disease.
 
 \bibitem[Johnson et~al., 2006]{Johnson2006}
 Johnson, S.~a., Yechiam, E., Murphy, R.~R., Queller, S., and Stout, J.~C.
@@ -159,15 +150,15 @@ Pamminger, C. and Fruhwirth-Schnatter, S. (2009).
   of Markov Chain Models}.
 \newblock 43(0907).
 
-\bibitem[Parkinson’s-Disease-Foundation, 2016]{parc}
-Parkinson’s-Disease-Foundation (2016).
-\newblock About parkinson’s disease.
-
 \bibitem[Ren et~al., 2011]{Ren2011}
 Ren, J., Cao, S., and Hu, C. (2011).
 \newblock {A Hierarchical Clustering Algorithm Based on Dynamic Programming for
   Categorical Sequences}.
 \newblock 5:1575--1581.
+
+\bibitem[Richter et~al., ]{Richter}
+Richter, C., Luboschik, M., and Martin, R.
+\newblock {Sequencing of Categorical Time Series}.
 
 \bibitem[Rosenberg and Hirschberg, 2007]{Rosenberg2007}
 Rosenberg, A. and Hirschberg, J. (2007).
@@ -192,11 +183,6 @@ Shannon, C.~E. (1948).
 Shirali, S. and Vasudeva, H.~L. (2005).
 \newblock {\em Metric Spaces}.
 \newblock Springer.
-
-\bibitem[Shlens, 2014]{Shlens2014}
-Shlens, J. (2014).
-\newblock {A Tutorial on Principal Component Analysis}.
-\newblock {\em ArXiv}, pages 1--13.
 
 \bibitem[Steingroever et~al., 2015]{Steingroever2015}
 Steingroever, H., Fridberg, D.~J., Horstmann, A., Kjome, K.~L., Kumari, V.,
@@ -225,11 +211,6 @@ Stout, J.~C., Busemeyer, J.~R., Lin, A., Grant, S.~J., and Bonson, K.~R.
   abusers}.
 \newblock {\em Psychonomic Bulletin {\&} Review}, 11(4):742--747.
 
-\bibitem[Stout et~al., 2001]{Stout2001}
-Stout, J.~C., Rodawalt, W.~C., and Siemers, E.~R. (2001).
-\newblock {Risky decision making in Huntington ' s disease}.
-\newblock pages 92--101.
-
 \bibitem[Sutton and Barto, 2012]{Sutton2012}
 Sutton, R. and Barto, A. (2012).
 \newblock {Reinforcement Learning : An Introduction}.
@@ -246,6 +227,12 @@ Wang, X., Mueen, A., Ding, H., Trajcevski, G., Scheuermann, P., and Keogh, E.
 \newblock {Experimental comparison of representation methods and distance
   measures for time series data}.
 \newblock {\em Data Mining and Knowledge Discovery}, 26(2):275--309.
+
+\bibitem[Wang and Ruhe, 2007]{Wang2007}
+Wang, Y. and Ruhe, G. (2007).
+\newblock The cognitive process of decision making.
+\newblock {\em International Journal of Cognitive Informatics and Natural
+  Intelligence}, 1(2):73--85.
 
 \bibitem[Yechiam et~al., 2008]{Yechiam2008}
 Yechiam, E., Kanz, J.~E., Bechara, A., Stout, J.~C., Busemeyer, J.~R.,
