@@ -34,6 +34,7 @@ execfile("Class_Miner.py")
 #execfile("Function_Auxilliary.py")
 execfile("Class_Auxilliary.py")
 execfile("Class_Data_Clustering.py")
+execfile("Class_Data_Clustering_Looping.py")
 
 ####################################################################################################
 
@@ -746,11 +747,11 @@ eb24 = aux.entropy_block(c24)
 eb26 = aux.entropy_block(c26)
 eb29 = aux.entropy_block(c29)
 
-l21 = aux.labels(labels,[2],healthy=True)
-l23 = aux.labels(labels,[2],healthy=True)
-l24 = aux.labels(labels,[2],healthy=True)
-l26 = aux.labels(labels,[2],healthy=True)
-l29 = aux.labels(labels,[2],healthy=True)
+l21 = aux.labels(labels,[2],healthy=False) # didnt run like this, this not working
+l23 = aux.labels(labels,[2],healthy=False)
+l24 = aux.labels(labels,[2],healthy=False)
+l26 = aux.labels(labels,[2],healthy=False)
+l29 = aux.labels(labels,[2],healthy=False)
 
 b21 = aux.avg_bad(c21)
 b23 = aux.avg_bad(c23)
@@ -792,6 +793,40 @@ miner.dframe.to_csv("c29_b_cum_bal_1.csv")
 
 
 
+
+############################## prison vs prison unbalanced, robbery
+
+c21 = aux.subset_data(choices,labels,[2,1])
+c23 = aux.subset_data(choices,labels,[2,3])
+c24 = aux.subset_data(choices,labels,[2,4])
+c26 = aux.subset_data(choices,labels,[2,6])
+c29 = aux.subset_data(choices,labels,[2,9])
+
+e21 = aux.entropy(c21)
+e23 = aux.entropy(c23)
+e24 = aux.entropy(c24)
+e26 = aux.entropy(c26)
+e29 = aux.entropy(c29)
+
+eb21 = aux.entropy_block(c21)
+eb23 = aux.entropy_block(c23)
+eb24 = aux.entropy_block(c24)
+eb26 = aux.entropy_block(c26)
+eb29 = aux.entropy_block(c29)
+
+l21 = aux.labels(labels,[2,1],healthy=False)
+l23 = aux.labels(labels,[2,3],healthy=False)
+l24 = aux.labels(labels,[2,4],healthy=False)
+l26 = aux.labels(labels,[2,6],healthy=False)
+l29 = aux.labels(labels,[2,9],healthy=False)
+
+b21 = aux.avg_bad(c21)
+b23 = aux.avg_bad(c23)
+b24 = aux.avg_bad(c24)
+b26 = aux.avg_bad(c26)
+b29 = aux.avg_bad(c29)
+
+############################## check labels and whether to do unbalanced
 
 
 
@@ -866,6 +901,11 @@ os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Ana
 
 file = "data_mean2_a_t_10_50_1.csv"
 
+
+os.chdir("/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06_vs_rest/")
+
+file = "06_04/06vs04_average_looper1.csv"
+
 aux.block_means(file)
 
 
@@ -905,4 +945,95 @@ avg_frame.to_csv("06vs01_average.csv")
 miner1=data_clustering_looping()
 miner1.prediction(choice_set = c61 , entropy_set = e61 , bad_set = b61,labelset = l61,ent_block=eb61, cluster_range = range(2,3), save = False)
 
-avg_frame1 = miner1.dframe
+frame_list1 = miner1.dframe
+
+cols = ['mut inf scr', 'adj mis','norm mis', 'adj rand s', 'complet', 'homogen', 'vmeas']
+
+sub01 = frame_list1[0].ix[:,:2]
+sub02 = aux.statistics_df(frame_list1,cols)
+avg_frame = pd.concat([sub01,sub02],axis=1)
+avg_frame.to_csv("06vs01_average_domlooper1.csv")
+
+
+
+################## this was run on unbalanced
+
+
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06_vs_rest/06_01/')
+miner2 = data_clustering_looping()
+miner2.prediction(choice_set = c61 , entropy_set = e61 , bad_set = b61,labelset = l61,ent_block=eb61, cluster_range = range(2,3), save = False)
+avg_frame = miner2.avg_frame
+avg_frame.to_csv("06vs01_average_domlooper2.csv")
+
+
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06_vs_rest/06_02/')
+miner2 = data_clustering_looping()
+miner2.prediction(choice_set = c62 , entropy_set = e62 , bad_set = b62,labelset = l62,ent_block=eb62, cluster_range = range(2,3), save = False)
+avg_frame = miner2.avg_frame
+avg_frame.to_csv("06vs02_average_looper1.csv")
+
+
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06_vs_rest/06_03/')
+miner2 = data_clustering_looping()
+miner2.prediction(choice_set = c63 , entropy_set = e63 , bad_set = b63,labelset = l63,ent_block=eb63, cluster_range = range(2,3), save = False)
+avg_frame = miner2.avg_frame
+avg_frame.to_csv("06vs03_average_looper1.csv")
+
+
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06_vs_rest/06_04/')
+miner2 = data_clustering_looping()
+miner2.prediction(choice_set = c64 , entropy_set = e64 , bad_set = b64,labelset = l64,ent_block=eb64, cluster_range = range(2,3), save = False)
+avg_frame = miner2.avg_frame
+avg_frame.to_csv("06vs04_average_looper1.csv")
+
+
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/06_vs_rest/06_09/')
+miner2 = data_clustering_looping()
+miner2.prediction(choice_set = c69 , entropy_set = e69 , bad_set = b69,labelset = l69,ent_block=eb69, cluster_range = range(2,3), save = False)
+avg_frame = miner2.avg_frame
+avg_frame.to_csv("06vs09_average_looper1.csv")
+
+
+
+########################### 2 vs all unbalanced looper
+
+
+# Run computation 02 vs 01
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/02_vs_rest/02_01/')
+miner = data_clustering_looping()
+miner.prediction(choice_set = c21 , entropy_set = e21 , bad_set = b21,labelset = l21,ent_block=eb21, cluster_range = range(2,3), save = False)
+miner.avg_frame.to_csv("02vs01_average_unbal_looper1.csv")
+
+# Run computation 02 vs 03
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/02_vs_rest/02_03/')
+miner = data_clustering_looping()
+miner.prediction(choice_set = c23 , entropy_set = e23 , bad_set = b23,labelset = l23,ent_block=eb23, cluster_range = range(2,3), save = False)
+miner.avg_frame.to_csv("02vs03_average_unbal_looper1.csv")
+
+# Run computation 02 vs 04
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/02_vs_rest/02_04/')
+miner = data_clustering_looping()
+miner.prediction(choice_set = c24 , entropy_set = e24 , bad_set = b24,labelset = l24,ent_block=eb24, cluster_range = range(2,3), save = False)
+miner.avg_frame.to_csv("02vs04_average_unbal_looper1.csv")
+
+# Run computation 02 vs 06
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/02_vs_rest/02_06/')
+miner = data_clustering_looping()
+miner.prediction(choice_set = c26 , entropy_set = e26 , bad_set = b26,labelset = l26,ent_block=eb26, cluster_range = range(2,3), save = False)
+miner.avg_frame.to_csv("02vs06_average_unbal_looper1.csv")
+
+# Run computation 02 vs 09
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real data/02_vs_rest/02_09/')
+miner = data_clustering_looping()
+miner.prediction(choice_set = c29 , entropy_set = e29 , bad_set = b29,labelset = l29,ent_block=eb29, cluster_range = range(2,3), save = False)
+miner.avg_frame.to_csv("02vs09_average_unbal_looper1.csv")
+
+
+
+
+
+
+
+
+
+
