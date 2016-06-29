@@ -42,7 +42,11 @@
 \usepackage{float}
 \usepackage{tcolorbox}
  \usepackage[flushleft]{threeparttable}
-% ----------------------------------------------------------------------------------------------------------
+\usepackage{tocbibind}
+\usepackage{algorithm2e}
+\newcommand{\listofalgorithmes}{\tocfile{\listalgorithmcfname}{loa}}
+
+%---------------------------------------------------------------------------------------------------------
 % Packages
 % ----------------------------------------------------------------------------------------------------------
 
@@ -204,9 +208,8 @@ $\vspace{6cm}$
 % List of Listings
 % ----------------------------------------------------------------------------------------------------------
 
-\rhead{List of Listings}
-\renewcommand{\lstlistlistingname}{List of Listings}
-{\labelsep2cm\lstlistoflistings}
+\rhead{List of Algorithms}
+\listofalgorithmes
 \pagebreak
 
 %----------------------------------------------------------------------------------------------------------
@@ -221,15 +224,24 @@ $\vspace{6cm}$
 \textbf{Symbol} 		& 		\textbf{Meaning} \\
 \midrule
 \vspace{0.3cm} & \vspace{0.3cm} 			\\
-$a_t$				  & Action at time t			\\
-$Q(a)_t$	& Value function at time t \\
+$\mu$ & Mean of bandits \\
+$\sigma$ & Standard deviation of bandits \\
+$a$				  & Action 	\\
+$Q(a)$	& Value function for action $a$\\
+$t$ & Discrete time step t \\
+$R(a)$ & Reward for action $a$ \\
 $\epsilon$			& Probability of exploration in epsilon greedy \\
 $\alpha$ & Learning rate \\ 
-$\tau$ & Softmax parameter \\
+$\eta$ & Same parameter as $\alpha$ sometimes used in cognitive science\\
+$\tau$ & Softmax or temperature parameter \\
+$\theta$ & Inverse temperature parameter \\
 $X$ & Random variable \\
 $H(X) $ &  Entropy of a  discrete random variable $X$ \\ 
 $d(\cdot,\cdot)$ & Distance Function \\
 $S(\cdot,\cdot)$ & Similarity Function \\
+$K(\cdot,\cdot)$ & Kernel function \\
+$m(\cdot,\cdot)$ & Matching function \\ 
+$\Theta(\cdot)$ & Heavy side step function \\
 $ \mathbb{R}_0^+$ & Positive real numbers including zero \\
 $\mathcal{X}$ & Data set \\ 
 \textbf{W} & Weighted adjacency matrix \\
@@ -348,35 +360,27 @@ Figure \ref{fig:flow} depicts our simulation experiment design.\footnote{We impl
 \subsection{Reinforcement Learning background and multi arm bandits}
 \label{reinf}
 Our simulation requires an artificial agent to produce desired data. The agent is relying \textit{Reinforcement Learning} (RL). Thus, we provide some necessary concepts of that field. The following definitions coming from \cite[chapter 1 and 2]{Sutton2012}. RL is a branch of \textit{machine learning} trying model the interaction of an artificial agents with its environment and the corresponding learning process. \\
-In our particular setting the agent is confronted with the task of choosing sequentially from a set of possible choices. The agent doesn't have any knowledge about the system a priori. Therefore, it has to learn the nature of the system by continuously interacting with its environment while keeping track of the obtained information for each particular choice. Due to the lack of examples it has to explore different possible actions to identify the best action. Hence, it is useful to deviate from the current optimal strategy from time to time.\\ 
-Each action in each step is associated with a given value based on the experience of the agent. This is modeled by defining a value function value function each action $a$. Denote the value function of an action $a$ as $Q_t(a)$ and define it as:
-\begin{flalign}
-Q_t(a) := \frac{R_1 + R_2 + \dots + R_{K_\alpha}}{K_\alpha} 
-\label{eq:valuefunction}
-\end{flalign}
-where $R$ denotes rewards. Hence the value function is defined average over the rewards for a given state [COMMENT - REFORMULATE THIS]. As mentioned it is necessary for the agent to explore its environment while simultaneously try to optimize its utility. Thus, a crucial task of the agent is to balance \textit{exploration} and \textit{exploitation} of the environment. There are two basic approaches to model this trade-off; An \textit{"Epsilon-Greedy"} action selection method and \textit{"Softmax"} selection method.\\
+In our particular setting the agent is confronted with the task of choosing sequentially from a set of $N$ possible choices. The agent doesn't have any knowledge about the system a priori. Therefore, it has to learn the nature of the system by continuously interacting with its environment while keeping track of the obtained information for each particular choice. Due to the lack of examples it has to explore different possible actions to identify the best action. Hence, it is useful to deviate from the current optimal strategy from time to time.\\ 
+Each action in each step is associated with a given value based on the experience of the agent. This is modeled by defining a value function value function each action $a$. Denote the value function of an action $a$ as $Q(a)_t$. Hence the value function is defined average over the rewards for a given state. As mentioned it is necessary for the agent to explore its environment while simultaneously try to optimize its utility. Thus, a crucial task of the agent is to balance \textit{exploration} and \textit{exploitation} of the environment. There are two basic approaches to model this trade-off; An \textit{"Epsilon-Greedy"} action selection method and \textit{"Softmax"} selection method.\\
 Within an epsilon greedy action selection strategy the next action is chosen based on the highest value function. However, to model exploration an random element is introduced to deviate from that greedy strategy with a certain probability (denoted by $\epsilon$). In general we can define the next action selected by the epsilon greedy strategy as:
 \begin{flalign}
 a_{t+1} = \begin{cases} 
 \text{random action} & \text{, with probability } \epsilon \\
-\arg \max_i Q_t(i) & \text{, with probability } 1-\epsilon
+\arg \max_i Q(i)_t & \text{, with probability } 1-\epsilon
 \end{cases} \nonumber
 \end{flalign}
 In the softmax action selection method each next action is sampled with a certain probability coming from a  \textit{Boltzmann Distribution)}. The probability for action a is computed by:
 \begin{flalign}
-P(a_{t}) = \frac{e^{\frac{Q_t(a)}{\tau}}}{\sum_{i}^{K} e^{\frac{Q_t(i)}{\tau}}}
+P(a)_{t+1} = \frac{e^{\frac{Q_t(a)}{\tau}}}{\sum_{i}^{N} e^{\frac{Q_t(i)}{\tau}}}
 \label{eq:softmax}
 \end{flalign}
-By computing this probability for each action the next action is sampled using those probabilities. The softmax is essentially depending on the parameter $\tau$ functions. It is controlling the how deterministic or random the agent is behaving. For increasing $\tau$ the numerator goes to one and the next action is therefore picked uniformly. For low values in $\tau$, actions with low value functions result in lower probabilities and hence in a greedy strategy. The parameter is also sometimes called \textit{temparature}.\footnote{Sometimes another variation to use the inverse of tau. Obviously that would flip those intuitions.} Finally the next action gets sample from a distribution with the probabilities obtained by equation \eqref{eq:softmax}.
+Using those probabilities for each action the next choice is sampled from this distribution. The softmax is essentially depending on the parameter $\tau$ parameter. It is controlling the how deterministic or random the agent is behaving. For increasing $\tau$ the numerator goes to one and the next action is therefore picked uniformly. For low values in $\tau$, actions with low value functions result in lower probabilities and hence in a greedy strategy. The parameter is sometimes called \textit{temparature}.\footnote{Another variation is to use the inverse of $\tau$ and denote it by $\theta$ (see, e.g. \cite{Stojic2015})}. 
+After selecting an action the agent has to update its believes about it. The update rule is for the value function for an action is defined as:
 \begin{flalign}
-a_{t+1} \sim p_a \nonumber
-\end{flalign}
-After selecting an action the agent has to update its believe of the chosen action. One can show that equation \eqref{eq:valuefunction} can be expressed in the following way: [THIS HAS TO BE CHANGED - MISLEADING]
-\begin{flalign}
-Q(a)_{k+1} = Q(a)_k + \alpha \left[ R(a)_k -  Q(a)_k	 \right], 
+Q(a)_{t+1} = Q(a)_t + \alpha \left[ R(a)_t -  Q(a)_t	 \right], 
 \label{eq:update}
 \end{flalign}
-where $\alpha$ is a is the non negative \textit{learning rate} defining how much the current action is affecting the believes. A challange might be how to initialize the value function. However, for convenience we set them to zero for all bandits. Those are the basic necessary ingredients to model artificial decision process. In the following we elaborate on further data processing.
+where $\alpha$ is a is the non negative \textit{learning rate} defining how much the current action is affecting the believes and $R(a)_t$ is the reward of action a at step k. A challange might be how to initialize the value function. However, for convenience we set them to zero for all bandits. Those are the basic necessary ingredients to model artificial decision process. In the following we elaborate on further data processing.
 
 \subsection{Data handling, unsupervised learning methods and similarities}
 \label{algosim}
@@ -404,10 +408,11 @@ We observed that that the clustering results of our simulation are fluctuating. 
 Our implementation is quite flexible. We can control both all parameters for each individual agent and their reward sets. We can control the number of trials for each agent and produce customized and multiple asymmetric cluster sizes. Furthermore, we can set prior values for each agent and each value function for the bandits. However, within our experiment we kept the settings simple. First we fix means and standard deviations for the bandits. Then first fix a value for alpha and run the simulations for different differences in tau. We repeat this procedure for fixed values of tau and vary alpha. Finally, we repeat this procedure with a different setting in the bandit means.\\
 We are confronted with an enormous grid search over different parameters. Computing distances is very costly. As mentioned we have to run our simulations multiple times to get an impression of the variability. To keep the computation time to a reasonable we let them perform 100 trials and set the number to 10 for each parameter setting. We ended up using solely the softmax function. The main reason for that decision is that we estimate those parameters later on for the experimental data.\\ 
 The following table \ref{tab:simres}  shows a snippet of our simulation results. As described in the last section we have a broad range o similarity measures and algorithms. Therefore, we selected results in such a way, that we give an impression when clustering is working well. Naturally we also found a lot of settings where clustering was not successful. A detailed overview on the numbers are given by tables \ref{tab:apstab1} to \ref{tab:apstab8} in the appendix.\footnote{To give an intuition about the numbers one can informally note that numbers below 0.200 - 0.300 do not show any really good clustering patterns.}
+\pagebreak
 
 \begin{threeparttable}[!htbp] 
 	\centering 
-	\tiny
+	\scriptsize
 		\resizebox{\textwidth}{!}{\begin{tabular}{@{\extracolsep{0pt}} lllccccccccc} 
 		\\[-1.8ex]\hline 
 		\hline \\[-1.8ex] 
@@ -417,32 +422,32 @@ The following table \ref{tab:simres}  shows a snippet of our simulation results.
 		\hline
 		$\alpha$ = \{0.1\} & Spectral & RBF &  &  &  & x &  & 0.642 (0.200) & 0.653 (0.206) & 0.641 (0.200) \\ 
 		$\tau$ = \{0.1, 0.7\} & Spectral & DTW &  &  & x &  &  & 0.580 (0.209) & 0.611 (0.205) & 0.580 (0.201) \\ 
-		& K-Means & Euclidian &  &  & x &  &  & 0.533 (0.248) & 0.539 (0.275) & 0.533 (0.249) \\ 
-		& K-Means & Euclidian &  &  &  &  & x & 0.382 (0.181) & 0.309 (0.237) & 0.381 (0.180) \\ 
+		& K-Means & Euclidean &  &  & x &  &  & 0.533 (0.248) & 0.539 (0.275) & 0.533 (0.249) \\ 
+		& K-Means & Euclidean &  &  &  &  & x & 0.382 (0.181) & 0.309 (0.237) & 0.381 (0.180) \\ 
 		& Spectral & Levensthein & x &  &  &  &  & 0.350 (0.114) & 0.241 (0.163) & 0.347 (0.116) \\ 
-		& Spectral & Euclidian &  & x &  &  &  & 0.306 (0.155) & 0.198 (0.179) & 0.303 (0.156) \\ 
+		& Spectral & Euclidean &  & x &  &  &  & 0.306 (0.155) & 0.198 (0.179) & 0.303 (0.156) \\ 
 		\hline
 		\textbf{Average} &  &  &  &  &  &  &  & \textbf{0.367 (0.150)} &  \textbf{0.307 (0.195)} &  \textbf{0.364 (0.151)} \\ 
 		\hline
 		$\alpha$ = \{0.5\} & Spectral & DTW &  &  &  & x &  & 0.804 (0.212) & 0.804 (0.235) & 0.803 (0.213) \\ 
 		$\tau$ = \{0.1, 1.0\} & Spectral & EDR &  &  & x &  &  & 0.652 (0.178) & 0.663 (0.203) & 0.652 (0.178) \\ 
-		& Ward & Euclidian &  &  &  & x &  & 0.621 (0.208) & 0.596 (0.249) & 0.620 (0.209) \\ 
+		& Ward & Euclidean &  &  &  & x &  & 0.621 (0.208) & 0.596 (0.249) & 0.620 (0.209) \\ 
 		& Spectral & Overlap & x &  &  &  &  & 0.599 (0.355) & 0.571 (0.406) & 0.597 (0.357) \\ 
-		& K-Means & Euclidian &  &  &  & x &  & 0.562 (0.170) & 0.525 (0.220) & 0.562 (0.170) \\ 
+		& K-Means & Euclidean &  &  &  & x &  & 0.562 (0.170) & 0.525 (0.220) & 0.562 (0.170) \\ 
 		& Spectral & Levensthein & x &  &  &  &  & 0.368 (0.133) & 0.270 (0.169) & 0.366 (0.134) \\ 
-		& K-Means & Euclidian & x &  &  &  &  & 0.275 (0.144) & 0.171 (0.147) & 0.272 (0.145) \\ 
-		& K-Means & Euclidian &  &  &  &  & x & 0.399 (0.194)  & 0.338 (0.224) & 0.398 (0.194) \\ 
-		& Spectral & Euclidian &  & x &  &  &  & 0.314 (0.109) & 0.197 (0.135) & 0.311 (0.110) \\ 
+		& K-Means & Euclidean & x &  &  &  &  & 0.275 (0.144) & 0.171 (0.147) & 0.272 (0.145) \\ 
+		& K-Means & Euclidean &  &  &  &  & x & 0.399 (0.194)  & 0.338 (0.224) & 0.398 (0.194) \\ 
+		& Spectral & Euclidean &  & x &  &  &  & 0.314 (0.109) & 0.197 (0.135) & 0.311 (0.110) \\ 
 		\hline
 		\textbf{Average} &  &  &  &  &  &  &  &   \textbf{0.408 (0.186)} &  \textbf{0.351 (0.217)} &  \textbf{0.406 (0.186)} \\ 
 		\hline
 		$\alpha$ = \{1.0\} & Spectral  & DTW &  &  &  & x &  & 0.792 (0.174) & 0.808 (0.170) & 0.792 (0.174) \\ 
 		$\tau$ = \{0.1, 1.0\} & Spectral  & RBF &  &  &  & x &  & 0.692 (0.164) & 0.692 (0.184) & 0.692 (0.164) \\ 
-		& K-Means & Euclidian  &  &  &  & x &  & 0.606 (0.188) & 0.578 (0.233) & 0.606 (0.189) \\ 
+		& K-Means & Euclidean  &  &  &  & x &  & 0.606 (0.188) & 0.578 (0.233) & 0.606 (0.189) \\ 
 		& Spectral  & EDR &  & x &  &  &  & 0.280 (0.198) & 0.201 (0.215) & 0.278 (0.198) \\ 
 		& Spectral  & Levensthein & x &  &  &  &  & 0.276 (0.101) & 0.154 (0.113) & 0.272 (0.111) \\ 
 		& Spectral  & EDR &  &  & x &  &  & 0.236 (0.196) & 0.171 (0.184) & 0.235 (0.195) \\ 
-		& K-Means & Euclidian  &  &  &  &  & x & 0.099 (0.105) & 0.052 (0.097) & 0.098 (0.104) \\ 
+		& K-Means & Euclidean  &  &  &  &  & x & 0.099 (0.105) & 0.052 (0.097) & 0.098 (0.104) \\ 
 		\hline
 		\textbf{Average} &  &  &  &  &  &  &  &   \textbf{0.266 (0.203)} &  \textbf{0.204 (0.225)} &  \textbf{0.263 (0.204)} \\ 
 		\hline
@@ -468,7 +473,7 @@ The following table \ref{tab:simres}  shows a snippet of our simulation results.
 		$\tau$ = \{0.1, 0.7\} & Spectral & Levensthein & x &  &  &  &  & 0.252 (0.137) & 0.163 (0.147) & 0.249 (0.137) \\ 
 		& Spectral & RBF &  &  & x &  &  & 0.215 (0.158) & 0.207 (0.188) & 0.215 (0.157) \\ 
 		& Spectral & DTW &  & x &  &  &  & 0.205 (0.218) & 0.192 (0.247) & 0.205 (0.218) \\ 
-		& K-Means & Euclidian &  &  &  &  & x & 0.185 (0.205) & 0.165 (0.225) & 0.185 (0.205) \\ 
+		& K-Means & Euclidean &  &  &  &  & x & 0.185 (0.205) & 0.165 (0.225) & 0.185 (0.205) \\ 
 		\hline
 		\textbf{Average} &  &  &  &  &  &  &  &  \textbf{0.248 (0.183)} &  \textbf{0.220 (0.213)} &  \textbf{0.246 (0.184)} \\ 
 				\hline
@@ -478,7 +483,7 @@ The following table \ref{tab:simres}  shows a snippet of our simulation results.
 		$\alpha$ = \{0.1,0.9\} & Spectral & Cosine &  & x &  &  &  & 0.211 (0.158) & 0.159 (0.160) & 0.210 (0.158) \\ 
 		& Spectral & Cosine &  &  & x &  &  & 0.191 (0.117) & 0.137 (0.127) & 0.189 (0.118) \\ 
 		& Spectral & Cosine & x &  &  &  &  & 0.164 (0.110) & 0.115 (0.109) & 0.162 (0.109) \\ 
-		& K-Means & Euclidian &  &  &  &  & x & 0.138 (0.153) & 0.091 (0.176) & 0.137 (0.153) \\ 
+		& K-Means & Euclidean &  &  &  &  & x & 0.138 (0.153) & 0.091 (0.176) & 0.137 (0.153) \\ 
 		\hline
 		\textbf{Average}  &  &  &  &  &  &  &  &  \textbf{0.145 (0.067)} &  \textbf{0.101 (0.075)} &  \textbf{0.143 (0.067)} \\ 
 		\hline \\[-1.8ex] 
@@ -509,6 +514,23 @@ The first data set is related to \cite{Stojic2015}. The data are gathered in a 2
 We tried to identify different clusterings according to those demographics within those four sub experiments. Our results doesn't show worth mentioning clustering across demographics.\\
 We try to discover clustering in the data. Within our simulation we set parameters, which classify individual subjects. Using the experimental data we come from the other way. The reinforcement learning model is quite closely related to the expectancy valence model from cognitive science. Referring to equation \eqref{eq:softmax} and equation \eqref{eq:update} we can try to recover the parameters by optimising those function based on the observed choices. 
 
+\begin{figure}[H]
+	\centering
+	\small
+	\hspace*{-0.7in}
+	\begin{tabular}{cc}
+		\input{Pictures/e1c2.tex} & \input{Pictures/e1c3.tex} \\
+		(\textbf{a}) Spectral - RBF - blockwise entropy & (\textbf{b}) Spectral - DTW - blockwise entropy \\
+			\input{Pictures/e2c2.tex} & \input{Pictures/e2c3.tex} \\
+			(\textbf{c}) Ward clustering - blockwise disadvantageous choices & (\textbf{d}) Spectral - cosine - blockwise disadvantageous choices 
+	\end{tabular} \quad
+	\caption{Clustering on choices vs. model parameter estimation (top sub figures: experiment 1, high noise, bottom: experiment 1, low noise)}
+	\label{fig:cluse1c2}
+\end{figure}
+
+
+
+
 \subsection{Prison data}
 
 We were provided with experimental data from \cite{Yechiam2008}. Again we try to apply our methods to cluster different groups in the data. The participants had to perform a modified version of the Iowa gambling task, where reward structure of the decks are changing over time.\\
@@ -518,9 +540,10 @@ Table \ref{tab:tabps} gives a broad summary of some demographics of the particip
 \begin{table}[H]
 	\scriptsize
 	 \centering 
+	 		\caption{Summary prison data (means with standard deviation in parenthesis)} 
 	\resizebox{\textwidth}{!}{\begin{tabular}{ l|ccccc} 
 		\toprule 
-		Crime & \textbf{Count} & \textbf{Age} & \textbf{TABE Score} & \textbf{Education} & \textbf{Beta IQ} \\ 
+		\textbf{Criminal profile} & \textbf{Count} & \textbf{Age} & \textbf{TABE Score} & \textbf{Education} & \textbf{Beta IQ} \\ 
 		\hline
 	Theft/Burglary & $22$ & $25.36$  (7.03) & $11.09$ (1.29) & $7.38$ (3.34 )& $92.91$ (14.37) \\ 
 	Robbery & $6$ & $24.17$ (9.83) & $11.00$ (0.63) & $9.22$ (3.30) & $96.50$ (7.58) \\          
@@ -535,73 +558,77 @@ Table \ref{tab:tabps} gives a broad summary of some demographics of the particip
 	Other & $2$ & $35.00$ (9.90)& $11.50$ (0.00)& $9.20$ (4.67)& $95.00$ (5.66)\\       
 		\bottomrule 
 	\end{tabular} }
-		\caption{Summary prison data (means with standard deviation in parenthesis)} 
 		\label{tab:tabps} 
 \end{table} 
 
 Figure \ref{fig:ent} (a) shows the average cumulative entropy averaged across groups. We observe a random behaviour independent from group affiliation. However, normal people show the least random behaviour. Furthermore, Figure \ref{fig:ent} (b) shows the average people of negative choices people chose over steps of ten periods averaged across groups.     
 
-\setlength{\tabcolsep}{-0.2cm}
-\renewcommand{\arraystretch}{-0.6}
+{\renewcommand{\arraystretch}{0.4}%
 \begin{figure}[H]
+	\centering
 	\small
+	\hspace*{-0.7in}
 	\begin{tabular}{cc}
-	\input{Pictures/avgent.tex} & \input{Pictures/disad.tex} \\
-	(a) Average Entropy across groups & (b) Blockwise picks from disadvantageous deck \\
-	\input{Pictures/entbl.tex} & \input{Pictures/fullavg.tex} \\
-	(c) Average Entropy across groups & (d) Blockwise picks from disadvantageous deck 
-	\end{tabular}
-	\caption{Average py and disadvantageous behaviour}
+	\input{Pictures/disad.tex} & \input{Pictures/cumbad.tex} \\
+	(\textbf{a}) Block wise picks from disadvantageous deck & (\textbf{b}) Cumulative picks from disadvantageous deck  \\
+	\input{Pictures/entbl.tex} & \input{Pictures/avgent.tex} \\
+	(\textbf{c}) Block wise entropy  & (\textbf{d}) Cumulative entropy 
+	\end{tabular} \quad
+	\caption{Disadvantageous behaviour and entropy averaged by criminal profile }
 	\label{fig:ent}
 \end{figure}
 
 Yechiam et al. found three clusters by using the attention to recent outcomes(ARO) and attention to gains(AG) parameters from the Expectancy Valance model. The most distinct group were the Robbery convicts with the only negative attention to gains mean at -0.36 and the highest attention to recent outcomes mean 0.57. The second cluster is made of assault and murder convicts with ARO of 0.26 and AG of 0.1. The third cluster is formed of all the remaining prisoner groups with ARO means between 0 and -0.1 and AG between 0.1 and 0.2.
 Based on those findings and what we observed in figure \ref{fig:ent} we decided to cluster convicted assault-murder and robbery individuals against the other criminal groups. The following table depicts the resulting clustering performance.
 
-\subsection{Huntington Data}
-
-\cite{Stout2001} conducted research on behaviour of patients with Huntington disease (HD) and Parkinson disease (PD).\footnote{The Huntington Disease is an illness of the central nervous system. The are are a wide range of associated symptoms including physical symptoms like uncontrollable muscular movements and clumsiness and psychological symptoms like minored concentration, short term memory lapses etc . Moreover a related possible symptom is Parkinson disease \cite{hunt}. Parkinson is chronic and progressive movement  disorder. Also Parkinson goes along with physical, such as tremors and rigidity and psychological symptoms, such as memory problems, minored speed of thinking fear and anxiety (among others) \cite{parc}} 
-In the study there were considered 14 participants with HD and 22 participants with PD. They participants are required to don't have ongoing drug problems (including alcohol), free of other major diseases (physical or psychological nature). A group of 33 people serves as a control group. This group can further distinguished in younger (YHC) and older control participants (OHC). Table \ref{tab:hus} gives a basic summary of the demographic of the participants.
-
-\setlength{\tabcolsep}{10pt}
-\renewcommand{\arraystretch}{1}
-\begin{table}[H]
-	\centering 
-	\scriptsize
-	\begin{tabularx}{\textwidth}{lccccc}
-		\toprule
-		\textbf{Demographic} & \textbf{Hunting Disease} & \textbf{Parkinson Disease} & \textbf{YHC} & \textbf{OHF} \\
+\begin{table}[!htbp] \centering 
+	\caption{} 
+	\label{} 
+	\scriptsize 
+	\resizebox{\textwidth}{!}{\begin{tabular}{@{\extracolsep{0pt}} llcccccccccc} 
+\toprule 
+		Groups & Method & Similarity & C & CBC & BBC & E & EB & CC & NMI & ARI & VM \\ 
+		\hline 
+		6vs9 & Ward  & Euclidean &  &  &  &  & x &  & 0.561 (0.000) & 0.560 (0,000) & 0.560 (0,000) \\ 
+		& Spectral & DTW &  &  &  & x &  &  & 0.435 (0.000) & 0.387 (0.000) & 0.432 (0.000) \\ 
+		& Spectral & DTW &  & x &  &  &  &  & 0.435 (0.000) & 0.387 (0.000) & 0.432 (0.000) \\ 
+		& Spectral & EDR &  &  & x &  &  &  & 0.333 (0.000) & 0.381 (0.000) & 0.333 (0.000) \\ 
+		& Spectral & Overlap & x &  &  &  &  &  & 0.111 (0.000) & 0.118 (0.000) & 0.111 (0.000) \\ 
+		& K-Means & Euclidean &  &  &  &  &  & x & 0.106 (0.066) & 0.033 (0.054) & 0.094 (0.059) \\
 		\hline
-		Age & 		44.60 (11.70) & 66.00 (8.30) & 45.30 (10.60) & 65.50 (10.70) \\
-		Education (years) & 15.30 (2.30) & 14.20 (2.90) & 14.30 (2.10) &14.70 (2.40) \\
-		Sex & 130.60 (10.10) & 131.70 (7.60) & 139.50 (2.20) & 138.00 (4.60) \\
-		Years since diagnosis & 4.10 (2.80) & 7.70 (5.50) & NA (NA) & NA (NA) \\
-		Estimated age at diagnosis & 40.50 (10.80) & 58.30 (7.60) & NA (NA) & NA (NA) \\
-		\bottomrule
-	\end{tabularx}
-	\caption{Shortened summary of HD, PD and control people (means with standard deviations in parenthesis)}
-	\label{tab:hus}
-	\textbf{Source:} Summary of \cite[page 3]{Stout2001} 
-\end{table}
+		& \textbf{Average} &  &  &  &  &  &  &  & \textbf{0.249 (0.167)} & \textbf{0.202 (0.189)} & \textbf{0.244 (0.169)} \\ 
+		\hline
+		2vs9 & Spectral & EDR &  &  &  & x &  &  & 0.382 (0.000) & 0.235 (0.000) & 0.382 (0.000)\\ 
+		& Spectral & EDR &  &  & x &  &  &  & 0.232 (0.000) & 0.226 (0.000) & 0.232 (0.000)\\ 
+		& Spectral & Cosine &  &  &  &  & x &  & 0.197 (0.000) & 0.008 (0.000)& 0.191 (0.000)\\ 
+		& Spectral & eucsim/rbf &  & x &  &  &  &  & 0.134 (0.000)& 0.075 (0.000)& 0.134 (0.000) \\ 
+		& K-Means & Euclidean &  &  &  &  &  & x & 0.116 (0.000) & - & 0.105 (0.000) \\ 
+		& K-Means & Euclidean & x &  &  &  &  &  & 0.111 (0.022) & - & 0.100 (0.020) \\
+		\hline 
+		&  \textbf{Average} &  &  &  &  &  &  &  & \textbf{0.096 (0.074)} & \textbf{-} & \textbf{0.093 (0.073)} \\ 
+		\hline \\[-1.8ex] 
+	\end{tabular} }
+\end{table} 
+
 
 \subsection{Cocaine Abusers data}
 
-Finally we study data from several cocaine abusers. There are 12 individuals performing the IGT. The control group consist out of 14 participants. Candidates among the drug abusers were selected as active users with additional drug abusing past, but without any known additional mental illness \cite{stout2004}. Table \ref{tab:cocs} gives a summary of demographic profile.
+Finally we study data from several cocaine abusers. There are 12 individuals performing the IGT. The control group consist out of 14 participants. Candidates among the drug abusers were selected as active users with additional drug abusing past, but without any known additional mental illness \cite{Stout2004}. Table \ref{tab:cocs} gives a summary of demographic profile.
 
 \setlength{\tabcolsep}{12pt}
 \renewcommand{\arraystretch}{1}
 \begin{table}[H]
 	\centering 
+		\caption{Demographic summary of cocaine abusers (means with standard deviations in parenthesis)}
 	\begin{tabular}{lcc}
 		\toprule
-		\textbf{demographic} & \textbf{Drug abusers} & \textbf{Control Group} \\
+		\textbf{Demographic indicator} & \textbf{Drug abusers} & \textbf{Control Group} \\
 		\hline
 		Share of men &  79\% & 100\%\\
 		Age & 36.90 (10.30) & 30.00 (6.10) \\
 		Estimated IQ & 105.00 (7.62) & 93.70 (10.30) \\
 		\bottomrule
 	\end{tabular}
-	\caption{Demographic summary of cocaine abusers (means with standard deviations in parenthesis)}
 	\label{tab:cocs}
 \end{table}
 
@@ -613,16 +640,16 @@ We cluster cocaine abusers against the control group. The following table depict
 	\scriptsize
 		\resizebox{\textwidth}{!}{\begin{tabular}{ llccc cccccc} 
 		\toprule
-		Method & Similarity & C\tnote{0} & CBC\tnote{1} & BBC\tnote{2} & E\tnote{3} & EB\tnote{4} & CC\tnote{5} & NMI\tnote{6} & ARI\tnote{6} & VM\tnote{7} \\ 
+			\textbf{Method} & \textbf{Similarity} & \textbf{C}\tnote{0} & \textbf{CBC}\tnote{1} & \textbf{BBC}\tnote{2} & \textbf{E}\tnote{3} & \textbf{EB}\tnote{4} & \textbf{CC}\tnote{5} & \textbf{NMI}\tnote{6} & \textbf{AR}I\tnote{6} & \textbf{VM}\tnote{7} \\ 
 		\hline 
-		K-Means \tnote{*} & Euclidian &  &  &  &  & x &  & 0.270 (0.000) & 0.262 (0.000) & 0.270 (0.000) \\ 
-		Ward & Euclidian &  & x &  &  &  &  & 0.270 (0.000) & 0.262 (0.000) & 0.270 (0.000) \\ 
-		K-Means & Euclidian &  &  &  &  &  & x & 0.209 (0.030) & 0.171 (0.043) & 0.208 (0.030) \\ 
+		K-Means \tnote{*} & Euclidean &  &  &  &  & x &  & 0.270 (0.000) & 0.262 (0.000) & 0.270 (0.000) \\ 
+		Ward & Euclidean &  & x &  &  &  &  & 0.270 (0.000) & 0.262 (0.000) & 0.270 (0.000) \\ 
+		K-Means & Euclidean &  &  &  &  &  & x & 0.209 (0.030) & 0.171 (0.043) & 0.208 (0.030) \\ 
 		Spectral & Levenstein & x &  &  &  &  &  & 0.178 (0.000) & 0.181 (0.000) & 0.178 (0.000) \\ 
 		Spectral & Cosine &  &  & x &  &  &  & 0.171 (0.000) & 0.117 (0.000) & 0.171 (0.000) \\ 
 		Spectral & DTW &  &  &  & x &  &  & 0.042 (0,000) & 0.014 (0.000) & 0.042 (0.000) \\ 
 		\hline
-		\textbf{Average}\tnote{$\dagger$}  & - & - & - & - & - & - & - & 0.139 (0.002) & 0.104 (0.003) & 0.138 (0.002) \\ 
+		\textbf{Average}\tnote{$\dagger$}  &  &  &  &  &  &  & & \textbf{0.139 (0.002)} & \textbf{0.104 (0.003)} & \textbf{0.138 (0.002)} \\ 
 		\hline 
 	\end{tabular} }
 	\begin{tcolorbox}[arc=0mm,title=Notes,boxrule=0.2mm,colbacktitle=white,coltitle=black,colback=white,top=0mm,bottom=0.1mm]
@@ -688,11 +715,11 @@ Our analysis so far showed that people are not separate themselves. In general w
 \addcontentsline{toc}{section}{Appendix}
 \addtocontents{toc}{\vspace{-0.5em}}
 
-\subsection*{Metrics and Similarities}
+\section{Metrics and Similarities}
 
 This part of the appendix formally defines metrics and similarities and dissimilarities (proximity) used in this paper. We first define some basic general concepts followed by a description of the applied distance and similarity concepts. 
 
-\subsubsection*{Distances vs. Similarities}
+\subsection{Distances vs. Similarities}
 
 Let $\mathcal{X}$ be a dataset and let $\boldsymbol{x_i},\boldsymbol{x_j}$ be two datapoints, such that $\boldsymbol{x_i},\boldsymbol{x_j} \in \mathcal{X}$. 
 
@@ -722,7 +749,39 @@ S(\boldsymbol{x_i},\boldsymbol{x_j}) = \frac{1}{1+d(\boldsymbol{x_i},\boldsymbol
 \label{eq:sim}
 \end{flalign}
 
-\subsubsection{Similarity measures for time series data}
+\subsection{General Similarity measures}
+
+The default similarity measures used by many machine learning libraries (e.g. python sci-kit) is the Gaussian kernel of RBF-Kernel. This kernel function can be also be seen as a similarity. For two point is is defined as \cite[page 480]{Murphy2012}
+
+\begin{flalign}
+K_{RBF}(\boldsymbol{x_i},\boldsymbol{x_j}) = \exp{\left(-\frac{|| \textbf{x} - \textbf{y} ||}{2 \sigma^2}\right) }
+\end{flalign}
+
+Another common similarity measure is cosine similarity. It is expressing the angle between two vectors and is defined as [ibidem, page 480]:
+
+\begin{flalign}
+S_{cos}(\boldsymbol{x_i},\boldsymbol{x_j}) = \frac{\textbf{x}^T\textbf{x}}{||\textbf{x}|| ||\textbf{y}||}
+\end{flalign}
+
+\subsection{Similarity measures for categorical data}
+
+Reffering to equation \ref{eq:ets} we define a simple measure for the categorical aspect of the data. Note that [SOURCE] defines the simplest measure for categorical data. However, since the probability that two people behave exactly the same in our context is arguably zero we modify this concept slightly. So we relax that and define the overlap similarity just as the count of overlapping instances. This serves as a benchmark similarity for categorical data.
+
+\begin{flalign}
+d_O (\boldsymbol{x},\boldsymbol{y}) :=  \sum_{i=1}^{N} \mathbb{1}_{(x_i = y_i)}
+\end{flalign}
+
+Furthermore, Levenstein distance (or edit distance) is a basic way to measure similarity between categorical sequences \cite[page 1]{Richter} or \cite[page 2]{Gabadinho2009}, however some authors stating that it might perform poorly in their task \cite[page 3]{Ren2011} or a poor measure at all \cite[page 5]{Morzy}
+
+It is relying on solving a dynamic programming problem. Define $D_{0,j} = j$ and $D_{i,0} = i$:
+\begin{flalign}
+D_{\textbf{x},\textbf{y}}(i,j) = \min \begin{cases} D_{i-1,j} + 1\\
+D_{i,j-1} + 1 \\
+D_{i-1,j-1} + \mathbb{1}_{(x_i = y_i)}
+\end{cases}
+\end{flalign}
+
+\subsection{Similarity measures for time series data}
 
 We use three different similarity measures for time series. E.g. \cite{Wang2013} or \cite{Serr2014} provide an overview and empirical evaluation on common similarity measures for time series. The following definitions are taken from the latter. Empirical research suggest that simple euclidean distance for time series performs quite well and is hard to beat. Hence, the first distance measure for time series is simply euclidean distance between two time series. They might be converted to similarity based on equation \ref{eq:sim}. Let $\boldsymbol{x},\boldsymbol{y}$ be two time series over N-periods. Then the $L_2$ distance between two time series is define as: 
 
@@ -732,45 +791,131 @@ d_E (\boldsymbol{x},\boldsymbol{y}) :=  \sqrt{\left( \sum_{i=1}^{N} \left( x_i -
 \end{flalign}
 \pagebreak
 
-\subsubsection{Similarity measures for categorical data}
+Dynamic time warp (DTW) is probably one of the most successful proximity measures for time series. While in euclidian distance we compare all points horizontally in DTW we take also other points into account. It is using dynamic programing to solve it. 
 
-Reffering to equation \ref{eq:ets} we define a simple measure for the categorical aspect of the data. Note that [SOURCE] defines the simplest measure for categorical data. However, since the probability that two people behave exactly the same in our context is arguably zero we modify this concept slightly. So we relax that and define the overlap similarity just as the count of overlapping instances. This serves as a benchmark similarity for categorical data.
 
-\footnote{For example Levenstein distance (or edit distance) is a basic way to measure similarity between categorical sequences \cite[page 1]]{Richter} or \cite[page 2]{Gabadinho2009}, however some authors stating that it might perform poorly in their task \cite[page 3]{Ren2011} or a poor measure at all \cite[page 5]{Morzy}}
-
+Finally we considered the edit distance on real sequences (EDR). It is basically an real valued version to the Levensthein distance. It also relies on solving a dynamic programing problem. For $i = 1,\dots,M$ and $j=1,\dots,N$ we have to compute.\footnote{The time series can have different length. However, in our case $N=M$}
 
 \begin{flalign}
-d_O (\boldsymbol{x},\boldsymbol{y}) :=  \sum_{i=1}^{N} \mathbb{1}_{(x_i = y_i)}
-\end{flalign}
-
-In [Boriah 2008] we find a rich class of further categorical measures. To keep it concise we considered two of them. The first one is \textit{Eskin} similarity measures.
-
-\begin{flalign}
-d_O (\boldsymbol{x},\boldsymbol{y}) := \begin{cases} 
-1 & \text{,if } \boldsymbol{x} = \boldsymbol{y}  \\
-\frac{n_k^2} {n_k^2 + 2} & \text{otherwise }
+D_{i,j} = \begin{cases} 
+D_{i-1,j-1} & \text{,if } m(x_i,y_j) = 1 \\
+1 + \min(D_{i,j-1},D_{i-1,j},D_{i-1,j-1})& \text{, if } m(x_i,y_j) = 0
 \end{cases}
-\label{eq:esk}
 \end{flalign}
 
-Furthermore, we consider lins similarity 
+where, $m(\cdot,\cdots)$ is the matching function. For $x_i and y_j$ it is defined as: 
 
 \begin{flalign}
-d_{lin} (\boldsymbol{x},\boldsymbol{y}) := \begin{cases} 
-2 \log \hat{p}_k (X_k) & \text{,if } \boldsymbol{x} = \boldsymbol{y}  \\
-2 \log \left( \hat{p}_k (x_k) + \hat{p}_k (y_k)\right) & \text{otherwise }
-\end{cases}
-\label{eq:esk}
+m(xi,yj)= \Theta(\epsilon - f(x_i,y_j))
 \end{flalign}
 
+where $\epsilon$ is scalar, such that $\mathbb{R}^+_0$. $\Theta(\cdot)$ denotes the Heaviside step function and is defined as $\Theta(z) = 1$ if $z\ge0$.
+ 
+\pagebreak
+\section{Algorithms}
 
+\subsection{K-Means Clustering}
 
+The following algorithm \ref{alg:kmean} describes the K-means clustering algorithm. The algorithm comes from \cite[page 354 et. seqq.]{Murphy2012}
 
-\subsection*{Clustering Evaluation}
+\IncMargin{1em}
+\begin{algorithm}
+	\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+	\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+	\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+	\Input{$\boldsymbol{m}_k$}
+	\BlankLine
+	\Repeat 
+		Assign each data point to its closest cluster center: $z_i = \arg \min_k || \boldsymbol{x}_i - \boldsymbol{\mu}_k ||^2_2;$ 
+		Update each cluster center by computing the mean of all points assigned to it: $\boldsymbol{\mu}_k = \frac{1}{N_k}\sum_{i:z_i=k}\boldsymbol{x_i};$
+	\caption{K-Means clustering}\label{algo_disjdecomp}
+	\label{alg:kmean}
+\end{algorithm}\DecMargin{1em}
+\pagebreak
+
+\subsection{Hierarchical Clustering - Agglomerative}
+
+Algorithm \ref{alg:agglc} \cite[page 895 et. seqq.]{Murphy2012}
+
+\IncMargin{1em}
+\begin{algorithm}
+	\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+	\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+	\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+	\Input{initialize clusters as singletons:}
+	\Output{Importance values for each node $v$}
+	\BlankLine
+	\For{$ i \leftarrow 1 \textbf{\ to } n$}{
+	$C_i \leftarrow \{i\}$;
+	}
+	\text{Initialize set of clusters for merging:} \\
+	    $S \leftarrow \{1, \dots, n\};$ \\
+	\Repeat{convergence}{
+		\text{Pick 2 most similar clusters to merge:}; \\ 
+		$(j,k) \leftarrow \arg \min_{j,k \in S}d_{j,k};$ \\
+		\text{Create new cluster} $C_\ell \leftarrow C_j \cup C_k$
+		\text{Mark j and k as unavailable:} $S  \leftarrow S \setminus \{j,k\};$
+		\If{$C_l \neq \{1,\dots,n\}$}{Mark $\ell$ as available: $S \leftarrow S \cup \{\ell\}$ ;}
+		\For{$i \in S$}{Update dissimilarity matrix $d(i, \ell)$;}
+		no more clusters are available for merging;}
+		
+	\caption{Agglomerative Clustering}\label{algo_disjdecomp}
+	\label{alg:agglc}
+\end{algorithm}\DecMargin{1em}
+
+\pagebreak
+\subsection{Spectral Clustering}
+
+For the spectral clustering algorithm we formally introduce some graph notation. If not stated otherwise the following derivation follows \cite{Luxburg2007}. In the following we consider a weighted and simple undirected graph. 
+\begin{flalign}
+G &= \{V,E\} \\
+V & = \{ v_1,\dots,v_n \} \\
+E & = \{e_1,\dots,e_n\} 
+\intertext{Furthermore let the graph has a weighted and symetric ($|V| \times |V|$) adjacency matrix, such that:}
+\boldsymbol{W} &= \begin{cases} 
+w_{i,j} & \text{,if } v_iv_j \in E \\
+0 & \text{otherwise }
+\end{cases}
+\intertext{The \textit{degree} of a node is defined as the sum of edge weights of connected nodes. Formmally we denote the degree of node $i$ as:}
+d_i &:= \sum_{j=1}^{n} w_{ij} = \sum_{i=1}^{n} w_{ij}
+\intertext{Using the last expression we define matrix $\boldsymbol{D}$ as the diagonal matrix of the degress}
+\boldsymbol{D} &:= diag(\boldsymbol{d})
+\intertext{The algorithm works on the \textit{Laplacian} matrix defined by:}
+\boldsymbol{L} &:= \boldsymbol{D} - \boldsymbol{W} 
+\intertext{Former versions of the algorithm are applied on the graph laplcian. However, there were proposed newer versions using the so called \textit{normalized laplacian}. Since also the python version is using this package we will focus on this version of the algorithm. Following that the normalized graph laplacian is defined as:}
+\boldsymbol{L}_{norm} &:= \boldsymbol{D}^{1/2} \boldsymbol{L} \boldsymbol{D}^{1/2}  = \boldsymbol{I} - \boldsymbol{D}^{1/2} \boldsymbol{W} \boldsymbol{D}^{1/2}
+\end{flalign}
+
+IncMargin{1em}
+\begin{algorithm}
+	\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+	\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+	\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+	\Input{Similarity matrix $S \in \mathbb{R}^{n \times n}$ and number of clusters $k$}
+	\Output{Clusters $A_1, \dots,A_k$ with $A_i = \{j|y_i \in C_i\}$ }
+	\BlankLine
+	\begin{enumerate}
+		\item Construct a similarity graph. Let \textbf{W} be its weighted adjacency matrix
+		\item Compute the unnormalized Laplacian \textbf{L}.
+		\item Compute the first $k$ eigenvectors $u_1,\dots,u_k$ of \textbf{L}. Let $U \in \mathbb{R}^{n \times k}$ be the matrix containing the vectors $u_1,\dots,u_k$ as columns.
+		\item \textbf{for} $i = 1,\dots,n$, let $y_i$ be the vector corresponding to the $i-th$ row of $U$
+		\item Cluster the points $(y_i)_{i=1,\dots,n}$ in $\mathbb{R}^k$ with the K-Means algorithm into clusters $C_1,\dots,C_k$
+	\end{enumerate}
+	\caption{Spectral clustering}
+	\label{alg:agglc}
+\end{algorithm}\DecMargin{1em}
+
+\subsection{Affinity Propagation}
+
+\cite{Brusco2008}
+
+\pagebreak
+
+\section{Clustering Evaluation}
 \label{sec:ce}
-In this section we formally derive and explain the applied clustering metrics. Evaluating clustering performance has some issues. The algorithm is producing labels. Nevertheless we generated the "true" labels the might not be comparable. A simple example we might consider the following situation. Let y denote the labels of data the data and $y'$ the corresponding prediction such that  $y,y' \in \{0,1\}$. In a small example let our data points be like $y=(1,1,0,0)$ and the corresponding prediction $y'=(0,0,1,1)$. Obviously the clustering worked perfectly, however comparing "labels" would produce an accuracy of zero. 
+In this section we formally derive and explain the applied clustering metrics. Evaluating clustering performance has some issues. The algorithm assigns each point to a cluster. Despite we generated the "true" clusters the might not be comparable. A simple example we might consider the following situation. Let $y$ denote the labels of data the data and $y'$ the corresponding prediction such that  $y,y' \in \{0,1\}$. In a small example let our data points be like $y=(1,1,0,0)$ and the corresponding prediction $y'=(0,0,1,1)$. Obviously the clustering worked perfectly, however comparing "labels" would produce an accuracy of zero. 
 
-There a several clustering metrics, which respect such a situation. We consider a bunch of information based metrics. Most of the measures use some sort of entropy. The following concepts can be found in \cite{Rosenberg2007} and  \cite{Vinh2010} and as additional reading \cite{Hubert1985}. 
+There a several clustering metrics, which respect such a situation. We consider a bunch of information based metrics. Most of the measures use some sort of entropy. The following concepts can be found in \cite{Rosenberg2007} and  \cite{Vinh2010}. Additional reading is \cite{Hubert1985}. 
 
 First we might introduce the contingency table. 
 
@@ -790,7 +935,6 @@ First we might introduce the contingency table.
 	\end{tabular}
 \caption{Contigency Table}
 \end{table}
-
 
 \begin{tabbing}
 	\hspace*{1cm}\=\hspace*{1cm}\=\hspace*{3cm}\=\hspace*{2.7cm}\= \kill
@@ -860,42 +1004,6 @@ V Measure Score:
 V_\beta = \frac{(1+\beta)h c}{\beta h + c}
 \end{flalign}
 
-
-\subsection{Algorithms}
-
-
-\subsubsection*{Principal Components and Multidimensional Scaling}
-
-Coming to principal component analysis. \cite{Shlens2014} provides an excellent contribution considering both practical applications and theoretical background. The following derivations are from this source. 
-
-\pagebreak
-\subsubsection*{Spectral Clustering}
-
-For the spectral clustering algorithm we formally introduce some graph notation. If not stated otherwise the following derivation follows \cite{Luxburg2007}. In the following we consider a weighted and simple undirected graph. 
-\begin{flalign}
-G &= \{V,E\} \\
-V & = \{ v_1,\dots,v_n \} \\
-E & = \{e_1,\dots,e_n\} 
-\intertext{Furthermore let the graph has a weighted and symetric ($|V| \times |V|$) adjacency matrix, such that:}
-\boldsymbol{W} &= \begin{cases} 
-w_{i,j} & \text{,if } v_iv_j \in E \\
-0 & \text{otherwise }
-\end{cases}
-\intertext{The \textit{degree} of a node is defined as the sum of edge weights of connected nodes. Formmally we denote the degree of node $i$ as:}
-d_i &:= \sum_{j=1}^{n} w_{ij} = \sum_{i=1}^{n} w_{ij}
-\intertext{Using the last expression we define matrix $\boldsymbol{D}$ as the diagonal matrix of the degress}
-\boldsymbol{D} &:= diag(\boldsymbol{d})
-\intertext{The algorithm works on the \textit{Laplacian} matrix defined by:}
-\boldsymbol{L} &:= \boldsymbol{D} - \boldsymbol{W} 
-\intertext{Former versions of the algorithm are applied on the graph laplcian. However, there were proposed newer versions using the so called \textit{normalized laplacian}. Since also the python version is using this package we will focus on this version of the algorithm. Following that the normalized graph laplacian is defined as:}
-\boldsymbol{L}_{norm} &:= \boldsymbol{D}^{1/2} \boldsymbol{L} \boldsymbol{D}^{1/2}  = \boldsymbol{I} - \boldsymbol{D}^{1/2} \boldsymbol{W} \boldsymbol{D}^{1/2}
-\end{flalign}
-
-\section{Affinity Propagation}
-
-\cite{Brusco2008}
-
-\pagebreak
 \section{Simulation Data}
 
 \begin{table}[H] \centering 
@@ -909,28 +1017,28 @@ d_i &:= \sum_{j=1}^{n} w_{ij} = \sum_{i=1}^{n} w_{ij}
 		& Spectral & EDR &  &  & x &  &  & 0.134 (0.135) & 0.097 (0.130) & 0.134 (0.135) \\ 
 		& Spectral & Levensthein & x &  &  &  &  & 0.093 (0.134) & 0.050 (0.128) & 0.092 (0.134) \\ 
 		& Spectral & Cosine &  & x &  &  &  & 0.113 (0.134) & 0.082 (0.150) & 0.113 (0.134) \\ 
-		& K-Means & Euclidian &  &  &  &  & x & 0.093 (0.135) & 0.050 (0.130) & 0.092 (0.135) \\ 
+		& K-Means & Euclidean &  &  &  &  & x & 0.093 (0.135) & 0.050 (0.130) & 0.092 (0.135) \\ 
 		\{0.1, 0.5\} & Spectral & RBF &  &  &  & x &  & 0.331 (0.185) & 0.328 (0.208) & 0.331 (0.186) \\ 
 		& Spectral & RBF &  &  & x &  &  & 0.322 (0.197) & 0.301 (0.221) & 0.321 (0.197) \\ 
 		& Spectral & EDR &  &  & x &  &  & 0.315 (0.189) & 0.328 (0.206) & 0.315 (0.189) \\ 
-		& K-Means & Euclidian &  &  & x &  &  & 0.313 (0.187) & 0.261 (0.213) & 0.312 (0.187) \\ 
+		& K-Means & Euclidean &  &  & x &  &  & 0.313 (0.187) & 0.261 (0.213) & 0.312 (0.187) \\ 
 		& Spectral & EDR &  & x &  &  &  & 0.226 (0.127) & 0.131 (0.113) & 0.223 (0.127) \\ 
 		& Spectral & Levensthein & x &  &  &  &  & 0.219 (0.144) & 0.126 (0.121) & 0.217 (0.144) \\ 
-		& K-Means & Euclidian &  &  &  &  & x & 0.208 (0.143) & 0.124 (0.122) & 0.207 (0.143) \\ 
+		& K-Means & Euclidean &  &  &  &  & x & 0.208 (0.143) & 0.124 (0.122) & 0.207 (0.143) \\ 
 		\{0.1, 0.7\} & Spectral & RBF &  &  &  & x &  & 0.642 (0.200) & 0.653 (0.206) & 0.641 (0.200) \\ 
 		& Spectral & DTW &  &  & x &  &  & 0.580 (0.209) & 0.611 (0.205) & 0.580 (0.201) \\ 
-		& K-Means & Euclidian &  &  & x &  &  & 0.533 (0.248) & 0.539 (0.275) & 0.533 (0.249) \\ 
-		& K-Means & Euclidian &  &  &  &  & x & 0.382 (0.181) & 0.309 (0.237) & 0.381 (0.180) \\ 
+		& K-Means & Euclidean &  &  & x &  &  & 0.533 (0.248) & 0.539 (0.275) & 0.533 (0.249) \\ 
+		& K-Means & Euclidean &  &  &  &  & x & 0.382 (0.181) & 0.309 (0.237) & 0.381 (0.180) \\ 
 		& Spectral & Levensthein & x &  &  &  &  & 0.350 (0.114) & 0.241 (0.163) & 0.347 (0.116) \\ 
-		& Spectral & Euclidian &  & x &  &  &  & 0.306 (0.155) & 0.198 (0.179) & 0.303 (0.156) \\ 
+		& Spectral & Euclidean &  & x &  &  &  & 0.306 (0.155) & 0.198 (0.179) & 0.303 (0.156) \\ 
 		\{0.1, 1\} & Spectral & DTW &  &  &  & x &  & 0.938 (0.131) & 0.942 (0.126) & 0.938 (0.131) \\ 
-		& Spectral & Euclidian &  &  &  & x &  & 0.811 (0.136) & 0.833 (0.129) & 0.811 (0.136) \\ 
-		& Ward  & Euclidian &  &  &  & x &  & 0.797 (0.205) & 0.796 (0.218) & 0.797 (0.205) \\ 
+		& Spectral & Euclidean &  &  &  & x &  & 0.811 (0.136) & 0.833 (0.129) & 0.811 (0.136) \\ 
+		& Ward  & Euclidean &  &  &  & x &  & 0.797 (0.205) & 0.796 (0.218) & 0.797 (0.205) \\ 
 		& Spectral & DTW &  &  & x &  &  & 0.765 (0.197) & 0.791 (0.184) & 0.765 (0.197) \\ 
-		& K-Means & Euclidian &  &  & x &  &  & 0.757 (0.180) & 0.774 (0.185) & 0.757 (0.180) \\ 
-		& K-Means & Euclidian &  &  &  &  & x & 0.796 (0.218) & 0.687 (0.265) & 0.696 (0.219) \\ 
+		& K-Means & Euclidean &  &  & x &  &  & 0.757 (0.180) & 0.774 (0.185) & 0.757 (0.180) \\ 
+		& K-Means & Euclidean &  &  &  &  & x & 0.796 (0.218) & 0.687 (0.265) & 0.696 (0.219) \\ 
 		& Spectral & Overlap & x &  &  &  &  & 0.600 (0.299) & 0.571 (0.353) & 0.598 (0.302) \\ 
-		& Spectral & Euclidian &  & x &  &  &  & 0.335 (0.091) & 0.220 (0.138) & 0.332 (0.093) \\ 
+		& Spectral & Euclidean &  & x &  &  &  & 0.335 (0.091) & 0.220 (0.138) & 0.332 (0.093) \\ 
 		\hline \\
 	\end{tabularx} 
 	\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma =  \{1,1,1\}$, $\alpha = 0.1$)} 
@@ -948,28 +1056,28 @@ d_i &:= \sum_{j=1}^{n} w_{ij} = \sum_{i=1}^{n} w_{ij}
 		& Spectral & EDR &  &  & x &  &  & 0.134 (0.135) & 0.097 (0.130) & 0.134 (0.135) \\ 
 		& Spectral & Levensthein & x &  &  &  &  & 0.093 (0.134) & 0.050 (0.128) & 0.092 (0.134) \\ 
 		& Spectral & Cosine &  & x &  &  &  & 0.113 (0.134) & 0.082 (0.150) & 0.113 (0.134) \\ 
-		& K-Means & Euclidian &  &  &  &  & x & 0.093 (0.135) & 0.050 (0.130) & 0.092 (0.135) \\ 
+		& K-Means & Euclidean &  &  &  &  & x & 0.093 (0.135) & 0.050 (0.130) & 0.092 (0.135) \\ 
 		\{0.1, 0.5\} & Spectral & RBF &  &  &  & x &  & 0.331 (0.185) & 0.328 (0.208) & 0.331 (0.186) \\ 
 		& Spectral & RBF &  &  & x &  &  & 0.322 (0.197) & 0.301 (0.221) & 0.321 (0.197) \\ 
 		& Spectral & EDR &  &  & x &  &  & 0.315 (0.189) & 0.328 (0.206) & 0.315 (0.189) \\ 
-		& K-Means & Euclidian &  &  & x &  &  & 0.313 (0.187) & 0.261 (0.213) & 0.312 (0.187) \\ 
+		& K-Means & Euclidean &  &  & x &  &  & 0.313 (0.187) & 0.261 (0.213) & 0.312 (0.187) \\ 
 		& Spectral & EDR &  & x &  &  &  & 0.226 (0.127) & 0.131 (0.113) & 0.223 (0.127) \\ 
 		& Spectral & Levensthein & x &  &  &  &  & 0.219 (0.144) & 0.126 (0.121) & 0.217 (0.144) \\ 
-		& K-Means & Euclidian &  &  &  &  & x & 0.208 (0.143) & 0.124 (0.122) & 0.207 (0.143) \\ 
+		& K-Means & Euclidean &  &  &  &  & x & 0.208 (0.143) & 0.124 (0.122) & 0.207 (0.143) \\ 
 		\{0.1, 0.7\} & Spectral & RBF &  &  &  & x &  & 0.642 (0.200) & 0.653 (0.206) & 0.641 (0.200) \\ 
 		& Spectral & DTW &  &  & x &  &  & 0.580 (0.209) & 0.611 (0.205) & 0.580 (0.201) \\ 
-		& K-Means & Euclidian &  &  & x &  &  & 0.533 (0.248) & 0.539 (0.275) & 0.533 (0.249) \\ 
-		& K-Means & Euclidian &  &  &  &  & x & 0.382 (0.181) & 0.309 (0.237) & 0.381 (0.180) \\ 
+		& K-Means & Euclidean &  &  & x &  &  & 0.533 (0.248) & 0.539 (0.275) & 0.533 (0.249) \\ 
+		& K-Means & Euclidean &  &  &  &  & x & 0.382 (0.181) & 0.309 (0.237) & 0.381 (0.180) \\ 
 		& Spectral & Levensthein & x &  &  &  &  & 0.350 (0.114) & 0.241 (0.163) & 0.347 (0.116) \\ 
-		& Spectral & Euclidian &  & x &  &  &  & 0.306 (0.155) & 0.198 (0.179) & 0.303 (0.156) \\ 
+		& Spectral & Euclidean &  & x &  &  &  & 0.306 (0.155) & 0.198 (0.179) & 0.303 (0.156) \\ 
 		\{0.1, 1\} & Spectral & DTW &  &  &  & x &  & 0.938 (0.131) & 0.942 (0.126) & 0.938 (0.131) \\ 
-		& Spectral & Euclidian &  &  &  & x &  & 0.811 (0.136) & 0.833 (0.129) & 0.811 (0.136) \\ 
-		& Ward  & Euclidian &  &  &  & x &  & 0.797 (0.205) & 0.796 (0.218) & 0.797 (0.205) \\ 
+		& Spectral & Euclidean &  &  &  & x &  & 0.811 (0.136) & 0.833 (0.129) & 0.811 (0.136) \\ 
+		& Ward  & Euclidean &  &  &  & x &  & 0.797 (0.205) & 0.796 (0.218) & 0.797 (0.205) \\ 
 		& Spectral & DTW &  &  & x &  &  & 0.765 (0.197) & 0.791 (0.184) & 0.765 (0.197) \\ 
-		& K-Means & Euclidian &  &  & x &  &  & 0.757 (0.180) & 0.774 (0.185) & 0.757 (0.180) \\ 
-		& K-Means & Euclidian &  &  &  &  & x & 0.796 (0.218) & 0.687 (0.265) & 0.696 (0.219) \\ 
+		& K-Means & Euclidean &  &  & x &  &  & 0.757 (0.180) & 0.774 (0.185) & 0.757 (0.180) \\ 
+		& K-Means & Euclidean &  &  &  &  & x & 0.796 (0.218) & 0.687 (0.265) & 0.696 (0.219) \\ 
 		& Spectral & Overlap & x &  &  &  &  & 0.600 (0.299) & 0.571 (0.353) & 0.598 (0.302) \\ 
-		& Spectral & Euclidian &  & x &  &  &  & 0.335 (0.091) & 0.220 (0.138) & 0.332 (0.093) \\ 
+		& Spectral & Euclidean &  & x &  &  &  & 0.335 (0.091) & 0.220 (0.138) & 0.332 (0.093) \\ 
 		\hline \\[-1.8ex] 
 		\end{tabularx} 
 			\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma =  \{1,1,1\}$, $\alpha = 0.5$)} 
@@ -988,22 +1096,22 @@ d_i &:= \sum_{j=1}^{n} w_{ij} = \sum_{i=1}^{n} w_{ij}
 		& Spectral  & EDR &  & x &  &  &  & 0.096 (0.061) & 0.016 (0.049) & 0.088 (0.059) \\ 
 		& Spectral  & EDR &  &  &  & x &  & 0.068 (0.080) & 0.008 (0.085) & 0.063 (0.078) \\ 
 		& Spectral  & Cosine &  &  & x &  &  & 0.043 (0.067) & - & 0.043 (0.067) \\ 
-		& K-Means & Euclidian  &  &  &  &  & x & 0.036 (0.041) &  -  & 0.036 (0.041) \\ 
-		\{0.1, 0.5\} & Average & Euclidian  &  & x &  &  &  & 0.133 (0.115) & 0.040 (0.077) & 0.127 (0.115) \\ 
-		& K-Means & Euclidian  & x &  &  &  &  & 0.112 (0.124) & 0.035 (0.085) & 0.110 (0.122) \\ 
-		& Spectral  & Euclidian  &  &  &  & x &  & 0.103 (0.096) & 0.060 (0.092) & 0.103 (0.095) \\ 
+		& K-Means & Euclidean  &  &  &  &  & x & 0.036 (0.041) &  -  & 0.036 (0.041) \\ 
+		\{0.1, 0.5\} & Average & Euclidean  &  & x &  &  &  & 0.133 (0.115) & 0.040 (0.077) & 0.127 (0.115) \\ 
+		& K-Means & Euclidean  & x &  &  &  &  & 0.112 (0.124) & 0.035 (0.085) & 0.110 (0.122) \\ 
+		& Spectral  & Euclidean  &  &  &  & x &  & 0.103 (0.096) & 0.060 (0.092) & 0.103 (0.095) \\ 
 		& Spectral  & Cosine &  &  & x &  &  & 0.080 (0.088) & 0.038 (0.092) & 0.080 (0.088) \\ 
-		& K-Means & Euclidian  &  &  &  &  & x & 0.079 (0.097) & 0.034 (0.088) & 0.079 (0.096) \\ 
+		& K-Means & Euclidean  &  &  &  &  & x & 0.079 (0.097) & 0.034 (0.088) & 0.079 (0.096) \\ 
 		\{0.1, 0.7\} & Spectral  & DTW &  &  &  & x &  & 0.361 (0.200) & 0.352 (0.211) & 0.361 (0.200) \\ 
 		& Spectral  & EDR &  &  &  & x &  & 0.223 (0.083) & 0.087 (0.080) & 0.217 (0.086) \\ 
-		& Ward & Euclidian  &  &  &  & x &  & 0.195 (0.143) & 0.103 (0.135) & 0.192 (0.143) \\ 
-		& K-Means & Euclidian  &  & x &  &  &  & 0.167 (0.123) & 0.064 (0.114) & 0.161 (0.123) \\ 
-		& K-Means & Euclidian  & x &  &  &  &  & 0.157 (0.127) & 0.060 (0.116) & 0.151 (0.127) \\ 
+		& Ward & Euclidean  &  &  &  & x &  & 0.195 (0.143) & 0.103 (0.135) & 0.192 (0.143) \\ 
+		& K-Means & Euclidean  &  & x &  &  &  & 0.167 (0.123) & 0.064 (0.114) & 0.161 (0.123) \\ 
+		& K-Means & Euclidean  & x &  &  &  &  & 0.157 (0.127) & 0.060 (0.116) & 0.151 (0.127) \\ 
 		& Spectral  & DTW &  &  & x &  &  & 0.105 (0.140) & 0.087 (0.179) & 0.105 (0.140) \\ 
-		& K-Means & Euclidian  &  &  &  &  & x & 0.102 (0.183) & 0.063 (0.201) & 0.101 (0.183) \\ 
+		& K-Means & Euclidean  &  &  &  &  & x & 0.102 (0.183) & 0.063 (0.201) & 0.101 (0.183) \\ 
 		\{0.1, 1.0\} & Spectral  & DTW &  &  &  & x &  & 0.792 (0.174) & 0.808 (0.170) & 0.792 (0.174) \\ 
 		& Spectral  & RBF &  &  &  & x &  & 0.692 (0.164) & 0.692 (0.184) & 0.692 (0.164) \\ 
-		& K-Means & Euclidian  &  &  &  & x &  & 0.606 (0.188) & 0.578 (0.233) & 0.606 (0.189) \\ 
+		& K-Means & Euclidean  &  &  &  & x &  & 0.606 (0.188) & 0.578 (0.233) & 0.606 (0.189) \\ 
 		& Spectral  & EDR &  & x &  &  &  & 0.280 (0.198) & 0.201 (0.215) & 0.278 (0.198) \\ 
 		& Spectral  & Levensthein & x &  &  &  &  & 0.276 (0.101) & 0.154 (0.113) & 0.272 (0.111) \\ 
 		& Spectral  & EDR &  &  & x &  &  & 0.236 (0.196) & 0.171 (0.184) & 0.235 (0.195) \\ 
@@ -1054,24 +1162,24 @@ d_i &:= \sum_{j=1}^{n} w_{ij} = \sum_{i=1}^{n} w_{ij}
 		\\[-1.8ex] 
 		Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\ 
 		\hline \\[-1.8ex] 
-\{0.1, 0.3\} & Average & Euclidian &  & x &  &  &  & 0.101 (0.051) & 0.005 (0.023) & 0.088 (0.050) \\ 
-& Average & Euclidian &  &  &  & x &  & 0.093 (0.060) & 0.006 (0.024) & 0.084 (0.057) \\ 
+\{0.1, 0.3\} & Average & Euclidean &  & x &  &  &  & 0.101 (0.051) & 0.005 (0.023) & 0.088 (0.050) \\ 
+& Average & Euclidean &  &  &  & x &  & 0.093 (0.060) & 0.006 (0.024) & 0.084 (0.057) \\ 
 & Spectral & Overlap & x &  &  &  &  & 0.091 (0.073) & 0.007 (0.029) & 0.084 (0.070) \\ 
 & Spectral & EDR &  &  & x &  &  & 0.071 (0.077) & 0.025 (0.072) & 0.070 (0.076) \\ 
-& K-Means & Euclidian &  &  &  &  & x & 0.057 (0.064) & 0.014 (0.069) & 0.057 (0.064) \\ 
+& K-Means & Euclidean &  &  &  &  & x & 0.057 (0.064) & 0.014 (0.069) & 0.057 (0.064) \\ 
 \{0.1, 0.5\} & Spectral & RBF &  &  &  & x &  & 0.256 (0.190) & 0.221 (0.195) & 0.255 (0.190) \\ 
 & Spectral & Overlap & x &  &  &  &  & 0.092 (0.079) & 0.008 (0.041) & 0.087 (0.075) \\ 
-& Ward & Euclidian &  & x &  &  &  & 0.092 (0.085) & 0.007 (0.040) & 0.088 (0.082) \\ 
-& K-Means & Euclidian &  &  & x &  &  & 0.080 (0.100) & 0.043 (0.122) & 0.079 (0.100) \\ 
-& K-Means & Euclidian &  &  &  &  & x & 0.062 (0.093) & 0.026 (0.116) & 0.062 (0.093) \\ 
+& Ward & Euclidean &  & x &  &  &  & 0.092 (0.085) & 0.007 (0.040) & 0.088 (0.082) \\ 
+& K-Means & Euclidean &  &  & x &  &  & 0.080 (0.100) & 0.043 (0.122) & 0.079 (0.100) \\ 
+& K-Means & Euclidean &  &  &  &  & x & 0.062 (0.093) & 0.026 (0.116) & 0.062 (0.093) \\ 
 \{0.1, 0.7\} & Spectral & DTW &  &  &  & x &  & 0.618 (0.192) & 0.627 (0.201) & 0.617 (0.192) \\ 
 & Spectral & Levensthein & x &  &  &  &  & 0.252 (0.137) & 0.163 (0.147) & 0.249 (0.137) \\ 
 & Spectral & RBF &  &  & x &  &  & 0.215 (0.158) & 0.207 (0.188) & 0.215 (0.157) \\ 
 & Spectral & DTW &  & x &  &  &  & 0.205 (0.218) & 0.192 (0.247) & 0.205 (0.218) \\ 
-& K-Means & Euclidian &  &  &  &  & x & 0.185 (0.205) & 0.165 (0.225) & 0.185 (0.205) \\ 
+& K-Means & Euclidean &  &  &  &  & x & 0.185 (0.205) & 0.165 (0.225) & 0.185 (0.205) \\ 
 \{0.1, 1.0\} & Spectral & RBF &  &  &  & x &  & 0.952 (0.098) & 0.960 (0.082) & 0.952 (0.098) \\ 
 & Spectral & DTW &  & x &  &  &  & 0.489 (0.269) & 0.491 (0.290) & 0.488 (0.269) \\ 
-& K-Means & Euclidian &  &  &  &  & x & 0.453 (0.214) & 0.427 (0.252) & 0.452 (0.215) \\ 
+& K-Means & Euclidean &  &  &  &  & x & 0.453 (0.214) & 0.427 (0.252) & 0.452 (0.215) \\ 
 & Spectral & DTW &  &  & x &  &  & 0.406 (0.203) & 0.403 (0.226) & 0.406 (0.203) \\ 
 		\hline \\[-1.8ex] 
 	\end{tabularx} 
@@ -1089,28 +1197,28 @@ Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\
 \hline \\[-1.8ex] 
 \{0.1,0.3\} & Spectral & Cosine &  &  & x &  &  & 0.088 (0.116) & 0.038 (0.105) & 0.088 (0.115) \\ 
 & Spectral & Cosine & x &  &  &  &  & 0.087 (0.099) & 0.019 (0.075) & 0.084 (0.097) \\ 
-& Average & Euclidian &  &  &  & x &  & 0.083 (0.107) & 0.026 (0.095) & 0.080 (0.106) \\ 
+& Average & Euclidean &  &  &  & x &  & 0.083 (0.107) & 0.026 (0.095) & 0.080 (0.106) \\ 
 & Spectral & Cosine &  & x &  &  &  & 0.039 (0.055) & 0.000 (0.068) & 0.039 (0.055) \\ 
-& K-Means & Euclidian &  &  &  &  & x & 0.037 (0.057) & -0 & 0.037 (0.056) \\ 
+& K-Means & Euclidean &  &  &  &  & x & 0.037 (0.057) & -0 & 0.037 (0.056) \\ 
 \{0.1,0.5\} & Spectral & EDR &  &  &  & x &  & 0.088 (0.087) & 0.027 (0.078) & 0.083 (0.086) \\ 
 & Spectral & Overlap & x &  &  &  &  & 0.066 (0.051) & 0.026 (0.062) & 0.065 (0.050) \\ 
 & Spectral & Cosine &  &  & x &  &  & 0.047 (0.064) & 0.002 (0.067) & 0.047 (0.063) \\ 
 & Spectral & DTW &  & x &  &  &  & 0.030 (0.045) & -0 & 0.030 (0.045) \\ 
-& K-Means & Euclidian &  &  &  &  & x & 0.029 (0.045) & -0 & 0.029 (0.045) \\ 
-\{0.1,0.7\} & Average & Euclidian &  &  &  & x &  & 0.087 (0.038) & 0.007 (0.039) & 0.076 (0.034) \\ 
+& K-Means & Euclidean &  &  &  &  & x & 0.029 (0.045) & -0 & 0.029 (0.045) \\ 
+\{0.1,0.7\} & Average & Euclidean &  &  &  & x &  & 0.087 (0.038) & 0.007 (0.039) & 0.076 (0.034) \\ 
 & Spectral & Cosine & x &  &  &  &  & 0.081 (0.076) & 0.013 (0.044) & 0.078 (0.072) \\ 
-& K-Means & Euclidian &  &  & x &  &  & 0.070 (0.074) & 0.014 (0.061) & 0.068 (0.072) \\ 
+& K-Means & Euclidean &  &  & x &  &  & 0.070 (0.074) & 0.014 (0.061) & 0.068 (0.072) \\ 
 & Spectral & EDR &  & x &  &  &  & 0.048 (0.054) & 0.003 (0.063) & 0.047(0.053) \\ 
-& K-Means & Euclidian &  &  &  &  & x & 0.041 (0.071) & -0 & 0.041 (0.071) \\ 
+& K-Means & Euclidean &  &  &  &  & x & 0.041 (0.071) & -0 & 0.041 (0.071) \\ 
 \{0.1,0.9\} & Spectral & Cosine & x &  &  &  &  & 0.180 (0.110) & 0.069 (0.081) & 0.175 (0.109) \\ 
 & Spectral & EDR &  & x &  &  &  & 0.161 (0.125) & 0.097 (0.129) & 0.159 (0.124) \\ 
-& K-Means & Euclidian &  &  & x &  &  & 0.142 (0.127) & 0.049 (0.097) & 0.139 (0.126) \\ 
-& Average & Euclidian &  &  &  & x &  & 0.115 (0.034) & 0.008 (0.016) & 0.100 (0.037) \\ 
-& K-Means & Euclidian &  &  &  &  & x & 0.058 (0.108) & 0.016 (0.115) & 0.058 (0.108) \\ 
+& K-Means & Euclidean &  &  & x &  &  & 0.142 (0.127) & 0.049 (0.097) & 0.139 (0.126) \\ 
+& Average & Euclidean &  &  &  & x &  & 0.115 (0.034) & 0.008 (0.016) & 0.100 (0.037) \\ 
+& K-Means & Euclidean &  &  &  &  & x & 0.058 (0.108) & 0.016 (0.115) & 0.058 (0.108) \\ 
 \{0.5, 0.9\} & Spectral & Cosine & x &  &  &  &  & 0.169 (0.125) & 0.075 (0.097) & 0.164 (0.126) \\ 
 & Spectral & EDR &  &  & x &  &  & 0.158 (0.184) & 0.111 (0.188) & 0.157 (0.184) \\ 
 & Spectral & EDR &  & x &  &  &  & 0.150 (0.138) & 0.103 (0.149) & 0.148 (0.137) \\ 
-& Average & Euclidian &  &  &  & x &  & 0.104 (0.040) & 0.003 (0.014) & 0.091 (0.038) \\ 
+& Average & Euclidean &  &  &  & x &  & 0.104 (0.040) & 0.003 (0.014) & 0.091 (0.038) \\ 
 \hline \\[-1.8ex] 
 	\end{tabularx} 
 	\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma =  \{1,1,1\}$, $\tau = 0.1$)} 
@@ -1126,25 +1234,25 @@ Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\
 		Alpha & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\ 
 		\hline \\[-1.8ex] 
 	\{0.1,0.3\} & Spectral & Cosine &  &  &  & x &  & 0.131 (0.114) & 0.100 (0.133) & 0.131 (0.113) \\ 
-	& K-Means & Euclidian & x &  &  &  &  & 0.130 (0.199) & 0.075 (0.212) & 0.127 (0.199) \\ 
+	& K-Means & Euclidean & x &  &  &  &  & 0.130 (0.199) & 0.075 (0.212) & 0.127 (0.199) \\ 
 	& Spectral & Cosine &  & x &  &  &  & 0.119 (0.104) & 0.068 (0.094) & 0.118 (0.103) \\ 
-	& K-Means & Euclidian &  &  &  &  & x & 0.113 (0.156) & 0.089 (0.181) & 0.113 (0.156) \\ 
+	& K-Means & Euclidean &  &  &  &  & x & 0.113 (0.156) & 0.089 (0.181) & 0.113 (0.156) \\ 
 	& Spectral & RBF &  &  & x &  &  & 0.101 (0.140) & 0.073 (0.162) & 0.101 (0.140) \\ 
 	\{0.1,0.5\} & Spectral & Cosine &  &  & x &  &  & 0.199 (0.131) & 0.141 (0.129) & 0.198 (0.131) \\ 
 	& Spectral & Cosine &  & x &  &  &  & 0.191 (0.157) & 0.128 (0.148) & 0.190 (0.157) \\ 
-	& Spectral & Euclidian &  &  &  & x &  & 0.168 (0.183) & 0.134 (0.186) & 0.168 (0.182) \\ 
-	& K-Means & Euclidian &  &  &  &  & x & 0.122 (0.121) & 0.085 (0.122) & 0.121 (0.121) \\ 
+	& Spectral & Euclidean &  &  &  & x &  & 0.168 (0.183) & 0.134 (0.186) & 0.168 (0.182) \\ 
+	& K-Means & Euclidean &  &  &  &  & x & 0.122 (0.121) & 0.085 (0.122) & 0.121 (0.121) \\ 
 	& Spectral & Cosine & x &  &  &  &  & 0.063 (0.081) & 0.033 (0.109) & 0.063 (0.081) \\ 
 	\{0.1,0.7\} & Spectral & Cosine &  & x &  &  &  & 0.277 (0.229) & 0.222 (0.240) & 0.276 (0.229) \\ 
 	& Spectral & Cosine &  &  &  & x &  & 0.278 (0.272) & 0.183 (0.254) & 0.271 (0.183) \\ 
-	& K-Means & Euclidian &  &  & x &  &  & 0.227 (0.178) & 0.186 (0.176) & 0.227 (0.177) \\ 
+	& K-Means & Euclidean &  &  & x &  &  & 0.227 (0.178) & 0.186 (0.176) & 0.227 (0.177) \\ 
 	& Spectral & Cosine & x &  &  &  &  & 0.190 (0.114) & 0.152 (0.116) & 0.189 (0.114) \\ 
-	& K-Means & Euclidian &  &  &  &  & x & 0.178 (0.150) & 0.147 (0.147) & 0.177 (0.149) \\ 
+	& K-Means & Euclidean &  &  &  &  & x & 0.178 (0.150) & 0.147 (0.147) & 0.177 (0.149) \\ 
 	\{0.1,0.9\} & Spectral & DTW &  &  &  & x &  & 0.300 (0.232) & 0.273 (0.254) & 0.299 (0.232) \\ 
 	& Spectral & Cosine &  & x &  &  &  & 0.211 (0.158) & 0.159 (0.160) & 0.210 (0.158) \\ 
 	& Spectral & Cosine &  &  & x &  &  & 0.191 (0.117) & 0.137 (0.127) & 0.189 (0.118) \\ 
 	& Spectral & Cosine & x &  &  &  &  & 0.164 (0.110) & 0.115 (0.109) & 0.162 (0.109) \\ 
-	& K-Means & Euclidian &  &  &  &  & x & 0.138 (0.153 & 0.091 (0.176) & 0.137 (0.153) \\
+	& K-Means & Euclidean &  &  &  &  & x & 0.138 (0.153 & 0.091 (0.176) & 0.137 (0.153) \\
 	\hline \\[-1.8ex] 
 	\end{tabularx} 
 	\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma =  \{1,1,1\}$, $\tau = 0.5$)} 
@@ -1163,31 +1271,119 @@ Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\
 & Spectral  & EDR &  & x &  &  &  & 0.096 (0.061) & 0.016 (0.049) & 0.088 (0.059) \\ 
 & Spectral  & EDR &  &  &  & x &  & 0.068 (0.080) & 0.008 (0.085) & 0.063 (0.078) \\ 
 & Spectral  & Cosine &  &  & x &  &  & 0.043 (0.067) & -0 & 0.043 (0.067) \\ 
-& K-Means & Euclidian  &  &  &  &  & x & 0.036 (0.041) &  -  & 0.036 (0.041) \\ 
-\{0.1, 0.5\} & Average & Euclidian  &  & x &  &  &  & 0.133 (0.115) & 0.040 (0.077) & 0.127 (0.115) \\ 
-& K-Means & Euclidian  & x &  &  &  &  & 0.112 (0.124) & 0.035 (0.085) & 0.110 (0.122) \\ 
-& Spectral  & Euclidian  &  &  &  & x &  & 0.103 (0.096) & 0.060 (0.092) & 0.103 (0.095) \\ 
+& K-Means & Euclidean  &  &  &  &  & x & 0.036 (0.041) &  -  & 0.036 (0.041) \\ 
+\{0.1, 0.5\} & Average & Euclidean  &  & x &  &  &  & 0.133 (0.115) & 0.040 (0.077) & 0.127 (0.115) \\ 
+& K-Means & Euclidean  & x &  &  &  &  & 0.112 (0.124) & 0.035 (0.085) & 0.110 (0.122) \\ 
+& Spectral  & Euclidean  &  &  &  & x &  & 0.103 (0.096) & 0.060 (0.092) & 0.103 (0.095) \\ 
 & Spectral  & Cosine &  &  & x &  &  & 0.080 (0.088) & 0.038 (0.092) & 0.080 (0.088) \\ 
-& K-Means & Euclidian  &  &  &  &  & x & 0.079 (0.097) & 0.034 (0.088) & 0.079 (0.096) \\ 
+& K-Means & Euclidean  &  &  &  &  & x & 0.079 (0.097) & 0.034 (0.088) & 0.079 (0.096) \\ 
 \{0.1, 0.7\} & Spectral  & DTW &  &  &  & x &  & 0.361 (0.200) & 0.352 (0.211) & 0.361 (0.200) \\ 
 & Spectral  & EDR &  &  &  & x &  & 0.223 (0.083) & 0.087 (0.080) & 0.217 (0.086) \\ 
-& Ward & Euclidian  &  &  &  & x &  & 0.195 (0.143) & 0.103 (0.135) & 0.192 (0.143) \\ 
-& K-Means & Euclidian  &  & x &  &  &  & 0.167 (0.123) & 0.064 (0.114) & 0.161 (0.123) \\ 
-& K-Means & Euclidian  & x &  &  &  &  & 0.157 (0.127) & 0.060 (0.116) & 0.151 (0.127) \\ 
+& Ward & Euclidean  &  &  &  & x &  & 0.195 (0.143) & 0.103 (0.135) & 0.192 (0.143) \\ 
+& K-Means & Euclidean  &  & x &  &  &  & 0.167 (0.123) & 0.064 (0.114) & 0.161 (0.123) \\ 
+& K-Means & Euclidean  & x &  &  &  &  & 0.157 (0.127) & 0.060 (0.116) & 0.151 (0.127) \\ 
 & Spectral  & DTW &  &  & x &  &  & 0.105 (0.140) & 0.087 (0.179) & 0.105 (0.140) \\ 
-& K-Means & Euclidian  &  &  &  &  & x & 0.102 (0.183) & 0.063 (0.201) & 0.101 (0.183) \\ 
+& K-Means & Euclidean  &  &  &  &  & x & 0.102 (0.183) & 0.063 (0.201) & 0.101 (0.183) \\ 
 \{0.1, 1.0\} & Spectral  & DTW &  &  &  & x &  & 0.792 (0.174) & 0.808 (0.170) & 0.792 (0.174) \\ 
 & Spectral  & RBF &  &  &  & x &  & 0.692 (0.164) & 0.692 (0.184) & 0.692 (0.164) \\ 
-& K-Means & Euclidian  &  &  &  & x &  & 0.606 (0.188) & 0.578 (0.233) & 0.606 (0.189) \\ 
+& K-Means & Euclidean  &  &  &  & x &  & 0.606 (0.188) & 0.578 (0.233) & 0.606 (0.189) \\ 
 & Spectral  & EDR &  & x &  &  &  & 0.280 (0.198) & 0.201 (0.215) & 0.278 (0.198) \\ 
 & Spectral  & Levensthein & x &  &  &  &  & 0.276 (0.101) & 0.154 (0.113) & 0.272 (0.111) \\ 
 & Spectral  & EDR &  &  & x &  &  & 0.236 (0.196) & 0.171 (0.184) & 0.235 (0.195) \\ 
-& K-Means & Euclidian  &  &  &  &  & x & 0.099 (0.105) & 0.052 (0.097) & 0.098 (0.104) \\ 
+& K-Means & Euclidean  &  &  &  &  & x & 0.099 (0.105) & 0.052 (0.097) & 0.098 (0.104) \\ 
 \hline \\[-1.8ex] 
 	\end{tabularx} 
 	\caption{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma =  \{1,1,1\}$, $\tau = 1.0$)} 
 		\label{tab:apstab8}
 \end{table} 
+
+\subsection{Prison data}
+
+\begin{table}[!htbp] \centering 
+	\caption{} 
+	\label{} 
+	\scriptsize 
+	\begin{tabular}{@{\extracolsep{0pt}} llcccccccccc} 
+		\\[-1.8ex]\hline 
+		\hline \\[-1.8ex] 
+		Groups & Method & Similarity & C & CBC & BBC & E & EB & CC & NMI & ARI & VM \\ 
+		\hline \\[-1.8ex] 
+		6vs1 & Spectral & EDR &  &  &  & x &  &  & 0.237 (0.0) & 0.020 (0.0) & 0.237 (0.0) \\ 
+		& K-Means &  &  &  &  &  & x &  & 0.167 (0.0) & - & 0.166 (0.0) \\ 
+		& Spectral & Euclidean &  & x &  &  &  &  & 0.057 (0.0) & 0.036 (0.0) & 0.057 (0.0) \\ 
+		& Spectral & EDR &  &  & x &  &  &  & 0.037 (0.0) & 0.034 (0.0) & 0.037 (0.0) \\ 
+		& K-Means & Euclidean &  &  &  &  &  & x & 0.023 (0.028) & - & 0.023 (0.028) \\ 
+		& K-Means &  & x &  &  &  &  &  & 0.020 (0.022) & - & 0.020 (0.023) \\ 
+		& Average &  &  &  &  &  &  &  & 0.068 (0.068) & - & 0.067 (0.068) \\ 
+		6vs2 & K-Means &  &  & x &  &  &  &  & 0.289 (0.052) & 0.217 (0.063) & 0.278 (0.055) \\ 
+		& K-Means &  &  &  &  & x &  &  & 0.165 (0.0) & 0.083 (0.0) & 0.145 (0.0) \\ 
+		& Spectral & Cosine &  &  &  &  & x &  & 0.165 (0.0) & 0.083 (0.0) & 0.145 (0.0) \\ 
+		& Ward & Euclidean &  &  & x &  &  &  & 0.072 (0.0) & 0.083 (0.0) & 0.071 (0.0) \\ 
+		& K-Means &  & x &  &  &  &  &  & 0.041 (0.022) & - & 0.041 (0.022) \\ 
+		& K-Means & Euclidean &  &  &  &  &  & x & 0.028 (0.023) & - & 0.028 (0.023) \\ 
+		& Average &  &  &  &  &  &  &  & 0.116 (0.088) & 0.058 (0.081) & 0.110 (0.083) \\ 
+		6vs3 & Spectral & warp &  &  &  & x &  &  & 0.205 (0.0) & - & 0.203 (0.0) \\ 
+		& K-Means &  &  &  &  &  & x &  & 0.174 (0.0) & - & 0.171 (0.0) \\ 
+		& Spectral & warp &  & x &  &  &  &  & 0.116 (0.0) & - & 0.110 (0.0) \\ 
+		& Ward & Euclidean &  &  & x &  &  &  & 0.116 (0.0) & - & 0.110 (0.0) \\ 
+		& Lavenstein &  & x &  &  &  &  &  & 0.116 (0.0) & - & 0.110 (0.0) \\ 
+		& K-Means & Euclidean &  &  &  &  &  & x & 0.110 (0.023) & - & 0.105 (0.022) \\ 
+		& Average &  &  &  &  &  &  &  & 0.089 (0.056) & - & 0.086 (0.055) \\ 
+		6vs4 & Spectral & EDR &  &  &  & x &  &  & 0.360 (0.000) & 0.227 (0.000) & 0.342 (0.000) \\ 
+		& Spectral & Euclidean  &  &  &  &  & x &  & 0.246 (0.000) & 0.229 (0.000) & 0.246 (0,000) \\ 
+		& Ward & Euclidean  &  & x &  &  &  &  & 0.105 (0.000) & - & 0.102 (0.000) \\ 
+		& Complete & Euclidean  &  &  & x &  &  &  & 0.848 (0.000) & - & 0.080 (0.000) \\ 
+		& K-Means & Euclidean  & x &  &  &  &  &  & 0.049 (0.000) & - & 0.049 (0.000) \\ 
+		& K-Means & Euclidean  &  &  &  &  &  & x & 0.080 (0.050) & - & 0.079 (0.048) \\ 
+		& Average &  &  &  &  &  &  &  & 0.089 (0.088) & - & 0.088 (0.088) \\ 
+		6vs9 & Ward  & Euclidean &  &  &  &  & x &  & 0.561 (0.000) & 0.560 (0,000) & 0.560 (0,000) \\ 
+		& Spectral & DTW &  &  &  & x &  &  & 0.435 (0.000) & 0.387 (0.000) & 0.432 (0.000) \\ 
+		& Spectral & DTW &  & x &  &  &  &  & 0.435 (0.000) & 0.387 (0.000) & 0.432 (0.000) \\ 
+		& Spectral & EDR &  &  & x &  &  &  & 0.333 (0.000) & 0.381 (0.000) & 0.333 (0.000) \\ 
+		& Spectral & Overlap & x &  &  &  &  &  & 0.111 (0.000) & 0.118 (0.000) & 0.111 (0.000) \\ 
+		& K-Means & Euclidean &  &  &  &  &  & x & 0.106 (0.066) & 0.033 (0.054) & 0.094 (0.059) \\ 
+		& Average &  &  &  &  &  &  &  & 0.249 (0.167) & 0.202 (0.189) & 0.244 (0.169) \\ 
+		\hline \\[-1.8ex] 
+	\end{tabular} 
+\end{table} 
+
+\begin{table}[!htbp] \centering 
+	\caption{} 
+	\label{} 
+	\scriptsize 
+	\begin{tabular}{@{\extracolsep{0pt}} cccccccccccc} 
+		\\[-1.8ex]\hline 
+		\hline \\[-1.8ex] 
+		Groups & Method & Similarity & C & CBC & BBC & E & EB & CC & NMI & ARI & VM \\ 
+		\hline \\[-1.8ex] 
+		2vs4 & Spectral & eucsim/rbf &  & x &  &  &  &  & 0.213 (0.0) & 0.007 (0.0) & 0.211 (0.0) \\ 
+		& Levenstein &  & x &  &  &  &  &  & 0.213 (0.0) & 0.007 (0.0) & 0.211 (0.0) \\ 
+		& Spectral & EDR &  &  &  & x &  &  & 0.132 (0.0) & 0.104 (0.0) & 0.131 (0.0) \\ 
+		& Spectral & EDR &  &  & x &  &  &  & 0.054 (0.0) & - & 0.054 (0.0) \\ 
+		& Spectral & eblock &  &  &  &  & x &  & 0.018 (0.0) & - & 0.017 (0.0) \\ 
+		& K-Means & Euclidean &  &  &  &  &  & x & 0.005 (0.005) & - & 0.005 (0.005) \\ 
+		&  &  &  &  &  &  &  &  & 0.042 (0.063) & - & 0.041 (0.063) \\ 
+		2vs6 & K-Means &  &  & x &  &  &  &  & 0.3 (0.048) & 0.23 (0.062) & 0.291 (0.510) \\ 
+		& K-Means &  &  &  &  & x &  &  & 0.165 (0.0) & 0.083 (0.0) & 0.145 (0.0) \\ 
+		& Spectral & Cosine &  &  &  &  & x &  & 0.165 (0.0) & 0.083 (0.0) & 0.145 (0.0) \\ 
+		& Ward & Euclidean &  &  & x &  &  &  & 0.072 (0.0) & 0.083 (0.0) & 0.071 (0.0) \\ 
+		& K-Means & Euclidean &  &  &  &  &  & x & 0.027 (0.020) & - & 0.027 (0.020) \\ 
+		& K-Means &  & x &  &  &  &  &  & 0.023 (0.021) & - & 0.023 (0.021) \\ 
+		&  &  &  &  &  &  &  &  & 0.112 (0.090) & 0.057 (0.082) & 0.106 (0.085) \\ 
+		2vs9 & Spectral & EDR &  &  &  & x &  &  & 0.382 (0.0) & 0.235 (0.0) & 0.382 (0.0) \\ 
+		& Spectral & EDR &  &  & x &  &  &  & 0.232 (0.0) & 0.226 (0.0) & 0.232 (0.0) \\ 
+		& Spectral & Cosine &  &  &  &  & x &  & 0.197 (0.0) & 0.008 (0.0) & 0.191 (0.0) \\ 
+		& Spectral & eucsim/rbf &  & x &  &  &  &  & 0.134 (0.0) & 0.075 (0.0) & 0.134 (0.0) \\ 
+		& K-Means & Euclidean &  &  &  &  &  & x & 0.116 (0.0) & - & 0.105 (0.0) \\ 
+		& K-Means &  & x &  &  &  &  &  & 0.111 (0.022) & - & 0.100 (0.020) \\ 
+		&  &  &  &  &  &  &  &  & 0.096 (0.074) & - & 0.093 (0.073) \\ 
+		\hline \\[-1.8ex] 
+	\end{tabular} 
+\end{table} 
+
+
+
+
 
 \end{appendix}
 
