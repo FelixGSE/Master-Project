@@ -318,13 +318,16 @@ VM & V-Measure score
 
 \section{Introduction and conceptual approach}
 
-Decision-making is a cognitive process of selecting an option from a set of possible alternatives based on certain criteria \cite{Wang2007}. When analysing decision-making as a continuous process of interaction with the environment, learning becomes an important aspect. In general people show different individual learning behaviour. The learning procedure can be affected by different social, psychological and mental conditions. A common way to model this, is by estimating cognitive models and group people by their resulting parameters\\
-In \textit{supervised learning} data are predicted by training a classifier based on examples. The identity of observations in the training sample is known, which is used to connect patterns in the data with corresponding labels of observations. In contrast to that in \textit{unsupervised learning} we don't know the ground truth. The objective is to discover natural clustering behaviour in the data itself and group objects into subsets, such that objects in those subsets are more closely related to each other \cite{Murphy2012} and \cite{hastie}. A vast class of clustering algorithms with different approaches are proposed in the literature (e.g. hierarchical and optimization based clustering). This paper investigates, whether such unsupervised learning techniques can be used in the context of human decision making process to identify latent grouping. Approaching decision modeling conventionally requires a decent amount of explorative work and expertise. Unsupervised learning could serve as an easier tool to identify clusters of individuals. Furthermore, they might Thus, this paper operates in the intersection of machine learning and cognitive science. To our knowledge this particular setting has not been studied before.\\
-We approach our research in the following way. We first set up a reinforcement learning based simulation framework to study theoretical boundaries of several clustering techniques and situation when they are applicable. Reinforcement learning is a widely used modeling framework within cognitive science. Furthermore, we able to control the clustering\footnote{Meaning we can choose the number of people in one cluster, because they should come from the same parameter settings.} and test our applied algorithms. 
-Subsequently, we test our chosen methods on several  real experimental data sets. Corresponding to our simulation framework we first apply clustering algorithms to data from a controlled n-armed bandit experiment.\footnote{A detailed introduction is given in section \ref{reinf}} A well known used approach to study human decision making process is the \textit{Iowa gambling task}. Within this framework we analyse data sets from people with different criminal profiles and cocaine abusers.\\
-Our objective
+Decision-making is a cognitive process of selecting an option from a set of possible alternatives based on certain criteria \cite{Wang2007}. When analysing decision-making as a continuous process of interaction with the environment, learning becomes an important aspect. Learning is a complex procedure and can be described and estimated through different parameters. The learning procedure can be affected by different social and psychological conditions. Due to their cognitive ability people should show different learning behaviour.\\
 
-The report has the following structure. In section two we provide a short overview on related literature in the field. Section three is dedicated to the theoretical foundation of reinforcement learning and the related simulation. We furthermore, describe our modeling approach in more detail give an overview of applied algorithms, similarity and distance concepts. A mathematical formulation of the applied algorithms, similarity measures and cluster evaluation techniques can be found in the appendix.\footnote{Since our data are fairly small we will not discuss complexity of the algorithms.}\\
+One of the popular experiments for analysing decision behaviour is the Iowa Gambling Task. The decision making process is studied by monitoring peoples sequential choices in a controlled experiment environment.\\
+
+In \textit{supervised learning} data are predicted by training a classifier based on examples. The identity of observations in the training sample is known. This is used to connect patterns in the data with corresponding labels of observations. In contrast to that in \textit{unsupervised learning} we don't know the ground truth. The objective is to discover natural clustering behaviour in the data itself and group objects into subsets, such that objects in those subsets are more closely related to each other \cite[page 9 et. seqq.]{Murphy2012} and \cite[page 501 et. seqq.]{hastie}. A vast class of clustering algorithms based on different approaches are proposed in the literature (e.g. hierarchical and optimization based clustering). This paper investigates, whether such unsupervised learning techniques can be used in the context of human decision making process to identify latent grouping. The decision making process is studied by monitoring peoples sequential choices in a controlled experiment environments over time. Thus, this paper operates in the intersection of machine learning and cognitive science. To our knowledge this particular setting has not been studied before.\\
+We approach our research in the following way. We first set up a reinforcement learning based simulation framework to study theoretical boundaries of several clustering techniques and when they are applicable.
+ Subsequently, we test our chosen methods on several  real experimental data sets. Corresponding to our simulation framework we first apply clustering algorithms to data from controlled n-armed bandit experiment.\footnote{A detailed introduction is given in section \ref{reinf}} A widely used approach to study human decision making process is the \textit{Iowa gambling task}, where participants try maximize rewards by choosing cards from different decks with different reward structures.\footnote{There are existing several slightly different versions of test. \cite{Steingroever2015} provides a data collection for from several sources giving a broad overview of different variations of the test.} Two decks have distributions with negative expectations while two have positive. However, each deck has its own variance and a set of profits.  Within this framework we analyse two different data sets. First we study decision making behaviour from people with different criminal profiles. Furthermore, we use another data set from cocaine abusers.\\
+
+
+The report has the following structure. In section two we provide a short overview on related literature in the field. Section three is dedicated to the theoretical foundation and the simulation. We first provide knowledge of reinforcement and line out our experiment design in more detail. This section also includes an overview of applied algorithms, similarity and distance concepts. A mathematical formulation of the applied algorithms, similarity measures and cluster evaluation techniques can be found in the appendix.\footnote{Since our data are fairly small we will not discuss complexity of the algorithms.} Finally, we study their simulation performance and try to identify parameter settings, where they are applicable.\\ 
 The rest of paper is address clustering our experimental data. We keep the scope of this paper tight and thus there some questions have to be left open. Thus we dedicated another section to discussing some possible extensions. We close this paper with a final summary of our results.
 
 %---------------------------------------------------------------------------------------------------------
@@ -333,38 +336,20 @@ The rest of paper is address clustering our experimental data. We keep the scope
 
 \section{Relevant Literature}
 
-There exists a rich literature in cognitive science on identifying different behavioural groups. It has been shown that individuals with pre-frontal brain damage and decision-making defects continue to choose disadvantageously even after they learned the optimal strategy \cite{Bechara1997}.\\
+There exists a rich literature in cognitive science on identifying different behavioural groups. As mentioned in the introduction a commonly applied tool by a lot of studies is the Iowa Gambling Task experiment. Within that framework it has been shown that individuals with pre-frontal brain damage and decision-making defects continue to choose disadvantageously even after they learned the optimal strategy \cite{Bechara1997}.\\
 A broad overview on other various results in the field can be found in \cite{Steingroever2013}. Several studies identify especially specific drug-user groups, e.g. cocaine addicts \cite{Stout2004}, chronic cannabis users \cite{Fridberg2010}, heavy alcohol users(heavy drinkers) \cite{Gullo2011}. Furthermore, extensive set of research is focused around particular mental disabilities, e.g. Asperger's disorder \cite{Johnson2006}, psychopathic tendencies \cite{Blair2001}, bipolar disorder \cite{Brambilla2012}, schizophrenia \cite{Martino2007} pathological gambling disorder \cite{Cavedini2002}, attention-deficit-hyperactivity disorder \cite{NiritAgay2010}. Most popular reinforcement learning models for identifying behavioural differences between different disorders are Expectancy Valence model \cite{Busemeyer2002} and Prospect Valence Learning model \cite{Ahn2008}.
 
 %---------------------------------------------------------------------------------------------------------
 % 3. Simmulation
 %---------------------------------------------------------------------------------------------------------
 
-\section{Theoretical background of reinforcement learning and simulation experiments}
+\section{Theoretical Background and simulation experiments}
 
-This section is dedicated to a detailed outline of our analysis approach and the results of our simulation experiments. The type of date we want to analyse are gathered by observing peoples decisions over time. Hence, our data sets are in form of a $N \times M$ data set, where $N$ is the number of individuals and $M$ is the number of trials in the experiment. The data for each individual can be seen as a categorical time series. In terms of modeling there are two challenges.\\
-Some common algorithms relying for example on euclidean distance while others operating on similarities. Given the nature of our data we have to choose the right algorithm or similarity measure to cluster the data in a good way. \\
-Furthermore, we introduce how to re-express the categorical sequences and extract information about the behaviour (e.g. entropy, description see later on). Furthermore, rep-expressing the data to real values makes them makes them better usable for most clustering algorithms.\\
-Within this section we also give a broad overview on the applied algorithms etc. However, this section has a rather qualitative character. The appendix provides in more formal background to applied algorithms, distance concepts and related clustering evaluation techniques. 
+This section is dedicated to a detailed outline of our analysis approach and the results of our simulation experiments. The data we are analysing are gathered by observing peoples decisions over time. Hence, our data set are in the form $N \times M$ data set, where a row $N$ is the number of individuals and $M$ is the number of trials in the experiments. The data for each individual can be seen as a categorical time series. In terms of modeling there are two challenges. Some algorithms relying for example on euclidean distance while others operating on similarities. On one hand we introduce how repress those data and introduce related distance and similarity concepts for the algorithms. The section has a rather qualitative character. The appendix provides in more detail a mathematical background to applied algorithms, distance concepts and related clustering evaluation techniques. 
 
 \subsection{Experiment design and problem formulation}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 Figure \ref{fig:flow} depicts our simulation experiment design.\footnote{We implemented related coding for this project mainly in python. The code can be found in our  \href{https://github.com/FelixGSE/Master-Project}{github} repository.} The objective is to obtain a set of sequential choices for a given parameter setting of an artificial agent. We first generate a set of rewards by sampling $n-$vectors from a normal distribution ("\textit{multi arm bandits}"). The agent processes those rewards by sequentially choosing from those options. We repeat this procedure for several parameter settings for the agents and keep track of those choices which will define our data set.
-=======
-Figure \ref{fig:flow} depicts our simulation experiment design.\footnote{We implemented related coding for this project mainly in python. The code can be found on our  \href{https://github.com/FelixGSE/Master-Project}{github} repository.} The objective is to obtain a set of sequential choices for a given parameter setting of an artificial agent. We first generate a set of rewards by sampling $n-$vectors from a normal distribution ("\textit{multi arm bandits}"). The agent processes those rewards by sequentially choosing from those options. We repeat this procedure for several parameter settings and keep track of the resulting choices which will define our data set for the simulation.\\
-We re-use those data for clustering. 
->>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
-=======
-Figure \ref{fig:flow} depicts our simulation experiment design.\footnote{We implemented related coding for this project mainly in python. The code can be found on our  \href{https://github.com/FelixGSE/Master-Project}{github} repository.} The objective is to obtain a set of sequential choices for a given parameter setting of an artificial agent. We first generate a set of rewards by sampling $n-$vectors from a normal distribution ("\textit{multi arm bandits}"). The agent processes those rewards by sequentially choosing from those options. We repeat this procedure for several parameter settings and keep track of the resulting choices which will define our data set for the simulation.\\
-We re-use those data for clustering. 
->>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
-=======
-Figure \ref{fig:flow} depicts our simulation experiment design.\footnote{We implemented related coding for this project mainly in python. The code can be found on our  \href{https://github.com/FelixGSE/Master-Project}{github} repository.} The objective is to obtain a set of sequential choices for a given parameter setting of an artificial agent. We first generate a set of rewards by sampling $n-$vectors from a normal distribution ("\textit{multi arm bandits}"). The agent processes those rewards by sequentially choosing from those options. We repeat this procedure for several parameter settings and keep track of the resulting choices which will define our data set for the simulation.\\
-We re-use those data for clustering. 
->>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
 
  \begin{figure}[H]
 	\includegraphics[width=\textwidth]{Pictures/flow01.png}
@@ -374,10 +359,10 @@ We re-use those data for clustering.
 
 \subsection{Reinforcement Learning background and multi arm bandits}
 \label{reinf}
-Our simulation requires an artificial agent to produce decision data. The agent modeling is relying on \textit{Reinforcement Learning} (RL). In the following we provide some necessary concepts from the field. The following definitions and intuitions are based on \cite{Sutton2012}. RL is a branch of \textit{machine learning} trying model the interaction of an artificial agents with its environment and the corresponding learning process. \\
-In our particular setting the agent is confronted with the task of choosing sequentially from a set of $N$ possible choices. The agent doesn't have any knowledge about the system a priori. Therefore, it has to learn the nature of the system by continuously interacting with its environment, while keeping track of the obtained information for each particular choice. Due to the lack of examples it has to explore different possible actions to identify the best action. Hence, it is useful to deviate from the current optimal strategy from time to time.\\ 
-Each action in each step is associated with a given value based on the experience of the agent. This is modeled by defining a value function each action $a$. The value function of an action $a$ at time t is denoted as $Q(a)_t$. Hence the value function is defined average over the rewards for a given state. As mentioned it is necessary for the agent to explore its environment while simultaneously try to optimize its utility. Thus, a crucial task of the agent is to balance exploration and exploitation of the environment. There are two basic approaches to model this trade-off; An \textit{epsilon-greedy action selection method} and a \textit{softmax selection method}.\\
-Within an epsilon greedy  selection method the next action is chosen based on the highest current value function. However, to model exploration an random element is introduced to deviate from that greedy strategy with a certain probability (denoted by $\epsilon \in [0,1]$). In general we can define the next action selected by the epsilon greedy strategy as:
+Our simulation requires an artificial agent to produce desired data. The agent is relying \textit{Reinforcement Learning} (RL). Thus, we provide some necessary concepts of that field. The following definitions coming from \cite[chapter 1 and 2]{Sutton2012}. RL is a branch of \textit{machine learning} trying model the interaction of an artificial agents with its environment and the corresponding learning process. \\
+In our particular setting the agent is confronted with the task of choosing sequentially from a set of $N$ possible choices. The agent doesn't have any knowledge about the system a priori. Therefore, it has to learn the nature of the system by continuously interacting with its environment while keeping track of the obtained information for each particular choice. Due to the lack of examples it has to explore different possible actions to identify the best action. Hence, it is useful to deviate from the current optimal strategy from time to time.\\ 
+Each action in each step is associated with a given value based on the experience of the agent. This is modeled by defining a value function value function each action $a$. Denote the value function of an action $a$ as $Q(a)_t$. Hence the value function is defined average over the rewards for a given state. As mentioned it is necessary for the agent to explore its environment while simultaneously try to optimize its utility. Thus, a crucial task of the agent is to balance \textit{exploration} and \textit{exploitation} of the environment. There are two basic approaches to model this trade-off; An \textit{"Epsilon-Greedy"} action selection method and \textit{"Softmax"} selection method.\\
+Within an epsilon greedy action selection strategy the next action is chosen based on the highest value function. However, to model exploration an random element is introduced to deviate from that greedy strategy with a certain probability (denoted by $\epsilon$). In general we can define the next action selected by the epsilon greedy strategy as:
 
 \begin{flalign}
 a_{t+1} = \begin{cases} 
@@ -386,7 +371,6 @@ a_{t+1} = \begin{cases}
 \end{cases} \nonumber
 \end{flalign}
 
-Hence, within the epsilon greedy method $\epsilon$ is controlling the balancing between randomization and greedy behaviour of the agent.\\
 In the softmax action selection method each next action is sampled with a certain probability coming from a  \textit{Boltzmann Distribution)}. The probability for action a is computed by:
 
 \begin{flalign}
@@ -394,7 +378,7 @@ P(a)_{t+1} = \frac{e^{\frac{Q_t(a)}{\tau}}}{\sum_{i}^{N} e^{\frac{Q_t(i)}{\tau}}
 \label{eq:softmax}
 \end{flalign}
 
-The softmax is essentially depending on the parameter $\tau$. It has basically the same functioning as $\epsilon$ and therefore is controlling how deterministic or random the agent behaves. For increasing $\tau$ the numerator goes to one and the next action is picked uniformly. For low values in $\tau$, actions with low value functions result in lower probabilities and hence in a greedy strategy. The parameter is also sometimes called \textit{temperature}.\footnote{Another variation is to use the inverse of $\tau$ and denote it by $\theta$ (see, e.g. \cite{Stojic2015})}. 
+Using those probabilities for each action the next choice is sampled from this distribution. The softmax is essentially depending on the parameter $\tau$ parameter. It is controlling the how deterministic or random the agent is behaving. For increasing $\tau$ the numerator goes to one and the next action is therefore picked uniformly. For low values in $\tau$, actions with low value functions result in lower probabilities and hence in a greedy strategy. The parameter is sometimes called \textit{temparature}.\footnote{Another variation is to use the inverse of $\tau$ and denote it by $\theta$ (see, e.g. \cite{Stojic2015})}. 
 After selecting an action the agent has to update its believes about it. The update rule is for the value function for an action is defined as:
 
 \begin{flalign}
@@ -402,22 +386,22 @@ Q(a)_{t+1} = Q(a)_t + \alpha \left[ R(a)_t -  Q(a)_t	 \right],
 \label{eq:update}
 \end{flalign}
 
-where $\alpha$ is the non negative \textit{learning rate} and $R(a)_t$ is the reward of action a at time $t$. The learning rate is defining how much the reward of the current action is changing the value function of that action. A challenge might be how to initialize the value function. However, for convenience we set them to zero for all options. Those are the basic necessary ingredients to model artificial decision process. In the following we elaborate on further data processing.
+where $\alpha$ is a is the non negative \textit{learning rate} defining how much the current action is affecting the believes and $R(a)_t$ is the reward of action a at step k. A challange might be how to initialize the value function. However, for convenience we set them to zero for all bandits. Those are the basic necessary ingredients to model artificial decision process. In the following we elaborate on further data processing.
 
 \subsection{Data handling, unsupervised learning methods and similarities}
 \label{algosim}
 As mentioned we find two main challenges concerning the data. First, our data have a categorical nature. Furthermore, the learning process and corresponding behavioural changes also imposes changing dependence over time.\\
-A well studied approach clustering such data types are \textit{hidden markov models}. A decent study on that can for example be found in \cite{Pamminger2007}, \cite{Pamminger2009} and \cite{Pamminger2010a}. However, we are not considering them.\\
-The different applied algorithms operate on distinct distance or similarity concepts. Given our data we  have to think carefully think about distance and similarity measures to respect the nature of our data and algorithms.\footnote{A formal definition of the distance and similarity can be found in the appendix} 
+A well studied approach clustering such data types are \textit{hidden markov models}. For example, a decent study on that can be found in \cite{Pamminger2007}, \cite{Pamminger2009} and \cite{Pamminger2010a}. However, we focus our attention only on partition based clustering algorithms.\\
+Some of the applied algorithms operate on distinct distance or similarity concepts. Given our data we  have to think carefully think about distance and similarity measures to respect the nature of our data and algorithms.\footnote{A formal definition of the distance and similarity can be found in the appendix} 
 Furthermore, besides considering only raw choices we might try to re-express our data to discriminate them in different ways. 
-One way is to apply \textit{Shannon's Entropy}  introduced by \cite{Shannon1948}. It is computed by using the empirical probability for given set of choices. For a discrete random variable  $X$ with probability $p$ the entropy is defined as \cite{MacKay2005}:
+One way is to apply \textit{Shannon's Entropy}  introduced by \cite{Shannon1948}. It is computed by using the empirical probability for each choices. For a discrete random variable  $X$ with probability $p$ the entropy is defined as \cite[page 32]{MacKay2005}:
 
 \begin{flalign}
 H(X) := -\sum_{i=1}^{N} p_i \log_2 p_i
 \end{flalign}
 
-Entropy in general gives measure on how random the outcome of a random variable is. In context of this paper it serves as an indicator of the randomness in peoples behaviour. If an individual acts deterministically his or her choice will result in low entropy values, while high entropy values indicate random behaviour.\footnote{From an applied perspective once we get values for $X$ such that $p_i = 0$, we set $H(X) = 0$ for convenience  \cite{Bishop2006}} Hence, entropy also gives an impression on the exploration and exploitation. Within the entropy framework we consider two types of entropies. For each time step we compute the entropy using choices done so far. We call this \textit{cumulative entropy}. Furthermore, we might want to observe more sharply how individuals adapt their behaviour over time. Considering an experiment with 100 trials we then compute the entropy for different blocks of choices (e.g. ten choices). We call this \textit{blockwise entropy}. Mapping choices to an entropy data set aims on discriminating individuals by their level of random behaviour. \\
-A second approach is based on the experimental setting. We know that within framework there are a set of choices, which are disadvantageous for the participant. Following e.g. \cite{Yechiam2008} or \cite{Ahn2008}, we then compute block wise the ratio of disadvantageous choices. We call this \textit{blockwise disadvantageous choice}. Within that framework we also consider a cumulative version of this ratio, which we call \textit{cumulative disadvantageous choice}
+Entropy gives measure on how random a random variable behaves.\footnote{From an applied perspective one get values for $X$ such that $p_i = 0$, we set $H(X) = 0$ for convenience  \cite[page 49]{Bishop2006}} Within the entropy framework we consider to types of entropies. For each time step we compute the entropy using choices done so far. We call this \textit{cumulative entropy}. Furthermore, we might want to observe more clearly how individuals adapt their behaviour over time. Considering an experiment with 100 trials we then compute the entropy for set of e.g. ten choices. We call this \textit{blockwise entropy}. Mapping choices to an entropy data set aims on discriminating individuals by their level randomness in their behaviour. \\
+A second approach is based on the experimental setting. We know that within framework there are a set of choices, which are disadvantageous for the participant. Following e.g. \cite{Yechiam2008} or \cite{Ahn2008}, we then compute block wise the ratio of disadvantageous choices. We call this \textit{blockwise disadvantageous choice}. Finally we also consider a cumulative version of this ration, which we call \textit{cumulative disadvantageous choice}
 
 Within our analysis we consider a broad selection of several clustering techniques and similarity concepts. Figure \ref{fig:cla} shows an overview of the algorithms and their corresponding distance/similarity requirements. A technical description for all of them is provided in the appendix. 
 
@@ -429,34 +413,15 @@ Within our analysis we consider a broad selection of several clustering techniqu
 
 \subsection{Simulation setup and results}
 
-We observed that the clustering results of our simulation are fluctuating. Hence, to report meaningful results, the following numbers are an average over 20 simulations. We also report the corresponding standard deviations to give an impression on the sensitivity of the clustering results.\\
-<<<<<<< HEAD
-<<<<<<< HEAD
+We observed that that the clustering results of our simulation are fluctuating. Hence, to report stable results, the following numbers are computed as an average for each settings over 20 simulations. We also report the corresponding standard deviations to give an impression on the sensitivity of the clustering.\\
 
-Our implementation is quite flexible. We can control both all parameters for each individual agent and their reward sets. Furthermore, we can control the number of trials for each agent and produce customized, multiple asymmetric cluster sizes. We also can set prior values for each agents' value functions.\\ 
-However, within our experiment we kept the settings more simple. First we fix means and standard deviations for the bandits. Then fix a value for $\alpha$ and run the simulations for different differences in $\tau$. We only consider two different clusters in each settings.\\
-This procedure is repeated for fixed values of $\tau$ and varying $\alpha$. Finally, we again repeat this procedure within a different setting for the bandit means.\\
-This task confronted us with an enormous grid search over different parameters. Note that computing distances is very costly and we to run our simulations multiple times to get an impression of the variability. To keep computation time reasonable, we let the agents perform 100 trials and set the number of agents to 10 for each parameter setting. We ended up using solely the softmax function. The main reason for that decision is that we estimate those parameters later on for the experimental data.\\ 
-
-=======
-
-=======
-
->>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
-Our implementation is quite flexible. We can control both all parameters for each individual agent and their reward sets. Furthermore, we can control the number of trials for each agent and produce customized, multiple asymmetric cluster sizes. We also can set prior values for each agents' value functions.\\ 
-However, within our experiment we kept the settings more simple. First we fix means and standard deviations for the bandits. Then fix a value for $\alpha$ and run the simulations for different differences in $\tau$. We only consider two different clusters in each settings.\\
-This procedure is repeated for fixed values of $\tau$ and varying $\alpha$. Finally, we again repeat this procedure within a different setting for the bandit means.\\
-This task confronted us with an enormous grid search over different parameters. Note that computing distances is very costly and we to run our simulations multiple times to get an impression of the variability. To keep computation time reasonable, we let the agents perform 100 trials and set the number of agents to 10 for each parameter setting. We ended up using solely the softmax function. The main reason for that decision is that we estimate those parameters later on for the experimental data.\\ 
-
-<<<<<<< HEAD
->>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
-=======
->>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
-The following table \ref{tab:simres}  shows a snippet of our simulation results. As described in the last section we have a broad range of similarity measures and algorithms. Therefore, we selected results in such a way, that they give an impression when clustering is working well and such that they indicate the lower bound before clustering works almost perfectly. Naturally, we also found a lot of settings where clustering was not very successful. A detailed overview on numbers are given by tables \ref{tab:apstab1} to \ref{tab:apstab8} in the appendix.\footnote{To give an intuition about the numbers one can informally note that numbers below 0.200 - 0.300 do not show any really good clustering patterns.}
-In general we find that our algorithms pick up the generated clusters when the differences in tau is sufficiently large. We tested this for different fixed values of $\alpha=\{0.1,0.5,1\}$. In general, we can say that if the difference in $\tau$ is larger than one, perfect clustering is possible and stable..\footnote{Standard deviation is equal to one} However, in some settings it also possible earlier.\footnote{See for example \ref{tab:apstab4} } \\
-We repeated this procedure by fixing different values for $\tau$ and increase differences in $\alpha$. We are not able to achieve good clustering within that setting. In the summary table we listed an example, where we fixed the difference in $\alpha$ to 0.9 and still results are not satisfying. Only if we fix the difference to an extreme difference of 0.99 we are able to cluster within that setting.\\
+Our implementation is quite flexible. We can control both all parameters for each individual agent and their reward sets. We can control the number of trials for each agent and produce customized and multiple asymmetric cluster sizes. Furthermore, we can set prior values for each agent and each value function for the bandits. However, within our experiment we kept the settings simple. First we fix means and standard deviations for the bandits. Then first fix a value for alpha and run the simulations for different differences in tau. We repeat this procedure for fixed values of tau and vary alpha. Finally, we repeat this procedure with a different setting in the bandit means.\\
+We are confronted with an enormous grid search over different parameters. Computing distances is very costly. As mentioned we have to run our simulations multiple times to get an impression of the variability. To keep the computation time to a reasonable we let the agents perform 100 trials and set the number of agents to 10 for each parameter setting. We ended up using solely the softmax function. The main reason for that decision is that we estimate those parameters later on for the experimental data.\\ 
+The following table \ref{tab:simres}  shows a snippet of our simulation results. As described in the last section we have a broad range of similarity measures and algorithms. Therefore, we selected results in such a way, that we give an impression when clustering is working well. The results are selected in such a way, that they indicate the lower bound before clustering works perfectly. Naturally, we also found a lot of settings where clustering was not successful. A detailed overview on all numbers are given by tables \ref{tab:apstab1} to \ref{tab:apstab8} in the appendix.\footnote{To give an intuition about the numbers one can informally note that numbers below 0.200 - 0.300 do not show any really good clustering patterns.}
+We find In general we find that our algorithms pick up the generated clusters when the differences in tau is sufficiently large. We tested this for different fixed values of $\alpha=\{0.1,0.5,1\}$. In general, we can say that if the difference in $\tau$ is larger than one, perfect clustering is possible and stable..\footnote{Standard deviation is equal to one} However, in some settings it also possible earlier.\footnote{See for example \ref{tab:apstab4} } \\
+We repeated this procedure by fixing different values for $\tau$ and increase within each setting the values for $\alpha$. We are not able to achieve good clustering within that setting. In the summary table we listed an example, where we fix the difference in $\alpha$ to 0.9 and  still results are not very satisfying. Only if we fix the difference to 0.99 we are able to cluster within that setting.\\
 Given the results we can conclude that we are able to discriminate individuals when their behaviour is significantly different with respect to randomness.\\
-Concerning the data type the blockwise entropy seems to be overall the most successful one. In terms of algorithms we see that spectral clustering is in general outperforming the other algorithms. Furthermore, the clustering results based on choices is constantly worse than the other data types.
+Concerning the data type the blockwise entropy seems to be overall the most successful one. In terms of algorithms we see that spectral clustering is in general outperforming the other algorithms. Furhtemore, the clustering results based on choices is constantly worse than the other data types.
 
 \pagebreak
 
@@ -551,18 +516,28 @@ Concerning the data type the blockwise entropy seems to be overall the most succ
 
 \section{Data Analysis}
 
-Our simulation results suggested that we can cluster the decision behaviour under some given constraints. In the following we apply our methods to three different real experiment datasets. The first one is within a multi arm bandit framework, while the remaining are based on data from the Iowa Gambling Task.
+Our simulation results suggested that we can cluster the decision behaviour under some given constraints. In the following we apply our methods to three different real experiment datasets. As mentioned in the introduction the Iowa gambling task is popular way to monitor decision and learning process of individuals. In the simulation setting we initially define participants with a certain set of parameters. There are several techniques for estimating these parameters from the actual data, the most popular one being the expectancy valence model. 
 
 \subsection{Multi-arm bandit experiment data}
 
-The first data set is related to \cite{Stojic2015}. The data was gathered in a 20-arm bandit online experiment, in which users were compensated with small amount of money in exchange. Four different distributional settings were given to different people. In total the data sets consists of 429 participants divided in 199 female and 229 male participants.\footnote{One did not wish to answer} The average age 33.04 with standard deviation 11.75. Furthermore, the participants overall have a stronger higher education background. 261 participants have college degree, 39 a graduate degree and PhD respectively. 127 have a high school degree and 2 declined to answer.\\
+The first data set is related to \cite{Stojic2015}. The data is gathered in a 20-arm bandits online experiment, in which users were compensated with small amount of money in exchange. Four different distributional settings were given to different people. In total the data sets consists of 429 participants divided in 199 female and 229 male participants.\footnote{One did not wish to answer} The average age 33.04 with standard deviation 11.75. Furthermore, the participants overall have a stronger higher education background. 261 participants have college degree, 39 a graduate degree and PhD respectively. 127 have a high school degree and 2 declined to answer.\\
+We tried to identify different clusterings according to those demographics within those four sub experiments. Our results do not show worth mentioning clustering across mentioned demographics.\\
+We try to discover clustering in the data. Within our simulation we set parameters, which classify individual subjects. Using the experimental data we come from the other way. The reinforcement learning model is quite closely related to the expectancy valence model from cognitive science. Referring to equation \eqref{eq:softmax} and equation \eqref{eq:update} we can try to recover the parameters by optimising those function based on the observed choices.
 
-We try to discover clustering in the data. Within our simulation we set parameters, which classify individual subjects. Using the experimental data we come from the other way. The reinforcement learning model is quite closely related to the expectancy valence model from cognitive science. Referring to equation \eqref{eq:softmax} and equation \eqref{eq:update} we can try to recover the parameters by optimising those function based on the observed choices.\\
-In the following we analyzed two out of four sub experiments They differ by the level of noise of each arm and therefore the amount of reward distribution overlap.\\
-We maximised the likelihood of the observed choice sequences in order to estimate $\alpha$ and $\tau$ (or $\theta$ respectively) for each individual in the dataset. This is a simplified version of the expectancy valence model as we do not estimate \textit{attention to gains} parameter. In our setting, the individuals are described in a two-dimensional space, as shown in plots below.\\
-We continue by running our unsupervised learning models on the choice sequences and its by-products: cumulative entropy and blockwise entropy. Initially we hoped to achieve the same two-dimensional clusters given by the EV model, but this is not something we observed. However, some unsupervised models were able to detect linear and non-linear relations between $\tau$ inverse and $\alpha$ that were related to different behaviours observed in the experiment.\\
-Top two graphs visualize estimates $\alpha$ and $\tau$ inverse of individuals in the high-noise experiment. The colours and shapes represent cluster labels produced by our unsupervised models.\footnote{We produce two and three clusters} The top left graph shows one of the best two-cluster models. One could quite successfully draw an almost horizontal linear separator. This coincides with our simulation results where we observe that $\tau$ is more significant parameter of behaviour. Furthermore, one could fit a low order polynomial separator the would fit the labels almost perfectly. The top right graph follows the same argument as one could quite successfully fit two parallel almost horizontal separators. Same as in the previous graph, better clustering would be achieved by separators taking the convex form and being stacked in a non-crossing arrangement. Notice that in all four graphs the clustering fails as alpha estimator approaches zero. This was also observed in our simulation when setting alpha close to zero.
-Two bottom graphs represent data from the low noise experiment. We can see the average $\tau$ inverse is higher which represents less randomization by the individuals. This is not surprising as due to lower noise, individuals can more easily differentiate gains between different choices and hence need to explore less. We may deduce that in the low-noise scenario alpha plays a stronger role as it is not possible to fit a satisfying horizontal linear separator. Following the same approach as in the first two graphs, the clustering can be improved by using convex separators.
+Two out of four experiments that we further analyse are 20-armed bandit gambling experiments. They differ by the level of noise of each arm and therefore the amount of reward distribution overlap.
+
+We maximised the likelihood of the observed choice sequences in order to estimate alpha and tau for each individual in the dataset. This is a simplified version of the expectancy valence model as we do not estimate \textit{attention to gains} parameter. In our setting, the individuals are described in a two-dimensional space, as shown in plots below.
+
+We continue by running our unsupervised learning models on the choice sequences and its by-products: entropy and bad choice sequences. Initially we hoped to achieve the same two-dimensional clusters given by the EV model, but this is not something we observed. However, some unsupervised models were linear and non-linear combinations of inverse tau and alpha that were correlated with different behaviours observed in the experiment. Top two graphs visualize alpha and inverse tau likelihood estimates of individuals in the high-noise experiment. The colours and shapes represent cluster labels produced by our unsupervised models. The top left graph shows one of the best two-cluster models. One could quite successfully draw an almost horizontal linear separator. This coincides with our simulation results where we observe that tau is more significant parameter of behaviour. Furthermore, one could fit a low order polynomial separator the would fit the labels almost perfectly. The top right graph follows the same argument as one could quite successfully fit two parallel almost horizontal separators. Same as in the previous graph, better clustering would be achieved by separators taking the convex form and being stacked in a non-crossing arrangement. Notice that in all four graphs the clustering fails as alpha estimator approaches zero. This was also observed in our simulation when setting alpha close to zero.
+
+bottom graph version 1
+
+
+Two bottom graphs represent data from the low noise experiment. We can see the average tau-inverse is higher which represents less randomization by the individuals. This is not surprising as due to lower noise, individuals can more easily differentiate gains between different choices and hence need to explore less. We may deduce that in the low-noise scenario alpha plays a stronger role as it is not possible to fit a satisfying horizontal linear separator. Following the same approach as in the first two graphs, the clustering can be improved by using convex separators.
+
+
+bottom graph version 2
+
 
 \begin{figure}[H]
 	\centering
@@ -592,31 +567,11 @@ The following two graphs represent  blockwise entropy and the average choice rew
 	\label{fig:cluse1c4}
 \end{figure}
 
-\subsection{IGT data}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 \subsection{Prison data}
-=======
-As mentioned in the introduction the Iowa Gambling Task is a common tool to monitor human decision making process. Within the test participants try to maximize rewards by choosing sequentially cards from four different decks with different reward structures. There are existing several slightly different versions of test. In general the setting is such that two decks have distributions with negative expectations, while two have positive. However, each deck has its own variance and a set of profits. \cite{Steingroever2015} provides a publicly available data collection for several sources also giving an overview of some different notions of the test.
 
-\subsubsection{Prison data}
->>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
-=======
-As mentioned in the introduction the Iowa Gambling Task is a common tool to monitor human decision making process. Within the test participants try to maximize rewards by choosing sequentially cards from four different decks with different reward structures. There are existing several slightly different versions of test. In general the setting is such that two decks have distributions with negative expectations, while two have positive. However, each deck has its own variance and a set of profits. \cite{Steingroever2015} provides a publicly available data collection for several sources also giving an overview of some different notions of the test.
-
-\subsubsection{Prison data}
->>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
-
-=======
-As mentioned in the introduction the Iowa Gambling Task is a common tool to monitor human decision making process. Within the test participants try to maximize rewards by choosing sequentially cards from four different decks with different reward structures. There are existing several slightly different versions of test. In general the setting is such that two decks have distributions with negative expectations, while two have positive. However, each deck has its own variance and a set of profits. \cite{Steingroever2015} provides a publicly available data collection for several sources also giving an overview of some different notions of the test.
-
-\subsubsection{Prison data}
-
->>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
-We were provided with experimental data from \cite{Yechiam2008} and we try to apply our methods to cluster different groups in the data. The participants had to perform a modified version of the Iowa gambling task, where reward structure of the decks are changing over time.\\
-Our data cover 96 individuals with different criminal profile. Within this data we don't have a control group. Given that participants performed a different version of the test we could add a control data from publicly available data sets (see \cite{Steingroever2015}).\\
+We were provided with experimental data from \cite{Yechiam2008}. Again we try to apply our methods to cluster different groups in the data. The participants had to perform a modified version of the Iowa gambling task, where reward structure of the decks are changing over time.\\
+In particular we have data of 96 individuals with different criminal profile. Within this data we don't have a control group. Given that participants performed a different version of the test we could add a control data from publicly available data sets (see \cite{Steingroever2015}).\\
 Table \ref{tab:tabps} gives a broad summary of some demographics of the participants. The samples for each groups are not balanced. 
 
 \begin{table}[H]
@@ -643,9 +598,9 @@ Table \ref{tab:tabps} gives a broad summary of some demographics of the particip
 		\label{tab:tabps} 
 \end{table} 
 
-In figure \ref{fig:ent} we display some of the behavioural data. Given the number of participants we averaged them by criminal profile to see if we can find differences in across groups. We excluded "OWI", "escape", "vandalism", "probation" and "others" from this figures since the number of observations is fairly small. This also gives a more clear insight in the data.\\
-Figure \ref{fig:ent} (a) show the blockwise ratio of disadvantageous choices and (b) the development of cumulative disadvantageous choices. A clear separation can not be observed from those plots. From figure (b) we can at most see a slight decreasing trend for forgery, sex robbery and theft, while drug and stay slightly higher.\footnote{Interesting in that context might be that \cite{stout2004} found a constant disadvantageous behaviour for cocaine abusers (see next section)}\\
-Figure \ref{fig:ent} (d) shows the average cumulative entropy averaged across groups. We observe a random of exploring behaviour independent from group affiliation. Notably, people with assault/murder profile are show constantly the highest value. We can see the same situation from the blockwise entropy from figure (c).
+In figure \ref{fig:ent} we show display some of the behavioural data. Given the number of participants we averaged the by criminal profile to see if we can find differences in across groups. We excluded "OWI", "escape", "vandalism", "probation" and "others" from this figures since the number of observations is fairly small. This also gives a more clear insight in the data.\\
+Figure \ref{fig:ent} (a) and (b) show the blockwise ratio of disadvantageous choices and the development of cumulative disadvantageous choices. A clear separation can not be observed from those plots. From figure (b) we can at most see a slight decreasing trend for forgery, sex robbery and theft, while drug and stay slightly higher.\footnote{\cite{stout2004} found a constant disadvantageous behaviour for cocaine abusers (see next section)}\\
+Figure \ref{fig:ent} (d) shows the average cumulative entropy averaged across groups. We observe a random behaviour independent from group affiliation. Notably, people with assault/murder profile are show constantly the highest value. We can observe the same from the blockwise entropy from figure (c) we could observe the same behaviour.
 
 {\renewcommand{\arraystretch}{0.4}%
 \begin{figure}[H]
@@ -662,8 +617,8 @@ Figure \ref{fig:ent} (d) shows the average cumulative entropy averaged across gr
 	\label{fig:ent}
 \end{figure}
 
-\cite{Yechiam2008} found three clusters by using the attention to recent outcomes(ARO) and attention to gains(AG) parameters from the expectancy valance model. The most distinct group were the robbery convicts with the only negative attention to gains mean at -0.36 and the highest attention to recent outcomes mean 0.57. The second cluster is made of assault and murder convicts with ARO of 0.26 and AG of 0.1. The third cluster is formed of all the remaining prisoner groups with ARO means between 0 and -0.1 and AG between 0.1 and 0.2.\\
-Based on those findings and what we observed in figure \ref{fig:ent} we decided to cluster convicted assault-murder and robbery individuals against the other criminal groups. The following table depicts selected resulting clustering performance.\footnote{The remaining results can be found in table  \ref{tab:prison1} and \ref{tab:prison2} in the appendix} We find the most accurate clustering among all pairwise experiments between assault/murders and forgery, both on entropy and cumulative bad choices, which is suggested by the descriptive findings from figure \ref{fig:ent}. The listed algorithms performed remarkably better than the average performance. Furthermore, we managed to find some weaker clustering results between robbery. In contrast to \cite{Yechiam2008} we manged to isolate rather assault/murder criminals from the rest than robbery.
+\cite{Yechiam2008} found three clusters by using the attention to recent outcomes(ARO) and attention to gains(AG) parameters from the Expectancy Valance model. The most distinct group were the Robbery convicts with the only negative attention to gains mean at -0.36 and the highest attention to recent outcomes mean 0.57. The second cluster is made of assault and murder convicts with ARO of 0.26 and AG of 0.1. The third cluster is formed of all the remaining prisoner groups with ARO means between 0 and -0.1 and AG between 0.1 and 0.2.\\
+Based on those findings and what we observed in figure \ref{fig:ent} we decided to cluster convicted assault-murder and robbery individuals against the other criminal groups. The following table depicts selected resulting clustering performance.\footnote{The remaining results can be found in table  \ref{tab:prison1} and \ref{tab:prison2} in the appendix} We find the most accurate clustering among all between assault/murders and forgery, both on entropy and and cumulative bad choices, which is suggested by the descriptive findings from figure \ref{fig:ent}. The listed algorithms performed remarkably better than the average performance. Furthermore, we managed to find some weaker clustering results between robbery. In contrast to \cite{Yechiam2008} we manged to isolate rather assault/murder criminals from the rest than robbery.
 
 \begin{table}[!htbp] \centering 
 	\caption{} 
@@ -694,9 +649,9 @@ Based on those findings and what we observed in figure \ref{fig:ent} we decided 
 	\end{tabular} }
 \end{table} 
 
-\subsubsection{Cocaine Abusers data}
+\subsection{Cocaine Abusers data}
 
-Finally we study data from several cocaine abusers. There are 12 addict individuals performing the IGT. The control group consist out of 14 participants. Candidates among the drug abusers were selected as active users with additional drug abusing past, but without any known additional mental illness \cite{Stout2004}. Table \ref{tab:cocs} gives a summary of demographic profile.
+Finally we study data from several cocaine abusers. There are 12 individuals performing the IGT. The control group consist out of 14 participants. Candidates among the drug abusers were selected as active users with additional drug abusing past, but without any known additional mental illness \cite{Stout2004}. Table \ref{tab:cocs} gives a summary of demographic profile.
 
 \setlength{\tabcolsep}{12pt}
 \renewcommand{\arraystretch}{1}
@@ -709,14 +664,17 @@ Finally we study data from several cocaine abusers. There are 12 addict individu
 		\hline
 		Share of men &  79\% & 100\%\\
 		Age & 36.90 (10.30) & 30.00 (6.10) \\
-		Estimated IQ &  93.70 (10.30) & 105.00 (7.62) \\
+		Estimated IQ & 105.00 (7.62) & 93.70 (10.30) \\
 		\bottomrule
 	\end{tabular}
 	\label{tab:cocs}
 \end{table}
 
-Within the gambling task framework they found that cocaine abusers choose persistently cards from disadvantageous decks. The effect is still present after controlling for the low IQ score.\\
-We cluster cocaine abusers against the control group. The following table \ref{tab:cocainresults} depicts results of the clustering. Again we averaged over 20 simulations to report overall clustering performance. However as depicted the data set is fairly small and results are quite stable.\\
+
+
+
+Within the gambling task they found that cocaine abusers choose persistently cards from disadvantageous decks. The effect is still present after controlling for the low IQ score.\\
+We cluster cocaine abusers against the control group. The following table \ref{tab:cocainresults} depicts results of the clustering. Again we averaged over 20 simulations to report overall clustering performance. However as depicted the data set is friarly small and results are quite stable.\\
 Again our best clustering is achieved using block wise entropy, besides the listed K-Means algorithm, spectral clustering based on both cosine similarity and with rbf kernel achieved the same results. However, the results for this data set are rather low and we could not find  good clustering between the control group and cocaine abusers. This also is indicated by the average over all applied methods. 
 
 \begin{threeparttable}[H] 
@@ -756,20 +714,26 @@ Again our best clustering is achieved using block wise entropy, besides the list
 	\label{tab:cocainresults}
  \end{threeparttable} 
 
+\section{Discussion of results and possible extensions }
+
+Our analysis so far showed that people are not separate themselves. In general we assume that healthy participants and those with assumed decision making deficits show significantly different behaviour. However, we observe that their behaviour seems to be quite similar given our data and applied mappings. Furthermore , in most of the applied unsupervised techniques we as analysts have to to set the number of clusters we assume to be in the data (so in our case two for control group and patients with habits). We apply another algorithm called affinity propagation, which identifies the number of clusters itself (algorithm formulation see appendix). In general we find that the algorithm is assigning many more clusters to our data. This suggests that there may be more natural clusters in the data instead of simply splitting by healthy and ill labels. This can be addressed by Bayesian nonparametric models. \cite{Gershman2012}
+
 %---------------------------------------------------------------------------------------------------------
 % 5. Data
 %---------------------------------------------------------------------------------------------------------
 
-\section{Conclusion and possible extensions}
+\section{Conclusion}
 
-In this paper we wanted to evaluate whether unsupervised learning methods can be used to cluster individuals based on their behaviour and produce similar results to the convenient cognitive models.\\
-We first set up a reinforcement framework and studied clustering performance. We found that we can cluster behaviour if the difference between greedy and explorative behaviour is sufficiently large. We were not able to cluster well difference in learning rates for fixed exploring behaviours.\\
-In the following we tried to cluster several data sets. Clustering on the multiarm bandit experiment data set showed that we found different clustering structure as produced by parameter estimation for the data. Furthermore, we applied unsupervised learning to two different IGT based experiment data. For the data with participants with different criminal profiles, we found that assault murders we clustering the best vs. forgery. In general we can't as significant clustering as the underlying study by \cite{Yechiam2008}. Finally we tried to cluster decision data from cocaine abusers vs. a normal control group. We only found weak clustering between those two groups. Our analysis so far showed that people are not perfectly separate themselves according to their true group affiliation. In general we assume that healthy participants and those we assumed to have decision making deficits show significantly different behaviour. However, we observe that their behaviour seems to be quite similar given our data and applied mappings. Furthermore , in most of the applied unsupervised techniques we as analysts have to to set the number of clusters we assume to be in the data (so in our case two for control group and patients with habits). We applied another algorithm called affinity propagation, which identifies the number of clusters itself (a closer description can be found in\cite{Brusco2008} ). In general we find that the algorithm is assigning many more clusters to our data that we assume to be there. This suggests that there may be more natural clusters in the data instead of simply splitting by healthy and ill labels. This can be addressed by Bayesian nonparametric models. \cite{Gershman2012}\\
-We can conclude that unsupervised learning might have some opportunities. However given our experimental results and the insights from the previous paragraph we can conclude that our data are to overlapping and out similarity measures are not able to identify the different groups. 
+Maybe process also reward data.
 
-\section{Acknowledgments}
+Our simulations show the RL parameter difference thresholds required for successful clustering given multi-armed bandit reward distribution. We also notice that $\tau$ has relatively much greater effect on individual's behaviour than the learning rate $\alpha$. Fitting unsupervised learning models on real experiment data reveals that they seldom discover the clusters in the parameter space of reinforcement learning models. 
 
-First of all we want to thank our supervisor Hrvoje Stojic for his valuable input and support. Furthermore, we want to thank him providing us with data from his experiment and code for modeling. Furthermore, we want to thank the authors from \cite{Stout2004} and  \cite{Yechiam2008} for providing us with the experimental data. 
+
+
+
+\section{Acknowledgements}
+
+
 
 
 \pagebreak
@@ -809,7 +773,7 @@ This part of the appendix formally defines metrics and similarities and dissimil
 
 Let $\mathcal{X}$ be a dataset and let $\boldsymbol{x_i},\boldsymbol{x_j}$ be two datapoints, such that $\boldsymbol{x_i},\boldsymbol{x_j} \in \mathcal{X}$. 
 
-A distance function assign for pairs a points a non negative real number as distance. $d:\mathcal{X}\times \mathcal{X} \mapsto \mathbb{R}_0^+$. Furthermore, the following points have to be fulfilled \cite{Shirali06a}.
+A distance function assign for pairs a points a non negative real number as distance. $d:\mathcal{X}\times \mathcal{X} \mapsto \mathbb{R}_0^+$. Formally if the following properties are additionally staisfied the distance is also metric \cite[page 28]{Shirali06a}.
 
 \begin{enumerate}
 	\setlength{\itemsep}{-5pt}
@@ -819,7 +783,7 @@ A distance function assign for pairs a points a non negative real number as dist
 	\item $d(\boldsymbol{x_i},\boldsymbol{x_j}) \le d(\boldsymbol{x_i},\boldsymbol{x_j})+ d(\boldsymbol{x_j},\boldsymbol{x_i}) $
 \end{enumerate}
 
-A distance can be seen as a measure for dissimilarity of two points \cite{Everitt2009}. Besides distance some algorithms operate on a \textit{similarity} matrix. Formally a similarity is a function  $ S : \mathcal{X} \times \mathcal{X} \mapsto [0,1] $. Also for similarity we can define the following properties \cite{Fratev1979}:
+A distance can be seen as a measure for dissimilarity of two points \cite[page 35]{Everitt2009}. Besides distance some algorithms operate on a \textit{similarity} matrix. Formally a similarity is a function  $ S : \mathcal{X} \times \mathcal{X} \mapsto [0,1] $. Also for similarity we can define the following properties \cite[page 3]{Fratev1979}:
 
 \begin{enumerate}
 	\setlength{\itemsep}{-5pt}
@@ -946,6 +910,7 @@ Algorithm \ref{alg:agglc} \cite[page 895 et. seqq.]{Murphy2012}
 		\If{$C_l \neq \{1,\dots,n\}$}{Mark $\ell$ as available: $S \leftarrow S \cup \{\ell\}$ ;}
 		\For{$i \in S$}{Update dissimilarity matrix $d(i, \ell)$;}
 		no more clusters are available for merging;}
+		
 	\caption{Agglomerative Clustering}\label{algo_disjdecomp}
 	\label{alg:agglc}
 \end{algorithm}\DecMargin{1em}
@@ -991,6 +956,10 @@ IncMargin{1em}
 	\caption{Spectral clustering}
 	\label{alg:agglc}
 \end{algorithm}\DecMargin{1em}
+
+\subsection{Affinity Propagation}
+
+\cite{Brusco2008}
 
 \pagebreak
 
@@ -1399,14 +1368,8 @@ Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\
 		\label{tab:apstab8}
 \end{table} 
 
-\section{Multi arm bandit data}
-<<<<<<< HEAD
-<<<<<<< HEAD
+\subsection{Multi arm bandit data}
 
-=======
->>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
-=======
->>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
 
 \begin{figure}[H]
 	\centering
@@ -1437,7 +1400,7 @@ Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\
 
 
 \pagebreak
-\section{Prison data}
+\subsection{Prison data}
 
 \begin{table}[!htbp] \centering 
 	\caption{} 
