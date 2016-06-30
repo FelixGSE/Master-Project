@@ -801,21 +801,21 @@ S(\boldsymbol{x_i},\boldsymbol{x_j}) = \frac{1}{1+d(\boldsymbol{x_i},\boldsymbol
 
 \subsection{General Similarity measures}
 
-The default similarity measures used by many machine learning libraries (e.g. python sci-kit) is the Gaussian kernel of RBF-Kernel. This kernel function can be also be seen as a similarity. For two point is is defined as \cite[page 480]{Murphy2012}
+The default similarity measures used by many machine learning libraries (e.g. python sci-kit) is the Gaussian kernel of RBF-Kernel. This kernel function can be also be seen as a similarity. For two point is is defined as \cite{Murphy2012}
 
 \begin{flalign}
 K_{RBF}(\boldsymbol{x_i},\boldsymbol{x_j}) = \exp{\left(-\frac{|| \textbf{x} - \textbf{y} ||}{2 \sigma^2}\right) }
 \end{flalign}
 
-Another common similarity measure is cosine similarity. It is expressing the angle between two vectors and is defined as [ibidem, page 480]:
+Another common similarity measure is cosine similarity. It is expressing the angle between two vectors and is defined as [ibidem]:
 
 \begin{flalign}
 S_{cos}(\boldsymbol{x_i},\boldsymbol{x_j}) = \frac{\textbf{x}^T\textbf{x}}{||\textbf{x}|| ||\textbf{y}||}
 \end{flalign}
 
-\subsection{Similarity measures for categorical data}
+\subsection{Distance measures for categorical data}
 
-Referring to equation \ref{eq:ets} we define a simple measure for the categorical aspect of the data. Note that [SOURCE] defines the simplest measure for categorical data. However, since the probability that two people behave exactly the same in our context is arguably zero we modify this concept slightly. So we relax that and define the overlap similarity just as the count of overlapping instances. This serves as a benchmark similarity for categorical data.
+Referring to equation \ref{eq:ets} we define a simple measure for the categorical aspect of the data and reffering to \cite{Boriah2008} and define the overlap distance just as the count of overlapping instances. This serves as a benchmark similarity for categorical data.
 
 \begin{flalign}
 d_O (\boldsymbol{x},\boldsymbol{y}) :=  \sum_{i=1}^{N} \mathbb{1}_{(x_i = y_i)}
@@ -831,7 +831,7 @@ D_{i-1,j-1} + \mathbb{1}_{(x_i = y_i)}
 \end{cases}
 \end{flalign}
 
-\subsection{Similarity measures for time series data}
+\subsection{Distance measures for time series data}
 
 We use three different similarity measures for time series. E.g. \cite{Wang2013} or \cite{Serr2014} provide an overview and empirical evaluation on common similarity measures for time series. The following definitions are taken from the latter. Empirical research suggest that simple euclidean distance for time series performs quite well and is hard to beat. Hence, the first distance measure for time series is simply euclidean distance between two time series. They might be converted to similarity based on equation \ref{eq:sim}. Let $\boldsymbol{x},\boldsymbol{y}$ be two time series over N-periods. Then the $L_2$ distance between two time series is define as: 
 
@@ -841,7 +841,7 @@ d_E (\boldsymbol{x},\boldsymbol{y}) :=  \sqrt{\left( \sum_{i=1}^{N} \left( x_i -
 \end{flalign}
 \pagebreak
 
-Dynamic time warp (DTW) is probably one of the most successful proximity measures for time series. While in euclidian distance we compare all points horizontally in DTW we take also other points into account. It is using dynamic programing to solve it. 
+Dynamic time warp (DTW) is probably one of the most successful distance measures for time series. While in euclidean distance we compare all points horizontally in DTW we take also other points into account. It is using dynamic programing to solve it. 
 
 
 Finally we considered the edit distance on real sequences (EDR). It is basically an real valued version to the Levensthein distance. It also relies on solving a dynamic programing problem. For $i = 1,\dots,M$ and $j=1,\dots,N$ we have to compute.\footnote{The time series can have different length. However, in our case $N=M$}
@@ -866,8 +866,7 @@ where $\epsilon$ is scalar, such that $\mathbb{R}^+_0$. $\Theta(\cdot)$ denotes 
 
 \subsection{K-Means Clustering}
 
-The following algorithm \ref{alg:kmean} describes the K-means clustering algorithm. The algorithm comes from \cite[page 354 et. seqq.]{Murphy2012}
-
+The following algorithm \ref{alg:kmean} describes the K-means clustering algorithm. The basic idea is that one assigns randomly centroids in the space and compute for each point the distance to  The pseudo code for the algorithm comes from \cite{Murphy2012}
 \IncMargin{1em}
 \begin{algorithm}
 	\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
@@ -880,14 +879,11 @@ The following algorithm \ref{alg:kmean} describes the K-means clustering algorit
 			\item 	Assign each data point to its closest cluster center: $z_i = \arg \min_k || \boldsymbol{x}_i - \boldsymbol{\mu}_k ||^2_2;$ 
 			\item 	Update each cluster center by computing the mean of all points assigned to it: $\boldsymbol{\mu}_k = \frac{1}{N_k}\sum_{i:z_i=k}\boldsymbol{x_i};$
 		\end{itemize}}
-	\caption{K-Means clustering}\label{algo_disjdecomp}
+	\caption{K-Means clustering}
 	\label{alg:kmean}
 \end{algorithm}\DecMargin{1em}
-\pagebreak
-
 \subsection{Hierarchical Clustering - Agglomerative}
-
-Algorithm \ref{alg:agglc} \cite[page 895 et. seqq.]{Murphy2012}
+Algorithm \ref{alg:agglc} shows the pseudo code for agglomerative clustering. Ward is a notion of that algorithm. The pseudo code can be found in \cite{Murphy2012}
 
 \IncMargin{1em}
 \begin{algorithm}
@@ -910,8 +906,7 @@ Algorithm \ref{alg:agglc} \cite[page 895 et. seqq.]{Murphy2012}
 		\If{$C_l \neq \{1,\dots,n\}$}{Mark $\ell$ as available: $S \leftarrow S \cup \{\ell\}$ ;}
 		\For{$i \in S$}{Update dissimilarity matrix $d(i, \ell)$;}
 		no more clusters are available for merging;}
-		
-	\caption{Agglomerative Clustering}\label{algo_disjdecomp}
+	\caption{Agglomerative Clustering}
 	\label{alg:agglc}
 \end{algorithm}\DecMargin{1em}
 
@@ -948,13 +943,14 @@ IncMargin{1em}
 	\BlankLine
 	\begin{enumerate}
 		\item Construct a similarity graph. Let \textbf{W} be its weighted adjacency matrix
-		\item Compute the unnormalized Laplacian \textbf{L}.
-		\item Compute the first $k$ eigenvectors $u_1,\dots,u_k$ of \textbf{L}. Let $U \in \mathbb{R}^{n \times k}$ be the matrix containing the vectors $u_1,\dots,u_k$ as columns.
+		\item Compute the normalized Laplacian \textbf{L}.
+		\item Compute the first $k$ eigenvectors $u_1,\dots,u_k$ of the generalized eigenproblem \textbf{Lu} = $\lambda$\textbf{Du}.
+		\item Let $U \in \mathbb{R}^{n \times k}$ be the matrix containing the vectors $u_1,\dots,u_k$ as columns.
 		\item \textbf{for} $i = 1,\dots,n$, let $y_i$ be the vector corresponding to the $i-th$ row of $U$
 		\item Cluster the points $(y_i)_{i=1,\dots,n}$ in $\mathbb{R}^k$ with the K-Means algorithm into clusters $C_1,\dots,C_k$
 	\end{enumerate}
 	\caption{Spectral clustering}
-	\label{alg:agglc}
+	\label{alg:spec}
 \end{algorithm}\DecMargin{1em}
 
 \subsection{Affinity Propagation}
