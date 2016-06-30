@@ -1,0 +1,176 @@
+\documentclass[11pt]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{tikz}
+\author[shortname]{Domagoj Fizulic \and Felix Gutmann}
+
+\title{Unsupervised Learning in Decision Making}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{} 
+%\institute{} 
+%\date{} 
+\subject{Master Project} 
+\begin{document}
+	
+\frame{\titlepage}
+
+\begin{frame}{Introduction}
+\setbeamertemplate{itemize items}[circle]
+\begin{itemize}
+	\item Introduction
+	\item Reinforcement learning and simulation
+	\item Experiment Data 
+	\item Experiment results
+\end{itemize}
+\end{frame}
+	
+\begin{frame}{Reinforcement Learning}
+	\framesubtitle{Multi arm bandit experiment}
+	\setbeamertemplate{itemize items}[circle]
+	\begin{figure}
+		\includegraphics[scale=0.3]{Pictures/p2.png}
+	\end{figure}
+
+	\begin{itemize}
+		\item Choose sequentially from set of choices 
+		\item Objective: Maximize revenues
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Reinforcement Learning}
+\setbeamertemplate{itemize items}[circle]
+\framesubtitle{Essential functions and agent modeling}
+Softmax Decision Function:
+\begin{align*}
+P(a)_{t+1} &= \frac{e^{\frac{Q_t(a)}{\tau}}}{\sum_{i}^{N} e^{\frac{Q_t(i)}{\tau}}}
+\intertext{Update rule for value function of an action:}
+Q(a)_{t+1} &= Q(a)_t + \alpha \left[ R(a)_t -  Q(a)_t	 \right]
+\end{align*}
+where
+\begin{itemize}
+	\item $Q(a)$ is the value function of action $a$
+	\item $R(a)$ is the reward for action $a$
+	\item $\tau$ is the \textit{"temparature"}, controlling randomised behaviour
+	\item $\alpha$ is the learning rate ($\alpha \in [0,1]$)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Reinforcement Learning}
+	\framesubtitle{Experiment design and simulation results}
+	\setbeamertemplate{itemize items}[circle]
+	\hspace*{-0.06in}
+	\includegraphics[scale=0.35]{Pictures/f2.jpeg}
+	
+		Key - findings:
+		\begin{itemize}
+			\item Clustering based on $\tau$ differences possible ($\Delta \approx 0.7$) 
+			\item Clustering based on $\alpha$ difficult. Good clustering only with very high differences ($\Delta \approx 0.99$)
+		\end{itemize} 
+\end{frame}
+
+
+\begin{frame}{Data Analysis}
+	\framesubtitle{Analysed data sets}
+	\setbeamertemplate{itemize items}[circle]
+	
+	\textbf{20-Arm Bandit Experiment:}
+	\begin{itemize}
+		\item Four experiment types with different means and noises
+		\item 429 participants 
+	\end{itemize} 
+	
+	\textbf{Data based on Iowa Gambling Task }
+	\begin{itemize}
+		\item IGT data for 96 participants with 11 criminal profiles
+		\item IGT for cocaine abusers
+	\end{itemize} 
+\end{frame}
+
+\begin{frame}{Experiment Results}
+	\framesubtitle{Multi arm bandit experiments}
+	\setbeamertemplate{itemize items}[circle]
+	
+	\begin{itemize}
+		\item Use data to estimate clusters 
+		\item Estimated parameters from soft max equation using numerical optimization
+		\item Try to see if unsupervised learning is recovering results from cognitive science
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Experiment Results}
+	\framesubtitle{Multi arm bandit experiments - 2 Clusters / Spectral RBF / Blockwise Entropy}
+	\setbeamertemplate{itemize items}[circle]
+		\center
+		\input{Pictures/e1c2.tex}
+\end{frame}
+	
+\begin{frame}{Experiment Results}
+	\framesubtitle{Multi arm bandit experiments - 2 Clusters / Spectral RBF / Blockwise Entropy}
+	\center
+	 \input{Pictures/e1c3.tex}
+\end{frame}
+
+\begin{frame}{Experiment Results}
+	\framesubtitle{Multi arm bandit experiments - 2 Clusters / Spectral RBF / Blockwise Entropy}
+	\center
+	\input{Pictures/e2c2.tex}
+\end{frame}
+
+\begin{frame}{Experiment Results}
+	\framesubtitle{Multi arm bandit experiments - 2 Clusters / Spectral RBF / Blockwise Entropy}
+	\center
+	\input{Pictures/e2c3.tex}
+\end{frame}
+
+
+\begin{frame}{Experiment Results}
+	\framesubtitle{IGT data for conviceted criminals}
+	\setbeamertemplate{itemize items}[circle]
+	Authors results:
+	\begin{itemize}
+		\item Specialized version IGT test
+		\item No control group
+		\item EVM analysis shows clustering for convicted robbery and assault/murders; Other criminal groups have overlapping parameters
+	\end{itemize}
+		Our findings:
+		\begin{itemize}
+			\item Convicted assault/murders separate the strongest (highest clustering against forgery)
+			\item Robbery only cluster moderat in our settings. 
+		\end{itemize}
+\end{frame}
+
+\begin{frame}{Experiment Results}
+	\framesubtitle{IGT data for drug abusers}
+	\setbeamertemplate{itemize items}[circle]
+	Author's findings
+	\begin{itemize}
+		\item Cocaine abusers persistently do disadvantageous choices
+		\item Effect still present after controlling for IQ (in general lower than within control group)
+	\end{itemize}
+	Our findings
+	\begin{itemize}
+		\item Only moderate clustering between control group and cocaine abusers
+		\item Best septation criteria turned out disadvantageous behaviour
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Conclusion}
+	\setbeamertemplate{itemize items}[circle]
+	Key - Finings
+	\begin{itemize}
+		\item Clustering peoples choices in general difficult
+		\item Algorithms can recover clustering if individuals show sufficient difference in their strategic behaviour
+		\item Other studies found a strong attention to gains and no learning from negative experience
+	\end{itemize}
+	
+\end{frame}
+
+\end{document}
