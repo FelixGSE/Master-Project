@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.28)  29 JUN 2016 16:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.28)  30 JUN 2016 13:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1408,6 +1408,9 @@ LaTeX Warning: Label `' multiply defined.
 LaTeX Warning: Label `' multiply defined.
 
 
+LaTeX Warning: Label `fig:cluse1c3' multiply defined.
+
+
 LaTeX Warning: Label `' multiply defined.
 
 
@@ -1523,7 +1526,7 @@ LaTeX Info: Redefining \nameref on input line 82.
 
 \c@lstlisting=\count181
  ABD: EveryShipout initializing macros
-<Pictures/logo01.jpg, id=146, 1284.8pt x 232.87pt>
+<Pictures/logo01.jpg, id=150, 1284.8pt x 232.87pt>
 File: Pictures/logo01.jpg Graphic file (type jpg)
  <use Pictures/logo01.jpg>
 Package pdftex.def Info: Pictures/logo01.jpg used on input line 115.
@@ -1591,143 +1594,185 @@ Underfull \hbox (badness 10000) in paragraph at lines 325--328
 
  []
 
-[1] [2] <Pictures/flow01.png, id=342, 833.1125pt x 416.55624pt>
+[1] [2] <Pictures/flow01.png, id=356, 833.1125pt x 416.55624pt>
 File: Pictures/flow01.png Graphic file (type png)
 
 <use Pictures/flow01.png>
 Package pdftex.def Info: Pictures/flow01.png used on input line 355.
 (pdftex.def)             Requested size: 443.863pt x 221.93057pt.
- [3] [4 <./Pictures/flow01.png>] [5]
-<Pictures/DataClustering.jpeg, id=389, 1027.84pt x 770.88pt>
+ [3] [4 <./Pictures/flow01.png>] [5] [6]
+<Pictures/DataClustering.jpeg, id=419, 1027.84pt x 770.88pt>
 File: Pictures/DataClustering.jpeg Graphic file (type jpg)
 
 <use Pictures/DataClustering.jpeg>
-Package pdftex.def Info: Pictures/DataClustering.jpeg used on input line 400.
+Package pdftex.def Info: Pictures/DataClustering.jpeg used on input line 409.
 (pdftex.def)             Requested size: 443.863pt x 332.89522pt.
- [6] [7 <./Pictures/DataClustering.jpeg>]
-[8]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 490.
 
- (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
+Underfull \hbox (badness 10000) in paragraph at lines 416--417
+
+ []
+
+[7 <./Pictures/DataClustering.jpeg>] [8]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 501.
+
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 490.
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 490.
-
-Overfull \vbox (49.77689pt too high) has occurred while \output is active []
-
-
-[9] (./Pictures/e1c2.tex) (./Pictures/e1c3.tex) (./Pictures/e2c2.tex)
+LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 501.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 501.
+ [9] [10]
+(./Pictures/e1c2.tex) (./Pictures/e1c3.tex) (./Pictures/e2c2.tex)
 (./Pictures/e2c3.tex)
-Overfull \hbox (72.39482pt too wide) in paragraph at lines 520--527
+Overfull \hbox (45.16154pt too wide) in paragraph at lines 545--552
  []|  [] 
  []
 
-[10] [11] (./Pictures/disad.tex) (./Pictures/cumbad.tex) (./Pictures/entbl.tex)
+[11] (./Pictures/entblbe1c1.tex) (./Pictures/crange1c1.tex)
+Overfull \hbox (45.16154pt too wide) in paragraph at lines 559--564
+ []|  [] 
+ []
+
+[12] [13]
+
+LaTeX Warning: Citation `stout2004' on page 14 undefined on input line 601.
+
+(./Pictures/disad.tex) (./Pictures/cumbad.tex) (./Pictures/entbl.tex)
 (./Pictures/avgent.tex)
-Overfull \hbox (45.16154pt too wide) in paragraph at lines 570--577
+Overfull \hbox (45.16154pt too wide) in paragraph at lines 608--615
  []|  [] 
  []
 
-[12] [13] [14] [15] (./Report_v1.bbl [16]
-Underfull \hbox (badness 1371) in paragraph at lines 116--120
+[14]
+Overfull \hbox (9.83507pt too wide) in paragraph at lines 619--621
+[]\OT1/cmr/m/n/12 [[][]Yechiam et al., 2008[][]] found three clus-ters by us-in
+g the at-ten-tion to re-cent out-comes(ARO)
+ []
+
+[15] [16] [17] [18] (./Report_v1.bbl [19]
+Underfull \hbox (badness 1371) in paragraph at lines 121--125
 []\OT1/cmr/m/n/12 Martino, D. J., Bu-cay, D., But-man, J. T., and Al-le-gri,
  []
 
-[17]
-Underfull \hbox (badness 10000) in paragraph at lines 143--146
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 148--151
 []\OT1/cmr/m/n/12 Pamminger, C. and Fruehwirth-
  []
 
-[18]) [19] [1] [2] [3] [4] [5] [6] [7] [8]pdfTeX warning (ext4): destination wi
-th the same identifier (name{page.I}) has been already used, duplicate ignored
+[21]) [22] [1] [2] [3] [4]
+Overfull \hbox (29.77469pt too wide) detected at line 884
+[][] 
+ []
+
+[5] [6] [7] [8]pdfTeX warning (ext4): destination with the same identifier (nam
+e{page.I}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.965 \end{flalign}
-                    [9]
-Overfull \hbox (62.30624pt too wide) in paragraph at lines 982--982
+l.1007 \end{flalign}
+                     [9]
+Overfull \hbox (62.30624pt too wide) in paragraph at lines 1033--1033
 [] 
  []
 
 [10]
-Underfull \hbox (badness 10000) in alignment at lines 1043--1043
+Underfull \hbox (badness 10000) in alignment at lines 1094--1094
 [][][][][][][][][][][] 
  []
 
 [11]
-Underfull \hbox (badness 10000) in alignment at lines 1082--1082
+Underfull \hbox (badness 10000) in alignment at lines 1133--1133
 [][][][][][][][][][][] 
  []
 
 [12]
-Underfull \hbox (badness 10000) in alignment at lines 1119--1119
+Underfull \hbox (badness 10000) in alignment at lines 1170--1170
 [][][][][][][][][][][] 
  []
 
 [13]
-Underfull \hbox (badness 10000) in alignment at lines 1151--1151
+Underfull \hbox (badness 10000) in alignment at lines 1202--1202
 [][][][][][][][][][][] 
  []
 
 
-Underfull \hbox (badness 10000) in alignment at lines 1185--1185
+Underfull \hbox (badness 10000) in alignment at lines 1236--1236
 [][][][][][][][][][][] 
  []
 
 [14]
-Underfull \hbox (badness 10000) in alignment at lines 1223--1223
+Underfull \hbox (badness 10000) in alignment at lines 1274--1274
 [][][][][][][][][][][] 
  []
 
 [15]
-Underfull \hbox (badness 10000) in alignment at lines 1257--1257
+Underfull \hbox (badness 10000) in alignment at lines 1308--1308
 [][][][][][][][][][][] 
  []
 
 [16]
-Underfull \hbox (badness 10000) in alignment at lines 1295--1295
+Underfull \hbox (badness 10000) in alignment at lines 1346--1346
 [][][][][][][][][][][] 
  []
 
-[17]
-Overfull \hbox (7.07774pt too wide) in paragraph at lines 1306--1348
+[17] (./Pictures/entblbe1c2.tex) (./Pictures/crange1c2.tex)
+Overfull \hbox (43.92339pt too wide) in paragraph at lines 1356--1361
+ []|  [] 
+ []
+
+[18] (./Pictures/entblbe2c1.tex) (./Pictures/crange2c1.tex)
+(./Pictures/entblbe2c2.tex) (./Pictures/crange2c2.tex)
+Overfull \hbox (43.92339pt too wide) in paragraph at lines 1368--1375
+ []|  [] 
+ []
+
+[19] [20]
+Overfull \hbox (7.07774pt too wide) in paragraph at lines 1387--1429
  [][] 
  []
 
 
-Overfull \hbox (10.32362pt too wide) in paragraph at lines 1354--1382
+Overfull \hbox (10.32362pt too wide) in paragraph at lines 1435--1463
  [][] 
  []
 
-[18] [19]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1395.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1395.
+[21]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1476.
+pdfTeX warning (ext4): destination with the same identifier (name{page.V}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1476 \end{document}
+                      [22]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1476.
  (./Report_v1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1395.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1395.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1476.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1476.
 
 Package rerunfilecheck Info: File `Report_v1.out' has not changed.
-(rerunfilecheck)             Checksum: F45D8C201355F760BB3FE919091B3E8B;2437.
+(rerunfilecheck)             Checksum: 3BABEB06C8A0D7C412EAE20138557028;2511.
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1395.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1476.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 566 ({)
+### simple group (level 1) entered at line 604 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 30170 strings out of 493089
- 545884 string characters out of 6134842
- 929893 words of memory out of 5000000
- 32907 multiletter control sequences out of 15000+600000
- 20430 words of font info for 77 fonts, out of 8000000 for 9000
+ 31281 strings out of 493089
+ 567983 string characters out of 6134842
+ 958351 words of memory out of 5000000
+ 33980 multiletter control sequences out of 15000+600000
+ 20738 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,18n,77p,1229b,842s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 64i,18n,77p,1439b,1061s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/bbold-ty
 pe1/bbold10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmbsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
@@ -1751,10 +1796,10 @@ cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
 al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local
 /texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Report_v1.pdf (46 pages, 739786 bytes).
+Output written on Report_v1.pdf (52 pages, 779972 bytes).
 PDF statistics:
- 777 PDF objects out of 1000 (max. 8388607)
- 695 compressed objects within 7 object streams
- 202 named destinations out of 1000 (max. 500000)
- 316 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 836 PDF objects out of 1000 (max. 8388607)
+ 747 compressed objects within 8 object streams
+ 216 named destinations out of 1000 (max. 500000)
+ 324 words of extra memory for PDF output out of 10000 (max. 10000000)
 

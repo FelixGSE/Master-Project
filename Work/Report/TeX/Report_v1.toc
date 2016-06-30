@@ -11,17 +11,17 @@
 \contentsline {section}{\numberline {3}Theoretical Background and simulation experiments}{3}{section.3}
 \contentsline {subsection}{\numberline {3.1}Experiment design and problem formulation}{3}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Reinforcement Learning background and multi arm bandits}{4}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Data handling, unsupervised learning methods and similarities}{5}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.3}Data handling, unsupervised learning methods and similarities}{6}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Simulation setup and results}{7}{subsection.3.4}
 \contentsline {section}{\numberline {4}Data Analysis}{10}{section.4}
 \contentsline {subsection}{\numberline {4.1}Multi-arm bandit experiment data}{10}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Prison data}{12}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Cocaine Abusers data}{14}{subsection.4.3}
-\contentsline {section}{\numberline {5}Discussion of results and possible extensions }{15}{section.5}
-\contentsline {section}{\numberline {6}Conclusion}{15}{section.6}
-\contentsline {section}{\numberline {7}Acknowledgment}{15}{section.7}
-\contentsline {section}{List of Literature}{16}{section.7}
-\contentsline {section}{Appendix}{A}{section*.11}
+\contentsline {subsection}{\numberline {4.2}Prison data}{13}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Cocaine Abusers data}{16}{subsection.4.3}
+\contentsline {section}{\numberline {5}Discussion of results and possible extensions }{17}{section.5}
+\contentsline {section}{\numberline {6}Conclusion}{18}{section.6}
+\contentsline {section}{\numberline {7}Acknowledgements}{18}{section.7}
+\contentsline {section}{List of Literature}{19}{section.7}
+\contentsline {section}{Appendix}{A}{section*.12}
 \vspace {-0.5em}
 \contentsline {section}{\numberline {A}Metrics and Similarities}{A}{appendix.A}
 \contentsline {subsection}{\numberline {A.1}Distances vs. Similarities}{A}{subsection.A.1}
@@ -35,4 +35,5 @@
 \contentsline {subsection}{\numberline {B.4}Affinity Propagation}{H}{subsection.B.4}
 \contentsline {section}{\numberline {C}Clustering Evaluation}{I}{appendix.C}
 \contentsline {section}{\numberline {D}Simulation Data}{L}{appendix.D}
-\contentsline {subsection}{\numberline {D.1}Prison data}{R}{subsection.D.1}
+\contentsline {subsection}{\numberline {D.1}Multi arm bandit data}{S}{subsection.D.1}
+\contentsline {subsection}{\numberline {D.2}Prison data}{U}{subsection.D.2}

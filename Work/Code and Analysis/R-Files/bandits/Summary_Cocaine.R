@@ -2,12 +2,12 @@
 setwd('/Users/felix/Documents/GSE/Term 3/Master_Project/Master-Project/Work/Code and Analysis/Results')
 
 d <- Cocaine_Summary
-d <- 9vA_full
+d <- fuck2
 dim(d)
 head(d)
-d.new <- d[,-c(3,13)]
+d.new <- d[-c(1,2,3,4),-c(4,14)]
 d.new
-cnames <- c(' Method','Similarity','C','CBC','BBC','E','EB','CC','NMI','ARI','VM') 
+cnames <- c('Groups','Method','Similarity','C','CBC','BBC','E','EB','CC','NMI','ARI','VM') 
 colnames(d.new) <- cnames
 dim(d.new)
 d.new
