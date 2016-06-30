@@ -34,6 +34,6 @@
 \contentsline {subsection}{\numberline {B.3}Spectral Clustering}{G}{subsection.B.3}
 \contentsline {subsection}{\numberline {B.4}Affinity Propagation}{H}{subsection.B.4}
 \contentsline {section}{\numberline {C}Clustering Evaluation}{I}{appendix.C}
-\contentsline {section}{\numberline {D}Simulation Data}{L}{appendix.D}
+\contentsline {section}{\numberline {D}Simulation Results}{L}{appendix.D}
 \contentsline {subsection}{\numberline {D.1}Multi arm bandit data}{S}{subsection.D.1}
 \contentsline {subsection}{\numberline {D.2}Prison data}{U}{subsection.D.2}

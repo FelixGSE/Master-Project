@@ -349,7 +349,7 @@ This section is dedicated to a detailed outline of our analysis approach and the
 
 \subsection{Experiment design and problem formulation}
 
-Figure \ref{fig:flow} depicts our simulation experiment design.\footnote{We implemented related coding for this project mainly in python. The code can be found on our  \href{https://github.com/FelixGSE/Master-Project}{github} repository.} The objective is to obtain a set of sequential choices for a given parameter setting of an artificial agent. We first generate a set of rewards by sampling $n-$vectors from a normal distribution ("\textit{multi arm bandits}"). The agent processes those rewards by sequentially choosing from those options. We repeat this procedure for several parameter settings for the agents and keep track of those choices which will define our data set.
+Figure \ref{fig:flow} depicts our simulation experiment design.\footnote{We implemented related coding for this project mainly in python. The code can be found in our  \href{https://github.com/FelixGSE/Master-Project}{github} repository.} The objective is to obtain a set of sequential choices for a given parameter setting of an artificial agent. We first generate a set of rewards by sampling $n-$vectors from a normal distribution ("\textit{multi arm bandits}"). The agent processes those rewards by sequentially choosing from those options. We repeat this procedure for several parameter settings for the agents and keep track of those choices which will define our data set.
 
  \begin{figure}[H]
 	\includegraphics[width=\textwidth]{Pictures/flow01.png}
@@ -553,18 +553,19 @@ bottom graph version 2
 	\label{fig:cluse1c2}
 \end{figure}
 
+The following two graphs represent  blockwise entropy and the average choice reward ranking for the three clusters also pictured in the graph b) above. Graph a) below shows mean blockwise entropy for each of the three clusters. We can observe the following: individuals assigned to all three clusters on average have similar levels of entropy in the block of first 10 draws; individuals in the first cluster maintain the same level of random behaviour throughout all 100 draws while the second cluster slightly reduces the randomization of choices but and then also maintains it at that rate; only the members of the third cluster constantly decrease exploration until the end of the game. Graph b) below shows the average choice rank per cluster, lower the rank higher the reward it brings to individuals. We can observe ideal behaviour by the third cluster as they manage to simultaneously reduce  exploration level and still continue to improve average choice rank. It is interesting to see that the first and second cluster do not manage to improve the choice ranking as the experiment progresses. 
+
 \begin{figure}[H]
 	\centering
 	\small
 	\hspace*{-0.7in}
 	\begin{tabular}{cc}
-		\input{Pictures/entblbe1c1.tex} & \input{Pictures/crange1c1.tex} \\
-		(\textbf{a}) Blockwise entropy by cluster & (\textbf{b}) Average choice rank by cluster \\
+		\input{Pictures/entblbe1c2.tex} & \input{Pictures/crange1c2.tex} \\
+		(\textbf{a}) Blockwise entropy by cluster & (\textbf{b}) Average choice rank by cluster 
 	\end{tabular} \quad
 	\caption{Clustering on choices vs. model parameter estimation (top sub figures: experiment 1, high noise, bottom: experiment 1, low noise)}
-	\label{fig:cluse1c3}
+	\label{fig:cluse1c4}
 \end{figure}
-
 
 
 \subsection{Prison data}
@@ -990,21 +991,32 @@ First we might introduce the contingency table.
 \begin{tabbing}
 	\hspace*{1cm}\=\hspace*{1cm}\=\hspace*{3cm}\=\hspace*{2.7cm}\= \kill
 	\onehalfspacing
-	\textbf{$N_{11}$:} \>\> Number of pairs in the same cluster \\ 
+	\textbf{$N_{11}$:} \>\> Number of pairs that are in the same cluster in both $v$ and $u$ \\ 
 	\textbf{$N_{00}$:} \>\> Number of pairs that are in different clusters in both $v$ and $u$ \\ 
 	\textbf{$N_{01}$:} \>\> Number of pairs that are in the same cluster in $u$ but different in $v$ \\ 
 	\textbf{$N_{10}$:} \>\>  Number of pairs that are in the same cluster in $v$ but different in $u$ \\ 
 \end{tabbing}
 
+$N_{11}$ and $N_{00}$ can be interpreted as agreements and $N_{01}$ and $N_{10}$ as disagreements between $v$ and $u$.
+
+\pagebreak
+
+Rand index:
+
 \begin{flalign}
-RI(u,v) = \frac{N_{00}+N_{11}}{\binom{N}{2}}
+RI(u,v) = \frac{N_{00}+N_{11}}{\binom{N}{2}} = \frac{N_{00}+N_{11}}{N_{00}+N_{11} + N_{01}+N_{10}}
 \label{eq:ri}
 \end{flalign}
+
+Rand index can take values between 0 and 1, where 1 indicates perfect clustering. One of the drawbacks of the Rand index is that the expected value of two random allocations does not take a constant value. Adjusted Rand index proposed by proposed by \cite{Hubert1985} is also upper bounded by 1, can take negative values and has the expected value of zero.
+
+$$ARI = \frac{index - expected index}{maximum index - expected index}$$
 
 \begin{flalign}
 ARI(u,v) = \frac{2 \left(N_{00}N_{11} - N_{01} N_{10} \right)}{\left(N_{00} + N_{01} \right)\left( N_{01} + N_{11}\right) + \left(N_{00} + N_{10} \right)\left( N_{10} + N_{11}\right)}
 \label{eq:ri}
 \end{flalign}
+
 
 \begin{flalign}
 H(u) &= - \sum_{i=1}^{R} \frac{a_i}{N} \log  \frac{a_i}{N} \\
@@ -1015,7 +1027,12 @@ H(v|u) &= - \sum_{i=1}^{C}  \sum_{j=1}^{R}  \frac{n_{i,j}}{N} \log \frac{n_{i,j}
 I(u,v) &= \sum_{i=1}^{R}  \sum_{j=1}^{C}  \frac{n_{i,j}}{N} \log \frac{n_{i,j}/N}{a_i b_j/N} \\
 \end{flalign}
 
-Normalized Info Score:
+
+\pagebreak
+
+Mutual info Score:
+
+Mutual information score measures the similarity between two random variables. It estimates the amount of information known about one random variable after observing the other, it determines the joint distribution. Therefore, mutual information is also closely related to the entropy of a random variable. Normalized mutual info score is a normalization of MI in order to scale the score values between zero and one.
 
 This is one example of a normalized version 
 \begin{flalign}
@@ -1031,6 +1048,9 @@ AMI_{max}(u,v) &= \frac{NMI_{max}(u,v) - \mathbb{E}\left[NMI_{max}(u,v)\right] }
 \begin{flalign}
 \mathbb{E}\left[I(u,v) \right] = \sum_{i=1}^{R}  \sum_{j=1}^{C} \sum_{ n_{i,j}=\max \left(a_i + b_j-N,0\right) }^{ \min \left( a,b \right) } \frac{n_{ij}}{N} \log \left( \frac{N n_{ij}}{a_i b_j} \right) \frac{a_i! b_j!(N-a_i)!(N-b_j)!}{N! n_{ij}! (a_i-n_{ij})(b_j - n_{ij})!(N-a_i-b_j+n_{ij})!}
 \end{flalign}
+
+A clustering result satisfies homogeneity if each cluster contains observations that belong to a single class. A result also satisfies completeness if all observations that belong to the same class have been assigned to the same cluster.
+V measure score expresses the harmonic mean between homogeneity and completeness measures.
 
 Homogeneity: 
 
@@ -1049,13 +1069,13 @@ c = \begin{cases}
 \end{cases}
 \end{flalign}
 
-V Measure Score:
+V-measure:
 
 \begin{flalign}
 V_\beta = \frac{(1+\beta)h c}{\beta h + c}
 \end{flalign}
 
-\section{Simulation Data}
+\section{Simulation Results}
 
 \begin{table}[H] \centering 
 	\label{} 
@@ -1350,17 +1370,19 @@ Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\
 
 \subsection{Multi arm bandit data}
 
+
 \begin{figure}[H]
 	\centering
 	\small
 	\hspace*{-0.7in}
 	\begin{tabular}{cc}
-		\input{Pictures/entblbe1c2.tex} & \input{Pictures/crange1c2.tex} \\
-		(\textbf{a}) Blockwise entropy by cluster & (\textbf{b}) Average choice rank by cluster 
+		\input{Pictures/entblbe1c1.tex} & \input{Pictures/crange1c1.tex} \\
+		(\textbf{a}) Blockwise entropy by cluster & (\textbf{b}) Average choice rank by cluster \\
 	\end{tabular} \quad
 	\caption{Clustering on choices vs. model parameter estimation (top sub figures: experiment 1, high noise, bottom: experiment 1, low noise)}
-	\label{fig:cluse1c4}
+	\label{fig:cluse1c3}
 \end{figure}
+
 
 \begin{figure}[H]
 	\centering
