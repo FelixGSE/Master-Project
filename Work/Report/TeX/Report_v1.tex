@@ -540,12 +540,23 @@ Two bottom graphs represent data from the low noise experiment. We can see the a
 		\input{Pictures/e1c2.tex} & \input{Pictures/e1c3.tex} \\
 		(\textbf{a}) Spectral - RBF - blockwise entropy & (\textbf{b}) Spectral - DTW - blockwise entropy \\
 			\input{Pictures/e2c2.tex} & \input{Pictures/e2c3.tex} \\
-			(\textbf{c}) Ward clustering - blockwise disadvantageous choices & (\textbf{d}) Spectral - cosine - blockwise disadvantageous choices 
+			(\textbf{c}) Ward clustering - blockwise entropy & (\textbf{d}) Spectral - cosine - blockwise entropy
 	\end{tabular} \quad
 	\caption{Clustering on choices vs. model parameter estimation (top sub figures: experiment 1, high noise, bottom: experiment 1, low noise)}
 	\label{fig:cluse1c2}
 \end{figure}
 
+\begin{figure}[H]
+	\centering
+	\small
+	\hspace*{-0.7in}
+	\begin{tabular}{cc}
+		\input{Pictures/entblbe1c1.tex} & \input{Pictures/crange1c1.tex} \\
+		(\textbf{a}) Blockwise entropy by cluster & (\textbf{b}) Average choice rank by cluster \\
+	\end{tabular} \quad
+	\caption{Clustering on choices vs. model parameter estimation (top sub figures: experiment 1, high noise, bottom: experiment 1, low noise)}
+	\label{fig:cluse1c3}
+\end{figure}
 
 
 
@@ -630,7 +641,6 @@ Based on those findings and what we observed in figure \ref{fig:ent} we decided 
 	\end{tabular} }
 \end{table} 
 
-
 \subsection{Cocaine Abusers data}
 
 Finally we study data from several cocaine abusers. There are 12 individuals performing the IGT. The control group consist out of 14 participants. Candidates among the drug abusers were selected as active users with additional drug abusing past, but without any known additional mental illness \cite{Stout2004}. Table \ref{tab:cocs} gives a summary of demographic profile.
@@ -651,6 +661,9 @@ Finally we study data from several cocaine abusers. There are 12 individuals per
 	\end{tabular}
 	\label{tab:cocs}
 \end{table}
+
+
+
 
 Within the gambling task they found that cocaine abusers choose persistently cards from disadvantageous decks. The effect is still present after controlling for the low IQ score.\\
 We cluster cocaine abusers against the control group. The following table \ref{tab:cocainresults} depicts results of the clustering. Again we averaged over 20 simulations to report overall clustering performance. However as depicted the data set is friarly small and results are quite stable.\\
@@ -1324,6 +1337,36 @@ Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\
 		\label{tab:apstab8}
 \end{table} 
 
+\subsection{Multi arm bandit data}
+
+\begin{figure}[H]
+	\centering
+	\small
+	\hspace*{-0.7in}
+	\begin{tabular}{cc}
+		\input{Pictures/entblbe1c2.tex} & \input{Pictures/crange1c2.tex} \\
+		(\textbf{a}) Blockwise entropy by cluster & (\textbf{b}) Average choice rank by cluster 
+	\end{tabular} \quad
+	\caption{Clustering on choices vs. model parameter estimation (top sub figures: experiment 1, high noise, bottom: experiment 1, low noise)}
+	\label{fig:cluse1c4}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\small
+	\hspace*{-0.7in}
+	\begin{tabular}{cc}
+			\input{Pictures/entblbe2c1.tex} & \input{Pictures/crange2c1.tex} \\
+				(\textbf{a}) Blockwise entropy by cluster & (\textbf{b}) Average choice rank by cluster \\
+			\input{Pictures/entblbe2c2.tex} & \input{Pictures/crange2c2.tex} \\
+				(\textbf{a}) Blockwise entropy by cluster & (\textbf{b}) Average choice rank by cluster \\
+		\end{tabular} \quad
+		\caption{Clustering on choices vs. model parameter estimation (top sub figures: experiment 1, high noise, bottom: experiment 1, low noise)}
+		\label{fig:cluse1c3}
+\end{figure}
+
+
+\pagebreak
 \subsection{Prison data}
 
 \begin{table}[!htbp] \centering 
