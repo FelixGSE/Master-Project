@@ -101,6 +101,14 @@ dynamic.clust.plot(exp02,e02c03,5)
 x <- exp01[,1]
 y <- exp01[,2]
 
+x1 <- x[as.numeric(test)]
+y1 <- y[test]
+
+plot(x1,y1)
+head(x1)
+as.numeric(test)
+
+length(x)
 
 for( i in 1:nrow(exp01)){
   
@@ -131,6 +139,7 @@ dev.off()
 
 cols <- unlist(e01c03$predictions[38])
 cols2 <- cols
+test <- which(cols==0)
 cols[cols==0] <- rainbow(20)[15] 
 cols[cols==1] <- rainbow(20)[19]
 cols[cols==2] <- rainbow(20)[6]
