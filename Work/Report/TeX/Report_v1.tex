@@ -530,7 +530,14 @@ We maximised the likelihood of the observed choice sequences in order to estimat
 
 We continue by running our unsupervised learning models on the choice sequences and its by-products: entropy and bad choice sequences. Initially we hoped to achieve the same two-dimensional clusters given by the EV model, but this is not something we observed. However, some unsupervised models were linear and non-linear combinations of inverse tau and alpha that were correlated with different behaviours observed in the experiment. Top two graphs visualize alpha and inverse tau likelihood estimates of individuals in the high-noise experiment. The colours and shapes represent cluster labels produced by our unsupervised models. The top left graph shows one of the best two-cluster models. One could quite successfully draw an almost horizontal linear separator. This coincides with our simulation results where we observe that tau is more significant parameter of behaviour. Furthermore, one could fit a low order polynomial separator the would fit the labels almost perfectly. The top right graph follows the same argument as one could quite successfully fit two parallel almost horizontal separators. Same as in the previous graph, better clustering would be achieved by separators taking the convex form and being stacked in a non-crossing arrangement. Notice that in all four graphs the clustering fails as alpha estimator approaches zero. This was also observed in our simulation when setting alpha close to zero.
 
+bottom graph version 1
+
+
 Two bottom graphs represent data from the low noise experiment. We can see the average tau-inverse is higher which represents less randomization by the individuals. This is not surprising as due to lower noise, individuals can more easily differentiate gains between different choices and hence need to explore less. We may deduce that in the low-noise scenario alpha plays a stronger role as it is not possible to fit a satisfying horizontal linear separator. Following the same approach as in the first two graphs, the clustering can be improved by using convex separators.
+
+
+bottom graph version 2
+
 
 \begin{figure}[H]
 	\centering
@@ -708,7 +715,7 @@ Again our best clustering is achieved using block wise entropy, besides the list
 
 \section{Discussion of results and possible extensions }
 
-Our analysis so far showed that people are not separate themselves. In general we assume that healthy participants and those with assumed decision making deficits show significantly different behaviour. However, we observe that their behaviour seem to be quite similar given our data and applied mappings. Furthermore , in most of the applied unsupervised techniques we as analysts have to to set the number of clusters we assume to be in the data (so in our case two for control group and patients with habits). We apply another algorithm called affinity propagation, which identifies the number of clusters itself (algorithm formulation see appendix). In general we find that the algorithm is assign , which suggest that there more natural clusters in the data than the  one we assume due to their status labeled as healthy and ill.
+Our analysis so far showed that people are not separate themselves. In general we assume that healthy participants and those with assumed decision making deficits show significantly different behaviour. However, we observe that their behaviour seems to be quite similar given our data and applied mappings. Furthermore , in most of the applied unsupervised techniques we as analysts have to to set the number of clusters we assume to be in the data (so in our case two for control group and patients with habits). We apply another algorithm called affinity propagation, which identifies the number of clusters itself (algorithm formulation see appendix). In general we find that the algorithm is assigning many more clusters to our data. This suggests that there may be more natural clusters in the data instead of simply splitting by healthy and ill labels. This can be addressed by Bayesian nonparametric models. \cite{Gershman2012}
 
 %---------------------------------------------------------------------------------------------------------
 % 5. Data
@@ -716,10 +723,14 @@ Our analysis so far showed that people are not separate themselves. In general w
 
 \section{Conclusion}
 
-Maybe process also reward data 
+Maybe process also reward data.
+
+Our simulations show the RL parameter difference thresholds required for successful clustering given multi-armed bandit reward distribution. We also notice that $\tau$ has relatively much greater effect on individual's behaviour than the learning rate $\alpha$. Fitting unsupervised learning models on real experiment data reveals that they seldom discover the clusters in the parameter space of reinforcement learning models. 
 
 
-\section{Acknowledgment}
+
+
+\section{Acknowledgements}
 
 
 
@@ -953,9 +964,9 @@ IncMargin{1em}
 
 \section{Clustering Evaluation}
 \label{sec:ce}
-In this section we formally derive and explain the applied clustering metrics. Evaluating clustering performance has some issues. The algorithm assigns each point to a cluster. Despite we generated the "true" clusters the might not be comparable. A simple example we might consider the following situation. Let $y$ denote the labels of data the data and $y'$ the corresponding prediction such that  $y,y' \in \{0,1\}$. In a small example let our data points be like $y=(1,1,0,0)$ and the corresponding prediction $y'=(0,0,1,1)$. Obviously the clustering worked perfectly, however comparing "labels" would produce an accuracy of zero. 
+In this section we formally derive and explain the applied clustering metrics. Evaluating clustering and other unsupervised methods performance requires a more complex approach since the true labels are unknown. The algorithm assigns each point to a cluster. Despite we generated the "true" clusters they might not be comparable. A simple example we might consider the following situation. Let $y$ denote the labels of data the data and $y'$ the corresponding prediction such that  $y,y' \in \{0,1\}$. In a small example let our data points be like $y=(1,1,0,0)$ and the corresponding prediction $y'=(0,0,1,1)$. Obviously the clustering worked perfectly, however comparing "labels" would produce an accuracy of zero. 
 
-There a several clustering metrics, which respect such a situation. We consider a bunch of information based metrics. Most of the measures use some sort of entropy. The following concepts can be found in \cite{Rosenberg2007} and  \cite{Vinh2010}. Additional reading is \cite{Hubert1985}. 
+There a several clustering metrics, which respect such a situation. We consider several information based metrics. Most of the measures use some sort of entropy. The following concepts can be found in \cite{Rosenberg2007} and  \cite{Vinh2010}. Additional reading is \cite{Hubert1985}. 
 
 First we might introduce the contingency table. 
 
@@ -981,8 +992,8 @@ First we might introduce the contingency table.
 	\onehalfspacing
 	\textbf{$N_{11}$:} \>\> Number of pairs in the same cluster \\ 
 	\textbf{$N_{00}$:} \>\> Number of pairs that are in different clusters in both $v$ and $u$ \\ 
-	\textbf{$N_{01}$:} \>\> Number of pairs that are in the same cluster in both $u$ but different in $v$ \\ 
-	\textbf{$N_{10}$:} \>\>  Number of pairs that are in the same cluster in both $v$ but different in $u$ \\ 
+	\textbf{$N_{01}$:} \>\> Number of pairs that are in the same cluster in $u$ but different in $v$ \\ 
+	\textbf{$N_{10}$:} \>\>  Number of pairs that are in the same cluster in $v$ but different in $u$ \\ 
 \end{tabbing}
 
 \begin{flalign}
