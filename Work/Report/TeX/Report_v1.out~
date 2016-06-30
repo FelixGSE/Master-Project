@@ -30,9 +30,15 @@
 \BOOKMARK [2][-]{subsection.B.1}{K-Means Clustering}{appendix.B}% 30
 \BOOKMARK [2][-]{subsection.B.2}{Hierarchical Clustering - Agglomerative}{appendix.B}% 31
 \BOOKMARK [2][-]{subsection.B.3}{Spectral Clustering}{appendix.B}% 32
-
+<<<<<<< HEAD
+\BOOKMARK [2][-]{subsection.B.4}{Affinity Propagation}{appendix.B}% 33
+\BOOKMARK [1][-]{appendix.C}{Clustering Evaluation}{}% 34
+\BOOKMARK [1][-]{appendix.D}{Simulation Results}{}% 35
+\BOOKMARK [2][-]{subsection.D.1}{Multi arm bandit data}{appendix.D}% 36
+\BOOKMARK [2][-]{subsection.D.2}{Prison data}{appendix.D}% 37
+=======
 \BOOKMARK [1][-]{appendix.C}{Clustering Evaluation}{}% 33
 \BOOKMARK [1][-]{appendix.D}{Simulation Data}{}% 34
 \BOOKMARK [1][-]{appendix.E}{Multi arm bandit data}{}% 35
 \BOOKMARK [1][-]{appendix.F}{Prison data}{}% 36
-
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b

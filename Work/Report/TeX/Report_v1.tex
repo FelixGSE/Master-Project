@@ -349,8 +349,22 @@ Within this section we also give a broad overview on the applied algorithms etc.
 
 \subsection{Experiment design and problem formulation}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+Figure \ref{fig:flow} depicts our simulation experiment design.\footnote{We implemented related coding for this project mainly in python. The code can be found in our  \href{https://github.com/FelixGSE/Master-Project}{github} repository.} The objective is to obtain a set of sequential choices for a given parameter setting of an artificial agent. We first generate a set of rewards by sampling $n-$vectors from a normal distribution ("\textit{multi arm bandits}"). The agent processes those rewards by sequentially choosing from those options. We repeat this procedure for several parameter settings for the agents and keep track of those choices which will define our data set.
+=======
 Figure \ref{fig:flow} depicts our simulation experiment design.\footnote{We implemented related coding for this project mainly in python. The code can be found on our  \href{https://github.com/FelixGSE/Master-Project}{github} repository.} The objective is to obtain a set of sequential choices for a given parameter setting of an artificial agent. We first generate a set of rewards by sampling $n-$vectors from a normal distribution ("\textit{multi arm bandits}"). The agent processes those rewards by sequentially choosing from those options. We repeat this procedure for several parameter settings and keep track of the resulting choices which will define our data set for the simulation.\\
 We re-use those data for clustering. 
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
+=======
+Figure \ref{fig:flow} depicts our simulation experiment design.\footnote{We implemented related coding for this project mainly in python. The code can be found on our  \href{https://github.com/FelixGSE/Master-Project}{github} repository.} The objective is to obtain a set of sequential choices for a given parameter setting of an artificial agent. We first generate a set of rewards by sampling $n-$vectors from a normal distribution ("\textit{multi arm bandits}"). The agent processes those rewards by sequentially choosing from those options. We repeat this procedure for several parameter settings and keep track of the resulting choices which will define our data set for the simulation.\\
+We re-use those data for clustering. 
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
+=======
+Figure \ref{fig:flow} depicts our simulation experiment design.\footnote{We implemented related coding for this project mainly in python. The code can be found on our  \href{https://github.com/FelixGSE/Master-Project}{github} repository.} The objective is to obtain a set of sequential choices for a given parameter setting of an artificial agent. We first generate a set of rewards by sampling $n-$vectors from a normal distribution ("\textit{multi arm bandits}"). The agent processes those rewards by sequentially choosing from those options. We repeat this procedure for several parameter settings and keep track of the resulting choices which will define our data set for the simulation.\\
+We re-use those data for clustering. 
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
 
  \begin{figure}[H]
 	\includegraphics[width=\textwidth]{Pictures/flow01.png}
@@ -416,12 +430,28 @@ Within our analysis we consider a broad selection of several clustering techniqu
 \subsection{Simulation setup and results}
 
 We observed that the clustering results of our simulation are fluctuating. Hence, to report meaningful results, the following numbers are an average over 20 simulations. We also report the corresponding standard deviations to give an impression on the sensitivity of the clustering results.\\
+<<<<<<< HEAD
+<<<<<<< HEAD
 
 Our implementation is quite flexible. We can control both all parameters for each individual agent and their reward sets. Furthermore, we can control the number of trials for each agent and produce customized, multiple asymmetric cluster sizes. We also can set prior values for each agents' value functions.\\ 
 However, within our experiment we kept the settings more simple. First we fix means and standard deviations for the bandits. Then fix a value for $\alpha$ and run the simulations for different differences in $\tau$. We only consider two different clusters in each settings.\\
 This procedure is repeated for fixed values of $\tau$ and varying $\alpha$. Finally, we again repeat this procedure within a different setting for the bandit means.\\
 This task confronted us with an enormous grid search over different parameters. Note that computing distances is very costly and we to run our simulations multiple times to get an impression of the variability. To keep computation time reasonable, we let the agents perform 100 trials and set the number of agents to 10 for each parameter setting. We ended up using solely the softmax function. The main reason for that decision is that we estimate those parameters later on for the experimental data.\\ 
 
+=======
+
+=======
+
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
+Our implementation is quite flexible. We can control both all parameters for each individual agent and their reward sets. Furthermore, we can control the number of trials for each agent and produce customized, multiple asymmetric cluster sizes. We also can set prior values for each agents' value functions.\\ 
+However, within our experiment we kept the settings more simple. First we fix means and standard deviations for the bandits. Then fix a value for $\alpha$ and run the simulations for different differences in $\tau$. We only consider two different clusters in each settings.\\
+This procedure is repeated for fixed values of $\tau$ and varying $\alpha$. Finally, we again repeat this procedure within a different setting for the bandit means.\\
+This task confronted us with an enormous grid search over different parameters. Note that computing distances is very costly and we to run our simulations multiple times to get an impression of the variability. To keep computation time reasonable, we let the agents perform 100 trials and set the number of agents to 10 for each parameter setting. We ended up using solely the softmax function. The main reason for that decision is that we estimate those parameters later on for the experimental data.\\ 
+
+<<<<<<< HEAD
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
+=======
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
 The following table \ref{tab:simres}  shows a snippet of our simulation results. As described in the last section we have a broad range of similarity measures and algorithms. Therefore, we selected results in such a way, that they give an impression when clustering is working well and such that they indicate the lower bound before clustering works almost perfectly. Naturally, we also found a lot of settings where clustering was not very successful. A detailed overview on numbers are given by tables \ref{tab:apstab1} to \ref{tab:apstab8} in the appendix.\footnote{To give an intuition about the numbers one can informally note that numbers below 0.200 - 0.300 do not show any really good clustering patterns.}
 In general we find that our algorithms pick up the generated clusters when the differences in tau is sufficiently large. We tested this for different fixed values of $\alpha=\{0.1,0.5,1\}$. In general, we can say that if the difference in $\tau$ is larger than one, perfect clustering is possible and stable..\footnote{Standard deviation is equal to one} However, in some settings it also possible earlier.\footnote{See for example \ref{tab:apstab4} } \\
 We repeated this procedure by fixing different values for $\tau$ and increase differences in $\alpha$. We are not able to achieve good clustering within that setting. In the summary table we listed an example, where we fixed the difference in $\alpha$ to 0.9 and still results are not satisfying. Only if we fix the difference to an extreme difference of 0.99 we are able to cluster within that setting.\\
@@ -548,24 +578,43 @@ Two bottom graphs represent data from the low noise experiment. We can see the a
 	\label{fig:cluse1c2}
 \end{figure}
 
+The following two graphs represent  blockwise entropy and the average choice reward ranking for the three clusters also pictured in the graph b) above. Graph a) below shows mean blockwise entropy for each of the three clusters. We can observe the following: individuals assigned to all three clusters on average have similar levels of entropy in the block of first 10 draws; individuals in the first cluster maintain the same level of random behaviour throughout all 100 draws while the second cluster slightly reduces the randomization of choices but and then also maintains it at that rate; only the members of the third cluster constantly decrease exploration until the end of the game. Graph b) below shows the average choice rank per cluster, lower the rank higher the reward it brings to individuals. We can observe ideal behaviour by the third cluster as they manage to simultaneously reduce  exploration level and still continue to improve average choice rank. It is interesting to see that the first and second cluster do not manage to improve the choice ranking as the experiment progresses. 
+
 \begin{figure}[H]
 	\centering
 	\small
 	\hspace*{-0.7in}
 	\begin{tabular}{cc}
-		\input{Pictures/entblbe1c1.tex} & \input{Pictures/crange1c1.tex} \\
-		(\textbf{a}) Blockwise entropy by cluster & (\textbf{b}) Average choice rank by cluster \\
+		\input{Pictures/entblbe1c2.tex} & \input{Pictures/crange1c2.tex} \\
+		(\textbf{a}) Blockwise entropy by cluster & (\textbf{b}) Average choice rank by cluster 
 	\end{tabular} \quad
 	\caption{Clustering on choices vs. model parameter estimation (top sub figures: experiment 1, high noise, bottom: experiment 1, low noise)}
-	\label{fig:cluse1c3}
+	\label{fig:cluse1c4}
 \end{figure}
 
 \subsection{IGT data}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+\subsection{Prison data}
+=======
+As mentioned in the introduction the Iowa Gambling Task is a common tool to monitor human decision making process. Within the test participants try to maximize rewards by choosing sequentially cards from four different decks with different reward structures. There are existing several slightly different versions of test. In general the setting is such that two decks have distributions with negative expectations, while two have positive. However, each deck has its own variance and a set of profits. \cite{Steingroever2015} provides a publicly available data collection for several sources also giving an overview of some different notions of the test.
+
+\subsubsection{Prison data}
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
+=======
+As mentioned in the introduction the Iowa Gambling Task is a common tool to monitor human decision making process. Within the test participants try to maximize rewards by choosing sequentially cards from four different decks with different reward structures. There are existing several slightly different versions of test. In general the setting is such that two decks have distributions with negative expectations, while two have positive. However, each deck has its own variance and a set of profits. \cite{Steingroever2015} provides a publicly available data collection for several sources also giving an overview of some different notions of the test.
+
+\subsubsection{Prison data}
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
+
+=======
 As mentioned in the introduction the Iowa Gambling Task is a common tool to monitor human decision making process. Within the test participants try to maximize rewards by choosing sequentially cards from four different decks with different reward structures. There are existing several slightly different versions of test. In general the setting is such that two decks have distributions with negative expectations, while two have positive. However, each deck has its own variance and a set of profits. \cite{Steingroever2015} provides a publicly available data collection for several sources also giving an overview of some different notions of the test.
 
 \subsubsection{Prison data}
 
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
 We were provided with experimental data from \cite{Yechiam2008} and we try to apply our methods to cluster different groups in the data. The participants had to perform a modified version of the Iowa gambling task, where reward structure of the decks are changing over time.\\
 Our data cover 96 individuals with different criminal profile. Within this data we don't have a control group. Given that participants performed a different version of the test we could add a control data from publicly available data sets (see \cite{Steingroever2015}).\\
 Table \ref{tab:tabps} gives a broad summary of some demographics of the participants. The samples for each groups are not balanced. 
@@ -970,21 +1019,32 @@ First we might introduce the contingency table.
 \begin{tabbing}
 	\hspace*{1cm}\=\hspace*{1cm}\=\hspace*{3cm}\=\hspace*{2.7cm}\= \kill
 	\onehalfspacing
-	\textbf{$N_{11}$:} \>\> Number of pairs in the same cluster \\ 
+	\textbf{$N_{11}$:} \>\> Number of pairs that are in the same cluster in both $v$ and $u$ \\ 
 	\textbf{$N_{00}$:} \>\> Number of pairs that are in different clusters in both $v$ and $u$ \\ 
 	\textbf{$N_{01}$:} \>\> Number of pairs that are in the same cluster in $u$ but different in $v$ \\ 
 	\textbf{$N_{10}$:} \>\>  Number of pairs that are in the same cluster in $v$ but different in $u$ \\ 
 \end{tabbing}
 
+$N_{11}$ and $N_{00}$ can be interpreted as agreements and $N_{01}$ and $N_{10}$ as disagreements between $v$ and $u$.
+
+\pagebreak
+
+Rand index:
+
 \begin{flalign}
-RI(u,v) = \frac{N_{00}+N_{11}}{\binom{N}{2}}
+RI(u,v) = \frac{N_{00}+N_{11}}{\binom{N}{2}} = \frac{N_{00}+N_{11}}{N_{00}+N_{11} + N_{01}+N_{10}}
 \label{eq:ri}
 \end{flalign}
+
+Rand index can take values between 0 and 1, where 1 indicates perfect clustering. One of the drawbacks of the Rand index is that the expected value of two random allocations does not take a constant value. Adjusted Rand index proposed by proposed by \cite{Hubert1985} is also upper bounded by 1, can take negative values and has the expected value of zero.
+
+$$ARI = \frac{index - expected index}{maximum index - expected index}$$
 
 \begin{flalign}
 ARI(u,v) = \frac{2 \left(N_{00}N_{11} - N_{01} N_{10} \right)}{\left(N_{00} + N_{01} \right)\left( N_{01} + N_{11}\right) + \left(N_{00} + N_{10} \right)\left( N_{10} + N_{11}\right)}
 \label{eq:ri}
 \end{flalign}
+
 
 \begin{flalign}
 H(u) &= - \sum_{i=1}^{R} \frac{a_i}{N} \log  \frac{a_i}{N} \\
@@ -995,7 +1055,12 @@ H(v|u) &= - \sum_{i=1}^{C}  \sum_{j=1}^{R}  \frac{n_{i,j}}{N} \log \frac{n_{i,j}
 I(u,v) &= \sum_{i=1}^{R}  \sum_{j=1}^{C}  \frac{n_{i,j}}{N} \log \frac{n_{i,j}/N}{a_i b_j/N} \\
 \end{flalign}
 
-Normalized Info Score:
+
+\pagebreak
+
+Mutual info Score:
+
+Mutual information score measures the similarity between two random variables. It estimates the amount of information known about one random variable after observing the other, it determines the joint distribution. Therefore, mutual information is also closely related to the entropy of a random variable. Normalized mutual info score is a normalization of MI in order to scale the score values between zero and one.
 
 This is one example of a normalized version 
 \begin{flalign}
@@ -1011,6 +1076,9 @@ AMI_{max}(u,v) &= \frac{NMI_{max}(u,v) - \mathbb{E}\left[NMI_{max}(u,v)\right] }
 \begin{flalign}
 \mathbb{E}\left[I(u,v) \right] = \sum_{i=1}^{R}  \sum_{j=1}^{C} \sum_{ n_{i,j}=\max \left(a_i + b_j-N,0\right) }^{ \min \left( a,b \right) } \frac{n_{ij}}{N} \log \left( \frac{N n_{ij}}{a_i b_j} \right) \frac{a_i! b_j!(N-a_i)!(N-b_j)!}{N! n_{ij}! (a_i-n_{ij})(b_j - n_{ij})!(N-a_i-b_j+n_{ij})!}
 \end{flalign}
+
+A clustering result satisfies homogeneity if each cluster contains observations that belong to a single class. A result also satisfies completeness if all observations that belong to the same class have been assigned to the same cluster.
+V measure score expresses the harmonic mean between homogeneity and completeness measures.
 
 Homogeneity: 
 
@@ -1029,13 +1097,13 @@ c = \begin{cases}
 \end{cases}
 \end{flalign}
 
-V Measure Score:
+V-measure:
 
 \begin{flalign}
 V_\beta = \frac{(1+\beta)h c}{\beta h + c}
 \end{flalign}
 
-\section{Simulation Data}
+\section{Simulation Results}
 
 \begin{table}[H] \centering 
 	\label{} 
@@ -1329,18 +1397,26 @@ Tau & Method & Similarity & C & BBC & E & EB & CC & NMI & ARI & VM \\
 \end{table} 
 
 \section{Multi arm bandit data}
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
+=======
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
 
 \begin{figure}[H]
 	\centering
 	\small
 	\hspace*{-0.7in}
 	\begin{tabular}{cc}
-		\input{Pictures/entblbe1c2.tex} & \input{Pictures/crange1c2.tex} \\
-		(\textbf{a}) Blockwise entropy by cluster & (\textbf{b}) Average choice rank by cluster 
+		\input{Pictures/entblbe1c1.tex} & \input{Pictures/crange1c1.tex} \\
+		(\textbf{a}) Blockwise entropy by cluster & (\textbf{b}) Average choice rank by cluster \\
 	\end{tabular} \quad
 	\caption{Clustering on choices vs. model parameter estimation (top sub figures: experiment 1, high noise, bottom: experiment 1, low noise)}
-	\label{fig:cluse1c4}
+	\label{fig:cluse1c3}
 \end{figure}
+
 
 \begin{figure}[H]
 	\centering

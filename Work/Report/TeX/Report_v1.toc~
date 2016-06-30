@@ -32,9 +32,15 @@
 \contentsline {subsection}{\numberline {B.1}K-Means Clustering}{E}{subsection.B.1}
 \contentsline {subsection}{\numberline {B.2}Hierarchical Clustering - Agglomerative}{F}{subsection.B.2}
 \contentsline {subsection}{\numberline {B.3}Spectral Clustering}{G}{subsection.B.3}
-
+<<<<<<< HEAD
+\contentsline {subsection}{\numberline {B.4}Affinity Propagation}{H}{subsection.B.4}
+\contentsline {section}{\numberline {C}Clustering Evaluation}{I}{appendix.C}
+\contentsline {section}{\numberline {D}Simulation Results}{L}{appendix.D}
+\contentsline {subsection}{\numberline {D.1}Multi arm bandit data}{S}{subsection.D.1}
+\contentsline {subsection}{\numberline {D.2}Prison data}{U}{subsection.D.2}
+=======
 \contentsline {section}{\numberline {C}Clustering Evaluation}{H}{appendix.C}
 \contentsline {section}{\numberline {D}Simulation Data}{K}{appendix.D}
 \contentsline {section}{\numberline {E}Multi arm bandit data}{R}{appendix.E}
 \contentsline {section}{\numberline {F}Prison data}{T}{appendix.F}
-
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b

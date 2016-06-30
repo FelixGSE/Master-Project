@@ -1,6 +1,8 @@
-
+<<<<<<< HEAD
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  30 JUN 2016 21:59
+=======
 This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.28)  30 JUN 2016 21:57
-
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1757,7 +1759,7 @@ Overfull \hbox (45.16154pt too wide) in paragraph at lines 605--612
 
 [15]
 Overfull \hbox (9.83507pt too wide) in paragraph at lines 616--618
-
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
 []\OT1/cmr/m/n/12 [[][]Yechiam et al., 2008[][]] found three clus-ters by us-in
 g the at-ten-tion to re-cent out-comes(ARO)
  []
@@ -1772,10 +1774,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 148--151
 []\OT1/cmr/m/n/12 Pamminger, C. and Fruehwirth-
  []
 
-
+<<<<<<< HEAD
+[21]) [22] [1] [2] [3] [4]
+Overfull \hbox (29.77469pt too wide) detected at line 885
+=======
 [22]) [23] [1] [2] [3] [4]
 Overfull \hbox (29.77469pt too wide) detected at line 872
-
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
 [][] 
  []
 
@@ -1783,7 +1788,20 @@ Overfull \hbox (29.77469pt too wide) detected at line 872
 e{page.I}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
+<<<<<<< HEAD
+l.1003 
+        [9] [10]
+Overfull \hbox (62.30624pt too wide) in paragraph at lines 1050--1050
+[] 
+ []
 
+[11]
+Underfull \hbox (badness 10000) in alignment at lines 1114--1114
+[][][][][][][][][][][] 
+ []
+
+
+=======
 l.1012 \end{flalign}
                      [9]
 Overfull \hbox (62.30624pt too wide) in paragraph at lines 1016--1016
@@ -1801,13 +1819,25 @@ Underfull \hbox (badness 10000) in alignment at lines 1116--1116
  []
 
 [11]
-
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
 Underfull \hbox (badness 10000) in alignment at lines 1153--1153
 [][][][][][][][][][][] 
  []
 
 [12]
+<<<<<<< HEAD
+Underfull \hbox (badness 10000) in alignment at lines 1190--1190
+[][][][][][][][][][][] 
+ []
 
+[13]
+Underfull \hbox (badness 10000) in alignment at lines 1222--1222
+[][][][][][][][][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in alignment at lines 1256--1256
+=======
 Underfull \hbox (badness 10000) in alignment at lines 1185--1185
 [][][][][][][][][][][] 
  []
@@ -1819,44 +1849,85 @@ Underfull \hbox (badness 10000) in alignment at lines 1219--1219
 
 [13]
 Underfull \hbox (badness 10000) in alignment at lines 1257--1257
-
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
 [][][][][][][][][][][] 
  []
 
 [14]
-
+<<<<<<< HEAD
+Underfull \hbox (badness 10000) in alignment at lines 1294--1294
+=======
 Underfull \hbox (badness 10000) in alignment at lines 1291--1291
-
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
 [][][][][][][][][][][] 
  []
 
 [15]
+<<<<<<< HEAD
+Underfull \hbox (badness 10000) in alignment at lines 1328--1328
+[][][][][][][][][][][] 
+ []
 
+[16]
+Underfull \hbox (badness 10000) in alignment at lines 1366--1366
+[][][][][][][][][][][] 
+ []
+
+[17] (./Pictures/entblbe1c1.tex) (./Pictures/crange1c1.tex)
+Overfull \hbox (43.92339pt too wide) in paragraph at lines 1377--1382
+=======
 Underfull \hbox (badness 10000) in alignment at lines 1329--1329
 [][][][][][][][][][][] 
  []
 
 [16] (./Pictures/entblbe1c2.tex) (./Pictures/crange1c2.tex)
 Overfull \hbox (43.92339pt too wide) in paragraph at lines 1339--1344
-
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
  []|  [] 
  []
 
 [17] (./Pictures/entblbe2c1.tex) (./Pictures/crange2c1.tex)
 (./Pictures/entblbe2c2.tex) (./Pictures/crange2c2.tex)
+<<<<<<< HEAD
+Overfull \hbox (43.92339pt too wide) in paragraph at lines 1390--1397
+ []|  [] 
+ []
 
+[19] [20]
+Overfull \hbox (7.07774pt too wide) in paragraph at lines 1409--1451
+=======
 Overfull \hbox (43.92339pt too wide) in paragraph at lines 1351--1358
  []|  [] 
  []
 
 [18] [19]
 Overfull \hbox (7.07774pt too wide) in paragraph at lines 1370--1412
-
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
  [][] 
  []
 
 
+<<<<<<< HEAD
+Overfull \hbox (10.32362pt too wide) in paragraph at lines 1457--1485
+ [][] 
+ []
 
+[21]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1498.
+pdfTeX warning (ext4): destination with the same identifier (name{page.V}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1498 \end{document}
+                      [22]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1498.
+ (./Report_v1.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1498.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1498.
+
+Package rerunfilecheck Info: File `Report_v1.out' has not changed.
+(rerunfilecheck)             Checksum: 3D3E0B2179298BF6667FD115B75DE415;2514.
+=======
 Overfull \hbox (10.32362pt too wide) in paragraph at lines 1418--1446
  [][] 
  []
@@ -1871,7 +1942,7 @@ Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1459.
 
 Package rerunfilecheck Info: File `Report_v1.out' has not changed.
 (rerunfilecheck)             Checksum: AAA6645C03ADE82D0C600BAAE35E313B;2457.
-
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
 
 
 LaTeX Warning: There were undefined references.
@@ -1879,13 +1950,27 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-
+<<<<<<< HEAD
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1498.
+=======
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1459.
-
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
  )
 (\end occurred inside a group at level 2)
 
-
+<<<<<<< HEAD
+### simple group (level 2) entered at line 605 ({)
+### simple group (level 1) entered at line 1061 ({)
+### bottom level 
+Here is how much of TeX's memory you used:
+ 27373 strings out of 493042
+ 494338 string characters out of 6134667
+ 936157 words of memory out of 5000000
+ 30122 multiletter control sequences out of 15000+600000
+ 20738 words of font info for 78 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 64i,18n,77p,1439b,3520s stack positions out of 5000i,500n,10000p,200000b,80000s
+=======
 ### simple group (level 1) entered at line 601 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
@@ -1896,7 +1981,7 @@ Here is how much of TeX's memory you used:
  20738 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,18n,77p,1751b,1053s stack positions out of 5000i,500n,10000p,200000b,80000s
-
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/bbold-ty
 pe1/bbold10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmbsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
@@ -1920,12 +2005,19 @@ cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
 al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local
 /texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-
+<<<<<<< HEAD
+Output written on Report_v1.pdf (52 pages, 782587 bytes).
+PDF statistics:
+ 838 PDF objects out of 1000 (max. 8388607)
+ 749 compressed objects within 8 object streams
+ 216 named destinations out of 1000 (max. 500000)
+ 324 words of extra memory for PDF output out of 10000 (max. 10000000)
+=======
 Output written on Report_v1.pdf (52 pages, 782195 bytes).
 PDF statistics:
  840 PDF objects out of 1000 (max. 8388607)
  751 compressed objects within 8 object streams
  217 named destinations out of 1000 (max. 500000)
  316 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
 

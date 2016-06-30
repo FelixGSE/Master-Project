@@ -81,12 +81,16 @@
 \citation{Steingroever2015}
 \citation{Yechiam2008}
 \citation{Steingroever2015}
-
+<<<<<<< HEAD
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Clustering on choices vs. model parameter estimation (top sub figures: experiment 1, high noise, bottom: experiment 1, low noise)\relax }}{13}{figure.caption.6}}
+\newlabel{fig:cluse1c4}{{4}{13}{Clustering on choices vs. model parameter estimation (top sub figures: experiment 1, high noise, bottom: experiment 1, low noise)\relax }{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Prison data}{13}{subsection.4.2}}
+=======
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Clustering on choices vs. model parameter estimation (top sub figures: experiment 1, high noise, bottom: experiment 1, low noise)\relax }}{14}{figure.caption.6}}
 \newlabel{fig:cluse1c3}{{4}{14}{Clustering on choices vs. model parameter estimation (top sub figures: experiment 1, high noise, bottom: experiment 1, low noise)\relax }{figure.caption.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}IGT data}{14}{subsection.4.2}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Prison data}{14}{subsubsection.4.2.1}}
-
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
 \citation{stout2004}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Summary prison data (means with standard deviation in parenthesis)\relax }}{15}{table.caption.7}}
 \newlabel{tab:tabps}{{2}{15}{Summary prison data (means with standard deviation in parenthesis)\relax }{table.caption.7}{}}
@@ -103,7 +107,14 @@
 \citation{Yechiam2008}
 \citation{Brusco2008}
 \citation{Gershman2012}
-
+<<<<<<< HEAD
+\newlabel{}{{\caption@xref {}{ on input line 682}}{17}{Cocaine Abusers data}{table.caption.11}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Clustering results for cocaine abusers vs. control group\relax }}{17}{table.caption.11}}
+\newlabel{tab:cocainresults}{{5}{17}{Clustering results for cocaine abusers vs. control group\relax }{table.caption.11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion of results and possible extensions }{17}{section.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{18}{section.6}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Acknowledgements}{18}{section.7}}
+=======
 \newlabel{}{{\caption@xref {}{ on input line 675}}{18}{Cocaine Abusers data}{table.caption.11}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Clustering results for cocaine abusers vs. control group\relax }}{18}{table.caption.11}}
 \newlabel{tab:cocainresults}{{5}{18}{Clustering results for cocaine abusers vs. control group\relax }{table.caption.11}{}}
@@ -111,7 +122,7 @@
 \citation{Stout2004}
 \citation{Yechiam2008}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Acknowledgments}{19}{section.6}}
-
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
 \bibstyle{apalike}
 \bibdata{unsupervised}
 \bibcite{Ahn2008}{Ahn et~al., 2008}
@@ -193,7 +204,51 @@
 \citation{Rosenberg2007}
 \citation{Vinh2010}
 \citation{Hubert1985}
-
+<<<<<<< HEAD
+\@writefile{toc}{\contentsline {section}{\numberline {C}Clustering Evaluation}{I}{appendix.C}}
+\newlabel{sec:ce}{{C}{I}{Clustering Evaluation}{appendix.C}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Contigency Table\relax }}{I}{table.caption.16}}
+\citation{Hubert1985}
+\newlabel{eq:ri}{{20}{J}{Clustering Evaluation}{equation.C.20}{}}
+\newlabel{eq:ri}{{21}{J}{Clustering Evaluation}{equation.C.21}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {D}Simulation Results}{L}{appendix.D}}
+\newlabel{}{{\caption@xref {}{ on input line 1081}}{L}{Simulation Results}{table.caption.17}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\alpha = 0.1$)\relax }}{L}{table.caption.17}}
+\newlabel{tab:apstab1}{{7}{L}{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\alpha = 0.1$)\relax }{table.caption.17}{}}
+\newlabel{}{{\caption@xref {}{ on input line 1120}}{M}{Simulation Results}{table.caption.18}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\alpha = 0.5$)\relax }}{M}{table.caption.18}}
+\newlabel{tab:apstab2}{{8}{M}{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\alpha = 0.5$)\relax }{table.caption.18}{}}
+\newlabel{}{{\caption@xref {}{ on input line 1159}}{N}{Simulation Results}{table.caption.19}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\alpha = 1$)\relax }}{N}{table.caption.19}}
+\newlabel{tab:apstab3}{{9}{N}{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\alpha = 1$)\relax }{table.caption.19}{}}
+\newlabel{}{{\caption@xref {}{ on input line 1200}}{N}{Simulation Results}{table.caption.20}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,1,2\}$, $\sigma = \{1,1,1\}$, $\alpha = 0.1$)\relax }}{N}{table.caption.20}}
+\newlabel{tab:apstab4}{{10}{N}{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,1,2\}$, $\sigma = \{1,1,1\}$, $\alpha = 0.1$)\relax }{table.caption.20}{}}
+\newlabel{}{{\caption@xref {}{ on input line 1229}}{O}{Simulation Results}{table.caption.21}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,1,2\}$, $\sigma = \{1,1,1\}$, $\alpha = 1$)\relax }}{O}{table.caption.21}}
+\newlabel{tab:apstab5}{{11}{O}{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,1,2\}$, $\sigma = \{1,1,1\}$, $\alpha = 1$)\relax }{table.caption.21}{}}
+\newlabel{}{{\caption@xref {}{ on input line 1262}}{P}{Simulation Results}{table.caption.22}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\tau = 0.1$)\relax }}{P}{table.caption.22}}
+\newlabel{tab:apstab6}{{12}{P}{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\tau = 0.1$)\relax }{table.caption.22}{}}
+\newlabel{}{{\caption@xref {}{ on input line 1300}}{Q}{Simulation Results}{table.caption.23}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\tau = 0.5$)\relax }}{Q}{table.caption.23}}
+\newlabel{tab:apstab7}{{13}{Q}{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\tau = 0.5$)\relax }{table.caption.23}{}}
+\newlabel{}{{\caption@xref {}{ on input line 1334}}{R}{Simulation Results}{table.caption.24}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\tau = 1.0$)\relax }}{R}{table.caption.24}}
+\newlabel{tab:apstab8}{{14}{R}{Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\tau = 1.0$)\relax }{table.caption.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D.1}Multi arm bandit data}{S}{subsection.D.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Clustering on choices vs. model parameter estimation (top sub figures: experiment 1, high noise, bottom: experiment 1, low noise)\relax }}{S}{figure.caption.25}}
+\newlabel{fig:cluse1c3}{{6}{S}{Clustering on choices vs. model parameter estimation (top sub figures: experiment 1, high noise, bottom: experiment 1, low noise)\relax }{figure.caption.25}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Clustering on choices vs. model parameter estimation (top sub figures: experiment 1, high noise, bottom: experiment 1, low noise)\relax }}{T}{figure.caption.26}}
+\newlabel{fig:cluse1c3}{{7}{T}{Clustering on choices vs. model parameter estimation (top sub figures: experiment 1, high noise, bottom: experiment 1, low noise)\relax }{figure.caption.26}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D.2}Prison data}{U}{subsection.D.2}}
+\@writefile{lot}{\contentsline {table}{\numberline {15}{\ignorespaces \relax }}{U}{table.caption.27}}
+\newlabel{}{{15}{U}{\relax }{table.caption.27}{}}
+\newlabel{tab:prison1}{{15}{U}{\relax }{table.caption.27}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {16}{\ignorespaces \relax }}{V}{table.caption.28}}
+\newlabel{}{{16}{V}{\relax }{table.caption.28}{}}
+\newlabel{tab:prison2}{{16}{V}{\relax }{table.caption.28}{}}
+=======
 \@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces Spectral clustering\relax }}{H}{algocf.3}}
 \newlabel{alg:agglc}{{3}{H}{Spectral Clustering}{algocf.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {C}Clustering Evaluation}{H}{appendix.C}}
@@ -238,4 +293,4 @@
 \@writefile{lot}{\contentsline {table}{\numberline {16}{\ignorespaces \relax }}{U}{table.caption.28}}
 \newlabel{}{{16}{U}{\relax }{table.caption.28}{}}
 \newlabel{tab:prison2}{{16}{U}{\relax }{table.caption.28}{}}
-
+>>>>>>> 571ec4df118a926fc6499f2680eff56321b8c35b
