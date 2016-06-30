@@ -411,6 +411,13 @@ hrv_exptype =  pd.read_csv("hrvoje_multiarm_exptype.csv")
 hrv_choices = pd.read_csv("hrvoje_multiarm_choices.csv")
 hrv_choices = hrv_choices.values.tolist()
 
+
+##################
+hrv_choices = pd.read_csv("hrvoje_multiarm_choicerank.csv")
+hrv_choices = hrv_choices.values.tolist()
+####################
+
+
 hrv_gender = pd.read_csv("hrvoje_multiarm_gender.csv")
 hrv_gender = hrv_gender['x'].values.tolist()
 
@@ -429,12 +436,19 @@ choices_avg = aux.avg(hrv_choices)
 entropy_avg = aux.avg(entropy)
 choice_bad = aux.avg_bad(hrv_choices)
 
+label = range(104)
+
+label = range(104,205)
+
 label = range(390,429)
 
 
 #c00 = aux.subset_data(hrv_choices,label,[0,1])
 
-c00 = hrv_choices[390:429]
+c00 = hrv_choices[:104]
+
+c00 = hrv_choices[104:205]
+
 
 e00 = aux.entropy(c00)
 
@@ -448,12 +462,20 @@ l00 = label
 b00 = aux.avg_bad(c00)
 
 
+####################
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real_data_multiarm/')
+
+pd.DataFrame(entropy).to_csv("hrvoje_multiarm_entropy.csv")
+pd.DataFrame(entropy_block).to_csv("hrvoje_multiarm_entropy_block.csv")
+
+####################
+
 
 # Run computation 06
-os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real_data_multiarm/exp1_2/')
+os.chdir('/home/fizlaz/bgse/Master_Thesis/Master_Project_Felix/Work/Code and Analysis/Results/Real_data_multiarm/exp2_2/')
 miner = data_clustering()
 miner.prediction(choice_set = c00 , entropy_set = e00 , bad_set = e00,labelset = l00,ent_block=eb00, cluster_range = range(2,4), save = True)
-miner.dframe.to_csv("c00_exp4_1.csv")
+miner.dframe.to_csv("c00_exp2_choicerank_2.csv")
 
 
 print miner.dframe[["algorithm","predictions"]]
