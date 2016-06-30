@@ -18,9 +18,9 @@
 \BOOKMARK [2][-]{subsection.4.3}{Cocaine Abusers data}{section.4}% 18
 \BOOKMARK [1][-]{section.5}{Discussion of results and possible extensions }{}% 19
 \BOOKMARK [1][-]{section.6}{Conclusion}{}% 20
-\BOOKMARK [1][-]{section.7}{Acknowledgment}{}% 21
+\BOOKMARK [1][-]{section.7}{Acknowledgements}{}% 21
 \BOOKMARK [1][-]{section.7}{List of Literature}{}% 22
-\BOOKMARK [1][-]{section*.11}{Appendix}{}% 23
+\BOOKMARK [1][-]{section*.12}{Appendix}{}% 23
 \BOOKMARK [1][-]{appendix.A}{Metrics and Similarities}{}% 24
 \BOOKMARK [2][-]{subsection.A.1}{Distances vs. Similarities}{appendix.A}% 25
 \BOOKMARK [2][-]{subsection.A.2}{General Similarity measures}{appendix.A}% 26
@@ -33,4 +33,5 @@
 \BOOKMARK [2][-]{subsection.B.4}{Affinity Propagation}{appendix.B}% 33
 \BOOKMARK [1][-]{appendix.C}{Clustering Evaluation}{}% 34
 \BOOKMARK [1][-]{appendix.D}{Simulation Data}{}% 35
-\BOOKMARK [2][-]{subsection.D.1}{Prison data}{appendix.D}% 36
+\BOOKMARK [2][-]{subsection.D.1}{Multi arm bandit data}{appendix.D}% 36
+\BOOKMARK [2][-]{subsection.D.2}{Prison data}{appendix.D}% 37

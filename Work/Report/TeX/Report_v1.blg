@@ -1,6 +1,11 @@
 This is BibTeX, Version 0.99d (TeX Live 2015)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Report_v1.aux
+Case mismatch error between cite keys stout2004 and Stout2004
+---line 86 of file Report_v1.aux
+ : \citation{stout2004
+ :                    }
+I'm skipping whatever remains of this command
 The style file: apalike.bst
 Database file #1: unsupervised.bib
 Repeated entry---line 569 of file unsupervised.bib
@@ -47,6 +52,10 @@ Repeated entry---line 998 of file unsupervised.bib
  : @article{Stout2004
  :                   ,
 I'm skipping whatever remains of this entry
+Repeated entry---line 1015 of file unsupervised.bib
+ : @article{Gershman2012
+ :                      ,
+I'm skipping whatever remains of this entry
 Warning--empty journal in Luxburg2007
 Warning--there's a number but no volume in Luxburg2007
 Warning--empty publisher in MacKay2005
@@ -60,45 +69,45 @@ Warning--empty journal in Ren2011
 Warning--empty year in Richter
 Warning--empty journal in Richter
 Warning--empty journal in Sutton2012
-You've used 41 entries,
+You've used 42 entries,
             1935 wiz_defined-function locations,
-            744 strings with 11845 characters,
-and the built_in function-call counts, 16947 in all, are:
-= -- 1624
-> -- 821
-< -- 21
-+ -- 286
-- -- 282
-* -- 1527
-:= -- 2995
-add.period$ -- 119
-call.type$ -- 41
-change.case$ -- 341
-chr.to.int$ -- 41
-cite$ -- 54
-duplicate$ -- 575
-empty$ -- 1103
-format.name$ -- 345
-if$ -- 3216
+            749 strings with 11957 characters,
+and the built_in function-call counts, 17324 in all, are:
+= -- 1663
+> -- 834
+< -- 22
++ -- 290
+- -- 286
+* -- 1561
+:= -- 3060
+add.period$ -- 122
+call.type$ -- 42
+change.case$ -- 348
+chr.to.int$ -- 42
+cite$ -- 55
+duplicate$ -- 589
+empty$ -- 1130
+format.name$ -- 352
+if$ -- 3289
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 47
-newline$ -- 203
-num.names$ -- 123
-pop$ -- 311
+missing$ -- 48
+newline$ -- 208
+num.names$ -- 126
+pop$ -- 315
 preamble$ -- 1
-purify$ -- 346
+purify$ -- 353
 quote$ -- 0
-skip$ -- 430
+skip$ -- 441
 stack$ -- 0
-substring$ -- 1154
-swap$ -- 44
+substring$ -- 1182
+swap$ -- 45
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 234
+type$ -- 240
 warning$ -- 13
-while$ -- 135
+while$ -- 139
 width$ -- 0
-write$ -- 511
-(There were 11 error messages)
+write$ -- 524
+(There were 13 error messages)
