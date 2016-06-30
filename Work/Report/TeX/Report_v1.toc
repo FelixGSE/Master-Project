@@ -8,19 +8,19 @@
 \contentsline {section}{\numberline {III}List of abbreviations}{VII}{section.III}
 \contentsline {section}{\numberline {1}Introduction and conceptual approach}{1}{section.1}
 \contentsline {section}{\numberline {2}Relevant Literature}{2}{section.2}
-\contentsline {section}{\numberline {3}Theoretical Background and simulation experiments}{3}{section.3}
+\contentsline {section}{\numberline {3}Theoretical background of reinforcement learning and simulation experiments}{2}{section.3}
 \contentsline {subsection}{\numberline {3.1}Experiment design and problem formulation}{3}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Reinforcement Learning background and multi arm bandits}{4}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Data handling, unsupervised learning methods and similarities}{6}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Simulation setup and results}{7}{subsection.3.4}
-\contentsline {section}{\numberline {4}Data Analysis}{10}{section.4}
-\contentsline {subsection}{\numberline {4.1}Multi-arm bandit experiment data}{10}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Prison data}{13}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Cocaine Abusers data}{16}{subsection.4.3}
-\contentsline {section}{\numberline {5}Discussion of results and possible extensions }{17}{section.5}
-\contentsline {section}{\numberline {6}Conclusion}{18}{section.6}
-\contentsline {section}{\numberline {7}Acknowledgements}{18}{section.7}
-\contentsline {section}{List of Literature}{19}{section.7}
+\contentsline {subsection}{\numberline {3.4}Simulation setup and results}{8}{subsection.3.4}
+\contentsline {section}{\numberline {4}Data Analysis}{11}{section.4}
+\contentsline {subsection}{\numberline {4.1}Multi-arm bandit experiment data}{11}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}IGT data}{14}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Prison data}{14}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Cocaine Abusers data}{17}{subsubsection.4.2.2}
+\contentsline {section}{\numberline {5}Conclusion and possible extensions}{18}{section.5}
+\contentsline {section}{\numberline {6}Acknowledgments}{19}{section.6}
+\contentsline {section}{List of Literature}{20}{section.6}
 \contentsline {section}{Appendix}{A}{section*.12}
 \vspace {-0.5em}
 \contentsline {section}{\numberline {A}Metrics and Similarities}{A}{appendix.A}
@@ -32,8 +32,7 @@
 \contentsline {subsection}{\numberline {B.1}K-Means Clustering}{E}{subsection.B.1}
 \contentsline {subsection}{\numberline {B.2}Hierarchical Clustering - Agglomerative}{F}{subsection.B.2}
 \contentsline {subsection}{\numberline {B.3}Spectral Clustering}{G}{subsection.B.3}
-\contentsline {subsection}{\numberline {B.4}Affinity Propagation}{H}{subsection.B.4}
-\contentsline {section}{\numberline {C}Clustering Evaluation}{I}{appendix.C}
-\contentsline {section}{\numberline {D}Simulation Data}{L}{appendix.D}
-\contentsline {subsection}{\numberline {D.1}Multi arm bandit data}{S}{subsection.D.1}
-\contentsline {subsection}{\numberline {D.2}Prison data}{U}{subsection.D.2}
+\contentsline {section}{\numberline {C}Clustering Evaluation}{H}{appendix.C}
+\contentsline {section}{\numberline {D}Simulation Data}{K}{appendix.D}
+\contentsline {section}{\numberline {E}Multi arm bandit data}{R}{appendix.E}
+\contentsline {section}{\numberline {F}Prison data}{T}{appendix.F}

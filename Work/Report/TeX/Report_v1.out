@@ -7,19 +7,19 @@
 \BOOKMARK [1][-]{section.III}{List of abbreviations}{}% 7
 \BOOKMARK [1][-]{section.1}{Introduction and conceptual approach}{}% 8
 \BOOKMARK [1][-]{section.2}{Relevant Literature}{}% 9
-\BOOKMARK [1][-]{section.3}{Theoretical Background and simulation experiments}{}% 10
+\BOOKMARK [1][-]{section.3}{Theoretical background of reinforcement learning and simulation experiments}{}% 10
 \BOOKMARK [2][-]{subsection.3.1}{Experiment design and problem formulation}{section.3}% 11
 \BOOKMARK [2][-]{subsection.3.2}{Reinforcement Learning background and multi arm bandits}{section.3}% 12
 \BOOKMARK [2][-]{subsection.3.3}{Data handling, unsupervised learning methods and similarities}{section.3}% 13
 \BOOKMARK [2][-]{subsection.3.4}{Simulation setup and results}{section.3}% 14
 \BOOKMARK [1][-]{section.4}{Data Analysis}{}% 15
 \BOOKMARK [2][-]{subsection.4.1}{Multi-arm bandit experiment data}{section.4}% 16
-\BOOKMARK [2][-]{subsection.4.2}{Prison data}{section.4}% 17
-\BOOKMARK [2][-]{subsection.4.3}{Cocaine Abusers data}{section.4}% 18
-\BOOKMARK [1][-]{section.5}{Discussion of results and possible extensions }{}% 19
-\BOOKMARK [1][-]{section.6}{Conclusion}{}% 20
-\BOOKMARK [1][-]{section.7}{Acknowledgements}{}% 21
-\BOOKMARK [1][-]{section.7}{List of Literature}{}% 22
+\BOOKMARK [2][-]{subsection.4.2}{IGT data}{section.4}% 17
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Prison data}{subsection.4.2}% 18
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Cocaine Abusers data}{subsection.4.2}% 19
+\BOOKMARK [1][-]{section.5}{Conclusion and possible extensions}{}% 20
+\BOOKMARK [1][-]{section.6}{Acknowledgments}{}% 21
+\BOOKMARK [1][-]{section.6}{List of Literature}{}% 22
 \BOOKMARK [1][-]{section*.12}{Appendix}{}% 23
 \BOOKMARK [1][-]{appendix.A}{Metrics and Similarities}{}% 24
 \BOOKMARK [2][-]{subsection.A.1}{Distances vs. Similarities}{appendix.A}% 25
@@ -30,8 +30,7 @@
 \BOOKMARK [2][-]{subsection.B.1}{K-Means Clustering}{appendix.B}% 30
 \BOOKMARK [2][-]{subsection.B.2}{Hierarchical Clustering - Agglomerative}{appendix.B}% 31
 \BOOKMARK [2][-]{subsection.B.3}{Spectral Clustering}{appendix.B}% 32
-\BOOKMARK [2][-]{subsection.B.4}{Affinity Propagation}{appendix.B}% 33
-\BOOKMARK [1][-]{appendix.C}{Clustering Evaluation}{}% 34
-\BOOKMARK [1][-]{appendix.D}{Simulation Data}{}% 35
-\BOOKMARK [2][-]{subsection.D.1}{Multi arm bandit data}{appendix.D}% 36
-\BOOKMARK [2][-]{subsection.D.2}{Prison data}{appendix.D}% 37
+\BOOKMARK [1][-]{appendix.C}{Clustering Evaluation}{}% 33
+\BOOKMARK [1][-]{appendix.D}{Simulation Data}{}% 34
+\BOOKMARK [1][-]{appendix.E}{Multi arm bandit data}{}% 35
+\BOOKMARK [1][-]{appendix.F}{Prison data}{}% 36
