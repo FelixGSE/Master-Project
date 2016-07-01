@@ -1,22 +1,20 @@
-
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.28)  30 JUN 2016 21:57
-
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.28)  30 JUN 2016 23:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **Report_v1.tex
 (./Report_v1.tex
-LaTeX2e <2016/02/01>
-Babel <3.9o> and hyphenation patterns for 80 language(s) loaded.
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/koma-script/scrartcl.cls
-Document Class: scrartcl 2015/10/03 v3.19a KOMA-Script document class (article)
+Document Class: scrartcl 2015/05/06 v3.17a KOMA-Script document class (article)
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/koma-script/scrkbase.sty
-Package: scrkbase 2015/10/03 v3.19a KOMA-Script package (KOMA-Script-dependent 
+Package: scrkbase 2015/05/06 v3.17a KOMA-Script package (KOMA-Script-dependent 
 basics and keyval usage)
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/koma-script/scrbase.sty
-Package: scrbase 2015/10/03 v3.19a KOMA-Script package (KOMA-Script-independent
+Package: scrbase 2015/05/06 v3.17a KOMA-Script package (KOMA-Script-independent
  basics and keyval usage)
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty
@@ -24,23 +22,23 @@ Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/koma-script/scrlfile.sty
-Package: scrlfile 2015/10/03 v3.19a KOMA-Script package (loading files)
+Package: scrlfile 2015/05/06 v3.17a KOMA-Script package (loading files)
 
-Package scrlfile, 2015/10/03 v3.19a KOMA-Script package (loading files)
+Package scrlfile, 2015/05/06 v3.17a KOMA-Script package (loading files)
                   Copyright (C) Markus Kohm
 
 ))) (/usr/local/texlive/2015/texmf-dist/tex/latex/koma-script/tocbasic.sty
-Package: tocbasic 2015/10/03 v3.19a KOMA-Script package (handling toc-files)
+Package: tocbasic 2015/05/06 v3.17a KOMA-Script package (handling toc-files)
 )
 Package tocbasic Info: omitting babel extension for `toc'
 (tocbasic)             because of feature `nobabel' available
-(tocbasic)             for `toc' on input line 123.
+(tocbasic)             for `toc' on input line 122.
 Package tocbasic Info: omitting babel extension for `lof'
 (tocbasic)             because of feature `nobabel' available
-(tocbasic)             for `lof' on input line 124.
+(tocbasic)             for `lof' on input line 123.
 Package tocbasic Info: omitting babel extension for `lot'
 (tocbasic)             because of feature `nobabel' available
-(tocbasic)             for `lot' on input line 125.
+(tocbasic)             for `lot' on input line 124.
 Package scrartcl Info: You've used standard option `12pt'.
 (scrartcl)             This is correct!
 (scrartcl)             Internally I'm using `fontsize=12pt'.
@@ -48,16 +46,16 @@ Package scrartcl Info: You've used standard option `12pt'.
 (scrartcl)             you'd have to use `fontsize=12pt' there
 (scrartcl)             instead of `12pt', too.
 Class scrartcl Info: File `scrsize12pt.clo' used to setup font sizes on input l
-ine 2033.
+ine 1942.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/koma-script/scrsize12pt.clo
-File: scrsize12pt.clo 2015/10/03 v3.19a KOMA-Script font size class option (12p
+File: scrsize12pt.clo 2015/05/06 v3.17a KOMA-Script font size class option (12p
 t)
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/koma-script/typearea.sty
-Package: typearea 2015/10/03 v3.19a KOMA-Script package (type area)
+Package: typearea 2015/05/06 v3.17a KOMA-Script package (type area)
 
-Package typearea, 2015/10/03 v3.19a KOMA-Script package (type area)
+Package typearea, 2015/05/06 v3.17a KOMA-Script package (type area)
                   Copyright (C) Frank Neukam, 1992-1994
                   Copyright (C) Markus Kohm, 1994-
 
@@ -89,7 +87,7 @@ Package typearea Info: These are the values describing the layout:
 (typearea)              \topskip        = 12.0pt
 (typearea)              \footskip       = 50.75pt
 (typearea)              \baselineskip   = 14.5pt
-(typearea)              on input line 1509.
+(typearea)              on input line 1485.
 )
 \c@part=\count80
 \c@section=\count81
@@ -97,7 +95,7 @@ Package typearea Info: These are the values describing the layout:
 \c@subsubsection=\count83
 \c@paragraph=\count84
 \c@subparagraph=\count85
-LaTeX Info: Redefining \textsubscript on input line 3906.
+LaTeX Info: Redefining \textsubscript on input line 3718.
 \abovecaptionskip=\skip46
 \belowcaptionskip=\skip47
 \c@pti@nb@sid@b@x=\box26
@@ -105,13 +103,13 @@ LaTeX Info: Redefining \textsubscript on input line 3906.
 \c@table=\count87
 \bibindent=\dimen102
 ) (/usr/local/texlive/2015/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2016/02/01 3.9o The Babel package
+Package: babel 2014/09/25 3.9l The Babel package
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2012/08/20 v3.3p English support from the babel system
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2016/02/01 3.9o Babel common definitions
+File: babel.def 2014/09/25 3.9l Babel common definitions
 \babel@savecnt=\count88
 \U@D=\dimen103
 )
@@ -125,19 +123,17 @@ Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@posthook=\toks16
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2015/12/03 v1.1r UTF-8 support for inputenc
+File: utf8.def 2014/09/29 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.dfu
-File: t1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
-   defining Unicode char U+00A0 (decimal 160)
+File: t1enc.dfu 2014/09/29 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
    defining Unicode char U+00AB (decimal 171)
-   defining Unicode char U+00AD (decimal 173)
    defining Unicode char U+00BB (decimal 187)
    defining Unicode char U+00BF (decimal 191)
    defining Unicode char U+00C0 (decimal 192)
@@ -202,94 +198,50 @@ File: t1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
    defining Unicode char U+00FD (decimal 253)
    defining Unicode char U+00FE (decimal 254)
    defining Unicode char U+00FF (decimal 255)
-   defining Unicode char U+0100 (decimal 256)
-   defining Unicode char U+0101 (decimal 257)
    defining Unicode char U+0102 (decimal 258)
    defining Unicode char U+0103 (decimal 259)
    defining Unicode char U+0104 (decimal 260)
    defining Unicode char U+0105 (decimal 261)
    defining Unicode char U+0106 (decimal 262)
    defining Unicode char U+0107 (decimal 263)
-   defining Unicode char U+0108 (decimal 264)
-   defining Unicode char U+0109 (decimal 265)
-   defining Unicode char U+010A (decimal 266)
-   defining Unicode char U+010B (decimal 267)
    defining Unicode char U+010C (decimal 268)
    defining Unicode char U+010D (decimal 269)
    defining Unicode char U+010E (decimal 270)
    defining Unicode char U+010F (decimal 271)
    defining Unicode char U+0110 (decimal 272)
    defining Unicode char U+0111 (decimal 273)
-   defining Unicode char U+0112 (decimal 274)
-   defining Unicode char U+0113 (decimal 275)
-   defining Unicode char U+0114 (decimal 276)
-   defining Unicode char U+0115 (decimal 277)
-   defining Unicode char U+0116 (decimal 278)
-   defining Unicode char U+0117 (decimal 279)
    defining Unicode char U+0118 (decimal 280)
    defining Unicode char U+0119 (decimal 281)
    defining Unicode char U+011A (decimal 282)
    defining Unicode char U+011B (decimal 283)
-   defining Unicode char U+011C (decimal 284)
-   defining Unicode char U+011D (decimal 285)
    defining Unicode char U+011E (decimal 286)
    defining Unicode char U+011F (decimal 287)
-   defining Unicode char U+0120 (decimal 288)
-   defining Unicode char U+0121 (decimal 289)
-   defining Unicode char U+0122 (decimal 290)
-   defining Unicode char U+0123 (decimal 291)
-   defining Unicode char U+0124 (decimal 292)
-   defining Unicode char U+0125 (decimal 293)
-   defining Unicode char U+0128 (decimal 296)
-   defining Unicode char U+0129 (decimal 297)
-   defining Unicode char U+012A (decimal 298)
-   defining Unicode char U+012B (decimal 299)
-   defining Unicode char U+012C (decimal 300)
-   defining Unicode char U+012D (decimal 301)
-   defining Unicode char U+012E (decimal 302)
-   defining Unicode char U+012F (decimal 303)
    defining Unicode char U+0130 (decimal 304)
    defining Unicode char U+0131 (decimal 305)
    defining Unicode char U+0132 (decimal 306)
    defining Unicode char U+0133 (decimal 307)
-   defining Unicode char U+0134 (decimal 308)
-   defining Unicode char U+0135 (decimal 309)
-   defining Unicode char U+0136 (decimal 310)
-   defining Unicode char U+0137 (decimal 311)
    defining Unicode char U+0139 (decimal 313)
    defining Unicode char U+013A (decimal 314)
-   defining Unicode char U+013B (decimal 315)
-   defining Unicode char U+013C (decimal 316)
    defining Unicode char U+013D (decimal 317)
    defining Unicode char U+013E (decimal 318)
    defining Unicode char U+0141 (decimal 321)
    defining Unicode char U+0142 (decimal 322)
    defining Unicode char U+0143 (decimal 323)
    defining Unicode char U+0144 (decimal 324)
-   defining Unicode char U+0145 (decimal 325)
-   defining Unicode char U+0146 (decimal 326)
    defining Unicode char U+0147 (decimal 327)
    defining Unicode char U+0148 (decimal 328)
    defining Unicode char U+014A (decimal 330)
    defining Unicode char U+014B (decimal 331)
-   defining Unicode char U+014C (decimal 332)
-   defining Unicode char U+014D (decimal 333)
-   defining Unicode char U+014E (decimal 334)
-   defining Unicode char U+014F (decimal 335)
    defining Unicode char U+0150 (decimal 336)
    defining Unicode char U+0151 (decimal 337)
    defining Unicode char U+0152 (decimal 338)
    defining Unicode char U+0153 (decimal 339)
    defining Unicode char U+0154 (decimal 340)
    defining Unicode char U+0155 (decimal 341)
-   defining Unicode char U+0156 (decimal 342)
-   defining Unicode char U+0157 (decimal 343)
    defining Unicode char U+0158 (decimal 344)
    defining Unicode char U+0159 (decimal 345)
    defining Unicode char U+015A (decimal 346)
    defining Unicode char U+015B (decimal 347)
-   defining Unicode char U+015C (decimal 348)
-   defining Unicode char U+015D (decimal 349)
    defining Unicode char U+015E (decimal 350)
    defining Unicode char U+015F (decimal 351)
    defining Unicode char U+0160 (decimal 352)
@@ -298,22 +250,10 @@ File: t1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
    defining Unicode char U+0163 (decimal 355)
    defining Unicode char U+0164 (decimal 356)
    defining Unicode char U+0165 (decimal 357)
-   defining Unicode char U+0168 (decimal 360)
-   defining Unicode char U+0169 (decimal 361)
-   defining Unicode char U+016A (decimal 362)
-   defining Unicode char U+016B (decimal 363)
-   defining Unicode char U+016C (decimal 364)
-   defining Unicode char U+016D (decimal 365)
    defining Unicode char U+016E (decimal 366)
    defining Unicode char U+016F (decimal 367)
    defining Unicode char U+0170 (decimal 368)
    defining Unicode char U+0171 (decimal 369)
-   defining Unicode char U+0172 (decimal 370)
-   defining Unicode char U+0173 (decimal 371)
-   defining Unicode char U+0174 (decimal 372)
-   defining Unicode char U+0175 (decimal 373)
-   defining Unicode char U+0176 (decimal 374)
-   defining Unicode char U+0177 (decimal 375)
    defining Unicode char U+0178 (decimal 376)
    defining Unicode char U+0179 (decimal 377)
    defining Unicode char U+017A (decimal 378)
@@ -321,31 +261,6 @@ File: t1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
    defining Unicode char U+017C (decimal 380)
    defining Unicode char U+017D (decimal 381)
    defining Unicode char U+017E (decimal 382)
-   defining Unicode char U+01CD (decimal 461)
-   defining Unicode char U+01CE (decimal 462)
-   defining Unicode char U+01CF (decimal 463)
-   defining Unicode char U+01D0 (decimal 464)
-   defining Unicode char U+01D1 (decimal 465)
-   defining Unicode char U+01D2 (decimal 466)
-   defining Unicode char U+01D3 (decimal 467)
-   defining Unicode char U+01D4 (decimal 468)
-   defining Unicode char U+01E2 (decimal 482)
-   defining Unicode char U+01E3 (decimal 483)
-   defining Unicode char U+01E6 (decimal 486)
-   defining Unicode char U+01E7 (decimal 487)
-   defining Unicode char U+01E8 (decimal 488)
-   defining Unicode char U+01E9 (decimal 489)
-   defining Unicode char U+01EA (decimal 490)
-   defining Unicode char U+01EB (decimal 491)
-   defining Unicode char U+01F0 (decimal 496)
-   defining Unicode char U+01F4 (decimal 500)
-   defining Unicode char U+01F5 (decimal 501)
-   defining Unicode char U+0218 (decimal 536)
-   defining Unicode char U+0219 (decimal 537)
-   defining Unicode char U+021A (decimal 538)
-   defining Unicode char U+021B (decimal 539)
-   defining Unicode char U+01E02 (decimal 7682)
-   defining Unicode char U+01E03 (decimal 7683)
    defining Unicode char U+200C (decimal 8204)
    defining Unicode char U+2013 (decimal 8211)
    defining Unicode char U+2014 (decimal 8212)
@@ -365,11 +280,9 @@ Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ot1enc.dfu
-File: ot1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
-   defining Unicode char U+00A0 (decimal 160)
+File: ot1enc.dfu 2014/09/29 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
-   defining Unicode char U+00AD (decimal 173)
    defining Unicode char U+00B8 (decimal 184)
    defining Unicode char U+00BF (decimal 191)
    defining Unicode char U+00C5 (decimal 197)
@@ -387,14 +300,6 @@ File: ot1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
    defining Unicode char U+0142 (decimal 322)
    defining Unicode char U+0152 (decimal 338)
    defining Unicode char U+0153 (decimal 339)
-   defining Unicode char U+0174 (decimal 372)
-   defining Unicode char U+0175 (decimal 373)
-   defining Unicode char U+0176 (decimal 374)
-   defining Unicode char U+0177 (decimal 375)
-   defining Unicode char U+0218 (decimal 536)
-   defining Unicode char U+0219 (decimal 537)
-   defining Unicode char U+021A (decimal 538)
-   defining Unicode char U+021B (decimal 539)
    defining Unicode char U+2013 (decimal 8211)
    defining Unicode char U+2014 (decimal 8212)
    defining Unicode char U+2018 (decimal 8216)
@@ -406,7 +311,7 @@ Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omsenc.dfu
-File: omsenc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
+File: omsenc.dfu 2014/09/29 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
    defining Unicode char U+00B7 (decimal 183)
@@ -501,15 +406,15 @@ Package: amssymb 2013/01/14 v3.01 AMS font symbols
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 95.
+Package graphics Info: Driver file: pdftex.def on input line 94.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -617,10 +522,10 @@ Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
 Package: subfig 2005/06/28 ver: 1.3 subfig package
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2016/02/02 v3.3-136 Customizing captions (AR)
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2016/02/02 v1.7-136 caption3 kernel (AR)
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 57.
 \captionmargin=\dimen130
 \captionmargin@=\dimen131
@@ -670,15 +575,15 @@ Package: floatflt 1997/07/16 v. 1.31
 \outputpretest=\toks26
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2016/01/03 v1.1b Standard LaTeX Color (DPC)
+Package: color 2014/10/28 v1.1a Standard LaTeX Color (DPC)
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: pdftex.def on input line 143.
+Package color Info: Driver file: pdftex.def on input line 142.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/dvipsnam.def
-File: dvipsnam.def 2015/12/30 v3.0k Driver-dependent file (DPC,SPQR)
+File: dvipsnam.def 2014/10/14 v3.0j Driver-dependent file (DPC,SPQR)
 ))
 (/usr/local/texlive/2015/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
@@ -686,7 +591,7 @@ Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
 \minrowclearance=\skip67
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/paralist/paralist.sty
-Package: paralist 2015/12/30 v2.5 Extended list environments
+Package: paralist 2013/06/09 v2.4 Extended list environments
 \pltopsep=\skip68
 \plpartopsep=\skip69
 \plitemsep=\skip70
@@ -930,15 +835,15 @@ th.
 \lst@maxwidth=\dimen159
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
 \c@lstnumber=\count139
 \lst@skipnumbers=\count140
 \lst@framebox=\box36
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2015/06/04 1.6 listings configuration
+File: listings.cfg 2014/09/06 1.5e listings configuration
 ))
-Package: listings 2015/06/04 1.6 (Carsten Heinz)
+Package: listings 2014/09/06 1.5e (Carsten Heinz)
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/lipsum/lipsum.sty
 Package: lipsum 2014/07/27 v1.3 150 paragraphs of Lorem Ipsum dummy text
@@ -973,7 +878,7 @@ Now handling font encoding TS1 ...
 ... processing UTF-8 mapping file for font encoding TS1
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.dfu
-File: ts1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
+File: ts1enc.dfu 2014/09/29 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A2 (decimal 162)
    defining Unicode char U+00A3 (decimal 163)
    defining Unicode char U+00A4 (decimal 164)
@@ -1085,13 +990,13 @@ sts.tex))
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
-Package: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
+Package: pgfrcs 2013/12/20 v3.0.0 (rcs-revision 1.28)
 ))
-Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
+Package: pgf 2013/12/18 v3.0.0 (rcs-revision 1.14)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
-Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
+Package: pgfsys 2013/11/30 v3.0.0 (rcs-revision 1.47)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks33
 \pgfkeys@temptoks=\toks34
@@ -1125,7 +1030,7 @@ Driver file for pgf: pgfsys-pdftex.def
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
 ef
-File: pgfsys-pdftex.def 2014/10/11  (rcs-revision 1.35)
+File: pgfsys-pdftex.def 2013/07/18  (rcs-revision 1.33)
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
 df.def
@@ -1159,7 +1064,7 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
-Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
+Package: pgfcore 2010/04/11 v3.0.0 (rcs-revision 1.7)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
@@ -1218,13 +1123,13 @@ File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
 .code.tex
-File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
-\pgf@shorten@end@additional=\dimen256
-\pgf@shorten@start@additional=\dimen257
+File: pgfcorepathusage.code.tex 2013/12/13  (rcs-revision 1.23)
+\pgf@shorten@end@additional=\dimen200
+\pgf@shorten@start@additional=\dimen201
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
 de.tex
-File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
+File: pgfcorescopes.code.tex 2013/10/09  (rcs-revision 1.44)
 \pgfpic=\box40
 \pgf@hbox=\box41
 \pgf@layerbox@main=\box42
@@ -1232,15 +1137,15 @@ File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
 ate.code.tex
-File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
-\pgflinewidth=\dimen258
+File: pgfcoregraphicstate.code.tex 2013/09/19  (rcs-revision 1.11)
+\pgflinewidth=\dimen202
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
 ations.code.tex
-File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
-\pgf@pt@x=\dimen259
-\pgf@pt@y=\dimen260
-\pgf@pt@temp=\dimen261
+File: pgfcoretransformations.code.tex 2013/10/10  (rcs-revision 1.17)
+\pgf@pt@x=\dimen203
+\pgf@pt@y=\dimen204
+\pgf@pt@temp=\dimen205
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
 e.tex
@@ -1256,13 +1161,13 @@ File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
 de.tex
-File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
-\pgfarrowsep=\dimen262
+File: pgfcorearrows.code.tex 2013/11/07  (rcs-revision 1.40)
+\pgfarrowsep=\dimen206
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
 e.tex
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
-\pgf@max=\dimen263
+\pgf@max=\dimen207
 \pgf@sys@shading@range@num=\count156
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
@@ -1271,7 +1176,7 @@ File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
 code.tex
-File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
+File: pgfcoreexternal.code.tex 2013/07/15  (rcs-revision 1.20)
 \pgfexternal@startupbox=\box43
 ))
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
@@ -1288,22 +1193,22 @@ File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
 )))
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
 e.tex
-File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
+File: pgfmoduleshapes.code.tex 2013/10/31  (rcs-revision 1.34)
 \pgfnodeparttextbox=\box44
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
 tex
-File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
+File: pgfmoduleplot.code.tex 2013/07/31  (rcs-revision 1.12)
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
 -0-65.sty
-Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
-\pgf@nodesepstart=\dimen264
-\pgf@nodesepend=\dimen265
+Package: pgfcomp-version-0-65 2007/07/03 v3.0.0 (rcs-revision 1.7)
+\pgf@nodesepstart=\dimen208
+\pgf@nodesepend=\dimen209
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
 -1-18.sty
-Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
+Package: pgfcomp-version-1-18 2007/07/23 v3.0.0 (rcs-revision 1.1)
 ))
 (/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
 (/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
@@ -1311,30 +1216,30 @@ Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
-Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
+Package: pgffor 2013/12/13 v3.0.0 (rcs-revision 1.25)
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen266
-\pgffor@skip=\dimen267
+\pgffor@iter=\dimen210
+\pgffor@skip=\dimen211
 \pgffor@stack=\toks42
 \pgffor@toks=\toks43
 ))
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
 e.tex
-Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
+Package: tikz 2013/12/13 v3.0.0 (rcs-revision 1.142)
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
 dlers.code.tex
-File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
+File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.0 (rcs-revision 1.20)
 \pgf@plot@mark@count=\count157
-\pgfplotmarksize=\dimen268
+\pgfplotmarksize=\dimen212
 )
-\tikz@lastx=\dimen269
-\tikz@lasty=\dimen270
-\tikz@lastxsaved=\dimen271
-\tikz@lastysaved=\dimen272
-\tikzleveldistance=\dimen273
-\tikzsiblingdistance=\dimen274
+\tikz@lastx=\dimen213
+\tikz@lasty=\dimen214
+\tikz@lastxsaved=\dimen215
+\tikz@lastysaved=\dimen216
+\tikzleveldistance=\dimen217
+\tikzsiblingdistance=\dimen218
 \tikz@figbox=\box45
 \tikz@figbox@bg=\box46
 \tikz@tempbox=\box47
@@ -1355,7 +1260,7 @@ File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarytopaths.code.tex
-File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
+File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.0 (rcs-revision 1.2)
 )))
 (/usr/local/texlive/2015/texmf-dist/tex/latex/breakcites/breakcites.sty)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/float/float.sty
@@ -1367,7 +1272,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@floatcapt=\box50
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
-Package: tcolorbox 2015/11/27 version 3.80 text color boxes
+Package: tcolorbox 2015/05/07 version 3.60 text color boxes
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
@@ -1382,7 +1287,7 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
 (/usr/local/texlive/2015/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
+Package: etoolbox 2015/05/04 v2.2 e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count167
 )
 \tcb@titlebox=\box51
@@ -1391,7 +1296,6 @@ Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
 \tcb@phantombox=\box54
 \c@tcbbreakpart=\count168
 \c@tcblayer=\count169
-\tcolorbox@number=\count170
 \tcb@temp=\box55
 \tcb@temp=\box56
 \tcb@temp=\box57
@@ -1411,8 +1315,7 @@ Package tocbibind Note: Using section or other style headings.
 
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2013/01/06 v5.00 algorithms environments
-\c@AlgoLine=\count171
-\algocf@hangindent=\skip114
+\c@AlgoLine=\count170
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
@@ -1421,44 +1324,43 @@ Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 Package: relsize 2013/03/29 ver 4.1
 )
 ********************************************************
-Package `algorithm2e' Release 5.1 -- october 19 2015 --
+Package `algorithm2e' Release 5.0 -- january 06 2013 --
 - algorithm2e-announce@lirmm.fr mailing list for announcement about releases
 - algorithm2e-discussion@lirmm.fr mailing list for discussion about package
 subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
-- Author: Christophe Fiorio (christophe.fiorio@umontpellier.fr)
+- Author: Christophe Fiorio (cfiorio@um2.fr)
 ********************************************************
-\skiptotal=\skip115
-\skiplinenumber=\skip116
-\skiprule=\skip117
-\skiphlne=\skip118
-\skiptext=\skip119
-\skiplength=\skip120
-\algomargin=\skip121
-\skipalgocfslide=\skip122
-\algowidth=\dimen275
-\inoutsize=\dimen276
-\inoutindent=\dimen277
-\interspacetitleruled=\dimen278
-\interspacealgoruled=\dimen279
-\interspacetitleboxruled=\dimen280
-\algocf@ruledwidth=\skip123
+\skiptotal=\skip114
+\skiplinenumber=\skip115
+\skiprule=\skip116
+\skiphlne=\skip117
+\skiptext=\skip118
+\skiplength=\skip119
+\algomargin=\skip120
+\skipalgocfslide=\skip121
+\algowidth=\dimen219
+\inoutsize=\dimen220
+\inoutindent=\dimen221
+\interspacetitleruled=\dimen222
+\interspacealgoruled=\dimen223
+\interspacetitleboxruled=\dimen224
 \algocf@inoutbox=\box60
 \algocf@inputbox=\box61
-\AlCapSkip=\skip124
-\AlCapHSkip=\skip125
-\algoskipindent=\skip126
+\AlCapSkip=\skip122
+\AlCapHSkip=\skip123
+\algoskipindent=\skip124
 \algocf@nlbox=\box62
 \algocf@hangingbox=\box63
 \algocf@untilbox=\box64
-\algocf@skipuntil=\skip127
+\algocf@skipuntil=\skip125
 \algocf@capbox=\box65
-\algoheightruledefault=\skip128
-\algoheightrule=\skip129
-\algotitleheightruledefault=\skip130
-\algotitleheightrule=\skip131
-\c@algocfline=\count172
-\c@algocfproc=\count173
-\c@algocf=\count174
+\algoheightruledefault=\skip126
+\algoheightrule=\skip127
+\algotitleheightruledefault=\skip128
+\algotitleheightrule=\skip129
+\c@algocfline=\count171
+\c@algocfproc=\count172
+\c@algocf=\count173
 \algocf@algoframe=\box66
 \algocf@algobox=\box67
 )
@@ -1471,12 +1373,6 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 76.
  (./Report_v1.aux
 
 LaTeX Warning: Label `' multiply defined.
-
-
-LaTeX Warning: Label `algo_disjdecomp' multiply defined.
-
-
-LaTeX Warning: Label `alg:agglc' multiply defined.
 
 
 LaTeX Warning: Label `eq:ri' multiply defined.
@@ -1535,16 +1431,16 @@ LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 82.
 LaTeX Font Info:    ... okay on input line 82.
  (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count175
-\scratchdimen=\dimen281
+\scratchcounter=\count174
+\scratchdimen=\dimen225
 \scratchbox=\box68
-\nofMPsegments=\count176
-\nofMParguments=\count177
+\nofMPsegments=\count175
+\nofMParguments=\count176
 \everyMPshowfont=\toks48
-\MPscratchCnt=\count178
-\MPscratchDim=\dimen282
-\MPnumerator=\count179
-\makeMPintoPDFobject=\count180
+\MPscratchCnt=\count177
+\MPscratchDim=\dimen226
+\MPnumerator=\count178
+\makeMPintoPDFobject=\count179
 \everyMPtoPDFconversion=\toks49
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -1612,7 +1508,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count181
+\c@section@level=\count180
 )
 LaTeX Info: Redefining \ref on input line 82.
 LaTeX Info: Redefining \pageref on input line 82.
@@ -1622,7 +1518,7 @@ LaTeX Info: Redefining \nameref on input line 82.
 \@outlinefile=\write7
 \openout7 = `Report_v1.out'.
 
-\c@lstlisting=\count182
+\c@lstlisting=\count181
  ABD: EveryShipout initializing macros
 <Pictures/logo01.jpg, id=146, 1284.8pt x 232.87pt>
 File: Pictures/logo01.jpg Graphic file (type jpg)
@@ -1645,7 +1541,7 @@ res/logo01.jpg>] (./Report_v1.tocpdfTeX warning (ext4): destination with the sa
 me identifier (name{page.I}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.34 ....3}Spectral Clustering}{G}{subsection.B.3}
+l.34 ....3}Spectral Clustering}{F}{subsection.B.3}
                                                    [1])
 \tf@toc=\write8
 \openout8 = `Report_v1.toc'.
@@ -1677,105 +1573,105 @@ Overfull \hbox (6.92831pt too wide) in paragraph at lines 262--279
 [][] 
  []
 
-[7] [1] [2] <Pictures/flow01.png, id=351, 833.1125pt x 416.55624pt>
+[7] [1] [2] <Pictures/flow01.png, id=347, 833.1125pt x 416.55624pt>
 File: Pictures/flow01.png Graphic file (type png)
 
 <use Pictures/flow01.png>
-Package pdftex.def Info: Pictures/flow01.png used on input line 356.
+Package pdftex.def Info: Pictures/flow01.png used on input line 355.
 (pdftex.def)             Requested size: 443.863pt x 221.93057pt.
  [3] [4 <./Pictures/flow01.png>] [5] [6]
-<Pictures/DataClustering.jpeg, id=407, 1027.84pt x 770.88pt>
+<Pictures/DataClustering.jpeg, id=403, 1027.84pt x 770.88pt>
 File: Pictures/DataClustering.jpeg Graphic file (type jpg)
 
 <use Pictures/DataClustering.jpeg>
-Package pdftex.def Info: Pictures/DataClustering.jpeg used on input line 411.
+Package pdftex.def Info: Pictures/DataClustering.jpeg used on input line 410.
 (pdftex.def)             Requested size: 443.863pt x 332.89522pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 418--419
+Underfull \hbox (badness 10000) in paragraph at lines 417--418
 
  []
 
 [7 <./Pictures/DataClustering.jpeg>]
-Underfull \hbox (badness 10000) in paragraph at lines 420--424
+Underfull \hbox (badness 10000) in paragraph at lines 419--423
 
  []
 
 [8] [9]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 506.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 505.
 
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 506.
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 505.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 506.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 505.
  [10]
-Underfull \hbox (badness 10000) in paragraph at lines 528--529
+Underfull \hbox (badness 10000) in paragraph at lines 521--522
 
  []
 
 [11] (./Pictures/e1c2.tex) (./Pictures/e1c3.tex) (./Pictures/e2c2.tex)
 (./Pictures/e2c3.tex)
-Overfull \hbox (45.16154pt too wide) in paragraph at lines 540--547
+Overfull \hbox (45.16154pt too wide) in paragraph at lines 533--540
  []|  [] 
  []
 
-<<<<<<< HEAD
-[11] [12] (./Pictures/entblbe1c2.tex) (./Pictures/crange1c2.tex)
-Overfull \hbox (45.16154pt too wide) in paragraph at lines 561--566
- []|  [] 
- []
-
-[13]
-
-LaTeX Warning: Citation `stout2004' on page 14 undefined on input line 602.
-
-(./Pictures/disad.tex) (./Pictures/cumbad.tex) (./Pictures/entbl.tex)
-(./Pictures/avgent.tex)
-Overfull \hbox (45.16154pt too wide) in paragraph at lines 609--616
+[12] [13] (./Pictures/entblbe1c2.tex) (./Pictures/crange1c2.tex)
+Overfull \hbox (45.16154pt too wide) in paragraph at lines 549--554
  []|  [] 
  []
 
 [14]
-Overfull \hbox (9.83507pt too wide) in paragraph at lines 620--622
-=======
-[12] (./Pictures/entblbe1c1.tex) (./Pictures/crange1c1.tex)
-Overfull \hbox (45.16154pt too wide) in paragraph at lines 554--559
- []|  [] 
- []
 
-[13] [14]
+Package caption Warning: \label without proper \caption on input line 589.
+See the caption package documentation for explanation.
 
-LaTeX Warning: Citation `stout2004' on page 15 undefined on input line 598.
 
-(./Pictures/disad.tex) (./Pictures/cumbad.tex) (./Pictures/entbl.tex)
+LaTeX Warning: Reference `tab:tabps' on page 15 undefined on input line 567.
+
+
+LaTeX Warning: Citation `stout2004' on page 15 undefined on input line 594.
+
+[15] (./Pictures/disad.tex) (./Pictures/cumbad.tex) (./Pictures/entbl.tex)
 (./Pictures/avgent.tex)
-Overfull \hbox (45.16154pt too wide) in paragraph at lines 605--612
+Overfull \hbox (45.16154pt too wide) in paragraph at lines 601--608
  []|  [] 
  []
 
-[15]
-Overfull \hbox (9.83507pt too wide) in paragraph at lines 616--618
+[16]
 
+Package caption Warning: \label without proper \caption on input line 1391.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `tab:prison1' on page 17 undefined on input line 613.
+
+
+Package caption Warning: \label without proper \caption on input line 1425.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `tab:prison2' on page 17 undefined on input line 613.
+
+
+Overfull \hbox (9.83507pt too wide) in paragraph at lines 612--614
 []\OT1/cmr/m/n/12 [[][]Yechiam et al., 2008[][]] found three clus-ters by us-in
 g the at-ten-tion to re-cent out-comes(ARO)
  []
 
-[16] [17] [18] [19] (./Report_v1.bbl [20]
+[17] [18] [19] [20] (./Report_v1.bbl [21]
 Underfull \hbox (badness 1371) in paragraph at lines 121--125
 []\OT1/cmr/m/n/12 Martino, D. J., Bu-cay, D., But-man, J. T., and Al-le-gri,
  []
 
-[21]
+[22]
 Underfull \hbox (badness 10000) in paragraph at lines 148--151
 []\OT1/cmr/m/n/12 Pamminger, C. and Fruehwirth-
  []
 
-
-[22]) [23] [1] [2] [3] [4]
-Overfull \hbox (29.77469pt too wide) detected at line 872
-
+[23]) [24] [1] [2] [3] [4]
+Overfull \hbox (29.77469pt too wide) detected at line 866
 [][] 
  []
 
@@ -1783,95 +1679,78 @@ Overfull \hbox (29.77469pt too wide) detected at line 872
 e{page.I}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-
-l.1012 \end{flalign}
-                     [9]
-Overfull \hbox (62.30624pt too wide) in paragraph at lines 1016--1016
-[] 
+l.1022 \section
+               {Simulation Data} [9]
+Underfull \hbox (badness 10000) in alignment at lines 1058--1058
+[][][][][][][][][][][] 
  []
 
 
-Underfull \hbox (badness 10000) in alignment at lines 1077--1077
+Underfull \hbox (badness 10000) in alignment at lines 1097--1097
 [][][][][][][][][][][] 
  []
 
 [10]
-Underfull \hbox (badness 10000) in alignment at lines 1116--1116
+Underfull \hbox (badness 10000) in alignment at lines 1134--1134
 [][][][][][][][][][][] 
  []
 
 [11]
+Underfull \hbox (badness 10000) in alignment at lines 1163--1163
+[][][][][][][][][][][] 
+ []
 
-Underfull \hbox (badness 10000) in alignment at lines 1153--1153
+
+Underfull \hbox (badness 10000) in alignment at lines 1197--1197
 [][][][][][][][][][][] 
  []
 
 [12]
-
-Underfull \hbox (badness 10000) in alignment at lines 1185--1185
-[][][][][][][][][][][] 
- []
-
-
-Underfull \hbox (badness 10000) in alignment at lines 1219--1219
+Underfull \hbox (badness 10000) in alignment at lines 1235--1235
 [][][][][][][][][][][] 
  []
 
 [13]
-Underfull \hbox (badness 10000) in alignment at lines 1257--1257
-
+Underfull \hbox (badness 10000) in alignment at lines 1269--1269
 [][][][][][][][][][][] 
  []
 
 [14]
-
-Underfull \hbox (badness 10000) in alignment at lines 1291--1291
-
+Underfull \hbox (badness 10000) in alignment at lines 1307--1307
 [][][][][][][][][][][] 
  []
 
-[15]
-
-Underfull \hbox (badness 10000) in alignment at lines 1329--1329
-[][][][][][][][][][][] 
- []
-
-[16] (./Pictures/entblbe1c2.tex) (./Pictures/crange1c2.tex)
-Overfull \hbox (43.92339pt too wide) in paragraph at lines 1339--1344
-
+[15] (./Pictures/entblbe1c1.tex) (./Pictures/crange1c1.tex)
+Overfull \hbox (43.92339pt too wide) in paragraph at lines 1318--1323
  []|  [] 
  []
 
-[17] (./Pictures/entblbe2c1.tex) (./Pictures/crange2c1.tex)
+[16] (./Pictures/entblbe2c1.tex) (./Pictures/crange2c1.tex)
 (./Pictures/entblbe2c2.tex) (./Pictures/crange2c2.tex)
-
-Overfull \hbox (43.92339pt too wide) in paragraph at lines 1351--1358
+Overfull \hbox (43.92339pt too wide) in paragraph at lines 1331--1338
  []|  [] 
  []
 
-[18] [19]
-Overfull \hbox (7.07774pt too wide) in paragraph at lines 1370--1412
-
+[17] [18]
+Overfull \hbox (7.07774pt too wide) in paragraph at lines 1350--1392
  [][] 
  []
 
 
-
-Overfull \hbox (10.32362pt too wide) in paragraph at lines 1418--1446
+Overfull \hbox (10.32362pt too wide) in paragraph at lines 1398--1426
  [][] 
  []
 
-[20]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1459.
- [21]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1459.
+[19]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1440.
+ [20]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1440.
  (./Report_v1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1459.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1459.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1440.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1440.
 
 Package rerunfilecheck Info: File `Report_v1.out' has not changed.
-(rerunfilecheck)             Checksum: AAA6645C03ADE82D0C600BAAE35E313B;2457.
-
+(rerunfilecheck)             Checksum: 5F2534F402699DC4E77E2C6A435479AD;2455.
 
 
 LaTeX Warning: There were undefined references.
@@ -1879,24 +1758,20 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1459.
-
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1440.
  )
-(\end occurred inside a group at level 2)
+(\end occurred inside a group at level 1)
 
-
-### simple group (level 1) entered at line 601 ({)
+### simple group (level 1) entered at line 597 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 31288 strings out of 493089
- 568122 string characters out of 6134842
- 958378 words of memory out of 5000000
- 33986 multiletter control sequences out of 15000+600000
+ 31280 strings out of 493089
+ 567993 string characters out of 6134842
+ 926295 words of memory out of 5000000
+ 33985 multiletter control sequences out of 15000+600000
  20738 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,18n,77p,1751b,1053s stack positions out of 5000i,500n,10000p,200000b,80000s
-
+ 64i,18n,77p,1788b,1053s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/bbold-ty
 pe1/bbold10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmbsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
@@ -1920,12 +1795,10 @@ cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
 al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local
 /texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-
-Output written on Report_v1.pdf (52 pages, 782195 bytes).
+Output written on Report_v1.pdf (52 pages, 782317 bytes).
 PDF statistics:
- 840 PDF objects out of 1000 (max. 8388607)
- 751 compressed objects within 8 object streams
- 217 named destinations out of 1000 (max. 500000)
+ 826 PDF objects out of 1000 (max. 8388607)
+ 737 compressed objects within 8 object streams
+ 210 named destinations out of 1000 (max. 500000)
  316 words of extra memory for PDF output out of 10000 (max. 10000000)
-
 

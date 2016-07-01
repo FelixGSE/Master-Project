@@ -1,17 +1,17 @@
 \select@language {english}
 \contentsline {table}{\numberline {1}{\ignorespaces Selected simulation results\relax }}{10}{table.caption.4}
 \contentsline {table}{\numberline {2}{\ignorespaces Summary prison data (means with standard deviation in parenthesis)\relax }}{15}{table.caption.7}
-\contentsline {table}{\numberline {3}{\ignorespaces \relax }}{17}{table.caption.9}
-\contentsline {table}{\numberline {4}{\ignorespaces Demographic summary of cocaine abusers (means with standard deviations in parenthesis)\relax }}{17}{table.caption.10}
-\contentsline {table}{\numberline {5}{\ignorespaces Clustering results for cocaine abusers vs. control group\relax }}{18}{table.caption.11}
-\contentsline {table}{\numberline {6}{\ignorespaces Contigency Table\relax }}{H}{table.caption.16}
-\contentsline {table}{\numberline {7}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\alpha = 0.1$)\relax }}{K}{table.caption.17}
-\contentsline {table}{\numberline {8}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\alpha = 0.5$)\relax }}{L}{table.caption.18}
-\contentsline {table}{\numberline {9}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\alpha = 1$)\relax }}{M}{table.caption.19}
-\contentsline {table}{\numberline {10}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,1,2\}$, $\sigma = \{1,1,1\}$, $\alpha = 0.1$)\relax }}{M}{table.caption.20}
-\contentsline {table}{\numberline {11}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,1,2\}$, $\sigma = \{1,1,1\}$, $\alpha = 1$)\relax }}{N}{table.caption.21}
-\contentsline {table}{\numberline {12}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\tau = 0.1$)\relax }}{O}{table.caption.22}
-\contentsline {table}{\numberline {13}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\tau = 0.5$)\relax }}{P}{table.caption.23}
-\contentsline {table}{\numberline {14}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\tau = 1.0$)\relax }}{Q}{table.caption.24}
-\contentsline {table}{\numberline {15}{\ignorespaces \relax }}{T}{table.caption.27}
-\contentsline {table}{\numberline {16}{\ignorespaces \relax }}{U}{table.caption.28}
+\contentsline {table}{\numberline {3}{\ignorespaces Selected results for prison data clustering\relax }}{18}{table.caption.9}
+\contentsline {table}{\numberline {4}{\ignorespaces Demographic summary of cocaine abusers (means with standard deviations in parenthesis)\relax }}{18}{table.caption.10}
+\contentsline {table}{\numberline {5}{\ignorespaces Clustering results for cocaine abusers vs. control group\relax }}{19}{table.caption.11}
+\contentsline {table}{\numberline {6}{\ignorespaces Contigency Table\relax }}{G}{table.caption.16}
+\contentsline {table}{\numberline {7}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\alpha = 0.1$)\relax }}{J}{table.caption.17}
+\contentsline {table}{\numberline {8}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\alpha = 0.5$)\relax }}{K}{table.caption.18}
+\contentsline {table}{\numberline {9}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\alpha = 1$)\relax }}{L}{table.caption.19}
+\contentsline {table}{\numberline {10}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,1,2\}$, $\sigma = \{1,1,1\}$, $\alpha = 0.1$)\relax }}{L}{table.caption.20}
+\contentsline {table}{\numberline {11}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,1,2\}$, $\sigma = \{1,1,1\}$, $\alpha = 1$)\relax }}{M}{table.caption.21}
+\contentsline {table}{\numberline {12}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\tau = 0.1$)\relax }}{N}{table.caption.22}
+\contentsline {table}{\numberline {13}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\tau = 0.5$)\relax }}{O}{table.caption.23}
+\contentsline {table}{\numberline {14}{\ignorespaces Simulation results (Setting: Rounds = 20, Size = 20, $\mu = \{0,2,4\}$, $\sigma = \{1,1,1\}$, $\tau = 1.0$)\relax }}{P}{table.caption.24}
+\contentsline {table}{\numberline {15}{\ignorespaces Results for prison data for group assault vs. rest\relax }}{S}{table.caption.27}
+\contentsline {table}{\numberline {16}{\ignorespaces Results for prison data for group robbery vs. rest\relax }}{T}{table.caption.28}

@@ -25,14 +25,12 @@
 \BOOKMARK [2][-]{subsection.A.1}{Distances vs. Similarities}{appendix.A}% 25
 \BOOKMARK [2][-]{subsection.A.2}{General Similarity measures}{appendix.A}% 26
 \BOOKMARK [2][-]{subsection.A.3}{Similarity measures for categorical data}{appendix.A}% 27
-\BOOKMARK [2][-]{subsection.A.4}{Similarity measures for time series data}{appendix.A}% 28
+\BOOKMARK [2][-]{subsection.A.4}{Distance measures for time series data}{appendix.A}% 28
 \BOOKMARK [1][-]{appendix.B}{Algorithms}{}% 29
 \BOOKMARK [2][-]{subsection.B.1}{K-Means Clustering}{appendix.B}% 30
 \BOOKMARK [2][-]{subsection.B.2}{Hierarchical Clustering - Agglomerative}{appendix.B}% 31
 \BOOKMARK [2][-]{subsection.B.3}{Spectral Clustering}{appendix.B}% 32
-
 \BOOKMARK [1][-]{appendix.C}{Clustering Evaluation}{}% 33
 \BOOKMARK [1][-]{appendix.D}{Simulation Data}{}% 34
 \BOOKMARK [1][-]{appendix.E}{Multi arm bandit data}{}% 35
 \BOOKMARK [1][-]{appendix.F}{Prison data}{}% 36
-
