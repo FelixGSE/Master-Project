@@ -9,7 +9,7 @@ In the first step we set up a reinforcement learning and multiarm bandit based s
 This setting allowed us to control a wide range of parameters, such as learning rate, strength of explorative behaviour, true cluster sizes and bandit distribution.
 In the following we studied clustering behaviour for real data sets of people in a multi-arm bandit setting, people with cocaine addiction and data from individuals with several criminal backgrounds.  
 
-## Folder Content
+## Folder content
 
 Code and Analysis:
 	
